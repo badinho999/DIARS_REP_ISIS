@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{721CD5AD-AA3B-4E4D-BEF1-FAD86DB00963}</ProjectGuid>
+    <ProjectGuid>{6AE231B5-4947-4438-AEAA-11B943526E45}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CapaLogica</RootNamespace>
@@ -45,11 +45,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaAccesoDatos\CapaAccesoDatos.csproj">
-      <Project>{3f24694d-ebc5-4833-9ba6-0ce86d718a2b}</Project>
+      <Project>{aaedd39b-4992-43a8-be5d-807cb4c3e525}</Project>
       <Name>CapaAccesoDatos</Name>
     </ProjectReference>
     <ProjectReference Include="..\CapaEntidades\CapaEntidades.csproj">
-      <Project>{c034a957-a632-4ff9-a293-bf063c934ffe}</Project>
+      <Project>{21b28b82-0434-42af-9971-d0f6ddcb557e}</Project>
       <Name>CapaEntidades</Name>
     </ProjectReference>
   </ItemGroup>
