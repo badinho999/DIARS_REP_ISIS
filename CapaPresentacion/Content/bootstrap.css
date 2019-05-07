@@ -335,15 +335,16 @@ textarea {
 }
 
 a {
-  color: #428bca;
+  color: white;
   text-decoration: none;
 }
 
-a:hover,
-a:focus {
-  color: #2a6496;
-  text-decoration: underline;
-}
+    a:hover,
+    a:focus
+    {
+        color: rgba(248,67,49);
+        text-decoration: none;
+    }
 
 a:focus {
   outline: thin dotted #333;
@@ -2050,7 +2051,7 @@ fieldset[disabled] .btn {
 
 .btn-default {
   color: #333333;
-  background-color: #ffffff;
+  background-color: #fff;
   border-color: #cccccc;
 }
 
@@ -2064,11 +2065,6 @@ fieldset[disabled] .btn {
   border-color: #adadad;
 }
 
-.btn-default:active,
-.btn-default.active,
-.open .dropdown-toggle.btn-default {
-  background-image: none;
-}
 
 .btn-default.disabled,
 .btn-default[disabled],
@@ -4026,7 +4022,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   position: relative;
   z-index: 1000;
   min-height: 50px;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   border: 1px solid transparent;
 }
 
@@ -4052,7 +4048,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 @media (min-width: 768px) {
   .navbar {
-    border-radius: 4px;
+    border-radius: 0px;
   }
 }
 
@@ -4119,13 +4115,14 @@ textarea.input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar-collapse {
     width: auto;
-    border-top: 0;
+    border-top: 25px;
     box-shadow: none;
   }
   .navbar-collapse.collapse {
     display: block !important;
     height: auto !important;
     padding-bottom: 0;
+
     overflow: visible !important;
   }
   .navbar-collapse.in {
@@ -4276,11 +4273,14 @@ textarea.input-group-sm > .input-group-btn > .btn {
     float: left;
     margin: 0;
   }
-  .navbar-nav > li {
-    float: left;
-  }
+    .navbar-nav > li
+    {
+        float: right;
+        padding-left: 18px;
+        padding-top: 13px;
+    }
   .navbar-nav > li > a {
-    padding-top: 15px;
+    padding-top: 30px;
     padding-bottom: 15px;
   }
 }
