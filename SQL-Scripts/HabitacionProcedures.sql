@@ -1,16 +1,22 @@
 /*HabitacionesProcedures*/
 
-Create procedure Sp_ListarHabitaciones
+Alter procedure Sp_ListarHabitaciones
 as
 begin
-Select	h.NumeroHabitacion, th.Nombretipodehabitacion,
-		th.TipodehabitacionID,th.Descripciontipo, 
-		th.Numerodecamas,th.Precio,th.Capacidad,th.Precio,th.Costoadicional
+Select	h.NumeroHabitacion, th.Nombretipodehabitacion,th.Descripciontipo, 
+		th.Numerodecamas,th.Precio,th.Capacidad,th.Costoadicional
 from Habitacion h inner join Tipodehabitacion th on(h.TipodehabitacionID=th.TipodehabitacionID)
 end
 
 exec Sp_ListarHabitaciones
 go
+
+Create procedure Sp_ListarTiposH
+as
+begin
+Select *
+from Tipodehabitacion
+end
 
 create procedure Sp_InsertarHabitacion
 (
