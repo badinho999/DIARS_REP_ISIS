@@ -57,6 +57,35 @@ namespace CapaAccesoDatos
             return lista;
         }
 
+        public Boolean RegistrarHuesped(EntHuesped huesped)
+        {
+            SqlCommand cmd = null;
+            Boolean registra = false;
+            try
+            {
+                SqlConnection cn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("Sp_RegistrarHuesped", cn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmstrApellidos", huesped.Apellidos);
+                cmd.Parameters.AddWithValue("@prmstrPasswordHuesped", huesped.PasswordHuesped);
+                cmd.Parameters.AddWithValue("@prmstrEmail", huesped.Email);
+                cmd.Parameters.AddWithValue("@prmstrFechadenacimiento", huesped.Fechadenacimiento);
+                cmd.Parameters.AddWithValue("@prmstrNombre", huesped.Nombre);
+                cmd.Parameters.AddWithValue("@prmstrDni", huesped.Dni);
+                cn.Open();
+                int i = cmd.ExecuteNonQuery();
+                if (i > 0)
+                {
+                    registra = true;
+                }
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+            finally { cmd.Connection.Close(); }
+            return registra;
+        }
 
         #endregion metodos
     }

@@ -17,5 +17,31 @@ namespace CapaPresentacion.Controllers
             ViewBag.lista = lista;
             return View(lista);
         }
+
+        [HttpGet]
+        public ActionResult registrarHuesped()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult registrarHuesped(EntHuesped huesped)
+        {
+            try
+            {
+                Boolean registra = LogHuesped.Instancia.registrarHuesped(huesped);
+                if (registra)
+                {
+                    return RedirectToAction("listarHuesped");
+                }
+                else
+                {
+                    return View(huesped);
+                }
+            }
+            catch (ApplicationException ex)
+            {
+                return RedirectToAction("registrarHuesped", new { mesjException = ex.Message });
+            }
+        }
     }
 }

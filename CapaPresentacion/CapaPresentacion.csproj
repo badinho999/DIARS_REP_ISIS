@@ -154,6 +154,7 @@
     <Content Include="scss\_navbar.scss" />
     <Content Include="scss\_variables.scss" />
     <Content Include="Views\MantenedorHuesped\listarHuesped.cshtml" />
+    <Content Include="Views\MantenedorHuesped\registrarHuesped.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

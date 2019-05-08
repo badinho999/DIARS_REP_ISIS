@@ -36,6 +36,20 @@ namespace CapaLogica
             }
 
         }
+
+        public Boolean registrarHuesped(EntHuesped huesped)
+        {
+            try
+            {
+                return DatHuesped.Instancia.RegistrarHuesped(huesped);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+        }
+
         #endregion metodos
     }
 }
