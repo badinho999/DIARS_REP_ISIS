@@ -9,16 +9,14 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-
-    <title>listarHuesped</title>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/mantenedores.css" rel="stylesheet" />
+    <title>listarHuesped</title>
 </head>
 <body>
-    <p class="head-list">
-        @Html.ActionLink("Inicio", "index", "Home")
-        @Html.ActionLink("Nuevo", "registrarHuesped")
+    <p>
+        @Html.ActionLink("Inicio", "Index", "Home",null,new { @class="link-master"})
+        @Html.ActionLink("Nuevo", "registrarHuesped",null,new { @class = "link-master" })
     </p>
     <table class="table">
         <tr>
@@ -57,9 +55,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Dni)
             </td>
-            <td>
-                @Html.ActionLink("Editar", "editarHuesped", new { Dni = item.Dni })|
-                @Html.ActionLink("Elimina", "eliminaHuesped", new { Dni = item.Dni })
+            <td class="options">
+                @Html.ActionLink("Editar", "editarHuesped", new { Dni = item.Dni },new { @class = "link-master"}) |
+                @Html.ActionLink("Eliminar", "eliminaHuesped" ,new { Dni = item.Dni }, new { @class = "link-master" })
             </td>
         </tr>
     }

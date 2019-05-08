@@ -9,12 +9,14 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/mantenedores.css" rel="stylesheet" />
     <title>listarHabitaciones</title>
 </head>
 <body>
     <p>
-        @Html.ActionLink("Inicio", "Index","Home")
-        @Html.ActionLink("Create New", "insertarHabitacion")
+        @Html.ActionLink("Inicio", "Index","Home", null, new { @class = "link-master" })
+        @Html.ActionLink("Create New", "insertarHabitacion", null, new { @class = "link-master" })
     </p>
     <table class="table">
         <tr>
