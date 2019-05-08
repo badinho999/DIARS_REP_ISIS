@@ -4188,11 +4188,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
   margin-bottom: 0;
 }
 
-.navbar-brand {
-  float: left;
-  padding: 15px 15px;
-  font-size: 18px;
-  line-height: 20px;
+.navbar-brand
+{
+    float: left;
+    padding: 20px 20px;
+    font-size: 18px;
+    line-height: 30px;
 }
 
 .navbar-brand:hover,
@@ -4269,20 +4270,22 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 @media (min-width: 768px) {
-  .navbar-nav {
-    float: left;
-    margin: 0;
-  }
+    .navbar-nav
+    {
+        float: left;
+        margin: 6px;
+    }
     .navbar-nav > li
     {
         float: right;
         padding-left: 18px;
         padding-top: 13px;
     }
-  .navbar-nav > li > a {
-    padding-top: 30px;
-    padding-bottom: 15px;
-  }
+        .navbar-nav > li > a
+        {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
 }
 
 @media (min-width: 768px) {

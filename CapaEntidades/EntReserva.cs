@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace CapaEntidades
 {
-    class Reserva
+    class EntReserva
     {
         private string fechadereserva;
 	    private double montodereserva;
 	    private int reservaID;
-        Alquiler alquiler;
+        EntAlquiler alquiler;
 
         public string Fechadereserva { get => fechadereserva; set => fechadereserva = value; }
         public double Montodereserva { get => montodereserva; set => montodereserva = value; }
         public int ReservaID { get => reservaID; set => reservaID = value; }
-        internal Alquiler Alquiler { get => alquiler; set => alquiler = value; }
+        internal EntAlquiler Alquiler { get => alquiler; set => alquiler = value; }
     }
 }

@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace CapaEntidades
 {
-    class Paquete
+    class EntPaquete
     {
         private string descripcionpaquete;
         private string nombrepaquete;
         private double preciopaquete;
         private int paqueteID;
-        private TipoDeHabitacion tipodehabitacion;
-        private List<Alquiler> alquileres;
+        private EntTipoDeHabitacion tipodehabitacion;
+        private List<EntAlquiler> alquileres;
 
         public string Descripcionpaquete { get => descripcionpaquete; set => descripcionpaquete = value; }
         public string Nombrepaquete { get => nombrepaquete; set => nombrepaquete = value; }
         public double Preciopaquete { get => preciopaquete; set => preciopaquete = value; }
         public int PaqueteID { get => paqueteID; set => paqueteID = value; }
-        internal TipoDeHabitacion Tipodehabitacion { get => tipodehabitacion; set => tipodehabitacion = value; }
-        internal List<Alquiler> Alquileres { get => alquileres; set => alquileres = value; }
+        internal EntTipoDeHabitacion Tipodehabitacion { get => tipodehabitacion; set => tipodehabitacion = value; }
+        internal List<EntAlquiler> Alquileres { get => alquileres; set => alquileres = value; }
     }
 }

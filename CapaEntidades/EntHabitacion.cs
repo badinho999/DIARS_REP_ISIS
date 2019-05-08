@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CapaEntidades
 {
-    class Habitacion
+    class EntHabitacion
     {
         private string numeroHabitacion;
-        private TipoDeHabitacion tipodehabitacion;
+        private EntTipoDeHabitacion tipodehabitacion;
 
         public string NumeroHabitacion { get => numeroHabitacion; set => numeroHabitacion = value; }
-        internal TipoDeHabitacion Tipodehabitacion { get => tipodehabitacion; set => tipodehabitacion = value; }
+        internal EntTipoDeHabitacion Tipodehabitacion { get => tipodehabitacion; set => tipodehabitacion = value; }
     }
 }

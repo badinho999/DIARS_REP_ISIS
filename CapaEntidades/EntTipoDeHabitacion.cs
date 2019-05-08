@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaEntidades
 {
-    class TipoDeHabitacion
+    class EntTipoDeHabitacion
     {
         private int capacidad;
         private double Costoadicional;

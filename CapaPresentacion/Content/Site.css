@@ -27,10 +27,12 @@ nav ul.navbar-bar li a.nav-link{
         text-decoration:none;
     }
 
-    nav a.navbar-brand
-    {
-        color: white;
-    }
+nav a.navbar-brand
+{
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
 
 button.myButton i
 {
@@ -46,7 +48,3 @@ footer p.copy
     margin-top: 10px;
 }
 
-footer p
-{
-    fon
-}
