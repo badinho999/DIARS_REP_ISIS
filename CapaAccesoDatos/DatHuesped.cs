@@ -128,6 +128,7 @@ namespace CapaAccesoDatos
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
                 cmd = new SqlCommand("Sp_EditarHuesped", cn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@prmstrEmail", huesped.Email);
                 cmd.Parameters.AddWithValue("@prmstrFechadenacimiento", huesped.Fechadenacimiento);
                 cmd.Parameters.AddWithValue("@prmstrNombre", huesped.Nombre);
@@ -156,6 +157,7 @@ namespace CapaAccesoDatos
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
                 cmd = new SqlCommand("Sp_EliminarHuesped", cn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@prmstrDni", huesped.Dni);
                 cn.Open();
                 int i = cmd.ExecuteNonQuery();
