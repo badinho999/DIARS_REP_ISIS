@@ -33,7 +33,7 @@ values
 )
 end
 
-create procedure Sp_EditarHuesped
+alter procedure Sp_EditarHuesped
 (
 	@prmstrApellidos varchar(50),
 	@prmstrEmail varchar(50),
@@ -51,7 +51,7 @@ Nombre = @prmstrNombre
 where Dni = @prmstrDni
 end
 
-Create procedure Sp_EliminarHuesped
+Alter procedure Sp_EliminarHuesped
 (
 	@prmstrDni char(8)
 )
