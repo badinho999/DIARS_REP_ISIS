@@ -43,5 +43,63 @@ namespace CapaPresentacion.Controllers
                 return RedirectToAction("registrarHuesped", new { mesjException = ex.Message });
             }
         }
+
+        [HttpGet]
+        public ActionResult editarHuesped(string Dni)
+        {
+            EntHuesped huesped = new EntHuesped();
+            huesped = LogHuesped.Instancia.BuscarHuesped(Dni);
+            return View(huesped);
+        }
+
+        [HttpPost]
+        public ActionResult editarHuesped(EntHuesped huesped)
+        {
+            try
+            {
+                Boolean edita = LogHuesped.Instancia.editarHuesped(huesped);
+                if (edita)
+                {
+                    return RedirectToAction("listarHuesped");
+                }
+                else
+                {
+                    return View(huesped);
+                }
+            }
+            catch (ApplicationException ex)
+            {
+                return RedirectToAction("editarHuesped", new { mesjException = ex.Message });
+            }
+        }
+
+        [HttpGet]
+        public ActionResult eliminaHuesped(string Dni)
+        {
+            EntHuesped huesped = new EntHuesped();
+            huesped = LogHuesped.Instancia.BuscarHuesped(Dni);
+            return View(huesped);
+        }
+
+        [HttpPost]
+        public ActionResult eliminaHuesped(EntHuesped huesped)
+        {
+            try
+            {
+                Boolean edita = LogHuesped.Instancia.eliminarHuesped(huesped);
+                if (edita)
+                {
+                    return RedirectToAction("listarHuesped");
+                }
+                else
+                {
+                    return View(huesped);
+                }
+            }
+            catch (ApplicationException ex)
+            {
+                return RedirectToAction("eliminarHuesped", new { mesjException = ex.Message });
+            }
+        }
     }
 }

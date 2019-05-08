@@ -1,6 +1,6 @@
 /*HuespedProcedures*/
 
-Create procedure Sp_ListarHuesped
+Create		 procedure Sp_ListarHuesped
 as
 begin
 Select Dni, Nombre, Apellidos, CONVERT(VARCHAR(10), Fechadenacimiento, 111) as [Fechadenacimiento], Email 
@@ -36,7 +36,6 @@ end
 create procedure Sp_EditarHuesped
 (
 	@prmstrApellidos varchar(50),
-	@prmstrPasswordHuesped varchar(50),
 	@prmstrEmail varchar(50),
 	@prmstrFechadenacimiento date,
 	@prmstrNombre varchar(50),
@@ -46,12 +45,10 @@ as
 begin
 update Huesped set 
 Apellidos = @prmstrApellidos,
-PasswordHuesped = @prmstrPasswordHuesped,
 Email = @prmstrEmail,
 Fechadenacimiento = @prmstrFechadenacimiento,
 Nombre = @prmstrNombre
 where Dni = @prmstrDni
-
 end
 
 Create procedure Sp_EliminarHuesped
@@ -64,13 +61,13 @@ begin
 	where Dni = @prmstrDni
 end
 
-create procedure Sp_BuscarHuesped
+Alter procedure Sp_BuscarHuesped
 (
 	@prmstrDni char(8)
 )
 as
 begin
-Select Dni, Nombre, Apellidos, Fechadenacimiento, Email 
+Select Dni, Nombre, Apellidos, CONVERT(VARCHAR(10), Fechadenacimiento, 111) as [Fechadenacimiento], Email
 from Huesped
 where Dni = @prmstrDni
 end

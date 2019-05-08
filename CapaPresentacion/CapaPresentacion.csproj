@@ -155,6 +155,8 @@
     <Content Include="scss\_variables.scss" />
     <Content Include="Views\MantenedorHuesped\listarHuesped.cshtml" />
     <Content Include="Views\MantenedorHuesped\registrarHuesped.cshtml" />
+    <Content Include="Views\MantenedorHuesped\editarHuesped.cshtml" />
+    <Content Include="Views\MantenedorHuesped\eliminaHuesped.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

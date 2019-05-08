@@ -74,6 +74,14 @@ Select * from Paquete
 /*Huesped*/
 Insert into Huesped(Apellidos,PasswordHuesped,Email,Fechadenacimiento,Nombre,Dni)
 Values('Cornejo Chunga','isis','badinhocornejo@gmail.com','1999-03-31','Daniel Badinho','71778079')
+Insert into Huesped(Apellidos,PasswordHuesped,Email,Fechadenacimiento,Nombre,Dni)
+Values('Peña Suárez','isis01','joel.penagmail@gmail.com','1940-05-21','Joel Anthony','98723467')
+Insert into Huesped(Apellidos,PasswordHuesped,Email,Fechadenacimiento,Nombre,Dni)
+Values('Rodriguez Alayo','isis02','geordan510@gmail.com','1920-02-12','Gerodan Brian','14321356')
+Insert into Huesped(Apellidos,PasswordHuesped,Email,Fechadenacimiento,Nombre,Dni)
+Values('No sé xd','isis03','anthony@gmail.com','1992-10-21','Anthony','32145678')
+Insert into Huesped(Apellidos,PasswordHuesped,Email,Fechadenacimiento,Nombre,Dni)
+Values('No sé xd','isis04','christian@gmail.com','1991-05-21','Christian','45532265')
 
 Select * from Huesped
 

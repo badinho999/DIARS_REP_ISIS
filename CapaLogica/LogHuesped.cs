@@ -50,6 +50,45 @@ namespace CapaLogica
 
         }
 
+        public EntHuesped BuscarHuesped(string Dni)
+        {
+            try
+            {
+                return DatHuesped.Instancia.BuscarHuesped(Dni);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+        }
+
+        public Boolean editarHuesped(EntHuesped huesped)
+        {
+            try
+            {
+                return DatHuesped.Instancia.EditarHuesped(huesped);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+        }
+
+        public Boolean eliminarHuesped(EntHuesped huesped)
+        {
+            try
+            {
+                return DatHuesped.Instancia.EliminarHuesped(huesped);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+        }
+
         #endregion metodos
     }
 }
