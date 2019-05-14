@@ -9,73 +9,76 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Css/mantenedores.css" rel="stylesheet" />
     <title>eliminaHuesped</title>
 </head>
 <body>
     <section class="content">
-        <h3>Are you sure you want to delete this?</h3>
-        <div>
-            <h4>EntHuesped</h4>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Apellidos)
-                </dt>
+        <div class="form-content-delete form-horizontal col-5 m-auto">
+            <h3 class="red-title">¿Seguro de eliminar a @Html.DisplayFor(model => model.Apellidos)?</h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Apellidos)
+                    </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Apellidos)
-                </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Apellidos)
+                    </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.PasswordHuesped)
-                </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PasswordHuesped)
+                    </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.PasswordHuesped)
-                </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.PasswordHuesped)
+                    </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Email)
-                </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Email)
-                </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Fechadenacimiento)
-                </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fechadenacimiento)
+                    </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Fechadenacimiento)
-                </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Fechadenacimiento)
+                    </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Nombre)
-                </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Nombre)
-                </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Dni)
-                </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Dni)
+                    </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Dni)
-                </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Dni)
+                    </dd>
 
-            </dl>
+                </dl>
 
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
                 <div class="form-actions no-color">
-                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    <input type="submit" value="Delete" class="btn btn-success" /> |
+                    <a class="ml-3 btn btn-danger" href="/MantenedorHuesped/listarHuesped">Cancelar</a>
                 </div>
-            }
+                }
+            </div>
         </div>
     </section>
 </body>

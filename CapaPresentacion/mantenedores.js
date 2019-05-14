@@ -22,3 +22,7 @@ $('#datetime').data({
     format: 'yyyy-mm-dd',
     autoclose: true
 });
+
+$('.fechaNac').datepicker({
+    format: "yyyy/mm/dd"
+});

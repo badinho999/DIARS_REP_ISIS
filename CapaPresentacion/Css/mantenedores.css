@@ -1,5 +1,5 @@
 body{
-    background-color: rgba(37,40,48);
+    background-color: rgb(37,40,48);
 }
 
 .content p{
@@ -9,7 +9,14 @@ body{
 header h1{ 
     margin-bottom: 1em;
     text-align: center;
-    margin-top: 1.5 em;
+    margin-top: 1.5em;
+}
+h3.red-title{
+    color: red;
+}
+h4
+{
+    color: rgb(0,123,255);
 }
 .content
 {
@@ -25,7 +32,7 @@ header h1{
 
 .myNav
 {
-    background-color: rgba(26,28,34)!important;
+    background-color: rgb(26,28,34)!important;
 }
 
 /*SIDEBAR BEGIN*/
@@ -38,7 +45,7 @@ header h1{
     padding-bottom: 10px;
     border: 1px solid;
     border-radius: 5px;
-    border-color: rgba(26,28,34);
+    border-color: rgb(26,28,34);
     min-height: 100vh;
     width: 15em;
 }
@@ -55,7 +62,7 @@ header h1{
 
 .search-icon-bg
 {
-    background-color: rgba(26,28,34);
+    background-color: rgb(26,28,34);
 }
 .search-icon
 {
@@ -64,7 +71,7 @@ header h1{
 
 nav.side-bar
 {
-    background-color: rgba(37,40,48);
+    background-color: rgb(37,40,48);
     box-sizing: border-box;
     position: absolute;
     left: -18em;
@@ -117,4 +124,12 @@ nav.mostrar
 .form-content label
 {
     color: aliceblue;
+}
+.form-content-delete dt
+{
+    color: white;
+}
+.form-content-delete dd
+{
+    color: rgb(0,213,255);
 }
