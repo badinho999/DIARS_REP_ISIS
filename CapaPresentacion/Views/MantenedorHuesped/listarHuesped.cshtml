@@ -9,17 +9,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="~/Css/mantenedores.css" rel="stylesheet" />
     <title>listarHuesped</title>
 </head>
 <body>
     <section class="content">
-        <p>
-            @Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "link-master" })
-            @Html.ActionLink("Nuevo", "registrarHuesped", null, new { @class = "link-master" })
-        </p>
-        <table class="table">
+        <table class="table table-striped table-dark">
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Apellidos)
@@ -58,8 +53,8 @@
                         @Html.DisplayFor(modelItem => item.Dni)
                     </td>
                     <td class="options">
-                        @Html.ActionLink("Editar", "editarHuesped", new { Dni = item.Dni }, new { @class = "link-master" }) |
-                        @Html.ActionLink("Eliminar", "eliminaHuesped", new { Dni = item.Dni }, new { @class = "link-master" })
+                        @Html.ActionLink("Editar", "editarHuesped", new { Dni = item.Dni }, new { @class = "link-master badge badge-primary" }) |
+                        @Html.ActionLink("Eliminar", "eliminaHuesped", new { Dni = item.Dni }, new { @class = "link-master badge badge-danger" })
                     </td>
                 </tr>
             }

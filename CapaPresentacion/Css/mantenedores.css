@@ -113,3 +113,8 @@ nav.mostrar
 
 /*SIDEBAR END*/
 
+/*Forms*/
+.form-content label
+{
+    color: aliceblue;
+}

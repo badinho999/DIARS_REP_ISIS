@@ -13,23 +13,23 @@
 </head>
 <body>
     <nav class="myNav navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">Mantenedor</a>
+        <a class="navbar-brand" href="/Home/Index">Mantenedor</a>
         <button class="nav-button navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"> Habitación<span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" id="MantenedorHabitacion" href="#"> Habitación</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/MantenedorHuesped/listarHuesped">Mantenedor Huésped</a>
+                    <a class="nav-link" id="MantenedorHuesped" href="/MantenedorHuesped/listarHuesped">Mantenedor Huésped</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Servicios adicionales  </a>
+                    <a class="nav-link" id="MantenedorSrvAd" href="#">Servicios adicionales  </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Tipo de Habitación</a>
+                    <a class="nav-link" id="MantenedorTH" href="#">Tipo de Habitación</a>
                 </li>
             </ul>
             <span class="left-side-nav navbar-text">
@@ -63,27 +63,15 @@
                     </button>
                 </div>
             </div>
-            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
-               aria-controls="v-pills-home" aria-selected="true">Listar</a>
-            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
-               aria-controls="v-pills-profile" aria-selected="false">Nuevo</a>
+            <a class="nav-link active" id="listar" href="" aria-selected="false">Listar</a>
+            <a class="nav-link" id="nuevo" href="" aria-selected="false">Nuevo</a>
         </div>
 
-
-        <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                ...
-            </div>
-            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
-            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
-        </div>
-        </div>
     </nav>
 
 
     <header>
-        <h1 class="title">Mantenedor Habitación</h1>
+        <h1 class="title" id="Titulo">Mantenedores</h1>
     </header>
 
 
@@ -98,8 +86,6 @@
 
 
     <script src="~/mantenedores.js"></script>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
