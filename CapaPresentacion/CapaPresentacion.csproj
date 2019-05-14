@@ -90,13 +90,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\mantenedores.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Css\mantenedores.css" />
     <Content Include="Css\one-page-wonder.css" />
     <Content Include="Css\one-page-wonder.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
+    <Content Include="mantenedores.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="package-lock.json" />
@@ -135,7 +136,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\ViewStart.cshtml" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css.map" />
@@ -161,6 +161,7 @@
     <Content Include="Views\MantenedorHabitaciones\insertarHabitacion.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\MantenedorHuesped\listarHuesped.cshtml" />
+    <Content Include="Views\Shared\_LayoutMantenedores.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,7 +1,7 @@
 ﻿@model CapaEntidades.EntHuesped
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
 }
 
 <!DOCTYPE html>
@@ -9,8 +9,8 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/mantenedores.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="~/Css/mantenedores.css" rel="stylesheet" />
     <title>editarHuesped</title>
 </head>
 <body>
@@ -18,6 +18,7 @@
     {
         @Html.AntiForgeryToken()
         
+    <section class="content">
         <div class="form-horizontal">
             <h4>EntHuesped</h4>
             <hr />
@@ -29,7 +30,7 @@
                     @Html.ValidationMessageFor(model => model.Apellidos, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -37,7 +38,7 @@
                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Fechadenacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -45,7 +46,7 @@
                     @Html.ValidationMessageFor(model => model.Fechadenacimiento, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -53,7 +54,7 @@
                     @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Dni, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -61,17 +62,21 @@
                     @Html.ValidationMessageFor(model => model.Dni, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Save" class="btn btn-default" />
                 </div>
             </div>
         </div>
+
+        <div>
+            @Html.ActionLink("Regresar a la lista", "listarHuesped")
+        </div>
+    </section>
+        
     }
     
-    <div>
-        @Html.ActionLink("Regresar a la lista", "listarHuesped")
-    </div>
+    
 </body>
 </html>

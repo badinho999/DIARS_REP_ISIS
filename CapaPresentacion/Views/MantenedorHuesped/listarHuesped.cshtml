@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<CapaEntidades.EntHuesped>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
 }
 
 <!DOCTYPE html>
@@ -9,59 +9,62 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/mantenedores.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="~/Css/mantenedores.css" rel="stylesheet" />
     <title>listarHuesped</title>
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Inicio", "Index", "Home",null,new { @class="link-master"})
-        @Html.ActionLink("Nuevo", "registrarHuesped",null,new { @class = "link-master" })
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Apellidos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fechadenacimiento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Dni)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellidos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fechadenacimiento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dni)
-            </td>
-            <td class="options">
-                @Html.ActionLink("Editar", "editarHuesped", new { Dni = item.Dni },new { @class = "link-master"}) |
-                @Html.ActionLink("Eliminar", "eliminaHuesped" ,new { Dni = item.Dni }, new { @class = "link-master" })
-            </td>
-        </tr>
-    }
-    
-    </table>
+    <section class="content">
+        <p>
+            @Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "link-master" })
+            @Html.ActionLink("Nuevo", "registrarHuesped", null, new { @class = "link-master" })
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Apellidos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fechadenacimiento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dni)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fechadenacimiento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dni)
+                    </td>
+                    <td class="options">
+                        @Html.ActionLink("Editar", "editarHuesped", new { Dni = item.Dni }, new { @class = "link-master" }) |
+                        @Html.ActionLink("Eliminar", "eliminaHuesped", new { Dni = item.Dni }, new { @class = "link-master" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </section>
 </body>
 </html>

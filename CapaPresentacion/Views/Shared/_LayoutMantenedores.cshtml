@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Css/mantenedores.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <title>Mantenedor</title>
+</head>
+<body>
+    <nav class="myNav navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Mantenedor</a>
+        <button class="nav-button navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"> Habitación<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/MantenedorHuesped/listarHuesped">Mantenedor Huésped</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Servicios adicionales  </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tipo de Habitación</a>
+                </li>
+            </ul>
+            <span class="left-side-nav navbar-text">
+                <ul class="navbar-nav">
+                    <li class="active">
+                        <a class="nav-link" href="#">Badinho <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Cuenta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </span>
+
+        </div>
+
+    </nav>
+
+
+    <nav class="side-bar">
+        <div class="btn-mostrar" id="mostrarNav"><i class="fas fa-outdent"></i></div>
+        <div class="menu nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+             aria-orientation="vertical">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar habitación">
+                <div class="input-group-append">
+                    <button class="btn search-icon-bg" type="button">
+                        <i class="search-icon fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+               aria-controls="v-pills-home" aria-selected="true">Listar</a>
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+               aria-controls="v-pills-profile" aria-selected="false">Nuevo</a>
+        </div>
+
+
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                ...
+            </div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+        </div>
+        </div>
+    </nav>
+
+
+    <header>
+        <h1 class="title">Mantenedor Habitación</h1>
+    </header>
+
+
+    @RenderBody()
+    <!-- Footer -->
+    <footer class="py-5 bg-black">
+        <div class="container">
+            <p class="m-0 text-center text-white small copy">Copyright &copy; Hostal ISIS 2019</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+
+    <script src="~/mantenedores.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
