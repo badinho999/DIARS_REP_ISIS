@@ -6,93 +6,48 @@
 
 /* Create Tables */
 
-CREATE TABLE [Alquiler]
-(
-	[Cantidaddeadultos] int NOT NULL,
-	[Cantidaddekids] int NOT NULL,
-	[Fechadeingreso] date NOT NULL,
-	[Fechadesalida] date NOT NULL,
-	[Totalapagar] decimal(6,2) NOT NULL,
-	[AlquilerID] int PRIMARY KEY NOT NULL,
-	[Dni] char(8) NOT NULL,
-	[NumeroHabitacion] varchar(4) NOT NULL
-)
-GO
-
-CREATE TABLE [Comprobantedepago]
+Create TABLE [Comprobantepagoreserva]
 (
 	[Fechadeemision] date NULL,
 	[Ruc] char(11) NULL,
-	[NumeroSerie] int PRIMARY KEY NOT NULL,
-	[AlquilerID] int NOT NULL,
-	[ReservaID] int NOT NULL
+	[ComprobantepagoreservaID] int PRIMARY KEY NOT NULL,
+	[ReservaID] int NULL
 )
 GO
 
-CREATE TABLE [Habitacion]
+CREATE TABLE [Comprobantepagoalquiler]
 (
-	[NumeroHabitacion] varchar(4) PRIMARY KEY NOT NULL,
-	[TipodehabitacionID] int NULL
+	[Fechadeemision] date NULL,
+	[Ruc] char(11) NULL,
+	[ComprobantepagoalquilerID] int PRIMARY KEY NOT NULL,
+	[AlquilerID] int NOT NULL
 )
 GO
 
-CREATE TABLE [Huesped]
+CREATE TABLE [ServAdicionalTipoH]
+(
+	[TipodehabitacionID] int NULL,
+	[ServAdicTipoH] int PRIMARY KEY NOT NULL,
+	[ServicioadicionalID] int NULL
+)
+GO
+
+CREATE TABLE [Servicioadicional]
+(
+	[NombreServicio] varchar(50) NULL,
+	[ServicioadicionalID] int PRIMARY KEY NOT NULL
+)
+GO
+
+CREATE TABLE [Administradorhotel]
 (
 	[Apellidos] varchar(50) NULL,
 	[password] varchar(50) NULL,
 	[Email] varchar(50) NULL,
 	[Fechadenacimiento] date NULL,
 	[Nombre] varchar(50) NULL,
-	[Dni] char(8) PRIMARY KEY NOT NULL
-)
-GO
-
-CREATE TABLE [Paquete]
-(
-	[Descripcionpaquete] varchar(50) NULL,
-	[Nombrepaquete] varchar(50) NULL,
-	[Preciopaquete] decimal(6,2) NULL,
-	[PaqueteID] int PRIMARY KEY NOT NULL,
-	[AlquilerID] int NULL,
-	[TipodehabitacionID] int NULL
-)
-GO
-
-CREATE TABLE [Reserva]
-(
-	[Fechadereserva] date NULL,
-	[Montodereserva] decimal(6,2) NULL,
-	[ReservaID] int PRIMARY KEY NOT NULL,
-	[AlquilerID] int NULL
-)
-GO
-
-CREATE TABLE [Tipodehabitacion]
-(
-	[Capacidad] int NULL,
-	[Costoadicional] decimal(6,2) NULL,
-	[Descripciontipo] varchar(50) NULL,
-	[Nombretipodehabitacion] varchar(50) NULL,
-	[Numerodecamas] int NULL,
-	[Precio] decimal(6,2) NULL,
-	[TipodehabitacionID] int PRIMARY KEY NOT NULL
-)
-GO
-
-CREATE TABLE [Paquete]
-(
-	[Descripcionpaquete] varchar(50) NULL,
-	[Nombrepaquete] varchar(50) NULL,
-	[Preciopaquete] decimal(6,2) NULL,
-	[PaqueteID] int PRIMARY KEY NOT NULL,
-	[TipodehabitacionID] int NULL
-)
-GO
-
-CREATE TABLE [AlquilerPaquete]
-(
-	[PaqueteID] int NULL,
-	[AlquilerID] int NULL
+	[Nombreusuario] varchar(50) NULL,
+	[AdministradorhotelID] int PRIMARY KEY NOT NULL
 )
 GO
 
@@ -106,30 +61,27 @@ ALTER TABLE [Alquiler] ADD CONSTRAINT [FK_Alquiler_Habitacion]
 	FOREIGN KEY ([NumeroHabitacion]) REFERENCES [Habitacion] ([NumeroHabitacion]) ON DELETE No Action ON UPDATE No Action
 GO
 
-ALTER TABLE [Comprobantedepago] ADD CONSTRAINT [FK_Comprobantedepago_Alquiler]
-	FOREIGN KEY ([AlquilerID]) REFERENCES [Alquiler] ([AlquilerID]) ON DELETE No Action ON UPDATE No Action
-GO
-
-ALTER TABLE [Comprobantedepago] ADD CONSTRAINT [FK_Comprobantedepago_Reserva]
-	FOREIGN KEY ([ReservaID]) REFERENCES [Reserva] ([ReservaID]) ON DELETE No Action ON UPDATE No Action
-GO
 
 ALTER TABLE [Habitacion] ADD CONSTRAINT [FK_Habitacion_Tipodehabitacion]
 	FOREIGN KEY ([TipodehabitacionID]) REFERENCES [Tipodehabitacion] ([TipodehabitacionID]) ON DELETE No Action ON UPDATE No Action
 GO
 
-ALTER TABLE [AlquilerPaquete] ADD CONSTRAINT [FK_AlquilerPaquete_Paquete]
-	FOREIGN KEY ([PaqueteID]) REFERENCES [Paquete] ([PaqueteID]) ON DELETE No Action ON UPDATE No Action
+ALTER TABLE [Reserva] ADD CONSTRAINT [FK_Reserva_Alquiler]
+	FOREIGN KEY ([AlquilerID]) REFERENCES [Alquiler] ([AlquilerID]) ON DELETE No Action ON UPDATE No Action
 GO
-
-ALTER TABLE [AlquilerPaquete] ADD CONSTRAINT [FK_AlquilerPaquete_Alquiler]
+ALTER TABLE [Comprobantepagoalquiler] ADD CONSTRAINT [FK_Comprobantepagoalquiler_Alquiler]
 	FOREIGN KEY ([AlquilerID]) REFERENCES [Alquiler] ([AlquilerID]) ON DELETE No Action ON UPDATE No Action
 GO
 
-ALTER TABLE [Paquete] ADD CONSTRAINT [FK_Paquete_Tipodehabitacion]
+ALTER TABLE [Comprobantepagoreserva] ADD CONSTRAINT [FK_ReservaID]
+	FOREIGN KEY ([ReservaID]) REFERENCES  [Reserva] ([ReservaID]) ON DELETE No Action ON UPDATE No Action
+GO
+
+
+ALTER TABLE [ServAdicionalTipoH] ADD CONSTRAINT [FK_ServicioAdicionalTipoDeHabitacion_TipoDeHabitacion]
 	FOREIGN KEY ([TipodehabitacionID]) REFERENCES [Tipodehabitacion] ([TipodehabitacionID]) ON DELETE No Action ON UPDATE No Action
 GO
 
-ALTER TABLE [Reserva] ADD CONSTRAINT [FK_Reserva_Alquiler]
-	FOREIGN KEY ([AlquilerID]) REFERENCES [Alquiler] ([AlquilerID]) ON DELETE No Action ON UPDATE No Action
+ALTER TABLE [ServAdicionalTipoH] ADD CONSTRAINT [FK_ServicioAdicionalTipoDeHabitacion_ServicioAdicional]
+	FOREIGN KEY ([ServicioadicionalID]) REFERENCES [Servicioadicional] ([ServicioadicionalID]) ON DELETE No Action ON UPDATE No Action
 GO

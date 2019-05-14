@@ -2,17 +2,104 @@
 
 /*Tipo de habitación*/
 Insert into Tipodehabitacion(Capacidad,Costoadicional,Descripciontipo,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
-Values(1,10,'Wifi, Cable mágico, Baño','Simple',1,30,NEXT VALUE FOR TipodehabitacionID)
+Values(1,10,'Simple',1,30,NEXT VALUE FOR TipodehabitacionID)
 Insert into Tipodehabitacion(Capacidad,Costoadicional,Descripciontipo,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
-Values(2,20,'Wifi, Cable mágico, Baño, Jacuzzi','Matrimonial',1,50,NEXT VALUE FOR TipodehabitacionID)
+Values(2,20,'Matrimonial',1,50,NEXT VALUE FOR TipodehabitacionID)
 Insert into Tipodehabitacion(Capacidad,Costoadicional,Descripciontipo,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
-Values(2,10,'Wifi, Cable mágico, Baño','Doble',2,60,NEXT VALUE FOR TipodehabitacionID)
+Values(2,10,'Doble',2,60,NEXT VALUE FOR TipodehabitacionID)
 Insert into Tipodehabitacion(Capacidad,Costoadicional,Descripciontipo,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
-Values(3,10,'Wifi, Cable mágico, Baño','Triple',3,70,NEXT VALUE FOR TipodehabitacionID)
+Values(3,10,'Triple',3,70,NEXT VALUE FOR TipodehabitacionID)
 Insert into Tipodehabitacion(Capacidad,Costoadicional,Descripciontipo,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
-Values(4,20,'Wifi, Cable mágico, Baño','Múltiple',4,80,NEXT VALUE FOR TipodehabitacionID)
+Values(4,20,'Múltiple',4,80,NEXT VALUE FOR TipodehabitacionID)
 
 Select * from Tipodehabitacion 
+
+/*Servicio Adicional*/
+
+Insert into Servicioadicional(NombreServicio)
+Values('Wifi')
+go
+Insert into Servicioadicional(NombreServicio)
+Values('Aire acondicionado')
+go
+Insert into Servicioadicional(NombreServicio)
+Values('Parqueadero')
+go
+Insert into Servicioadicional(NombreServicio)
+Values('Lavandería')
+go
+Insert into Servicioadicional(NombreServicio)
+Values('Transporte Hotel-Aeropuerto-Hotel')
+go
+Insert into Servicioadicional(NombreServicio)
+Values('Oficina')
+go
+
+
+Select * from Servicioadicional
+
+/*ServAdicionalTipoH*/
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(1,1)
+go
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(2,1)
+go
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(2,2)
+go
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(2,5)
+go
+
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(3,1)
+go
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(3,2)
+go
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(3,5)
+go
+
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(4,1)
+go
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(4,2)
+go
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(4,4)
+go
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(4,5)
+go
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(4,6)
+go
+
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(5,1)
+go
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(5,2)
+go
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(5,4)
+go
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(5,5)
+go
+Insert into ServAdicionalTipoH(TipodehabitacionID,ServicioadicionalID)
+values(5,6)
+go
+
+Select * from ServAdicionalTipoH
+
+Select th.Capacidad, th.Costoadicional, th.Nombretipodehabitacion,th.Numerodecamas,th.Precio,sa.NombreServicio
+from Tipodehabitacion th inner join ServAdicionalTipoH sath 
+on (th.TipodehabitacionID=sath.TipodehabitacionID) 
+inner join Servicioadicional sa on (sath.ServicioadicionalID = sa.ServicioadicionalID)
 
 /*Habitación*/
 /*Simples*/
@@ -59,17 +146,6 @@ Values(404,5)
 
 Select * from Habitacion h inner join Tipodehabitacion th on(h.TipodehabitacionID=th.TipodehabitacionID)
 
-/*Paquetes*/
-Insert into Paquete(Descripcionpaquete,Nombrepaquete,Preciopaquete,PaqueteID,TipodehabitacionID)
-Values('Tour por la ciudad de Trujillo','City Tour', 30.00,NEXT VALUE FOR Seq_PaqueteID,2)
-Insert into Paquete(Descripcionpaquete,Nombrepaquete,Preciopaquete,PaqueteID,TipodehabitacionID)
-Values('Tour por la ciudad de Trujillo','City Tour', 25.00,NEXT VALUE FOR Seq_PaqueteID,5)
-Insert into Paquete(Descripcionpaquete,Nombrepaquete,Preciopaquete,PaqueteID,TipodehabitacionID)
-Values('Tour HUACAS DEL SOL Y LA LUNA, CHAN CHÁN, HCO','Tour', 50.00,NEXT VALUE FOR Seq_PaqueteID,2)
-Insert into Paquete(Descripcionpaquete,Nombrepaquete,Preciopaquete,PaqueteID,TipodehabitacionID)
-Values('Tour HUACAS DEL SOL Y LA LUNA, CHAN CHÁN, HCO','Tour', 45.00,NEXT VALUE FOR Seq_PaqueteID,5)
-
-Select * from Paquete
 
 /*Huesped*/
 Insert into Huesped(Apellidos,PasswordHuesped,Email,Fechadenacimiento,Nombre,Dni)
