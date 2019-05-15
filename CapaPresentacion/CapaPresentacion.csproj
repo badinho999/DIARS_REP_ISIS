@@ -245,11 +245,11 @@
     <Content Include="Views\MantenedorHuesped\registrarHuesped.cshtml" />
     <Content Include="Views\MantenedorHuesped\editarHuesped.cshtml" />
     <Content Include="Views\MantenedorHuesped\eliminaHuesped.cshtml" />
-    <Content Include="Views\MantenedorHabitaciones\listarHabitaciones.cshtml" />
     <Content Include="Views\MantenedorHabitaciones\insertarHabitacion.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\MantenedorHuesped\listarHuesped.cshtml" />
     <Content Include="Views\Shared\_LayoutMantenedores.cshtml" />
+    <Content Include="Views\MantenedorHabitaciones\listarHabitaciones.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

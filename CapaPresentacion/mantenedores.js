@@ -18,10 +18,6 @@ $('a#MantenedorHuesped').on('click', (e) => {
     changeMantenedorHuesped();
 })
 
-$('#datetime').data({
-    format: 'yyyy-mm-dd',
-    autoclose: true
-});
 
 $('.fechaNac').datepicker({
     format: "yyyy/mm/dd"

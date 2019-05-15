@@ -42,13 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntAlquiler.cs" />
-    <Compile Include="EntComprobantedepago.cs" />
+    <Compile Include="EntComprobantedepagoalquiler.cs" />
+    <Compile Include="EntComprobantepagoreserva.cs" />
     <Compile Include="EntHabitacion.cs" />
     <Compile Include="EntHuesped.cs" />
-    <Compile Include="EntPaquete.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EntReserva.cs" />
     <Compile Include="EntTipoDeHabitacion.cs" />
+    <Compile Include="EntServicioadicional.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

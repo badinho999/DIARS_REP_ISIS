@@ -1,24 +1,14 @@
 ﻿@model IEnumerable<CapaEntidades.EntHabitacion>
 
 @{
-    Layout = null;
+    ViewBag.Title = "listarHabitaciones";
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
 }
 
-<!DOCTYPE html>
+<section class="content">
+    <h2>Lista de Habitaciones</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/mantenedores.css" rel="stylesheet" />
-    <title>listarHabitaciones</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Inicio", "Index","Home", null, new { @class = "link-master" })
-        @Html.ActionLink("Create New", "insertarHabitacion", null, new { @class = "link-master" })
-    </p>
-    <table class="table">
+    <table class="table m-auto col-8 table-striped table-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.NumeroHabitacion)
@@ -27,54 +17,62 @@
                 @Html.DisplayNameFor(model => model.Tipodehabitacion.Nombretipodehabitacion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tipodehabitacion.Descripciontipo)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Tipodehabitacion.Numerodecamas)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipodehabitacion.Precio)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Tipodehabitacion.Capacidad)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Tipodehabitacion.Precio)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Tipodehabitacion.Costoadicional)
+            </th>
+            <th>
+                Servicios
             </th>
             <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroHabitacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipodehabitacion.Nombretipodehabitacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipodehabitacion.Descripciontipo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipodehabitacion.Numerodecamas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipodehabitacion.Precio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipodehabitacion.Capacidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipodehabitacion.Costoadicional)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroHabitacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Nombretipodehabitacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Numerodecamas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Capacidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Costoadicional)
+                </td>
+
+                <td>
+                    @{
+                        string servicios = string.Join
+                        (
+                            ", ",
+                            (from row in item.Tipodehabitacion.ServiciosAdicionales
+                             select row.NombreDeServicio).ToArray()
+                        );
+                        @servicios.ToString()
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ },new { @class = "link-master badge badge-primary" })
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "link-master badge badge-danger" })
+                </td>
+            </tr>
+        }
+
     </table>
-</body>
-</html>
+</section>

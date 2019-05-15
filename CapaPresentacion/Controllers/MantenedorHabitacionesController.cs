@@ -13,7 +13,14 @@ namespace CapaPresentacion.Controllers
         // GET: MantenedorHabitaciones
         public ActionResult listarHabitaciones()
         {
-            List<EntHabitacion> lista = LogHabitacion.Instancia.listarHabitaciones();
+            List<EntHabitacion> lista = new List<EntHabitacion>();
+            foreach (EntHabitacion habitacion in LogHabitacion.Instancia.listarHabitaciones())
+            {
+                int ID = habitacion.Tipodehabitacion.TipodehabitacionID;
+                List<EntServicioadicional> servs = LogServiciosAdicionales.Instancia.obtenerServicios(ID);
+                habitacion.Tipodehabitacion.ServiciosAdicionales = servs;
+                lista.Add(habitacion);
+            }
             ViewBag.lista = lista;
             return View(lista);
         }

@@ -36,14 +36,18 @@ namespace CapaAccesoDatos
                 while (dr.Read())
                 {
                     EntTipoDeHabitacion tipoDeHabitacion = new EntTipoDeHabitacion();
+                    EntServicioadicional servicioadicional = new EntServicioadicional();
 
                     tipoDeHabitacion.Capacidad = Convert.ToInt32(dr["Capacidad"]);
                     tipoDeHabitacion.Costoadicional = Convert.ToDouble(dr["Costoadicional"]);
-                    tipoDeHabitacion.Descripciontipo = Convert.ToString(dr["Descripciontipo"]);
                     tipoDeHabitacion.Nombretipodehabitacion = Convert.ToString  (dr["Nombretipodehabitacion"]);
                     tipoDeHabitacion.Numerodecamas = Convert.ToInt32(dr["Numerodecamas"]);
                     tipoDeHabitacion.Precio = Convert.ToInt32(dr["Precio"]);
                     tipoDeHabitacion.TipodehabitacionID = Convert.ToInt32(dr["TipodehabitacionID"]);
+
+                    servicioadicional.NombreDeServicio = Convert.ToString(dr["NombreServicio"]);
+
+                    tipoDeHabitacion.ServiciosAdicionales.Add(servicioadicional);
 
                     lista.Add(tipoDeHabitacion);
                 }

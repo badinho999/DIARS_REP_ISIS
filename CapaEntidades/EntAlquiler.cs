@@ -12,20 +12,16 @@ namespace CapaEntidades
         private int cantidaddekids;
         private string fechadeingreso;
         private string fechadesalida;
-        private double totalapagar;
         private int alquilerID;
         private EntHuesped huesped;
         private EntHabitacion habitacion;
-        private List<EntPaquete> paquetes;
 
         public int Cantidaddeadultos { get => cantidaddeadultos; set => cantidaddeadultos = value; }
         public int Cantidaddekids { get => cantidaddekids; set => cantidaddekids = value; }
         public string Fechadeingreso { get => fechadeingreso; set => fechadeingreso = value; }
         public string Fechadesalida { get => fechadesalida; set => fechadesalida = value; }
-        public double Totalapagar { get => totalapagar; set => totalapagar = value; }
         public int AlquilerID { get => alquilerID; set => alquilerID = value; }
         internal EntHuesped Huesped { get => huesped; set => huesped = value; }
         internal EntHabitacion Habitacion { get => habitacion; set => habitacion = value; }
-        internal List<EntPaquete> Paquetes { get => paquetes; set => paquetes = value; }
     }
 }
