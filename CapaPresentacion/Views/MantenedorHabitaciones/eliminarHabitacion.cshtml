@@ -1,0 +1,37 @@
+﻿@model CapaEntidades.EntHabitacion
+
+@{
+    ViewBag.Title = "eliminarHabitacion";
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+}
+
+<section class="container" id="listarHabitaciones">
+    <div class="form-content-delete form-horizontal col-5 m-auto">
+        <h3 class="red-title">¿Seguro de eliminar habitación N° @Html.DisplayFor(model => model.NumeroHabitacion)?</h3>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Tipo de habitación
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tipodehabitacion.Nombretipodehabitacion)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-success" /> |
+                    <a class="ml-3 btn btn-danger" href="/MantenedorHabitaciones/listarHabitaciones">Cancelar</a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+

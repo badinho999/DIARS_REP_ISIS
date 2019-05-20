@@ -1,25 +1,26 @@
 ﻿@model CapaEntidades.EntHabitacion
 
 @{
-    Layout = null;
+    ViewBag.Title = "listarHabitaciones";
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
 }
+
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/mantenedores.css" rel="stylesheet" />
-    <title>insertarHabitacion</title>
+    <title>Insertar Habitación</title>
 </head>
 <body>
-    @using (Html.BeginForm()) 
+    @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>EntHabitacion</h4>
+
+    <section class="container" id="listarHabitaciones">
+        <div class="form-content m-auto form-horizontal col-5">
+            <h4>Ingresar Habitación</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -29,23 +30,23 @@
                     @Html.ValidationMessageFor(model => model.NumeroHabitacion, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    Tipo de habitación :
+                    <label class="control-label col-md-2">Tipo de habitación :</label>
                     <div class="col-md-10">
                         @Html.DropDownList("cboTiposH", (SelectList)ViewBag.ListarTiposH, "<seleccionar>")
                     </div>
                 </div>
             </div>
-    
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Create" class="btn btn-success" />
+                    <a class="ml-3 btn btn-danger" href="/MantenedorHabitaciones/listarHabitaciones">Cancelar</a>
                 </div>
             </div>
         </div>
+    </section>
+
+        
     }
-    
-    <div>
-        @Html.ActionLink("Back to List", "listarHabitaciones")
-    </div>
 </body>
 </html>

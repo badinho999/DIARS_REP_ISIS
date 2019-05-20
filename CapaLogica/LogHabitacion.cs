@@ -48,6 +48,43 @@ namespace CapaLogica
             }
 
         }
+
+        public EntHabitacion buscarHabitacion(string NumeroHabitacion)
+        {
+            try
+            {
+                return DatHabitacion.Instancia.buscarHabitacion(NumeroHabitacion);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public Boolean eliminarHabitacion(EntHabitacion habitacion)
+        {
+            try
+            {
+                return DatHabitacion.Instancia.eliminarHabitacion(habitacion);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public Boolean editarHabitacion(EntHabitacion habitacion)
+        {
+            try
+            {
+                return DatHabitacion.Instancia.editarHabitacion(habitacion);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
         #endregion metodos
 
     }

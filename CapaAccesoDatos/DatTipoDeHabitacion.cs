@@ -45,10 +45,6 @@ namespace CapaAccesoDatos
                     tipoDeHabitacion.Precio = Convert.ToInt32(dr["Precio"]);
                     tipoDeHabitacion.TipodehabitacionID = Convert.ToInt32(dr["TipodehabitacionID"]);
 
-                    servicioadicional.NombreDeServicio = Convert.ToString(dr["NombreServicio"]);
-
-                    tipoDeHabitacion.ServiciosAdicionales.Add(servicioadicional);
-
                     lista.Add(tipoDeHabitacion);
                 }
             }
@@ -63,6 +59,37 @@ namespace CapaAccesoDatos
             }
             return lista;
         }
+
+        public Boolean ingresarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
+        {
+            SqlCommand cmd = null;
+            Boolean inserta;
+
+            try
+            {
+                SqlConnection cn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("Sp_InsertarTipoH",cn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmintCapacidad",tipoDeHabitacion.Capacidad);
+                cmd.Parameters.AddWithValue("@prmdoubleCostoadicional", tipoDeHabitacion.Costoadicional);
+                cmd.Parameters.AddWithValue("@prmstrNombretipodehabitacion", tipoDeHabitacion.Nombretipodehabitacion);
+                cmd.Parameters.AddWithValue("@prmintNumerodecamas", tipoDeHabitacion.Numerodecamas);
+                cmd.Parameters.AddWithValue("@prmdoublePrecio", tipoDeHabitacion.Precio);
+                cn.Open();
+                int i = cmd.ExecuteNonQuery();
+                inserta = i > 0 ? true:false;
+            }
+            catch(SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+            return inserta;
+        }
+
         #endregion metodos
 
     }

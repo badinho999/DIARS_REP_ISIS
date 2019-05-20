@@ -168,8 +168,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Css\mantenedores.css" />
-    <Content Include="Css\one-page-wonder.css" />
-    <Content Include="Css\one-page-wonder.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
@@ -250,6 +248,8 @@
     <Content Include="Views\MantenedorHuesped\listarHuesped.cshtml" />
     <Content Include="Views\Shared\_LayoutMantenedores.cshtml" />
     <Content Include="Views\MantenedorHabitaciones\listarHabitaciones.cshtml" />
+    <Content Include="Views\MantenedorHabitaciones\eliminarHabitacion.cshtml" />
+    <Content Include="Views\MantenedorHabitaciones\editarHabitacion.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

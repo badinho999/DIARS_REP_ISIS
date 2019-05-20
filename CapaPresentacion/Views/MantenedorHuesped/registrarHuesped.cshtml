@@ -9,8 +9,6 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="~/Css/mantenedores.css" rel="stylesheet" />
     <title>Registrar Huésped</title>
 </head>
 <body>
@@ -18,7 +16,7 @@
     {
         @Html.AntiForgeryToken()
 
-        <section class="content">
+        <section class="container" id="listarHuesped">
             <div class="form-content m-auto form-horizontal col-5">
                 <h4>Registrar Huésped</h4>
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -46,10 +44,11 @@
                     </div>
                 </div>
 
-                <div class="form-group col-md-10">
-                    <label class="control-label col-md-10" for="Fechadenacimiento">Fecha de nacimiento</label>
-                    <div class="input-group">
-                        @Html.EditorFor(model => model.Fechadenacimiento, new { htmlAttributes = new {@id ="datetime", @class = "form-control"}})
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Fechadenacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="input-group date fechaNac col-md-10">
+                        @Html.EditorFor(model => model.Fechadenacimiento, new { htmlAttributes = new { @class = "form-control" } })
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                         @Html.ValidationMessageFor(model => model.Fechadenacimiento, "", new { @class = "text-danger" })
                     </div>
                 </div>

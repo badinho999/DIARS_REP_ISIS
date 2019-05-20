@@ -5,8 +5,10 @@
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
 }
 
-<section class="content">
-    <h2>Lista de Habitaciones</h2>
+<section class="container" id="listarHabitaciones">
+    <div class="pb-4 form-header no-color">
+        <a class="btn btn-secondary" href="/MantenedorHabitaciones/insertarHabitacion">Nueva habitación</a>
+    </div>
 
     <table class="table m-auto col-8 table-striped table-dark">
         <tr>
@@ -68,8 +70,8 @@
                     }
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ },new { @class = "link-master badge badge-primary" })
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "link-master badge badge-danger" })
+                    @Html.ActionLink("Edit", "editarHabitacion", new { NumeroHabitacion = item.NumeroHabitacion },new { @class = "link-master badge badge-primary" })
+                    @Html.ActionLink("Delete", "eliminarHabitacion", new { NumeroHabitacion = item.NumeroHabitacion }, new { @class = "link-master badge badge-danger" })
                 </td>
             </tr>
         }

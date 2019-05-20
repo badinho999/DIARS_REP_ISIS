@@ -60,7 +60,7 @@ namespace CapaAccesoDatos
         public Boolean RegistrarHuesped(EntHuesped huesped)
         {
             SqlCommand cmd = null;
-            Boolean registra = false;
+            Boolean registra;
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
@@ -73,17 +73,17 @@ namespace CapaAccesoDatos
                 cmd.Parameters.AddWithValue("@prmstrNombre", huesped.Nombre);
                 cmd.Parameters.AddWithValue("@prmstrDni", huesped.Dni);
                 cn.Open();
-                int i = cmd.ExecuteNonQuery();
-                if (i > 0)
-                {
-                    registra = true;
-                }
+                int result = cmd.ExecuteNonQuery();
+                registra = result > 0 ? true : false;
             }
             catch (Exception err)
             {
                 throw err;
             }
-            finally { cmd.Connection.Close(); }
+            finally
+            {
+                cmd.Connection.Close();
+            }
             return registra;
         }
 
@@ -145,14 +145,17 @@ namespace CapaAccesoDatos
             {
                 throw err;
             }
-            finally { cmd.Connection.Close(); }
+            finally
+            {
+                cmd.Connection.Close();
+            }
             return edita;
         }
 
         public Boolean EliminarHuesped(EntHuesped huesped)
         {
             SqlCommand cmd = null;
-            Boolean elimina = false;
+            Boolean delete = false;
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
@@ -160,18 +163,18 @@ namespace CapaAccesoDatos
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@prmstrDni", huesped.Dni);
                 cn.Open();
-                int i = cmd.ExecuteNonQuery();
-                if (i > 0)
-                {
-                    elimina = true;
-                }
+                int result = cmd.ExecuteNonQuery();
+                delete = result > 0 ? true : false;
             }
             catch (Exception err)
             {
                 throw err;
             }
-            finally { cmd.Connection.Close(); }
-            return elimina;
+            finally
+            {
+                cmd.Connection.Close();
+            }
+            return delete;
         }
 
         #endregion metodos

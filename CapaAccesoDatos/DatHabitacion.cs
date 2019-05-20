@@ -68,7 +68,7 @@ namespace CapaAccesoDatos
         public Boolean InsertarHabitacion(EntHabitacion habitacion)
         {
             SqlCommand cmd = null;
-            Boolean inserta = false;
+            Boolean inserta;
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
@@ -77,18 +77,108 @@ namespace CapaAccesoDatos
                 cmd.Parameters.AddWithValue("@prmstrNumeroHabitacion", habitacion.NumeroHabitacion);
                 cmd.Parameters.AddWithValue("@prmintTipodehabitacionID", habitacion.Tipodehabitacion.TipodehabitacionID);
                 cn.Open();
-                int i = cmd.ExecuteNonQuery();
-                if (i > 0)
-                {
-                    inserta = true;
-                }
+                int result = cmd.ExecuteNonQuery();
+                inserta = result > 0 ? true : false;
             }
             catch (Exception err)
             {
                 throw err;
             }
-            finally { cmd.Connection.Close(); }
+            finally
+            {
+                cmd.Connection.Close();
+            }
             return inserta;
+        }
+
+        public EntHabitacion buscarHabitacion(string NumeroHabitacion)
+        {
+            SqlCommand cmd = null;
+            EntHabitacion habitacion = null;
+            EntTipoDeHabitacion tipoHabitacion = null;
+
+            try
+            {
+                SqlConnection connection = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("Sp_BuscarHabitacion", connection);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmstrNumeroHabitacion", NumeroHabitacion);
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read())
+                {
+                    habitacion = new EntHabitacion();
+                    tipoHabitacion = new EntTipoDeHabitacion();
+
+                    habitacion.NumeroHabitacion = Convert.ToString(reader["NumeroHabitacion"]);
+                    tipoHabitacion.Nombretipodehabitacion = Convert.ToString(reader["Nombretipodehabitacion"]);
+                    habitacion.Tipodehabitacion = tipoHabitacion;
+                }
+
+            }
+            catch(SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+            return habitacion;
+        }
+
+        public Boolean eliminarHabitacion(EntHabitacion habitacion)
+        {
+            SqlCommand cmd = null;
+            Boolean delete;
+
+            try
+            {
+                SqlConnection connection = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("Sp_EliminarHabitacion", connection);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmstrNumeroHabitacion", habitacion.NumeroHabitacion);
+                connection.Open();
+
+                int result = cmd.ExecuteNonQuery();
+                delete = result > 0 ? true : false;
+            }
+            catch(SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+
+            return delete;
+        }
+
+        public Boolean editarHabitacion(EntHabitacion habitacion)
+        {
+            SqlCommand cmd = null;
+            Boolean edit;
+            try
+            {
+                SqlConnection cn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("Sp_EditarHabitacion", cn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmstrNumeroHabitacion", habitacion.NumeroHabitacion);
+                cmd.Parameters.AddWithValue("@prmintTipodehabitacionID", habitacion.Tipodehabitacion.TipodehabitacionID);
+                cn.Open();
+                int result = cmd.ExecuteNonQuery();
+                edit = result > 0 ? true : false;
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+            return edit;
         }
 
         #endregion metodos

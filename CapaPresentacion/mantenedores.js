@@ -1,22 +1,17 @@
-﻿$('#mostrarNav').on('click', () => {
-    $('nav.side-bar').toggleClass('mostrar');
-    $('section.content,header').toggleClass('moveContent');
-    $('div.btn-mostrar').toggleClass('ajustarIcon')
-})
+﻿var sectionID = $("section").attr("id");
 
-var mantenedor = "mantenedor";
-
-function changeMantenedorHuesped() {
-    document.getElementById('Titulo').innerHTML = "Mantenedor Huésped";
-    $('a#MantenedorHuesped').toggleClass('active');
-    $("a#listar").attr("href", "/MantenedorHuesped/listarHuesped");
-    $("a#nuevo").attr("href", "/MantenedorHuesped/registrarHuesped");
+switch (sectionID) {
+    case "listarHuesped":
+        $("#Titulo").html("Mantenedor Huésped");
+        $("#MantenedorHuesped").toggleClass("active");
+        $(".form-header").css("padding-left", "5.5em");
+        break;
+    case "listarHabitaciones":
+        $("#Titulo").html("Mantenedor Habitaciones");
+        $("#MantenedorHabitacion").toggleClass("active");
+        $(".form-header").css("padding-left", "2.5em");
+        break;
 }
-
-$('a#MantenedorHuesped').on('click', (e) => {
-    e.preventDefault();
-    changeMantenedorHuesped();
-})
 
 
 $('.fechaNac').datepicker({
