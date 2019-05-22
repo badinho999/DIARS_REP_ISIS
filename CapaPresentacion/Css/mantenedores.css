@@ -57,3 +57,35 @@ h4
 {
     color: rgb(0,213,255);
 }
+.btn-myBtn
+{
+    color: aliceblue;
+    background-color: rgb(37,40,48);
+    border-color: aliceblue;
+    border-radius: 1em;
+    border: 1px solid white;
+}
+
+    .btn-myBtn:hover
+    {
+        color: white;
+        transform: scale();
+        -webkit-transform: scale(1.1,1.1);
+        -moz-transform: scale(1.1,1.1);
+    }
+
+.btn-MyDanger
+{
+    color: aliceblue;
+    background-color: rgb(200,35,51);
+    border-color: aliceblue;
+    border-radius: 1em;
+    border: 1px solid white;
+}
+    .btn-MyDanger:hover
+    {
+        color: white;
+        transform: scale();
+        -webkit-transform: scale(1.1,1.1);
+        -moz-transform: scale(1.1,1.1);
+    }

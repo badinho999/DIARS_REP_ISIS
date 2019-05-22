@@ -7,7 +7,7 @@
 
 <section class="container" id="listarServicios">
     <div class="pb-4 form-header no-color">
-        <a class="btn btn-secondary" href="/MantenedorServicios/insertarServicio">Nuevo servicio</a>
+        <a class="btn btn-myBtn" href="/MantenedorServicios/insertarServicio">Nuevo servicio</a>
     </div>
     <table class="table m-auto col-8 table-striped table-dark">
         <tr>
@@ -32,8 +32,8 @@
                     @Html.DisplayFor(modelItem => item.ServicioID)
                 </td>
                 <td class="options">
-                    @Html.ActionLink("Editar", "editarServicio", new { ServicioID = item.ServicioID  }, new { @class = "link-master badge badge-primary" }) |
-                    @Html.ActionLink("Eliminar", "eliminarServicio", new { ServicioID = item.ServicioID }, new { @class = "link-master badge badge-danger" })
+                    @Html.ActionLink("Edit", "editarServicio", new { ServicioID = item.ServicioID  }, new { @class = "d-block col-6 mb-2 link-master btn btn-myBtn" })
+                    @Html.ActionLink("Delete", "eliminarServicio", new { ServicioID = item.ServicioID }, new { @class = "d-block col-6 mb-2 link-master btn btn-MyDanger" })
                 </td>
             </tr>
         }
