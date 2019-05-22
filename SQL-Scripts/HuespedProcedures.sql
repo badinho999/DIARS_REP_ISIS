@@ -1,16 +1,14 @@
 /*HuespedProcedures*/
 
-Create		 procedure Sp_ListarHuesped
+CREATE procedure [dbo].[Sp_ListarHuesped]
 as
 begin
 Select Dni, Nombre, Apellidos, CONVERT(VARCHAR(10), Fechadenacimiento, 111) as [Fechadenacimiento], Email 
 from Huesped
 end
-
-exec Sp_ListarHuesped
 go
 
-create procedure Sp_RegistrarHuesped
+CREATE procedure Sp_RegistrarHuesped
 (
 	@prmstrApellidos varchar(50),
 	@prmstrPasswordHuesped varchar(50),
@@ -32,8 +30,9 @@ values
 	@prmstrDni
 )
 end
+go
 
-alter procedure Sp_EditarHuesped
+CREATE procedure Sp_EditarHuesped
 (
 	@prmstrApellidos varchar(50),
 	@prmstrEmail varchar(50),
@@ -50,6 +49,7 @@ Fechadenacimiento = @prmstrFechadenacimiento,
 Nombre = @prmstrNombre
 where Dni = @prmstrDni
 end
+go
 
 Alter procedure Sp_EliminarHuesped
 (
@@ -60,8 +60,9 @@ begin
 	Delete from Huesped
 	where Dni = @prmstrDni
 end
+go
 
-Alter procedure Sp_BuscarHuesped
+CREATE procedure Sp_BuscarHuesped
 (
 	@prmstrDni char(8)
 )
@@ -71,3 +72,4 @@ Select Dni, Nombre, Apellidos, CONVERT(VARCHAR(10), Fechadenacimiento, 111) as [
 from Huesped
 where Dni = @prmstrDni
 end
+go

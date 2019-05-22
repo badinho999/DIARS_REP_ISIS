@@ -1,24 +1,15 @@
 /*HabitacionesProcedures*/
 
-Alter procedure Sp_ListarHabitaciones
+CREATE procedure [dbo].[Sp_ListarHabitaciones]
 as
 begin
-Select	h.NumeroHabitacion, th.Nombretipodehabitacion,th.Descripciontipo, 
-		th.Numerodecamas,th.Precio,th.Capacidad,th.Costoadicional
+Select	h.NumeroHabitacion, th.Nombretipodehabitacion, 
+		th.Numerodecamas,th.Precio,th.Capacidad,th.Costoadicional,th.TipodehabitacionID
 from Habitacion h inner join Tipodehabitacion th on(h.TipodehabitacionID=th.TipodehabitacionID)
 end
-
-exec Sp_ListarHabitaciones
 go
 
-Create procedure Sp_ListarTiposH
-as
-begin
-Select *
-from Tipodehabitacion
-end
-
-create procedure Sp_InsertarHabitacion
+CREATE procedure [dbo].[Sp_InsertarHabitacion]
 (
 	@prmstrNumeroHabitacion varchar(4),
 	@prmintTipodehabitacionID int
@@ -32,8 +23,9 @@ values
 	@prmintTipodehabitacionID
 )
 end
+go
 
-create procedure Sp_EditarHabitacion
+CREATE procedure Sp_EditarHabitacion
 (
 	@prmstrNumeroHabitacion varchar(4),
 	@prmintTipodehabitacionID int
@@ -43,8 +35,8 @@ begin
 update Habitacion set 
 TipodehabitacionID = @prmintTipodehabitacionID
 where NumeroHabitacion = @prmstrNumeroHabitacion
-
 end
+go
 
 Create procedure Sp_EliminarHabitacion
 (
@@ -55,16 +47,18 @@ begin
 	Delete from Habitacion
 	where NumeroHabitacion = @prmstrNumeroHabitacion
 end
+go
 
-create procedure Sp_BuscarHabitacion
+CREATE procedure [dbo].[Sp_BuscarHabitacion]
 (
 	@prmstrNumeroHabitacion varchar(4)
 )
 as
 begin
 Select	h.NumeroHabitacion, th.Nombretipodehabitacion,
-		th.TipodehabitacionID,th.Descripciontipo, 
+		th.TipodehabitacionID, 
 		th.Numerodecamas,th.Precio,th.Capacidad,th.Precio,th.Costoadicional
 from Habitacion h inner join Tipodehabitacion th on(h.TipodehabitacionID=th.TipodehabitacionID)
 where h.NumeroHabitacion = @prmstrNumeroHabitacion
 end
+go
