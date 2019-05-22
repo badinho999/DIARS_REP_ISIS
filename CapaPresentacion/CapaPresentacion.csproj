@@ -168,9 +168,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Css\mantenedores.css" />
+    <Content Include="Css\multi-select.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
+    <Content Include="jquery.multi-select.js" />
     <Content Include="mantenedores.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -209,6 +211,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MantenedorHabitacionesController.cs" />
     <Compile Include="Controllers\MantenedorHuespedController.cs" />
+    <Compile Include="Controllers\MantenedorServiciosController.cs" />
+    <Compile Include="Controllers\MantenedorTipoHabitacionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -222,7 +226,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\ViewStart.cshtml" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.css.map" />
@@ -242,7 +245,6 @@
     <Content Include="scss\_variables.scss" />
     <Content Include="Views\MantenedorHuesped\registrarHuesped.cshtml" />
     <Content Include="Views\MantenedorHuesped\editarHuesped.cshtml" />
-    <Content Include="Views\MantenedorHuesped\eliminaHuesped.cshtml" />
     <Content Include="Views\MantenedorHabitaciones\insertarHabitacion.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\MantenedorHuesped\listarHuesped.cshtml" />
@@ -250,6 +252,17 @@
     <Content Include="Views\MantenedorHabitaciones\listarHabitaciones.cshtml" />
     <Content Include="Views\MantenedorHabitaciones\eliminarHabitacion.cshtml" />
     <Content Include="Views\MantenedorHabitaciones\editarHabitacion.cshtml" />
+    <Content Include="Views\MantenedorServicios\listarServicios.cshtml" />
+    <Content Include="Views\MantenedorServicios\insertarServicio.cshtml" />
+    <Content Include="Views\MantenedorServicios\eliminarServicio.cshtml" />
+    <Content Include="Views\MantenedorHuesped\eliminaHuesped.cshtml" />
+    <Content Include="Views\MantenedorServicios\editarServicio.cshtml" />
+    <Content Include="Views\MantenedorTipoHabitacion\listarTiposH.cshtml" />
+    <Content Include="Views\MantenedorTipoHabitacion\insertarTipoHabitacion.cshtml" />
+    <Content Include="Views\MantenedorTipoHabitacion\agregarServicios.cshtml" />
+    <Content Include="Views\MantenedorTipoHabitacion\eliminarServicios.cshtml" />
+    <Content Include="Views\MantenedorTipoHabitacion\editarTipoH.cshtml" />
+    <Content Include="Views\MantenedorTipoHabitacion\eliminarTipoH.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

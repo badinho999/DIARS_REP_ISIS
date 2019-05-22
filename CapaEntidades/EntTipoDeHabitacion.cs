@@ -16,6 +16,9 @@ namespace CapaEntidades
         private int tipodehabitacionID;
         private List<EntServicioadicional> serviciosAdicionales;
 
+        
+        private List<int> selectedIds;
+
         public int Capacidad { get => capacidad; set => capacidad = value; }
         public string Nombretipodehabitacion { get => nombretipodehabitacion; set => nombretipodehabitacion = value; }
         public int Numerodecamas { get => numerodecamas; set => numerodecamas = value; }
@@ -23,5 +26,6 @@ namespace CapaEntidades
         public int TipodehabitacionID { get => tipodehabitacionID; set => tipodehabitacionID = value; }
         public double Costoadicional { get => costoadicional; set => costoadicional = value; }
         public List<EntServicioadicional> ServiciosAdicionales { get => serviciosAdicionales; set => serviciosAdicionales = value; }
+        public List<int> SelectedIds { get => selectedIds; set => selectedIds = value; }
     }
 }

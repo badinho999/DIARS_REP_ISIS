@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CapaEntidades.EntServicioadicional>
+
+@{
+    ViewBag.Title = "Servicios";
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+}
+
+<section class="container" id="listarServicios">
+    <div class="pb-4 form-header no-color">
+        <a class="btn btn-secondary" href="/MantenedorServicios/insertarServicio">Nuevo servicio</a>
+    </div>
+    <table class="table m-auto col-8 table-striped table-dark">
+        <tr>
+            <th>
+                Servicio
+            </th>
+            <th>
+                ID
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreDeServicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServicioID)
+                </td>
+                <td class="options">
+                    @Html.ActionLink("Editar", "editarServicio", new { ServicioID = item.ServicioID  }, new { @class = "link-master badge badge-primary" }) |
+                    @Html.ActionLink("Eliminar", "eliminarServicio", new { ServicioID = item.ServicioID }, new { @class = "link-master badge badge-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</section>
+

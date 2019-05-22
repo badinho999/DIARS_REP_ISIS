@@ -1,18 +1,9 @@
 ﻿@model IEnumerable<CapaEntidades.EntHuesped>
 
 @{
+    ViewBag.Title = "Huésped";
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    @*<link href="~/Css/mantenedores.css" rel="stylesheet" />*@
-    <title>listarHuesped</title>
-</head>
-<body>
     <section class="container" id="listarHuesped">
         <div class="pb-4 form-header no-color">
             <a class="btn btn-secondary" href="/MantenedorHuesped/registrarHuesped">Nuevo huésped</a>
@@ -21,21 +12,23 @@
         <table class="table m-auto col-10 table-striped table-dark">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Apellidos)
+                    Apellidos
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Email)
+                    Email
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Fechadenacimiento)
+                    Fecha de nacimiento
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Nombre)
+                    Nombre
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Dni)
+                    DNI
                 </th>
-                <th></th>
+                <th>
+                    Actions
+                </th>
             </tr>
 
             @foreach (var item in Model)
@@ -65,5 +58,3 @@
 
         </table>
     </section>
-</body>
-</html>

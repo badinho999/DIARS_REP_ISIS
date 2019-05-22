@@ -35,6 +35,83 @@ namespace CapaLogica
             }
 
         }
+
+        public Boolean ingresarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
+        {
+            try
+            {
+                Boolean insertaTipo = DatTipoDeHabitacion.Instancia.ingresarTipoH(tipoDeHabitacion);
+
+                return insertaTipo;
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public EntTipoDeHabitacion buscarTipoH(int TipodehabitacionID)
+        {
+            try
+            {
+                return DatTipoDeHabitacion.Instancia.buscarTipoH(TipodehabitacionID);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public Boolean TipoHServicio(EntTipoDeHabitacion tipoDeHabitacion, EntServicioadicional serv)
+        {
+            try
+            {
+                return DatTipoDeHabitacion.Instancia.TipoHServicio(tipoDeHabitacion, serv);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            
+        }
+
+        public Boolean eliminarServicios(EntTipoDeHabitacion tipoDeHabitacion, EntServicioadicional serv)
+        {
+            try
+            {
+                return DatTipoDeHabitacion.Instancia.eliminarServicios(tipoDeHabitacion, serv);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+        }
+
+        public Boolean editarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
+        {
+            try
+            {
+                return DatTipoDeHabitacion.Instancia.editarTipoH(tipoDeHabitacion);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public Boolean eliminarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
+        {
+            try
+            {
+                return DatTipoDeHabitacion.Instancia.eliminarTipoH(tipoDeHabitacion);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         #endregion metodos
 
     }

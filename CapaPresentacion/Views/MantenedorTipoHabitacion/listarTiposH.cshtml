@@ -1,0 +1,85 @@
+﻿@model IEnumerable<CapaEntidades.EntTipoDeHabitacion>
+
+@{
+    ViewBag.Title = "listarTiposH";
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+}
+
+
+<section class="container" id="listarTiposH">
+    <div class="pb-4 form-header no-color">
+        <a class="btn btn-secondary" href="/MantenedorTipoHabitacion/insertarTipoHabitacion">Nuevo tipo de habitación</a>
+    </div>
+    <table class="table m-auto col-15 table-striped table-dark">
+        <tr>
+            <th>
+                Capacidad
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Número de camas
+            </th>
+            <th>
+                Precio
+            </th>
+            <th>
+                ID
+            </th>
+            <th>
+                Costo adicional
+            </th>
+            <th>
+                Servicios
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Capacidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombretipodehabitacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Numerodecamas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipodehabitacionID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Costoadicional)
+                </td>
+                <td>
+                    @{
+                        string servicios = string.Join
+                        (
+                            ", ",
+                            (from row in item.ServiciosAdicionales
+                             select row.NombreDeServicio).ToArray()
+                        );
+                        @servicios.ToString()
+                    }
+                </td>
+                <td class="options">
+                    @Html.ActionLink("Editar", "editarTipoH", new { TipodehabitacionID = item.TipodehabitacionID }, new { @class = "d-block p-2 link-master badge badge-primary" })
+                    @Html.ActionLink("Agregar servicios", "agregarServicios", new { TipodehabitacionID = item.TipodehabitacionID }, new { @class = "d-block p-2 link-master badge badge-success" })
+                    @Html.ActionLink("Eliminar servicios", "eliminarServicios", new { TipodehabitacionID = item.TipodehabitacionID }, new { @class = "d-block p-2 link-master badge badge-success" })
+                    @Html.ActionLink("Eliminar", "eliminarTipoH", new { TipodehabitacionID = item.TipodehabitacionID }, new { @class = "d-block p-2 link-master badge badge-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</section>
+
+

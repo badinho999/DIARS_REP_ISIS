@@ -10,7 +10,7 @@
         <a class="btn btn-secondary" href="/MantenedorHabitaciones/insertarHabitacion">Nueva habitación</a>
     </div>
 
-    <table class="table m-auto col-8 table-striped table-dark">
+    <table class="table m-auto col-15 table-striped table-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.NumeroHabitacion)
@@ -33,7 +33,9 @@
             <th>
                 Servicios
             </th>
-            <th></th>
+            <th>
+                Actions
+            </th>
         </tr>
 
         @foreach (var item in Model)
@@ -69,7 +71,7 @@
                         @servicios.ToString()
                     }
                 </td>
-                <td>
+                <td class="options">
                     @Html.ActionLink("Edit", "editarHabitacion", new { NumeroHabitacion = item.NumeroHabitacion },new { @class = "link-master badge badge-primary" })
                     @Html.ActionLink("Delete", "eliminarHabitacion", new { NumeroHabitacion = item.NumeroHabitacion }, new { @class = "link-master badge badge-danger" })
                 </td>

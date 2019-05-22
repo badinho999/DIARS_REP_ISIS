@@ -76,7 +76,7 @@ namespace CapaAccesoDatos
                 int result = cmd.ExecuteNonQuery();
                 registra = result > 0 ? true : false;
             }
-            catch (Exception err)
+            catch (SqlException err)
             {
                 throw err;
             }
@@ -123,7 +123,7 @@ namespace CapaAccesoDatos
         public Boolean EditarHuesped(EntHuesped huesped)
         {
             SqlCommand cmd = null;
-            Boolean edita = false;
+            Boolean edit = false;
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
@@ -135,13 +135,10 @@ namespace CapaAccesoDatos
                 cmd.Parameters.AddWithValue("@prmstrDni", huesped.Dni);
                 cmd.Parameters.AddWithValue("@prmstrApellidos", huesped.Apellidos);
                 cn.Open();
-                int i = cmd.ExecuteNonQuery();
-                if (i > 0)
-                {
-                    edita = true;
-                }
+                int result = cmd.ExecuteNonQuery();
+                edit = result > 0 ? true : false;
             }
-            catch (Exception err)
+            catch (SqlException err)
             {
                 throw err;
             }
@@ -149,13 +146,13 @@ namespace CapaAccesoDatos
             {
                 cmd.Connection.Close();
             }
-            return edita;
+            return edit;
         }
 
         public Boolean EliminarHuesped(EntHuesped huesped)
         {
             SqlCommand cmd = null;
-            Boolean delete = false;
+            Boolean delete;
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
@@ -166,7 +163,7 @@ namespace CapaAccesoDatos
                 int result = cmd.ExecuteNonQuery();
                 delete = result > 0 ? true : false;
             }
-            catch (Exception err)
+            catch (SqlException err)
             {
                 throw err;
             }

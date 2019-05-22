@@ -1,0 +1,79 @@
+﻿@model CapaEntidades.EntTipoDeHabitacion
+
+@{
+    ViewBag.Title = "eliminarTipoH";
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+}
+
+<section class="container" id="listarTiposH">
+    
+    <div class="form-content m-auto form-horizontal col-5">
+        <h3 class="red-title">¿Seguro de eliminar a @Html.DisplayFor(model => model.Nombretipodehabitacion)?</h3>
+        <hr />
+        <div>
+            <dl class="form-content-delete dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Capacidad)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Capacidad)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Nombretipodehabitacion)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Nombretipodehabitacion)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Numerodecamas)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Numerodecamas)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Precio)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Precio)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TipodehabitacionID)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TipodehabitacionID)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Costoadicional)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Costoadicional)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Delete" class="btn btn-success" /> |
+                        <a class="ml-3 btn btn-danger" href="/MantenedorTipoHabitacion/listarTiposH">Cancelar</a>
+                    </div>
+                </div>
+            }
+        </div>
+        
+    </div>
+</section>

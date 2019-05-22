@@ -86,8 +86,8 @@ namespace CapaPresentacion.Controllers
         {
             try
             {
-                Boolean edita = LogHuesped.Instancia.eliminarHuesped(huesped);
-                if (edita)
+                Boolean delete = LogHuesped.Instancia.eliminarHuesped(huesped);
+                if (delete)
                 {
                     return RedirectToAction("listarHuesped");
                 }

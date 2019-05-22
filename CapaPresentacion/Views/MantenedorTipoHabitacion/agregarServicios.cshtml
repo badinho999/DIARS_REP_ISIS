@@ -1,0 +1,37 @@
+﻿@model CapaEntidades.EntTipoDeHabitacion
+
+@{
+    ViewBag.Title = "agregarServicios";
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+}
+
+<h2>agregarTipos</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <section class="container" id="listarTiposH">
+        <div class="form-content m-auto form-horizontal col-5">
+            <h4>Agregar servicios a @Model.Nombretipodehabitacion</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label class="control-label col-md-10">Servicios :</label>
+                <div class="col-md-10">
+                    @Html.ListBoxFor(model => model.SelectedIds, (MultiSelectList)ViewBag.listaServicios, new { id = "MultiServ", multiple = "multiple" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-success" /> |
+                    <a class="ml-3 btn btn-danger" href="/MantenedorTipoHabitacion/listarTiposH">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+    

@@ -1,0 +1,34 @@
+﻿@model CapaEntidades.EntServicioadicional
+
+@{
+    ViewBag.Title = "insertarServicio";
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <section class="container" id="listarServicios">
+        <div class="form-content m-auto form-horizontal col-5">
+            <h4>Agregar Servicio Adicional</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-10">Nombre de servicio: </label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NombreDeServicio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NombreDeServicio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                    <a class="ml-3 btn btn-danger" href="/MantenedorServicios/listarServicios">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
