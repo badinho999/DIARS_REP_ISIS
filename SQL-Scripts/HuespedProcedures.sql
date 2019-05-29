@@ -51,7 +51,7 @@ where Dni = @prmstrDni
 end
 go
 
-Alter procedure Sp_EliminarHuesped
+CREATE procedure Sp_EliminarHuesped
 (
 	@prmstrDni char(8)
 )
