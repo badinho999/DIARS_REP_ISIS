@@ -1,19 +1,19 @@
 /*INGRESO DE DATOS*/
 
 /*Tipo de habitaci�n*/
-Insert into Tipodehabitacion(Capacidad,Costoadicional,Descripciontipo,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
+Insert into Tipodehabitacion(Capacidad,Costoadicional,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
 Values(1,10,'Simple',1,30,NEXT VALUE FOR TipodehabitacionID)
 go
-Insert into Tipodehabitacion(Capacidad,Costoadicional,Descripciontipo,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
+Insert into Tipodehabitacion(Capacidad,Costoadicional,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
 Values(2,20,'Matrimonial',1,50,NEXT VALUE FOR TipodehabitacionID)
 go
-Insert into Tipodehabitacion(Capacidad,Costoadicional,Descripciontipo,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
+Insert into Tipodehabitacion(Capacidad,Costoadicional,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
 Values(2,10,'Doble',2,60,NEXT VALUE FOR TipodehabitacionID)
 go
-Insert into Tipodehabitacion(Capacidad,Costoadicional,Descripciontipo,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
+Insert into Tipodehabitacion(Capacidad,Costoadicional,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
 Values(3,10,'Triple',3,70,NEXT VALUE FOR TipodehabitacionID)
 go
-Insert into Tipodehabitacion(Capacidad,Costoadicional,Descripciontipo,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
+Insert into Tipodehabitacion(Capacidad,Costoadicional,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
 Values(4,20,'M�ltiple',4,80,NEXT VALUE FOR TipodehabitacionID)
 go
 
