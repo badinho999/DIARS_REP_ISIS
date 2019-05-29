@@ -11,7 +11,7 @@ Create TABLE [Comprobantepagoreserva]
 	[Fechadeemision] date NULL,
 	[Ruc] char(11) NULL,
 	[ComprobantepagoreservaID] int PRIMARY KEY NOT NULL,
-	[ReservaID] int NULL
+	[ReservaID] int IDENTITY(1,1) NULL
 )
 GO
 
@@ -20,7 +20,7 @@ CREATE TABLE [Comprobantepagoalquiler]
 	[Fechadeemision] date NULL,
 	[Ruc] char(11) NULL,
 	[ComprobantepagoalquilerID] int PRIMARY KEY NOT NULL,
-	[AlquilerID] int NOT NULL
+	[AlquilerID] int IDENTITY(1,1) NOT NULL
 )
 GO
 
@@ -28,14 +28,14 @@ CREATE TABLE [ServAdicionalTipoH]
 (
 	[TipodehabitacionID] int NULL,
 	[ServAdicTipoH] int PRIMARY KEY NOT NULL,
-	[ServicioadicionalID] int NULL
+	[ServicioadicionalID] int IDENTITY(1,1) NULL
 )
 GO
 
 CREATE TABLE [Servicioadicional]
 (
 	[NombreServicio] varchar(50) NULL,
-	[ServicioadicionalID] int PRIMARY KEY NOT NULL
+	[ServicioadicionalID] int IDENTITY(1,1) PRIMARY KEY NOT NULL
 )
 GO
 
@@ -47,10 +47,36 @@ CREATE TABLE [Administradorhotel]
 	[Fechadenacimiento] date NULL,
 	[Nombre] varchar(50) NULL,
 	[Nombreusuario] varchar(50) NULL,
-	[AdministradorhotelID] int PRIMARY KEY NOT NULL
+	[AdministradorhotelID] int IDENTITY(1,1) PRIMARY KEY NOT NULL
 )
 GO
 
+
+CREATE TABLE [dbo].[Alquiler]
+(
+	[Cantidaddeadultos] [int] NOT NULL,
+	[Cantidaddekids] [int] NOT NULL,
+	[Fechadeingreso] [date] NOT NULL,
+	[Fechadesalida] [date] NOT NULL,
+	[AlquilerID] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	[Dni] [char](8) NOT NULL,
+	[NumeroHabitacion] [varchar](4) NOT NULL,
+)
+GO
+CREATE TABLE [dbo].[Habitacion]
+(
+	[NumeroHabitacion] [varchar](4) PRIMARY KEY NOT NULL,
+	[TipodehabitacionID] [int] NULL,
+)
+GO
+
+CREATE TABLE [dbo].[Reserva]
+(
+	[Fechadereserva] [date] NULL,
+	[ReservaID] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	[AlquilerID] [int] NULL,
+)
+GO
 /* Create Foreign Key Constraints */
 
 ALTER TABLE [Alquiler] ADD CONSTRAINT [FK_Alquiler_Huesped]
