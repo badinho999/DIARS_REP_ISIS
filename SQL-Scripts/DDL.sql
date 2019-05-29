@@ -77,6 +77,16 @@ CREATE TABLE [dbo].[Reserva]
 	[AlquilerID] [int] NULL,
 )
 GO
+
+CREATE TABLE [dbo].[Tipodehabitacion](
+	[Capacidad] [int] NULL,
+	[Costoadicional] [decimal](6, 2) NULL,
+	[Nombretipodehabitacion] [varchar](50) NULL,
+	[Numerodecamas] [int] NULL,
+	[Precio] [decimal](6, 2) NULL,
+	[TipodehabitacionID] [int] PRIMARY KEY NOT NULL,
+)
+GO
 /* Create Foreign Key Constraints */
 
 ALTER TABLE [Alquiler] ADD CONSTRAINT [FK_Alquiler_Huesped]
