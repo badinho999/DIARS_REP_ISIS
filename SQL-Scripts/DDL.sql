@@ -11,7 +11,7 @@ Create TABLE [Comprobantepagoreserva]
 	[Fechadeemision] date NULL,
 	[Ruc] char(11) NULL,
 	[ComprobantepagoreservaID] int PRIMARY KEY NOT NULL,
-	[ReservaID] int IDENTITY(1,1) NULL
+	[ReservaID] int IDENTITY(1,1) NOT NULL
 )
 GO
 
@@ -28,7 +28,7 @@ CREATE TABLE [ServAdicionalTipoH]
 (
 	[TipodehabitacionID] int NULL,
 	[ServAdicTipoH] int PRIMARY KEY NOT NULL,
-	[ServicioadicionalID] int IDENTITY(1,1) NULL
+	[ServicioadicionalID] int IDENTITY(1,1) NOT NULL
 )
 GO
 
@@ -66,7 +66,7 @@ GO
 CREATE TABLE [dbo].[Habitacion]
 (
 	[NumeroHabitacion] [varchar](4) PRIMARY KEY NOT NULL,
-	[TipodehabitacionID] [int] NULL,
+	[TipodehabitacionID] [int] NOT NULL,
 )
 GO
 
@@ -74,7 +74,7 @@ CREATE TABLE [dbo].[Reserva]
 (
 	[Fechadereserva] [date] NULL,
 	[ReservaID] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
-	[AlquilerID] [int] NULL,
+	[AlquilerID] [int] NOT NULL,
 )
 GO
 
@@ -85,6 +85,16 @@ CREATE TABLE [dbo].[Tipodehabitacion](
 	[Numerodecamas] [int] NULL,
 	[Precio] [decimal](6, 2) NULL,
 	[TipodehabitacionID] [int] PRIMARY KEY NOT NULL,
+)
+GO
+
+CREATE TABLE [dbo].[Huesped](
+	[Apellidos] [varchar](50) NULL,
+	[PasswordHuesped] [varchar](50) NULL,
+	[Email] [varchar](50) NULL,
+	[Fechadenacimiento] [date] NULL,
+	[Nombre] [varchar](50) NULL,
+	[Dni] [char](8) PRIMARY KEY NOT NULL,
 )
 GO
 /* Create Foreign Key Constraints */
