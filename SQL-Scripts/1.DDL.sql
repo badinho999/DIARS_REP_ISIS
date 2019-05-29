@@ -27,8 +27,8 @@ GO
 CREATE TABLE [ServAdicionalTipoH]
 (
 	[TipodehabitacionID] int NULL,
-	[ServAdicTipoH] int NOT NULL,
-	[ServicioadicionalID] int IDENTITY(1,1) PRIMARY KEY NOT NULL
+	[ServAdicTipoH] int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	[ServicioadicionalID] int NOT NULL
 )
 GO
 
