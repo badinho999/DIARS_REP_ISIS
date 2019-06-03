@@ -176,8 +176,6 @@
     <Content Include="mantenedores.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="package-lock.json" />
-    <Content Include="package.json" />
     <Content Include="Bootstrap-datetime\css\bootstrap-datepicker.css.map" />
     <Content Include="Bootstrap-datetime\css\bootstrap-datepicker.min.css.map" />
     <Content Include="Bootstrap-datetime\css\bootstrap-datepicker.standalone.css.map" />
@@ -243,8 +241,6 @@
     <Content Include="scss\_mixins.scss" />
     <Content Include="scss\_navbar.scss" />
     <Content Include="scss\_variables.scss" />
-    <Content Include="Views\MantenedorHuesped\registrarHuesped.cshtml" />
-    <Content Include="Views\MantenedorHuesped\editarHuesped.cshtml" />
     <Content Include="Views\MantenedorHabitaciones\insertarHabitacion.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\MantenedorHuesped\listarHuesped.cshtml" />

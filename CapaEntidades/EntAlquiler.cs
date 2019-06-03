@@ -16,6 +16,7 @@ namespace CapaEntidades
         private EntHuesped huesped;
         private EntHabitacion habitacion;
 
+
         public int Cantidaddeadultos { get => cantidaddeadultos; set => cantidaddeadultos = value; }
         public int Cantidaddekids { get => cantidaddekids; set => cantidaddekids = value; }
         public string Fechadeingreso { get => fechadeingreso; set => fechadeingreso = value; }

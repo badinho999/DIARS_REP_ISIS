@@ -36,12 +36,18 @@ namespace CapaAccesoDatos
                 while (dr.Read())
                 {
                     EntHuesped huesped = new EntHuesped();
+                    EntCuenta cuenta = new EntCuenta();
+
+                    cuenta.NombreUsuario = Convert.ToString(dr["NombreUsuario"]);
+                    cuenta.Email = Convert.ToString(dr["Email"]);
 
                     huesped.Dni = Convert.ToString(dr["Dni"]);
                     huesped.Nombre = Convert.ToString(dr["Nombre"]);
                     huesped.Apellidos = Convert.ToString(dr["Apellidos"]);
                     huesped.Fechadenacimiento = Convert.ToString(dr["Fechadenacimiento"]);
-                    huesped.Email = Convert.ToString(dr["Email"]);
+
+                    huesped.Cuenta = cuenta;
+
                     lista.Add(huesped);
                 }
             }
@@ -67,11 +73,10 @@ namespace CapaAccesoDatos
                 cmd = new SqlCommand("Sp_RegistrarHuesped", cn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@prmstrApellidos", huesped.Apellidos);
-                cmd.Parameters.AddWithValue("@prmstrPasswordHuesped", huesped.PasswordHuesped);
-                cmd.Parameters.AddWithValue("@prmstrEmail", huesped.Email);
                 cmd.Parameters.AddWithValue("@prmstrFechadenacimiento", huesped.Fechadenacimiento);
                 cmd.Parameters.AddWithValue("@prmstrNombre", huesped.Nombre);
                 cmd.Parameters.AddWithValue("@prmstrDni", huesped.Dni);
+                cmd.Parameters.AddWithValue("@prmstrNombreUsuario", huesped.Cuenta.NombreUsuario);
                 cn.Open();
                 int result = cmd.ExecuteNonQuery();
                 registra = result > 0 ? true : false;
@@ -102,11 +107,17 @@ namespace CapaAccesoDatos
                 while (dr.Read())
                 {
                     huesped = new EntHuesped();
+                    EntCuenta cuenta = new EntCuenta();
+
+                    cuenta.NombreUsuario = Convert.ToString(dr["NombreUsuario"]);
+                    cuenta.Email = Convert.ToString(dr["Email"]);
+
                     huesped.Dni = Convert.ToString(dr["Dni"]);
                     huesped.Nombre = Convert.ToString(dr["Nombre"]);
                     huesped.Apellidos = Convert.ToString(dr["Apellidos"]);
                     huesped.Fechadenacimiento = Convert.ToString(dr["Fechadenacimiento"]);
-                    huesped.Email = Convert.ToString(dr["Email"]);
+
+                    huesped.Cuenta = cuenta;
                 }
             }
             catch (SqlException e)
@@ -129,7 +140,6 @@ namespace CapaAccesoDatos
                 SqlConnection cn = Conexion.Instancia.Conectar();
                 cmd = new SqlCommand("Sp_EditarHuesped", cn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@prmstrEmail", huesped.Email);
                 cmd.Parameters.AddWithValue("@prmstrFechadenacimiento", huesped.Fechadenacimiento);
                 cmd.Parameters.AddWithValue("@prmstrNombre", huesped.Nombre);
                 cmd.Parameters.AddWithValue("@prmstrDni", huesped.Dni);

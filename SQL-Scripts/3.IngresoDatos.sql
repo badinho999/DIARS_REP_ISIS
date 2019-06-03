@@ -159,19 +159,36 @@ Values(404,5)
 go
 
 /*Huesped*/
-Insert into Huesped(Apellidos,PasswordHuesped,Email,Fechadenacimiento,Nombre,Dni)
-Values('Cornejo Chunga','isis','badinhocornejo@gmail.com','1999-03-31','Daniel Badinho','71778079')
+Insert into Huesped(Apellidos,Fechadenacimiento,Nombre,Dni,NombreUsuario)
+Values('Cornejo Chunga','1999-03-31','Daniel Badinho','71778079','BadinhoCornejo')
 go
-Insert into Huesped(Apellidos,PasswordHuesped,Email,Fechadenacimiento,Nombre,Dni)
-Values('Pe�a Su�rez','isis01','joel.penagmail@gmail.com','1940-05-21','Joel Anthony','98723467')
+Insert into Huesped(Apellidos,Fechadenacimiento,Nombre,Dni,NombreUsuario)
+Values('Pe�a Su�rez','1940-05-21','Joel Anthony','98723467','JoelPeña')
 go
-Insert into Huesped(Apellidos,PasswordHuesped,Email,Fechadenacimiento,Nombre,Dni)
-Values('Rodriguez Alayo','isis02','geordan510@gmail.com','1920-02-12','Gerodan Brian','14321356')
+Insert into Huesped(Apellidos,Fechadenacimiento,Nombre,Dni,NombreUsuario)
+Values('Rodriguez Alayo','1920-02-12','Gerodan Brian','14321356','rGeordan')
 go
-Insert into Huesped(Apellidos,PasswordHuesped,Email,Fechadenacimiento,Nombre,Dni)
-Values('Figueroa Ruiz','isis03','anthony@gmail.com','1992-10-21','Anthony','32145678')
+Insert into Huesped(Apellidos,Fechadenacimiento,Nombre,Dni,NombreUsuario)
+Values('Figueroa Ruiz','1992-10-21','Anthony','32145678','fAnthony')
 go
-Insert into Huesped(Apellidos,PasswordHuesped,Email,Fechadenacimiento,Nombre,Dni)
-Values('Villena','isis04','christian@gmail.com','1991-05-21','Christian','45532265')
+
+Insert into Huesped(Apellidos,Fechadenacimiento,Nombre,Dni,NombreUsuario)
+Values('Villena','1991-05-21','Christian','45532265','vChristian')
 go 
+
+/*Cuenta*/
+Insert into Cuenta(NombreUsuario,Email,PasswordAccount,FechaCreacion)
+Values('BadinhoCornejo','badinhocornejo@gmail.com','isis01',convert(date, getdate(), 11))
+
+Insert into Cuenta(NombreUsuario,Email,PasswordAccount,FechaCreacion)
+Values('JoelPeña','joel@gmail.com','isis02',convert(date, getdate(), 11))
+GO
+Insert into Cuenta(NombreUsuario,Email,PasswordAccount,FechaCreacion)
+Values('rGeordan','geordan510@gmail.com','isis03',convert(date, getdate(), 11))
+GO
+Insert into Cuenta(NombreUsuario,Email,PasswordAccount,FechaCreacion)
+Values('fAnthony','anthony@gmail.com','isis04',convert(date, getdate(), 11))
+GO
+Insert into Cuenta(NombreUsuario,Email,PasswordAccount,FechaCreacion)
+Values('vChristian','christian@gmail.com','isis05',convert(date, getdate(), 11))
 

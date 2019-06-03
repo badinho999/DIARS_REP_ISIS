@@ -1,33 +1,32 @@
 /*HuespedProcedures*/
+use [Proyecto_DIARS_ISIS]
 
 CREATE procedure [dbo].[Sp_ListarHuesped]
 as
 begin
-Select Dni, Nombre, Apellidos, CONVERT(VARCHAR(10), Fechadenacimiento, 111) as [Fechadenacimiento], Email 
-from Huesped
+Select Dni, Nombre, Apellidos, CONVERT(VARCHAR(10), Fechadenacimiento, 111) as [Fechadenacimiento], c.NombreUsuario,c.Email
+from Huesped h inner join Cuenta c on(h.NombreUsuario = c.NombreUsuario)
 end
 go
 
 CREATE procedure Sp_RegistrarHuesped
 (
 	@prmstrApellidos varchar(50),
-	@prmstrPasswordHuesped varchar(50),
-	@prmstrEmail varchar(50),
 	@prmstrFechadenacimiento date,
 	@prmstrNombre varchar(50),
-	@prmstrDni char(8)
+	@prmstrDni char(8),
+	@prmstrNombreUsuario varchar(50)
 )
 as
 begin
-Insert into Huesped(Apellidos,PasswordHuesped,Email,Fechadenacimiento,Nombre,Dni)
+Insert into Huesped(Apellidos,Fechadenacimiento,Nombre,Dni,NombreUsuario)
 values
 (
 	@prmstrApellidos,
-	@prmstrPasswordHuesped,
-	@prmstrEmail,
 	@prmstrFechadenacimiento,
 	@prmstrNombre,
-	@prmstrDni
+	@prmstrDni,
+	@prmstrNombreUsuario
 )
 end
 go
@@ -35,7 +34,6 @@ go
 CREATE procedure Sp_EditarHuesped
 (
 	@prmstrApellidos varchar(50),
-	@prmstrEmail varchar(50),
 	@prmstrFechadenacimiento date,
 	@prmstrNombre varchar(50),
 	@prmstrDni char(8)
@@ -44,7 +42,6 @@ as
 begin
 update Huesped set 
 Apellidos = @prmstrApellidos,
-Email = @prmstrEmail,
 Fechadenacimiento = @prmstrFechadenacimiento,
 Nombre = @prmstrNombre
 where Dni = @prmstrDni
@@ -68,8 +65,8 @@ CREATE procedure Sp_BuscarHuesped
 )
 as
 begin
-Select Dni, Nombre, Apellidos, CONVERT(VARCHAR(10), Fechadenacimiento, 111) as [Fechadenacimiento], Email
-from Huesped
+Select Dni, Nombre, Apellidos, CONVERT(VARCHAR(10), Fechadenacimiento, 111) as [Fechadenacimiento], c.NombreUsuario,c.Email
+from Huesped h inner join Cuenta c on(h.NombreUsuario = c.NombreUsuario)
 where Dni = @prmstrDni
 end
 go

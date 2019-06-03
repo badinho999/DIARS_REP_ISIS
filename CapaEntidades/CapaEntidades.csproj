@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntAdministradorhotel.cs" />
+    <Compile Include="EntCuenta.cs" />
     <Compile Include="EntAlquiler.cs" />
     <Compile Include="EntComprobantedepagoalquiler.cs" />
     <Compile Include="EntComprobantepagoreserva.cs" />

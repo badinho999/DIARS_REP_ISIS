@@ -39,19 +39,6 @@ CREATE TABLE [Servicioadicional]
 )
 GO
 
-CREATE TABLE [Administradorhotel]
-(
-	[Apellidos] varchar(50) NULL,
-	[password] varchar(50) NULL,
-	[Email] varchar(50) NULL,
-	[Fechadenacimiento] date NULL,
-	[Nombre] varchar(50) NULL,
-	[Nombreusuario] varchar(50) NULL,
-	[AdministradorhotelID] int IDENTITY(1,1) PRIMARY KEY NOT NULL
-)
-GO
-
-
 CREATE TABLE [dbo].[Alquiler]
 (
 	[Cantidaddeadultos] [int] NOT NULL,
@@ -88,16 +75,42 @@ CREATE TABLE [dbo].[Tipodehabitacion](
 )
 GO
 
-CREATE TABLE [dbo].[Huesped](
+CREATE TABLE [dbo].[Huesped]
+(
 	[Apellidos] [varchar](50) NULL,
-	[PasswordHuesped] [varchar](50) NULL,
-	[Email] [varchar](50) NULL,
 	[Fechadenacimiento] [date] NULL,
 	[Nombre] [varchar](50) NULL,
 	[Dni] [char](8) PRIMARY KEY NOT NULL,
+	[NombreUsuario] [varchar](50) NOT NULL
 )
 GO
-/* Create Foreign Key Constraints */
+
+CREATE TABLE [Administradorhotel]
+(
+	[Apellidos] varchar(50) NULL,
+	[Fechadenacimiento] date NULL,
+	[Nombre] varchar(50) NULL,
+	[AdministradorhotelID] int IDENTITY(1,1) PRIMARY KEY NOT NULL
+	[NombreUsuario] [varchar](50) NOT NULL
+)
+GO
+
+CREATE TABLE [Cuenta]
+(
+	[NombreUsuario] varchar(50) PRIMARY KEY NOT NULL,
+	[Email] varchar(50) NOT NULL,
+	[PasswordAccount] varchar(50) NOT NULL,
+	[FechaCreacion] date NOT NULL
+)
+GO
+
+ALTER TABLE [Huesped] ADD CONSTRAINT [FK_Huesped_Cuenta] 
+	FOREIGN KEY ([NombreUsuario]) REFERENCES [Cuenta] ([NombreUsuario]) ON DELETE No Action ON UPDATE No Action
+GO
+
+ALTER TABLE [Administradorhotel] ADD CONSTRAINT [FK_Administradorhotel_Cuenta] 
+	FOREIGN KEY ([NombreUsuario]) REFERENCES [Cuenta] ([NombreUsuario]) ON DELETE No Action ON UPDATE No Action
+GO
 
 ALTER TABLE [Alquiler] ADD CONSTRAINT [FK_Alquiler_Huesped]
 	FOREIGN KEY ([Dni]) REFERENCES [Huesped] ([Dni]) ON DELETE No Action ON UPDATE No Action
