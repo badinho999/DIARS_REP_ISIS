@@ -157,6 +157,67 @@ namespace CapaAccesoDatos
             return delete;
         }
 
+        public EntCuenta VerificarAcceso(string NombreUsuario, string Password)
+        {
+            SqlCommand cmd = null;
+            EntCuenta cuenta = null;
+
+            try
+            {
+                Boolean isHuesped = true;
+                string procedure = "Sp_BuscarUsuarioHuesped";
+
+                if (NombreUsuario.Contains("HOSTALISIS."))
+                {
+                    procedure = "Sp_BuscarUsuarioAdmin";
+                    isHuesped = false;
+                }
+
+                SqlConnection cn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand(procedure, cn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmstrNombreUsuario", NombreUsuario);
+                cmd.Parameters.AddWithValue("@prmstrPassword", Password);
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    cuenta = new EntCuenta();
+
+                    cuenta.NombreUsuario = Convert.ToString(dr["NombreUsuario"]);
+                    cuenta.Email = Convert.ToString(dr["Email"]);
+                    cuenta.PasswordAccount = Convert.ToString(dr["PasswordAccount"]);
+
+                    if (isHuesped)
+                    {
+                        EntHuesped huesped = new EntHuesped();
+                        huesped.Dni = Convert.ToString(dr["Dni"]);
+                        huesped.Apellidos = Convert.ToString(dr["Apellidos"]);
+                        huesped.Nombre = Convert.ToString(dr["Nombre"]);
+                        huesped.Fechadenacimiento = Convert.ToString(dr["Fechadenacimiento"]);
+                        cuenta.Huesped = huesped;
+                    }
+                    else
+                    {
+                        EntAdministradorhotel a = new EntAdministradorhotel();
+                        a.Apellidos = Convert.ToString(dr["Apellidos"]);
+                        a.Nombre = Convert.ToString(dr["Nombre"]);
+                        a.Fechadenacimiento = Convert.ToString(dr["Fechadenacimiento"]);
+                        cuenta.Admin = a;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+            return cuenta;
+        }
+
         #endregion metodos
 
     }

@@ -1,3 +1,4 @@
+use Proyecto_DIARS_ISIS
 CREATE procedure Sp_RegistrarCuenta
 (
 	@prmstrNombreUsuario varchar(50),
@@ -56,11 +57,37 @@ go
 
 CREATE procedure Sp_EliminarCuenta
 (
-	@prmstrNombreUsuario char(8)
+	@prmstrNombreUsuario varchar(50)
 )
 as
 begin
 	Delete from Cuenta
 	where NombreUsuario = @prmstrNombreUsuario
+end
+go
+
+CREATE PROCEDURE Sp_BuscarUsuarioHuesped
+(
+	@prmstrNombreUsuario varchar(50),
+	@prmstrPassword varchar(50)
+)
+as
+begin
+	Select c.NombreUsuario,c.Email,c.PasswordAccount,h.Dni,h.Apellidos,h.Nombre,h.Fechadenacimiento
+	from Cuenta c inner join Huesped h on(c.NombreUsuario=h.NombreUsuario)
+	Where c.NombreUsuario = @prmstrNombreUsuario AND c.PasswordAccount = @prmstrPassword
+end
+go
+
+CREATE PROCEDURE Sp_BuscarUsuarioAdmin
+(
+	@prmstrNombreUsuario varchar(50),
+	@prmstrPassword varchar(50)
+)
+as
+begin
+	Select c.NombreUsuario,c.Email,c.PasswordAccount,a.Apellidos,a.Nombre,a.Fechadenacimiento
+	from Cuenta c inner join Administradorhotel a on(c.NombreUsuario=a.NombreUsuario)
+	Where c.NombreUsuario = @prmstrNombreUsuario AND c.PasswordAccount = @prmstrPassword
 end
 go

@@ -88,6 +88,18 @@ namespace CapaLogica
 
         }
 
+        public EntCuenta VerificarAcceso(string NombreUsuario, string Password)
+        {
+            try
+            {
+                return DatCuenta.Instancia.VerificarAcceso(NombreUsuario, Password);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         #endregion metodos
 
     }

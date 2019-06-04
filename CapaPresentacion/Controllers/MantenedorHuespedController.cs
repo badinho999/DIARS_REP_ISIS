@@ -10,6 +10,7 @@ namespace CapaPresentacion.Controllers
 {
     public class MantenedorHuespedController : Controller
     {
+        public EntCuenta user;
         // GET: MantenedorHuesped
         public ActionResult listarHuesped()
         {
@@ -27,6 +28,10 @@ namespace CapaPresentacion.Controllers
         [HttpPost]
         public ActionResult registrarCuenta(EntCuenta cuenta)
         {
+            if(!ModelState.IsValid)
+            {
+                return View("registrarCuenta");
+            }
             try
             {
                 Boolean registra = LogCuenta.Instancia.Registrarcuenta(cuenta);
@@ -54,7 +59,7 @@ namespace CapaPresentacion.Controllers
         }
 
         [HttpPost]
-        public ActionResult eliminarCuenta(EntCuenta cuenta)
+        public ActionResult eliminarCuenta(EntCuenta cuenta, FormCollection form)
         {
             try
             {
@@ -65,7 +70,7 @@ namespace CapaPresentacion.Controllers
                 }
                 else
                 {
-                    return View(huesped);
+                    return View(cuenta);
                 }
             }
             catch (ApplicationException ex)
@@ -77,17 +82,26 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult registrarHuesped(string NombreUsuario)
         {
+            ViewBag.NombreUsuario = NombreUsuario;
             EntHuesped huesped = new EntHuesped();
-            EntCuenta cuenta = new EntCuenta();
-            cuenta = LogCuenta.Instancia.BuscarCuenta(NombreUsuario);
-            huesped.Cuenta = cuenta;
+            huesped.Cuenta = LogCuenta.Instancia.BuscarCuenta(NombreUsuario);
             return View(huesped);
         }
         [HttpPost]
-        public ActionResult registrarHuesped(EntHuesped huesped)
+        public ActionResult registrarHuesped(EntHuesped huesped,FormCollection form)
         {
+            
             try
             {
+                huesped.Cuenta = new EntCuenta();
+                foreach(string key in form.AllKeys)
+                {
+                    if (key.Equals("username"))
+                    {
+                        huesped.Cuenta.NombreUsuario = Convert.ToString(form[key]);
+                    }
+                }
+                
                 Boolean registra = LogHuesped.Instancia.registrarHuesped(huesped);
                 if (registra)
                 {

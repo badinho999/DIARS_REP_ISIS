@@ -38,6 +38,11 @@ namespace CapaPresentacion.Controllers
         [HttpPost]
         public ActionResult insertarHabitacion(EntHabitacion habitacion, FormCollection frm)
         {
+            //if (!ModelState.IsValid)
+            //{
+            //    return View("insertarHabitacion");
+            //}
+
             try
             {
                 habitacion.Tipodehabitacion = new EntTipoDeHabitacion();

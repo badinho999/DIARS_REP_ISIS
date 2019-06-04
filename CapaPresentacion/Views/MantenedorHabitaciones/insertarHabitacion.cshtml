@@ -1,41 +1,41 @@
 ﻿@model CapaEntidades.EntHabitacion
 
 @{
-    ViewBag.Title = "listarHabitaciones";
+    ViewBag.Title = "insertarHabitacion";
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
 }
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
     <section class="container" id="listarHabitaciones">
         <div class="form-content m-auto form-horizontal col-5">
-            <h4>Ingresar Habitación</h4>
+            <h4>Registrar Habitación</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
-                @Html.LabelFor(model => model.NumeroHabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-8">Número de habitación</label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.NumeroHabitacion, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.NumeroHabitacion, "", new { @class = "text-danger" })
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-md-10">Tipo de habitación :</label>
-                    <div class="col-md-10">
-                        @Html.DropDownList("cboTiposH", (SelectList)ViewBag.ListarTiposH, "<seleccionar>")
-                    </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-10">Tipo de habitación :</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("cboTiposH", (SelectList)ViewBag.ListarTiposH, "<seleccionar>")
+                    @Html.ValidationMessageFor(model => model.Tipodehabitacion, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="link-master btn btn-myBtn" />
+                    <input type="submit" value="Create" class="btn btn-myBtn" />
                     <a class="ml-1 btn btn-MyDanger" href="/MantenedorHabitaciones/listarHabitaciones">Cancelar</a>
                 </div>
             </div>
         </div>
     </section>
 
-        
-    }
+}

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaEntidades
 {
-    class EntAdministradorhotel
+    public class EntAdministradorhotel
     {
         private string apellidos;
         private string fechadenacimiento;

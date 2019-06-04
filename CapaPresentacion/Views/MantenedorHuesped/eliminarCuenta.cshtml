@@ -1,0 +1,25 @@
+﻿@model CapaEntidades.EntCuenta
+
+@{
+    ViewBag.Title = "eliminarCuenta";
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+}
+
+<section class="container" id="listarHuesped">
+    <div class="form-content-delete form-horizontal col-5 m-auto">
+        <h3 class="red-title">¿Seguro de anular el registro?</h3>
+        <hr />
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Sí" class="btn btn-myBtn" /> |
+                @Html.ActionLink("No", "registrarHuesped", new { NombreUsuario = Model.NombreUsuario }, new { @class = "ml-1 btn btn-MyDanger" })
+            </div>
+        }
+    </div>
+</section>
+
+

@@ -207,10 +207,13 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MantenedorHabitacionesController.cs" />
     <Compile Include="Controllers\MantenedorHuespedController.cs" />
     <Compile Include="Controllers\MantenedorServiciosController.cs" />
     <Compile Include="Controllers\MantenedorTipoHabitacionController.cs" />
+    <Compile Include="Controllers\MenuExtranetController.cs" />
+    <Compile Include="Controllers\MenuIntranetController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -241,11 +244,9 @@
     <Content Include="scss\_mixins.scss" />
     <Content Include="scss\_navbar.scss" />
     <Content Include="scss\_variables.scss" />
-    <Content Include="Views\MantenedorHabitaciones\insertarHabitacion.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\MantenedorHuesped\listarHuesped.cshtml" />
     <Content Include="Views\Shared\_LayoutMantenedores.cshtml" />
-    <Content Include="Views\MantenedorHabitaciones\listarHabitaciones.cshtml" />
     <Content Include="Views\MantenedorHabitaciones\eliminarHabitacion.cshtml" />
     <Content Include="Views\MantenedorHabitaciones\editarHabitacion.cshtml" />
     <Content Include="Views\MantenedorServicios\listarServicios.cshtml" />
@@ -259,6 +260,14 @@
     <Content Include="Views\MantenedorTipoHabitacion\eliminarServicios.cshtml" />
     <Content Include="Views\MantenedorTipoHabitacion\editarTipoH.cshtml" />
     <Content Include="Views\MantenedorTipoHabitacion\eliminarTipoH.cshtml" />
+    <Content Include="Views\MantenedorHabitaciones\listarHabitaciones.cshtml" />
+    <Content Include="Views\MantenedorHabitaciones\insertarHabitacion.cshtml" />
+    <Content Include="Views\MantenedorHuesped\registrarCuenta.cshtml" />
+    <Content Include="Views\MantenedorHuesped\registrarHuesped.cshtml" />
+    <Content Include="Views\MantenedorHuesped\eliminarCuenta.cshtml" />
+    <Content Include="Views\MenuIntranet\MenuIntranetIndex.cshtml" />
+    <Content Include="Views\MenuExtranet\MenuExtranetIndex.cshtml" />
+    <Content Include="Views\Login\VerificarAcceso.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
