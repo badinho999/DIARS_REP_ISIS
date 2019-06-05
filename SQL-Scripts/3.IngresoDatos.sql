@@ -158,7 +158,24 @@ Insert into Habitacion(NumeroHabitacion,TipodehabitacionID)
 Values(404,5)
 go
 
+
 /*Huesped*/
+/*Cuenta*/
+Insert into Cuenta(NombreUsuario,Email,PasswordAccount,FechaCreacion)
+Values('BadinhoCornejo','badinhocornejo@gmail.com','isis01',convert(date, getdate(), 11))
+
+Insert into Cuenta(NombreUsuario,Email,PasswordAccount,FechaCreacion)
+Values('JoelPeña','joel@gmail.com','isis02',convert(date, getdate(), 11))
+GO
+Insert into Cuenta(NombreUsuario,Email,PasswordAccount,FechaCreacion)
+Values('rGeordan','geordan510@gmail.com','isis03',convert(date, getdate(), 11))
+GO
+Insert into Cuenta(NombreUsuario,Email,PasswordAccount,FechaCreacion)
+Values('fAnthony','anthony@gmail.com','isis04',convert(date, getdate(), 11))
+GO
+Insert into Cuenta(NombreUsuario,Email,PasswordAccount,FechaCreacion)
+Values('vChristian','christian@gmail.com','isis05',convert(date, getdate(), 11))
+
 Insert into Huesped(Apellidos,Fechadenacimiento,Nombre,Dni,NombreUsuario)
 Values('Cornejo Chunga','1999-03-31','Daniel Badinho','71778079','BadinhoCornejo')
 go
@@ -176,19 +193,10 @@ Insert into Huesped(Apellidos,Fechadenacimiento,Nombre,Dni,NombreUsuario)
 Values('Villena','1991-05-21','Christian','45532265','vChristian')
 go 
 
+/*Admin*/
 /*Cuenta*/
 Insert into Cuenta(NombreUsuario,Email,PasswordAccount,FechaCreacion)
-Values('BadinhoCornejo','badinhocornejo@gmail.com','isis01',convert(date, getdate(), 11))
+Values('HOSTALISIS.dCornejo','badinho9@gmail.com','ISIS01',convert(date, getdate(), 11))
 
-Insert into Cuenta(NombreUsuario,Email,PasswordAccount,FechaCreacion)
-Values('JoelPeña','joel@gmail.com','isis02',convert(date, getdate(), 11))
-GO
-Insert into Cuenta(NombreUsuario,Email,PasswordAccount,FechaCreacion)
-Values('rGeordan','geordan510@gmail.com','isis03',convert(date, getdate(), 11))
-GO
-Insert into Cuenta(NombreUsuario,Email,PasswordAccount,FechaCreacion)
-Values('fAnthony','anthony@gmail.com','isis04',convert(date, getdate(), 11))
-GO
-Insert into Cuenta(NombreUsuario,Email,PasswordAccount,FechaCreacion)
-Values('vChristian','christian@gmail.com','isis05',convert(date, getdate(), 11))
-
+Insert into Administradorhotel(Apellidos,Nombre,Fechadenacimiento,NombreUsuario)
+Values('Cornejo Chunga','Daniel Badinho','1999-01-31','HOSTALISIS.dCornejo')
