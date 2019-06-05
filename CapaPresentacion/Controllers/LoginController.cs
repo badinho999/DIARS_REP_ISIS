@@ -24,15 +24,15 @@ namespace CapaPresentacion.Controllers
                 string txtNombreUsuario = frm["txtNombreUsuario"];
                 string txtPassword = frm["txtPassword"];
                 EntCuenta cuenta = LogCuenta.Instancia.VerificarAcceso(txtNombreUsuario, txtPassword);
-                Session["usuario"] = cuenta;
+                Session["cuenta"] = cuenta;
 
                 if(cuenta.Admin!=null)
                 {
-                    return RedirectToAction("MenuIntranetIndex", "MenuIntranet");
+                    return RedirectToAction("Index", "Home");
                 }
                 else if(cuenta.Huesped!=null)
                 {
-                    return RedirectToAction("MenuExtranetIndex", "MenuExtranet");
+                    return RedirectToAction("Inicio", "Menu");
                 }
                 else
                 {
@@ -43,6 +43,22 @@ namespace CapaPresentacion.Controllers
             {
                 ViewBag.mensaje = e.Message;
                 return View();
+            }
+            catch (Exception e)
+            {
+                ViewBag.mensaje = e.Message;
+                return View();
+            }
+        }
+
+        public ActionResult CerrarSesion()
+        {
+            try
+            {
+                Session.RemoveAll();
+                Session.Abandon();
+
+                return RedirectToAction("Inicio", "Menu");
             }
             catch (Exception e)
             {

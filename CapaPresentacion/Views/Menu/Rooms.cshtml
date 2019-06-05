@@ -1,0 +1,15 @@
+﻿@using CapaEntidades;
+@{
+    Layout = "~/Views/Shared/_LayoutHabitaciones.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+}
+@if (cuenta != null)
+{
+    @section Scripts
+    {
+        <script>
+            $("a#idLogin").html("Cerrar Sesión");
+            $("a#idLogin").attr("href", "/Login/CerrarSesion")
+        </script>
+    }
+}

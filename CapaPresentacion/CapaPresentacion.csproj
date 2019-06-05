@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,7 +44,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core, Version=1.4.0.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <HintPath>..\packages\dotless.1.4.0.0\lib\dotless.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -53,6 +63,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.2\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization.Less, Version=1.3.0.0, Culture=neutral, PublicKeyToken=9b7581e0240fe480, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Web.Optimization.Less.1.3.4\lib\net40\System.Web.Optimization.Less.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -60,6 +76,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -88,6 +107,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="about.html" />
+    <Content Include="blog.html" />
     <Content Include="Bootstrap-datetime\css\bootstrap-datepicker.css" />
     <Content Include="Bootstrap-datetime\css\bootstrap-datepicker.min.css" />
     <Content Include="Bootstrap-datetime\css\bootstrap-datepicker.standalone.css" />
@@ -164,16 +185,139 @@
     <Content Include="Bootstrap-datetime\locales\bootstrap-datepicker.vi.min.js" />
     <Content Include="Bootstrap-datetime\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="Bootstrap-datetime\locales\bootstrap-datepicker.zh-TW.min.js" />
+    <Content Include="Bootstrap\about.html" />
+    <Content Include="Bootstrap\blog.html" />
+    <Content Include="Bootstrap\contact.html" />
+    <Content Include="Bootstrap\elements.html" />
+    <Content Include="Bootstrap\images\about.jpg" />
+    <Content Include="Bootstrap\images\author_1.jpg" />
+    <Content Include="Bootstrap\images\blog.jpg" />
+    <Content Include="Bootstrap\images\blog_1.jpg" />
+    <Content Include="Bootstrap\images\blog_2.jpg" />
+    <Content Include="Bootstrap\images\blog_3.jpg" />
+    <Content Include="Bootstrap\images\check.png" />
+    <Content Include="Bootstrap\images\contact.jpg" />
+    <Content Include="Bootstrap\images\discover_1.jpg" />
+    <Content Include="Bootstrap\images\discover_2.jpg" />
+    <Content Include="Bootstrap\images\discover_3.jpg" />
+    <Content Include="Bootstrap\images\elements.jpg" />
+    <Content Include="Bootstrap\images\footer.jpg" />
+    <Content Include="Bootstrap\images\gallery_1.jpg" />
+    <Content Include="Bootstrap\images\gallery_2.jpg" />
+    <Content Include="Bootstrap\images\gallery_3.jpg" />
+    <Content Include="Bootstrap\images\gallery_4.jpg" />
+    <Content Include="Bootstrap\images\home.jpg" />
+    <Content Include="Bootstrap\images\icon_1.svg" />
+    <Content Include="Bootstrap\images\icon_2.svg" />
+    <Content Include="Bootstrap\images\icon_3.svg" />
+    <Content Include="Bootstrap\images\intro.jpg" />
+    <Content Include="Bootstrap\images\login.jpg" />
+    <Content Include="Bootstrap\images\logo.png" />
+    <Content Include="Bootstrap\images\logo_2.png" />
+    <Content Include="Bootstrap\images\logo_3.png" />
+    <Content Include="Bootstrap\images\logo_4.png" />
+    <Content Include="Bootstrap\images\offer_1.jpg" />
+    <Content Include="Bootstrap\images\offer_2.jpg" />
+    <Content Include="Bootstrap\images\offer_3.jpg" />
+    <Content Include="Bootstrap\images\offer_4.jpg" />
+    <Content Include="Bootstrap\images\offer_5.jpg" />
+    <Content Include="Bootstrap\images\offer_6.jpg" />
+    <Content Include="Bootstrap\images\recent_1.jpg" />
+    <Content Include="Bootstrap\images\recent_2.jpg" />
+    <Content Include="Bootstrap\images\recent_3.jpg" />
+    <Content Include="Bootstrap\images\recent_4.jpg" />
+    <Content Include="Bootstrap\images\recent_5.jpg" />
+    <Content Include="Bootstrap\images\recent_6.jpg" />
+    <Content Include="Bootstrap\images\recent_7.jpg" />
+    <Content Include="Bootstrap\images\rooms.jpg" />
+    <Content Include="Bootstrap\images\rooms_1.jpg" />
+    <Content Include="Bootstrap\images\rooms_2.jpg" />
+    <Content Include="Bootstrap\images\room_1.jpg" />
+    <Content Include="Bootstrap\images\room_2.jpg" />
+    <Content Include="Bootstrap\images\room_3.jpg" />
+    <Content Include="Bootstrap\images\room_4.jpg" />
+    <Content Include="Bootstrap\images\search.png" />
+    <Content Include="Bootstrap\images\sidebar.jpg" />
+    <Content Include="Bootstrap\index.html" />
+    <Content Include="Bootstrap\js\about.js" />
+    <Content Include="Bootstrap\js\blog.js" />
+    <Content Include="Bootstrap\js\contact.js" />
+    <Content Include="Bootstrap\js\custom.js" />
+    <Content Include="Bootstrap\js\elements.js" />
+    <Content Include="Bootstrap\js\google-api.js" />
+    <Content Include="Bootstrap\js\jquery-3.3.1.min.js" />
+    <Content Include="Bootstrap\js\login.js" />
+    <Content Include="Bootstrap\js\rooms.js" />
+    <Content Include="Bootstrap\plugins\easing\easing.js" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Bootstrap\plugins\greensock\animation.gsap.min.js" />
+    <Content Include="Bootstrap\plugins\greensock\ScrollToPlugin.min.js" />
+    <Content Include="Bootstrap\plugins\greensock\TimelineMax.min.js" />
+    <Content Include="Bootstrap\plugins\greensock\TweenMax.min.js" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\AUTHORS.txt" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\external\jquery\jquery.js" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\images\ui-icons_444444_256x240.png" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\images\ui-icons_555555_256x240.png" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\images\ui-icons_777620_256x240.png" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\images\ui-icons_777777_256x240.png" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\index.html" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\jquery-ui.css" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\jquery-ui.js" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\jquery-ui.min.css" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\jquery-ui.min.js" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\jquery-ui.structure.css" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\jquery-ui.structure.min.css" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\jquery-ui.theme.css" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\jquery-ui.theme.min.css" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\LICENSE.txt" />
+    <Content Include="Bootstrap\plugins\OwlCarousel2-2.3.4\ajax-loader.gif" />
+    <Content Include="Bootstrap\plugins\OwlCarousel2-2.3.4\animate.css" />
+    <Content Include="Bootstrap\plugins\OwlCarousel2-2.3.4\owl.carousel.css" />
+    <Content Include="Bootstrap\plugins\OwlCarousel2-2.3.4\owl.carousel.js" />
+    <Content Include="Bootstrap\plugins\OwlCarousel2-2.3.4\owl.theme.default.css" />
+    <Content Include="Bootstrap\plugins\OwlCarousel2-2.3.4\owl.video.play.png" />
+    <Content Include="Bootstrap\plugins\parallax-js-master\parallax.min.js" />
+    <Content Include="Bootstrap\plugins\progressbar\progressbar.min.js" />
+    <Content Include="Bootstrap\plugins\scrollmagic\ScrollMagic.min.js" />
+    <Content Include="Bootstrap\rooms.html" />
+    <Content Include="Bootstrap\styles\about.css" />
+    <Content Include="Bootstrap\styles\about_responsive.css" />
+    <Content Include="Bootstrap\styles\blog.css" />
+    <Content Include="Bootstrap\styles\blog_responsive.css" />
+    <Content Include="Bootstrap\styles\bootstrap-4.1.2\bootstrap.min.css" />
+    <Content Include="Bootstrap\styles\bootstrap-4.1.2\bootstrap.min.js" />
+    <Content Include="Bootstrap\styles\bootstrap-4.1.2\popper.js" />
+    <Content Include="Bootstrap\styles\contact.css" />
+    <Content Include="Bootstrap\styles\contact2.css" />
+    <Content Include="Bootstrap\styles\contacto.css" />
+    <Content Include="Bootstrap\styles\contact_responsive.css" />
+    <Content Include="Bootstrap\styles\elements.css" />
+    <Content Include="Bootstrap\styles\elements_responsive.css" />
+    <Content Include="Bootstrap\styles\login.css" />
+    <Content Include="Bootstrap\styles\main_styles.css" />
+    <Content Include="Bootstrap\styles\mantenedores.css" />
+    <Content Include="Bootstrap\styles\responsive.css" />
+    <Content Include="Bootstrap\styles\rooms.css" />
+    <Content Include="Bootstrap\styles\rooms_responsive.css" />
+    <Content Include="contact.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Css\mantenedores.css" />
     <Content Include="Css\multi-select.css" />
+    <Content Include="elements.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
+    <Content Include="index.html" />
     <Content Include="jquery.multi-select.js" />
     <Content Include="mantenedores.js" />
+    <Content Include="rooms.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Bootstrap-datetime\css\bootstrap-datepicker.css.map" />
@@ -184,6 +328,40 @@
     <Content Include="Bootstrap-datetime\css\bootstrap-datepicker3.min.css.map" />
     <Content Include="Bootstrap-datetime\css\bootstrap-datepicker3.standalone.css.map" />
     <Content Include="Bootstrap-datetime\css\bootstrap-datepicker3.standalone.min.css.map" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Bootstrap\plugins\jquery-datepicker\package.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -205,6 +383,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -212,8 +391,7 @@
     <Compile Include="Controllers\MantenedorHuespedController.cs" />
     <Compile Include="Controllers\MantenedorServiciosController.cs" />
     <Compile Include="Controllers\MantenedorTipoHabitacionController.cs" />
-    <Compile Include="Controllers\MenuExtranetController.cs" />
-    <Compile Include="Controllers\MenuIntranetController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -265,9 +443,19 @@
     <Content Include="Views\MantenedorHuesped\registrarCuenta.cshtml" />
     <Content Include="Views\MantenedorHuesped\registrarHuesped.cshtml" />
     <Content Include="Views\MantenedorHuesped\eliminarCuenta.cshtml" />
-    <Content Include="Views\MenuIntranet\MenuIntranetIndex.cshtml" />
-    <Content Include="Views\MenuExtranet\MenuExtranetIndex.cshtml" />
     <Content Include="Views\Login\VerificarAcceso.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutContacto.cshtml" />
+    <Content Include="Views\Shared\_LayoutHabitaciones.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Shared\_LayoutNovedades.cshtml" />
+    <Content Include="Views\Shared\_LayoutReservar.cshtml" />
+    <Content Include="Views\Shared\_LayoutSobre.cshtml" />
+    <Content Include="Views\Menu\About.cshtml" />
+    <Content Include="Views\Menu\Rooms.cshtml" />
+    <Content Include="Views\Menu\Contact.cshtml" />
+    <Content Include="Views\Login\CerrarSesion.cshtml" />
+    <Content Include="Views\Menu\Inicio.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

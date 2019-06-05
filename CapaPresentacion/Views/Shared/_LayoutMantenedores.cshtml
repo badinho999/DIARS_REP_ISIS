@@ -1,75 +1,126 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <link href="~/Css/mantenedores.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <script src="~/Bootstrap-datetime/js/bootstrap-datepicker.min.js"></script>
-    <link href="~/Bootstrap-datetime/css/bootstrap-datepicker.css" rel="stylesheet" />
-    <link href="~/Css/multi-select.css" rel="stylesheet" />
-    <title>Mantenedor Hotel ISIS</title>
+    <title>Hotel ISIS @ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Marimar Hotel template project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @Styles.Render("~/bundles/mantenedorescss")    
 </head>
 <body>
-    <nav class="myNav navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="/Home/Index">Mantenedor</a>
-        <button class="nav-button navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" id="MantenedorHabitacion" href="/MantenedorHabitaciones/listarHabitaciones"> Habitación</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="MantenedorHuesped" href="/MantenedorHuesped/listarHuesped">Mantenedor Huésped</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="MantenedorServicios" href="/MantenedorServicios/listarServicios">Servicios adicionales  </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="MantenedorTH" href="/MantenedorTipoHabitacion/listarTiposH">Tipo de Habitación</a>
-                </li>
-            </ul>
-            <span class="left-side-nav navbar-text">
-                <ul class="navbar-nav">
-                    <li class="active">
-                        <a class="nav-link" href="#">Badinho <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Cerrar Sesión</a>
-                    </li>
-                </ul>
-            </span>
+    <div class="super_container">
 
+        <!-- Logo Overlay -->
+
+        <div class="logo_overlay">
+            <div class="logo_overlay_content d-flex flex-column align-items-center justify-content-center">
+                <div class="logo"><a href="#"><img src="~/Bootstrap/images/logo_3.png" alt=""></a></div>
+            </div>
         </div>
 
-    </nav>
+        <!-- Menu Overlay -->
 
+        <div class="menu_overlay">
+            <div class="menu_overlay_content d-flex flex-row align-items-center justify-content-center">
 
-    <header>
-        <h1 class="title" id="Titulo">Mantenedores</h1>
-    </header>
+                <!-- Hamburger Button -->
+                <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
 
-
-    @RenderBody()
-    <!-- Footer -->
-    <footer class="py-5 bg-black">
-        <div class="container">
-            <p class="m-0 text-center text-white small copy">Copyright &copy; Hostal ISIS 2019</p>
+            </div>
         </div>
-        <!-- /.container -->
-    </footer>
+
+        <!-- Menu -->
+
+        <div class="menu">
+            <div class="menu_container d-flex flex-column align-items-center justify-content-center">
+
+                <!-- Menu Navigation -->
+                <nav class="menu_nav text-center">
+                    <ul>
+                        <li>@Html.ActionLink("Habitación", "listarHabitaciones", "MantenedorHabitaciones", null, new { @class = "page-scroll" })</li>
+                        <li>@Html.ActionLink("Mantenedor Huesped", "listarHuesped", "MantenedorHuesped", null, new { @class = "page-scroll" })</li>
+                        <li>@Html.ActionLink("Servicios Adicionales", "listarServicios", "MantenedorServicios", null, new { @class = "page-scroll" })</li>
+                        <li>@Html.ActionLink("Tipo de Habitación", "listarTipoH", "MantenedorTipoHabitacion", null, new { @class = "page-scroll" })</li>
+                    </ul>
+                </nav>
+
+                <!-- Menu Social -->
+                <div class="social menu_social">
+                    <ul class="d-flex flex-row align-items-center justify-content-start">
+                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Home -->
+
+        <div class="home">
+            <!-- Para cambiar la imagen, ir a main_styles.css, a la funcion .home y cambiar la ruta-->
+            <div class="home_container d-flex flex-column align-items-center justify-content-center">
+                <!--<div class="home_title"><h1>Mantenedores</h1></div>-->
+            </div>
+        </div>
 
 
-    <script src="~/mantenedores.js"></script>
-    <script src="~/jquery.multi-select.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        @RenderBody()
+
+
+        <!-- Footer -->
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="footer_logo text-center">
+                            <a href="#"><img src="~/Bootstrap/images/logo.png" alt=""></a>
+                        </div>
+                        <div class="footer_content">
+                            <div class="row">
+                                <div class="col-lg-4 footer_col">
+                                    <div class="footer_info d-flex flex-column align-items-lg-end align-items-center justify-content-start">
+                                        <div class="text-center">
+                                            <div>Teléfono:</div>
+                                            <div>+51 999 999 999</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 footer_col">
+                                    <div class="footer_info d-flex flex-column align-items-center justify-content-start">
+                                        <div class="text-center">
+                                            <div>Dirección:</div>
+                                            <div>San Isidro, I Etapa, Mz M, n° 14, Trujillo</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 footer_col">
+                                    <div class="footer_info d-flex flex-column align-items-lg-start align-items-center justify-content-start">
+                                        <div class="text-center">
+                                            <div>E-Mail:</div>
+                                            <div>hotel.isis@gmail.com</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer_bar text-center">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Esta Página web se hizo con <i class="fa fa-heart-o" aria-hidden="true"></i> <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/js")
 
 </body>
 </html>
