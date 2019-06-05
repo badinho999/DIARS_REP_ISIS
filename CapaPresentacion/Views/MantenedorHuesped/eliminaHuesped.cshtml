@@ -1,66 +1,63 @@
 ﻿@model CapaEntidades.EntHuesped
-
+@using CapaEntidades;
 @{
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+}
+@section Scripts
+{
+    <script>
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        //$("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
 }
 
-    <section class="container" id="listarHuesped">
-        <div class="form-content-delete form-horizontal col-5 m-auto">
-            <h3 class="red-title">¿Seguro de eliminar a @Html.DisplayFor(model => model.Apellidos)?</h3>
-            <div>
-                <hr />
-                <dl class="dl-horizontal">
-                    <dt>
-                        Apellidos
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Apellidos)
-                    </dd>
-
-                    <dt>
-                        Email
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Cuenta.Email)
-                    </dd>
-
-                    <dt>
-                        Fecha de nacimiento
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Fechadenacimiento)
-                    </dd>
-
-                    <dt>
-                        Nombre
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Nombre)
-                    </dd>
-
-                    <dt>
-                        DNI
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Dni)
-                    </dd>
-
-                </dl>
-
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
+<section class="container" id="listarHuesped">
+    <div class="form-content-delete form-horizontal col-5 m-auto">
+        <h3 class="red-title">¿Seguro de eliminar a @Html.DisplayFor(model => model.Apellidos)?</h3>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Apellidos
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Apellidos)
+                </dd>
+                <dt>
+                    Email
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Cuenta.Email)
+                </dd>
+                <dt>
+                    Fecha de nacimiento
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Fechadenacimiento)
+                </dd>
+                <dt>
+                    Nombre
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Nombre)
+                </dd>
+                <dt>
+                    DNI
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Dni)
+                </dd>
+            </dl>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
                 <div class="form-actions no-color">
                     <input type="submit" value="Delete" class="btn btn-myBtn" /> |
                     <a class="ml-1 btn btn-MyDanger" href="/MantenedorHuesped/listarHuesped">Cancelar</a>
                 </div>
-                }
-            </div>
+            }
         </div>
-    </section>
+    </div>
+</section>

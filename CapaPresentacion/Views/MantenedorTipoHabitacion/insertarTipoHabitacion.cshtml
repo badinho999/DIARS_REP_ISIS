@@ -1,12 +1,20 @@
 ﻿@model CapaEntidades.EntTipoDeHabitacion
-
+@using CapaEntidades;
 @{
     ViewBag.Title = "insertarTipoHabitacion";
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
 }
 
+@section Scripts
+{
+    <script>
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        //$("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
+}
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <section class="container" id="listarTiposH">
@@ -62,6 +70,6 @@
             </div>
         </div>
     </section>
-    
+
 }
 

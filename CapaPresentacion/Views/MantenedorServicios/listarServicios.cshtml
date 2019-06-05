@@ -1,8 +1,17 @@
 ﻿@model IEnumerable<CapaEntidades.EntServicioadicional>
-
+@using CapaEntidades;
 @{
     ViewBag.Title = "Servicios";
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+}
+
+@section Scripts
+{
+    <script>
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        //$("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
 }
 
 <section class="container" id="listarServicios">
@@ -32,7 +41,7 @@
                     @Html.DisplayFor(modelItem => item.ServicioID)
                 </td>
                 <td class="options">
-                    @Html.ActionLink("Edit", "editarServicio", new { ServicioID = item.ServicioID  }, new { @class = "d-block col-6 mb-2 link-master btn btn-myBtn" })
+                    @Html.ActionLink("Edit", "editarServicio", new { ServicioID = item.ServicioID }, new { @class = "d-block col-6 mb-2 link-master btn btn-myBtn" })
                     @Html.ActionLink("Delete", "eliminarServicio", new { ServicioID = item.ServicioID }, new { @class = "d-block col-6 mb-2 link-master btn btn-MyDanger" })
                 </td>
             </tr>

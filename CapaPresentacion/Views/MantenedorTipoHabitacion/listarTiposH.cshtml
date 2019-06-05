@@ -1,10 +1,17 @@
 ﻿@model IEnumerable<CapaEntidades.EntTipoDeHabitacion>
-
+@using CapaEntidades;
 @{
     ViewBag.Title = "listarTiposH";
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
 }
-
+@section Scripts
+{
+    <script>
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        //$("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
+}
 
 <section class="container" id="listarTiposH">
     <div class="pb-4 form-header no-color">

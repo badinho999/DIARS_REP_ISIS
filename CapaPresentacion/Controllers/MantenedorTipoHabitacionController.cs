@@ -10,9 +10,19 @@ namespace CapaPresentacion.Controllers
 {
     public class MantenedorTipoHabitacionController : Controller
     {
+        public void verificarSesion()
+        {
+            if (Session["cuenta"] != null)
+            {
+                EntCuenta cuenta = (EntCuenta)Session["cuenta"];
+                ViewBag.Cuenta = cuenta;
+            }
+        }
+
         // GET: TipoHabitacion
         public ActionResult listarTiposH()
         {
+            verificarSesion();
             List<EntTipoDeHabitacion> lista = new List<EntTipoDeHabitacion>();
             foreach (EntTipoDeHabitacion thabitacion in LogTipoDeHabitacion.Instancia.listarTiposH())
             {
@@ -28,6 +38,7 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult insertarTipoHabitacion()
         {
+            verificarSesion();
             return View();
         }
 
@@ -55,6 +66,7 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult editarTipoH(int TipodehabitacionID)
         {
+            verificarSesion();
             EntTipoDeHabitacion tipoDeHabitacion = new EntTipoDeHabitacion();
             tipoDeHabitacion = LogTipoDeHabitacion.Instancia.buscarTipoH(TipodehabitacionID);
 
@@ -85,6 +97,7 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult eliminarTipoH(int TipodehabitacionID)
         {
+            verificarSesion();
             EntTipoDeHabitacion tipoDeHabitacion = new EntTipoDeHabitacion();
             tipoDeHabitacion = LogTipoDeHabitacion.Instancia.buscarTipoH(TipodehabitacionID);
 
@@ -116,6 +129,7 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult agregarServicios(int TipodehabitacionID)
         {
+            verificarSesion();
             List<EntServicioadicional> listarServicios = LogServiciosAdicionales.Instancia.listarServicios();
 
             var listaServicios = new MultiSelectList(listarServicios, "ServicioID", "NombreDeServicio");
@@ -156,6 +170,7 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult eliminarServicios(int TipodehabitacionID)
         {
+            verificarSesion();
             List<EntServicioadicional> listarServicios = LogServiciosAdicionales.Instancia.obtenerServicios(TipodehabitacionID);
 
             var listaServicios = new MultiSelectList(listarServicios, "ServicioID", "NombreDeServicio");

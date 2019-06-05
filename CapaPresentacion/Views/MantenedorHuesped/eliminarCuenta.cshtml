@@ -1,10 +1,17 @@
 ﻿@model CapaEntidades.EntCuenta
-
+@using CapaEntidades;
 @{
     ViewBag.Title = "eliminarCuenta";
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
 }
-
+@section Scripts
+{
+    <script>
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        //$("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
+}
 <section class="container" id="listarHuesped">
     <div class="form-content-delete form-horizontal col-5 m-auto">
         <h3 class="red-title">¿Seguro de anular el registro?</h3>

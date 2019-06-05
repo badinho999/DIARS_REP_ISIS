@@ -10,8 +10,18 @@ namespace CapaPresentacion.Controllers
 {
     public class MantenedorServiciosController : Controller
     {
+        public void verificarSesion()
+        {
+            if (Session["cuenta"] != null)
+            {
+                EntCuenta cuenta = (EntCuenta)Session["cuenta"];
+                ViewBag.Cuenta = cuenta;
+            }
+        }
+
         public ActionResult listarServicios()
         {
+            verificarSesion();
             List<EntServicioadicional> lista = LogServiciosAdicionales.Instancia.listarServicios();
             ViewBag.lista = lista;
             return View(lista);
@@ -20,6 +30,7 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult insertarServicio()
         {
+            verificarSesion();
             return View();
         }
 
@@ -47,6 +58,7 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult editarServicio(int ServicioID)
         {
+            verificarSesion();
             EntServicioadicional servicioadicional = new EntServicioadicional();
             servicioadicional = LogServiciosAdicionales.Instancia.buscarServicio(ServicioID);
             return View(servicioadicional);
@@ -76,6 +88,7 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult eliminarServicio(int ServicioID)
         {
+            verificarSesion();
             EntServicioadicional servicioadicional = new EntServicioadicional();
             servicioadicional = LogServiciosAdicionales.Instancia.buscarServicio(ServicioID);
             return View(servicioadicional);

@@ -1,60 +1,68 @@
 ﻿@model IEnumerable<CapaEntidades.EntHuesped>
-
+@using CapaEntidades;
 @{
     ViewBag.Title = "Huésped";
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
 }
-    <section class="container" id="listarHuesped">
-        <div class="pb-4 form-header no-color">
-            <a class="btn btn-myBtn" href="/MantenedorHuesped/registrarCuenta">Nuevo huésped</a>
-        </div>
-        
-        <table class="table m-auto col-10 table-striped table-dark">
+@section Scripts
+{
+    <script>
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        //$("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
+}
+<section class="container" id="listarHuesped">
+    <div class="pb-4 form-header no-color">
+        <a class="btn btn-myBtn" href="/MantenedorHuesped/registrarCuenta">Nuevo huésped</a>
+    </div>
+
+    <table class="table m-auto col-10 table-striped table-dark">
+        <tr>
+            <th>
+                Apellidos
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Fecha de nacimiento
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                DNI
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
             <tr>
-                <th>
-                    Apellidos
-                </th>
-                <th>
-                    Email
-                </th>
-                <th>
-                    Fecha de nacimiento
-                </th>
-                <th>
-                    Nombre
-                </th>
-                <th>
-                    DNI
-                </th>
-                <th>
-                    Actions
-                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellidos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cuenta.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fechadenacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dni)
+                </td>
+                <td class="options">
+                    @Html.ActionLink("Edit", "editarHuesped", new { Dni = item.Dni }, new { @class = "d-block mb-2 link-master btn btn-myBtn" })
+                    @Html.ActionLink("Delete", "eliminaHuesped", new { Dni = item.Dni }, new { @class = "d-block mb-2 link-master btn btn-MyDanger" })
+                </td>
             </tr>
+        }
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Apellidos)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cuenta.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Fechadenacimiento)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Dni)
-                    </td>
-                    <td class="options">
-                        @Html.ActionLink("Edit", "editarHuesped", new { Dni = item.Dni }, new { @class = "d-block mb-2 link-master btn btn-myBtn" })
-                        @Html.ActionLink("Delete", "eliminaHuesped", new { Dni = item.Dni }, new { @class = "d-block mb-2 link-master btn btn-MyDanger" })
-                    </td>
-                </tr>
-            }
-
-        </table>
-    </section>
+    </table>
+</section>

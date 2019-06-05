@@ -1,8 +1,17 @@
 ﻿@model IEnumerable<CapaEntidades.EntHabitacion>
-
+@using CapaEntidades;
 @{
     ViewBag.Title = "listarHabitaciones";
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+}
+
+@section Scripts
+{
+    <script>
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        //$("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
 }
 
 <section class="container" id="listarHabitaciones">
@@ -72,7 +81,7 @@
                     }
                 </td>
                 <td class="options">
-                    @Html.ActionLink("Edit", "editarHabitacion", new { NumeroHabitacion = item.NumeroHabitacion },new { @class = "d-block mb-2 link-master btn btn-myBtn" })
+                    @Html.ActionLink("Edit", "editarHabitacion", new { NumeroHabitacion = item.NumeroHabitacion }, new { @class = "d-block mb-2 link-master btn btn-myBtn" })
                     @Html.ActionLink("Delete", "eliminarHabitacion", new { NumeroHabitacion = item.NumeroHabitacion }, new { @class = "d-block mb-2 link-master btn btn-MyDanger" })
                 </td>
             </tr>

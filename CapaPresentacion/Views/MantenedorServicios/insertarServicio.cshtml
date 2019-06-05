@@ -1,14 +1,23 @@
 ﻿@model CapaEntidades.EntServicioadicional
-
+@using CapaEntidades;
 @{
     ViewBag.Title = "insertarServicio";
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
 }
 
-@using (Html.BeginForm()) 
+@section Scripts
+{
+    <script>
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        //$("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
+}
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <section class="container" id="listarServicios">
         <div class="form-content m-auto form-horizontal col-5">
             <h4>Agregar Servicio Adicional</h4>

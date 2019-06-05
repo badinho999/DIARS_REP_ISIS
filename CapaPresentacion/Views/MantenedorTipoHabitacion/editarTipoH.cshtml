@@ -1,10 +1,18 @@
 ﻿@model CapaEntidades.EntTipoDeHabitacion
-
+@using CapaEntidades;
 @{
     ViewBag.Title = "editarTipoH";
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
 }
 
+@section Scripts
+{
+    <script>
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        //$("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
+}
 
 @using (Html.BeginForm())
 {
@@ -19,7 +27,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.TipodehabitacionID, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.TipodehabitacionID, new { htmlAttributes = new { @class = "form-control",@disabled = "disabled" } })
+                    @Html.EditorFor(model => model.TipodehabitacionID, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
                     @Html.ValidationMessageFor(model => model.TipodehabitacionID, "", new { @class = "text-danger" })
                 </div>
             </div>

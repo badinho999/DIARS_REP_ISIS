@@ -11,8 +11,19 @@ namespace CapaPresentacion.Controllers
     public class MantenedorHabitacionesController : Controller
     {
         // GET: MantenedorHabitaciones
+        public void verificarSesion()
+        {
+            if (Session["cuenta"] != null)
+            {
+                EntCuenta cuenta = (EntCuenta)Session["cuenta"];
+                ViewBag.Cuenta = cuenta;
+            }
+        }
+
         public ActionResult listarHabitaciones()
         {
+            verificarSesion();
+
             List<EntHabitacion> lista = new List<EntHabitacion>();
             foreach (EntHabitacion habitacion in LogHabitacion.Instancia.listarHabitaciones())
             {
@@ -28,6 +39,7 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult insertarHabitacion()
         {
+            verificarSesion();
             List<EntTipoDeHabitacion> listarTiposH = LogTipoDeHabitacion.Instancia.listarTiposH();
 
             var listaTipos = new SelectList(listarTiposH, "TipodehabitacionID", "Nombretipodehabitacion");
@@ -67,6 +79,7 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult eliminarHabitacion(string NumeroHabitacion)
         {
+            verificarSesion();
             EntHabitacion habitacion = new EntHabitacion(); 
             habitacion = LogHabitacion.Instancia.buscarHabitacion(NumeroHabitacion);
             return View(habitacion);
@@ -96,6 +109,7 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult editarHabitacion(string NumeroHabitacion)
         {
+            verificarSesion();
             List<EntTipoDeHabitacion> listarTiposH = LogTipoDeHabitacion.Instancia.listarTiposH();
 
             var listaTipos = new SelectList(listarTiposH, "TipodehabitacionID", "Nombretipodehabitacion");

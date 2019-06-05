@@ -12,8 +12,19 @@ namespace CapaPresentacion.Controllers
     {
         public EntCuenta user;
         // GET: MantenedorHuesped
+        public void verificarSesion()
+        {
+            if (Session["cuenta"] != null)
+            {
+                EntCuenta cuenta = (EntCuenta)Session["cuenta"];
+                ViewBag.Cuenta = cuenta;
+            }
+        }
+        
+
         public ActionResult listarHuesped()
         {
+            verificarSesion();
             List<EntHuesped> lista = LogHuesped.Instancia.listarHuesped();
             ViewBag.lista = lista;
             return View(lista);
@@ -22,6 +33,7 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult registrarCuenta()
         {
+            verificarSesion();
             return View();
         }
 
@@ -53,6 +65,7 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult eliminarCuenta(string NombreUsuario)
         {
+            verificarSesion();
             EntCuenta cuenta = new EntCuenta();
             cuenta = LogCuenta.Instancia.BuscarCuenta(NombreUsuario);
             return View(cuenta);
@@ -82,6 +95,7 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult registrarHuesped(string NombreUsuario)
         {
+            verificarSesion();
             ViewBag.NombreUsuario = NombreUsuario;
             EntHuesped huesped = new EntHuesped();
             huesped.Cuenta = LogCuenta.Instancia.BuscarCuenta(NombreUsuario);
@@ -118,9 +132,11 @@ namespace CapaPresentacion.Controllers
             }
         }
 
+        //Pendiente
         [HttpGet]
         public ActionResult editarHuesped(string Dni)
         {
+            verificarSesion();
             EntHuesped huesped = new EntHuesped();
             huesped = LogHuesped.Instancia.BuscarHuesped(Dni);
             return View(huesped);
@@ -150,6 +166,7 @@ namespace CapaPresentacion.Controllers
         [HttpGet]
         public ActionResult eliminaHuesped(string Dni)
         {
+            verificarSesion();
             EntHuesped huesped = new EntHuesped();
             huesped = LogHuesped.Instancia.BuscarHuesped(Dni);
             return View(huesped);

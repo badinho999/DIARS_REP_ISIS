@@ -1,8 +1,17 @@
 ﻿@model CapaEntidades.EntHabitacion
-
+@using CapaEntidades;
 @{
     ViewBag.Title = "insertarHabitacion";
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+}
+
+@section Scripts
+{
+    <script>
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        //$("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
 }
 
 @using (Html.BeginForm())
