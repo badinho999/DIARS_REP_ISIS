@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Marimar Hotel template project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @Styles.Render("~/bundles/mantenedorescss")    
+    @*<link href="~/Bootstrap/styles/multi-select.css" rel="stylesheet" />*@
+    @Styles.Render("~/bundles/mantenedorescss")
+    @RenderSection("Header", false/*required*/)
 </head>
 <body>
     <header class="header">
@@ -19,10 +21,12 @@
             <!-- Main Nav -->
             <nav class="main_nav">
                 <ul class="d-flex flex-row align-items-center justify-content-start">
+                    <li>@Html.ActionLink("Alquilar", "AlquilerMenu", "RealizarAlquiler", null, new { @class = "page-scroll" })</li>
                     <li>@Html.ActionLink("Habitación", "listarHabitaciones", "MantenedorHabitaciones", null, new { @class = "page-scroll" })</li>
                     <li>@Html.ActionLink("Mantenedor Huesped", "listarHuesped", "MantenedorHuesped", null, new { @class = "page-scroll" })</li>
                     <li>@Html.ActionLink("Servicios Adicionales", "listarServicios", "MantenedorServicios", null, new { @class = "page-scroll" })</li>
                     <li>@Html.ActionLink("Tipo de Habitación", "listarTiposH", "MantenedorTipoHabitacion", null, new { @class = "page-scroll" })</li>
+
                 </ul>
             </nav>
 
@@ -79,6 +83,7 @@
                 <!-- Menu Navigation -->
                 <nav class="menu_nav text-center">
                     <ul>
+                        <li>@Html.ActionLink("Alquilar", "AlquilerMenu", "RealizarAlquiler", null, new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Habitación", "listarHabitaciones", "MantenedorHabitaciones", null, new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Mantenedor Huesped", "listarHuesped", "MantenedorHuesped", null, new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Servicios Adicionales", "listarServicios", "MantenedorServicios", null, new { @class = "page-scroll" })</li>
@@ -105,7 +110,7 @@
         <div class="home">
             <!-- Para cambiar la imagen, ir a main_styles.css, a la funcion .home y cambiar la ruta-->
             <div class="home_container d-flex flex-column align-items-center justify-content-center">
-                <!--<div class="home_title"><h1>Mantenedores</h1></div>-->
+                <div class="home_title"><h1>Mantenedores</h1></div>
             </div>
         </div>
 
@@ -161,7 +166,9 @@
             </div>
         </footer>
     </div>
-    @Scripts.Render("~/bundles/js")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    @Scripts.Render("~/bundles/mantenedoresjs")
     @RenderSection("Scripts", false/*required*/)
 </body>
 </html>

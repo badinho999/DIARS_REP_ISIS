@@ -1,0 +1,92 @@
+﻿@model CapaEntidades.EntHabitacion
+@using CapaEntidades;
+@{
+    /**/
+
+    ViewBag.Title = "RealizarAlquiler";
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+    string fechaIngreso = ViewBag.FechaIngreso;
+    string fechaSalida = ViewBag.FechaSalida;
+    int cantidadAdultos = ViewBag.CantidadAdultos;
+    int cantidadKids = ViewBag.CantidadKIds;
+}
+
+@section Scripts
+{
+    <script>
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        //$("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <section class="container" id="realizarAlquiler">
+        <div class="form-content form-horizontal col-5 m-auto">
+            <h4>Realizar Alquiler</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Dni</label>
+                <div class="col-md-10">
+                    <input type="text" name="txtDni" class="form-control" required="required">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-8">Fecha de Ingreso</label>
+                <div class="col-md-10">
+                    <input type="text" name="txtFechaIngreso" class="form-control" value="@fechaIngreso" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-8">Fecha de Salida</label>
+                <div class="col-md-10">
+                    <input type="text" name="txtFechaSalida" class="form-control" value="@fechaSalida" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-8">Cantidad de Adultos</label>
+                <div class="col-md-10">
+                    <input type="text" name="txtCantidadAdultos" class="form-control" value="@cantidadAdultos" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-8">Cantidad de Niños</label>
+                <div class="col-md-10">
+                    <input type="text" name="txtCantidadKids" class="form-control" value="@cantidadKids" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.NumeroHabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NumeroHabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Tipodehabitacion.Nombretipodehabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Tipodehabitacion.Nombretipodehabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Tipodehabitacion.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Tipodehabitacion.Precio, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Alquilar" class="btn btn-myBtn" />
+                    <a class="ml-1 btn btn-MyDanger" href="/RealizarAlquiler/AlquilerMenu">Cancelar</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+}

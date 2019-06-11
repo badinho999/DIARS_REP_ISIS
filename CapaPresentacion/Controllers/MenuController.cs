@@ -44,5 +44,11 @@ namespace CapaPresentacion.Controllers
             return View();
         }
 
+        public ActionResult Reservar()
+        {
+            verificarSesion();
+            return View();
+        }
+
     }
 }

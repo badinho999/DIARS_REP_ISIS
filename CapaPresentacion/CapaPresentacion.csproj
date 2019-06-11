@@ -246,6 +246,7 @@
     <Content Include="Bootstrap\js\elements.js" />
     <Content Include="Bootstrap\js\google-api.js" />
     <Content Include="Bootstrap\js\jquery-3.3.1.min.js" />
+    <Content Include="Bootstrap\js\jquery.multi-select.js" />
     <Content Include="Bootstrap\js\login.js" />
     <Content Include="Bootstrap\js\rooms.js" />
     <Content Include="Bootstrap\plugins\easing\easing.js" />
@@ -301,6 +302,8 @@
     <Content Include="Bootstrap\styles\login.css" />
     <Content Include="Bootstrap\styles\main_styles.css" />
     <Content Include="Bootstrap\styles\mantenedores.css" />
+    <Content Include="Bootstrap\styles\multi-select.css" />
+    <Content Include="Bootstrap\styles\reservar.css" />
     <Content Include="Bootstrap\styles\responsive.css" />
     <Content Include="Bootstrap\styles\rooms.css" />
     <Content Include="Bootstrap\styles\rooms_responsive.css" />
@@ -315,7 +318,6 @@
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
     <Content Include="index.html" />
-    <Content Include="jquery.multi-select.js" />
     <Content Include="mantenedores.js" />
     <Content Include="rooms.html" />
     <Content Include="Scripts\bootstrap.js" />
@@ -392,6 +394,8 @@
     <Compile Include="Controllers\MantenedorServiciosController.cs" />
     <Compile Include="Controllers\MantenedorTipoHabitacionController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\RealizarAlquilerController.cs" />
+    <Compile Include="Controllers\RealizarReservaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -456,6 +460,12 @@
     <Content Include="Views\Menu\Contact.cshtml" />
     <Content Include="Views\Login\CerrarSesion.cshtml" />
     <Content Include="Views\Menu\Inicio.cshtml" />
+    <Content Include="Views\RealizarReserva\HabitacionesDisponibles.cshtml" />
+    <Content Include="Views\Menu\Reservar.cshtml" />
+    <Content Include="Views\RealizarAlquiler\AlquilerMenu.cshtml" />
+    <Content Include="Views\RealizarAlquiler\HabitacionesDisponibles.cshtml" />
+    <Content Include="Views\RealizarAlquiler\RealizarAlquiler.cshtml" />
+    <Content Include="Views\RealizarReserva\RealizarReserva.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

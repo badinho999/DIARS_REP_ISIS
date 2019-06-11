@@ -59,6 +59,6 @@ Select	h.NumeroHabitacion, th.Nombretipodehabitacion,
 		th.TipodehabitacionID, 
 		th.Numerodecamas,th.Precio,th.Capacidad,th.Precio,th.Costoadicional
 from Habitacion h inner join Tipodehabitacion th on(h.TipodehabitacionID=th.TipodehabitacionID)
-where h.NumeroHabitacion = @prmstrNumeroHabitacion
+where h.NumeroHabitacion = '101'
 end
 go

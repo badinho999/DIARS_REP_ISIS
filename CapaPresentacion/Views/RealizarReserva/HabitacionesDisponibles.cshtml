@@ -1,0 +1,87 @@
+﻿@model IEnumerable<CapaEntidades.EntHabitacion>
+@using CapaEntidades;
+@{
+    Layout = "~/Views/Shared/_LayoutReservar.cshtml";
+}
+
+@section Rooms{
+    
+<section class="container" id="listarHabitaciones">
+    <div class="pb-4 form-header no-color">
+        <a class="btn btn-myBtn" href="/MantenedorHabitaciones/insertarHabitacion">Nueva habitación</a>
+    </div>
+
+    <table class="table m-auto col-15 table-striped table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroHabitacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipodehabitacion.Nombretipodehabitacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipodehabitacion.Numerodecamas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipodehabitacion.Capacidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipodehabitacion.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipodehabitacion.Costoadicional)
+            </th>
+            <th>
+                Servicios
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroHabitacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Nombretipodehabitacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Numerodecamas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Capacidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Costoadicional)
+                </td>
+
+                <td>
+                    @{
+                        string servicios = string.Join
+                        (
+                            ", ",
+                            (from row in item.Tipodehabitacion.ServiciosAdicionales
+                             select row.NombreDeServicio).ToArray()
+                        );
+                        @servicios.ToString()
+                    }
+                </td>
+                <td class="options">
+                    @Html.ActionLink("RESERVAR", "RealizarReserva", new { NumeroHabitacion = item.NumeroHabitacion,fechaReserva = ViewBag.FechaReserva
+                   ,fechaIngreso = ViewBag.FechaIngreso,
+                   fechaSalida = ViewBag.FechaSalida, cantidadAdultos = ViewBag.CantidadAdultos
+                   , cantidadKids = ViewBag.CantidadKids}, new { @class = "d-block mb-2 link-master btn btn-myBtn" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</section>
+}
+    

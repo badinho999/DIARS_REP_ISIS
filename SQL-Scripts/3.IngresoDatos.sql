@@ -1,5 +1,7 @@
 /*INGRESO DE DATOS*/
 
+use Proyecto_DIARS_ISIS
+
 /*Tipo de habitaci�n*/
 Insert into Tipodehabitacion(Capacidad,Costoadicional,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
 Values(1,10,'Simple',1,30,NEXT VALUE FOR TipodehabitacionID)
@@ -200,3 +202,135 @@ Values('HOSTALISIS.dCornejo','badinho9@gmail.com','ISIS01',convert(date, getdate
 
 Insert into Administradorhotel(Apellidos,Nombre,Fechadenacimiento,NombreUsuario)
 Values('Cornejo Chunga','Daniel Badinho','1999-01-31','HOSTALISIS.dCornejo')
+
+/*Alquiler*/
+/*Simples*/
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','101')
+GO
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','105')
+GO
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','201')
+GO
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','301')
+GO
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','401')
+GO
+/*Dobles*/
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','102')
+GO
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','202')
+GO
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','302')
+GO
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','402')
+GO
+/*Triples*/
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(2,1,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','103')
+GO
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(2,1,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','203')
+GO
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(2,1,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','303')
+GO
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(3,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','403')
+GO
+/*Múltiples*/
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(2,2,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','104')
+GO
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(2,2,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','204')
+GO
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(2,2,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','304')
+GO
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(4,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','404')
+GO
+/*Matrimoniales*/
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','305')
+GO
+Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),'71778079','405')
+GO
+
+/*Reserva*/
+Select * from Habitacion h inner join Tipodehabitacion th on(h.TipodehabitacionID=th.TipodehabitacionID)
+where th.Nombretipodehabitacion='Triple'
+
+Select * from Tipodehabitacion
+/*Simples*/
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','101')
+GO
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','105')
+GO
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','201')
+GO
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','301')
+GO
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','401')
+GO
+/*Dobles*/
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','102')
+GO
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','202')
+GO
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','302')
+GO
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','402')
+GO
+/*Triples*/
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(2,1,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','103')
+GO
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(2,1,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','203')
+GO
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(2,1,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','303')
+GO
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(3,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','403')
+GO
+/*Multiples*/
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(2,2,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','104')
+GO
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(2,2,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','204')
+GO
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(2,2,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','304')
+GO
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(4,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','404')
+GO
+/*Matrimoniales*/
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','305')
+GO
+Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','405')
+GO

@@ -112,6 +112,11 @@ namespace CapaAccesoDatos
 
                     habitacion.NumeroHabitacion = Convert.ToString(reader["NumeroHabitacion"]);
                     tipoHabitacion.Nombretipodehabitacion = Convert.ToString(reader["Nombretipodehabitacion"]);
+                    tipoHabitacion.Numerodecamas = Convert.ToInt32(reader["Numerodecamas"]);
+                    tipoHabitacion.Precio = Convert.ToDouble(reader["Precio"]);
+                    tipoHabitacion.Capacidad = Convert.ToInt32(reader["Capacidad"]);
+                    tipoHabitacion.Costoadicional = Convert.ToDouble(reader["Costoadicional"]);
+                    tipoHabitacion.TipodehabitacionID = Convert.ToInt32(reader["TipodehabitacionID"]);
                     habitacion.Tipodehabitacion = tipoHabitacion;
                 }
 

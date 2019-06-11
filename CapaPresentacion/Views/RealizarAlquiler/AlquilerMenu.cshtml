@@ -1,0 +1,65 @@
+﻿@model CapaEntidades.EntCuenta
+@using CapaEntidades;
+@using System.Globalization;
+@{
+    ViewBag.Title = "Alquilar Habitación";
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+    string cultureName = "en-US";
+    var culture = new CultureInfo(cultureName);
+}
+
+@section Header
+{
+    <link href="~/Bootstrap/styles/reservar.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    @Styles.Render("~/bundles/js")
+    <script>
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        $("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
+}s
+<!-- Booking -->
+
+<div class="booking">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="booking_container d-flex flex-row align-items-end justify-content-start">
+                    <form action="/RealizarAlquiler/HabitacionesDisponibles" method="post" class="booking_form">
+                        <div class="booking_form_container d-flex flex-lg-row flex-column align-items-start justify-content-start flex-wrap">
+                            <div class="booking_form_inputs d-flex flex-row align-items-start justify-content-between flex-wrap">
+                                <div class="booking_dropdown"><input type="text" name="txtCheckIn" class="booking_input booking_input_a booking_in" disabled="disabled" value="@DateTime.Today.ToString("d",culture)"></div>
+                                <div class="booking_dropdown"><input type="text" name="txtCheckOut" class="datepicker booking_input booking_input_a booking_out" placeholder="Check out" required="required"></div>
+                                <div class="custom-select">
+                                    <select name="selectAdultos">
+                                        <option value="0">Adultos</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <div class="custom-select">
+                                    <select name="selectKids">
+                                        <option value="0">Niños</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="booking_form_button ml-lg-auto">Reservar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

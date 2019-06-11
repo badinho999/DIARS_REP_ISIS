@@ -6,23 +6,22 @@ using System.Threading.Tasks;
 
 namespace CapaEntidades
 {
-    class EntAlquiler
+    public class EntAlquiler
     {
-        private int cantidaddeadultos;
-        private int cantidaddekids;
-        private string fechadeingreso;
-        private string fechadesalida;
+        private int cantidaAdultos;
+        private int cantidadKids;
+        private string fechadeIngreso;
+        private string fechadeSalida;
         private int alquilerID;
         private EntHuesped huesped;
         private EntHabitacion habitacion;
 
-
-        public int Cantidaddeadultos { get => cantidaddeadultos; set => cantidaddeadultos = value; }
-        public int Cantidaddekids { get => cantidaddekids; set => cantidaddekids = value; }
-        public string Fechadeingreso { get => fechadeingreso; set => fechadeingreso = value; }
-        public string Fechadesalida { get => fechadesalida; set => fechadesalida = value; }
+        public int CantidaAdultos { get => cantidaAdultos; set => cantidaAdultos = value; }
+        public int CantidadKids { get => cantidadKids; set => cantidadKids = value; }
+        public string FechadeIngreso { get => fechadeIngreso; set => fechadeIngreso = value; }
+        public string FechadeSalida { get => fechadeSalida; set => fechadeSalida = value; }
         public int AlquilerID { get => alquilerID; set => alquilerID = value; }
-        internal EntHuesped Huesped { get => huesped; set => huesped = value; }
-        internal EntHabitacion Habitacion { get => habitacion; set => habitacion = value; }
+        public EntHuesped Huesped { get => huesped; set => huesped = value; }
+        public EntHabitacion Habitacion { get => habitacion; set => habitacion = value; }
     }
 }

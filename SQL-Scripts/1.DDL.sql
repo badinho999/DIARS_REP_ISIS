@@ -6,6 +6,8 @@
 
 /* Create Tables */
 
+use Proyecto_DIARS_ISIS
+
 Create TABLE [Comprobantepagoreserva]
 (
 	[Fechadeemision] date NULL,
@@ -41,8 +43,8 @@ GO
 
 CREATE TABLE [dbo].[Alquiler]
 (
-	[Cantidaddeadultos] [int] NOT NULL,
-	[Cantidaddekids] [int] NOT NULL,
+	[CantidadAdultos] [int] NOT NULL,
+	[CantidadKids] [int] NOT NULL,
 	[Fechadeingreso] [date] NOT NULL,
 	[Fechadesalida] [date] NOT NULL,
 	[AlquilerID] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
@@ -50,18 +52,24 @@ CREATE TABLE [dbo].[Alquiler]
 	[NumeroHabitacion] [varchar](4) NOT NULL,
 )
 GO
+
+CREATE TABLE [dbo].[Reserva]
+(
+	[CantidadAdultos] [int] NOT NULL,
+	[CantidadKids] [int] NOT NULL,
+	[Fechadeingreso] [date] NOT NULL,
+	[Fechadesalida] [date] NOT NULL,
+	[Fechadereserva] [date] NULL,
+	[ReservaID] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	[Dni] [char](8) NOT NULL,
+	[NumeroHabitacion] [varchar](4) NOT NULL,
+)
+GO
+
 CREATE TABLE [dbo].[Habitacion]
 (
 	[NumeroHabitacion] [varchar](4) PRIMARY KEY NOT NULL,
 	[TipodehabitacionID] [int] NOT NULL,
-)
-GO
-
-CREATE TABLE [dbo].[Reserva]
-(
-	[Fechadereserva] [date] NULL,
-	[ReservaID] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
-	[AlquilerID] [int] NOT NULL,
 )
 GO
 
@@ -120,14 +128,18 @@ ALTER TABLE [Alquiler] ADD CONSTRAINT [FK_Alquiler_Habitacion]
 	FOREIGN KEY ([NumeroHabitacion]) REFERENCES [Habitacion] ([NumeroHabitacion]) ON DELETE No Action ON UPDATE No Action
 GO
 
+ALTER TABLE [Reserva] ADD CONSTRAINT [FK_Reserva_Huesped]
+	FOREIGN KEY ([Dni]) REFERENCES [Huesped] ([Dni]) ON DELETE No Action ON UPDATE No Action
+GO
+
+ALTER TABLE [Reserva] ADD CONSTRAINT [FK_Reserva_Habitacion]
+	FOREIGN KEY ([NumeroHabitacion]) REFERENCES [Habitacion] ([NumeroHabitacion]) ON DELETE No Action ON UPDATE No Action
+GO
 
 ALTER TABLE [Habitacion] ADD CONSTRAINT [FK_Habitacion_Tipodehabitacion]
 	FOREIGN KEY ([TipodehabitacionID]) REFERENCES [Tipodehabitacion] ([TipodehabitacionID]) ON DELETE No Action ON UPDATE No Action
 GO
 
-ALTER TABLE [Reserva] ADD CONSTRAINT [FK_Reserva_Alquiler]
-	FOREIGN KEY ([AlquilerID]) REFERENCES [Alquiler] ([AlquilerID]) ON DELETE No Action ON UPDATE No Action
-GO
 ALTER TABLE [Comprobantepagoalquiler] ADD CONSTRAINT [FK_Comprobantepagoalquiler_Alquiler]
 	FOREIGN KEY ([AlquilerID]) REFERENCES [Alquiler] ([AlquilerID]) ON DELETE No Action ON UPDATE No Action
 GO
