@@ -30,25 +30,31 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_ListarHabitaciones", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_ListarHabitaciones", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    EntHabitacion habitacion = new EntHabitacion();
-                    EntTipoDeHabitacion tipoDeHabitacion = new EntTipoDeHabitacion();
-
-                    habitacion.NumeroHabitacion = Convert.ToString(dr["NumeroHabitacion"]);
-                    tipoDeHabitacion.Nombretipodehabitacion = Convert.ToString(dr["Nombretipodehabitacion"]);
-                    tipoDeHabitacion.Numerodecamas = Convert.ToInt32(dr["Numerodecamas"]);
-                    tipoDeHabitacion.Precio = Convert.ToDouble(dr["Precio"]);
-                    tipoDeHabitacion.Capacidad = Convert.ToInt32(dr["Capacidad"]);
-                    tipoDeHabitacion.Costoadicional = Convert.ToDouble(dr["Costoadicional"]);
-                    tipoDeHabitacion.TipodehabitacionID = Convert.ToInt32(dr["TipodehabitacionID"]);
-
-                    habitacion.Tipodehabitacion = tipoDeHabitacion;
                     
+                    EntTipoDeHabitacion tipoDeHabitacion = new EntTipoDeHabitacion
+                    {
+                        Nombretipodehabitacion = Convert.ToString(dr["Nombretipodehabitacion"]),
+                        Numerodecamas = Convert.ToInt32(dr["Numerodecamas"]),
+                        Precio = Convert.ToDouble(dr["Precio"]),
+                        Capacidad = Convert.ToInt32(dr["Capacidad"]),
+                        Costoadicional = Convert.ToDouble(dr["Costoadicional"]),
+                        TipodehabitacionID = Convert.ToInt32(dr["TipodehabitacionID"])
+                    };
+
+                    EntHabitacion habitacion = new EntHabitacion
+                    {
+                        NumeroHabitacion = Convert.ToString(dr["NumeroHabitacion"]),
+                        Tipodehabitacion = tipoDeHabitacion
+                    };
+                 
 
                     lista.Add(habitacion);
                 }
@@ -72,8 +78,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_InsertarHabitacion", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_InsertarHabitacion", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmstrNumeroHabitacion", habitacion.NumeroHabitacion);
                 cmd.Parameters.AddWithValue("@prmintTipodehabitacionID", habitacion.Tipodehabitacion.TipodehabitacionID);
                 cn.Open();
@@ -91,7 +99,7 @@ namespace CapaAccesoDatos
             return inserta;
         }
 
-        public EntHabitacion buscarHabitacion(string NumeroHabitacion)
+        public EntHabitacion BuscarHabitacion(string NumeroHabitacion)
         {
             SqlCommand cmd = null;
             EntHabitacion habitacion = null;
@@ -100,24 +108,31 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection connection = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_BuscarHabitacion", connection);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_BuscarHabitacion", connection)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmstrNumeroHabitacion", NumeroHabitacion);
                 connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 while(reader.Read())
                 {
-                    habitacion = new EntHabitacion();
-                    tipoHabitacion = new EntTipoDeHabitacion();
+                    
+                    tipoHabitacion = new EntTipoDeHabitacion
+                    {
+                        Nombretipodehabitacion = Convert.ToString(reader["Nombretipodehabitacion"]),
+                        Numerodecamas = Convert.ToInt32(reader["Numerodecamas"]),
+                        Precio = Convert.ToDouble(reader["Precio"]),
+                        Capacidad = Convert.ToInt32(reader["Capacidad"]),
+                        Costoadicional = Convert.ToDouble(reader["Costoadicional"]),
+                        TipodehabitacionID = Convert.ToInt32(reader["TipodehabitacionID"])
+                    };
+                    habitacion = new EntHabitacion
+                    {
+                        NumeroHabitacion = Convert.ToString(reader["NumeroHabitacion"]),
 
-                    habitacion.NumeroHabitacion = Convert.ToString(reader["NumeroHabitacion"]);
-                    tipoHabitacion.Nombretipodehabitacion = Convert.ToString(reader["Nombretipodehabitacion"]);
-                    tipoHabitacion.Numerodecamas = Convert.ToInt32(reader["Numerodecamas"]);
-                    tipoHabitacion.Precio = Convert.ToDouble(reader["Precio"]);
-                    tipoHabitacion.Capacidad = Convert.ToInt32(reader["Capacidad"]);
-                    tipoHabitacion.Costoadicional = Convert.ToDouble(reader["Costoadicional"]);
-                    tipoHabitacion.TipodehabitacionID = Convert.ToInt32(reader["TipodehabitacionID"]);
-                    habitacion.Tipodehabitacion = tipoHabitacion;
+                        Tipodehabitacion = tipoHabitacion
+                    };
                 }
 
             }
@@ -132,7 +147,7 @@ namespace CapaAccesoDatos
             return habitacion;
         }
 
-        public Boolean eliminarHabitacion(EntHabitacion habitacion)
+        public Boolean EliminarHabitacion(EntHabitacion habitacion)
         {
             SqlCommand cmd = null;
             Boolean delete;
@@ -140,8 +155,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection connection = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_EliminarHabitacion", connection);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_EliminarHabitacion", connection)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmstrNumeroHabitacion", habitacion.NumeroHabitacion);
                 connection.Open();
 
@@ -160,15 +177,17 @@ namespace CapaAccesoDatos
             return delete;
         }
 
-        public Boolean editarHabitacion(EntHabitacion habitacion)
+        public Boolean EditarHabitacion(EntHabitacion habitacion)
         {
             SqlCommand cmd = null;
             Boolean edit;
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_EditarHabitacion", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_EditarHabitacion", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmstrNumeroHabitacion", habitacion.NumeroHabitacion);
                 cmd.Parameters.AddWithValue("@prmintTipodehabitacionID", habitacion.Tipodehabitacion.TipodehabitacionID);
                 cn.Open();

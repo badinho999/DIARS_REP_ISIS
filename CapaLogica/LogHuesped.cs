@@ -23,7 +23,7 @@ namespace CapaLogica
         #endregion singleton
 
         #region metodos
-        public List<EntHuesped> listarHuesped()
+        public List<EntHuesped> ListarHuesped()
         {
             try
             {
@@ -37,7 +37,7 @@ namespace CapaLogica
 
         }
 
-        public Boolean registrarHuesped(EntHuesped huesped)
+        public Boolean RegistrarHuesped(EntHuesped huesped)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace CapaLogica
 
         }
 
-        public Boolean editarHuesped(EntHuesped huesped)
+        public Boolean EditarHuesped(EntHuesped huesped)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace CapaLogica
 
         }
 
-        public Boolean eliminarHuesped(EntHuesped huesped)
+        public Boolean EliminarHuesped(EntHuesped huesped)
         {
             try
             {

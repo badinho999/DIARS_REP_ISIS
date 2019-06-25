@@ -1,8 +1,25 @@
 ﻿@model CapaEntidades.EntTipoDeHabitacion
-
+@using CapaEntidades;
 @{
     ViewBag.Title = "agregarServicios";
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+}
+
+@section Scripts
+{
+    @Styles.Render("~/bundles/js")
+    <script>
+        $("#limpiar").empty()
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        $("a#adminName").attr("href", "/Login/CerrarSesion")
+        $('#MultiServ').multiSelect({
+            afterSelect: function (values) {
+            },
+            afterDeselect: function (values) {
+            }
+        });
+    </script>
 }
 
 <h2>agregarTipos</h2>
@@ -10,7 +27,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <section class="container" id="listarTiposH">
         <div class="form-content m-auto form-horizontal col-5">
             <h4>Agregar servicios a @Model.Nombretipodehabitacion</h4>
@@ -34,4 +51,3 @@
     </section>
 }
 
-    

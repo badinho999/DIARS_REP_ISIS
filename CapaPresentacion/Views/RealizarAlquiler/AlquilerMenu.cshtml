@@ -1,4 +1,4 @@
-﻿@model CapaEntidades.EntCuenta
+﻿@model CapaEntidades.EntHuesped
 @using CapaEntidades;
 @using System.Globalization;
 @{
@@ -9,19 +9,20 @@
     var culture = new CultureInfo(cultureName);
 }
 
-@section Header
+@*@section Header
 {
     <link href="~/Bootstrap/styles/reservar.css" rel="stylesheet" />
-}
+}*@
 
 @section Scripts
 {
     @Styles.Render("~/bundles/js")
     <script>
+        $("#limpiar").empty()
         $("a#adminName").html("@cuenta.NombreUsuario");
         $("a#adminName").attr("href", "/Login/CerrarSesion")
     </script>
-}s
+}
 <!-- Booking -->
 
 <div class="booking">
@@ -31,6 +32,7 @@
                 <div class="booking_container d-flex flex-row align-items-end justify-content-start">
                     <form action="/RealizarAlquiler/HabitacionesDisponibles" method="post" class="booking_form">
                         <div class="booking_form_container d-flex flex-lg-row flex-column align-items-start justify-content-start flex-wrap">
+                            <input type="hidden" name="txtdni" value="@Model.Dni" />
                             <div class="booking_form_inputs d-flex flex-row align-items-start justify-content-between flex-wrap">
                                 <div class="booking_dropdown"><input type="text" name="txtCheckIn" class="booking_input booking_input_a booking_in" disabled="disabled" value="@DateTime.Today.ToString("d",culture)"></div>
                                 <div class="booking_dropdown"><input type="text" name="txtCheckOut" class="datepicker booking_input booking_input_a booking_out" placeholder="Check out" required="required"></div>
@@ -41,7 +43,6 @@
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
-                                        <option value="5">5</option>
                                     </select>
                                 </div>
                                 <div class="custom-select">
@@ -51,11 +52,12 @@
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
-                                        <option value="5">5</option>
                                     </select>
                                 </div>
                             </div>
-                            <button class="booking_form_button ml-lg-auto">Reservar</button>
+
+
+                            <button class="booking_form_button ml-lg-auto">Alquilar</button>
                         </div>
                     </form>
                 </div>

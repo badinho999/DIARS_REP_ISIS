@@ -22,7 +22,7 @@ namespace CapaLogica
         #endregion singleton
 
         #region metodos
-        public List<EntTipoDeHabitacion> listarTiposH()
+        public List<EntTipoDeHabitacion> ListarTiposH()
         {
             try
             {
@@ -36,11 +36,11 @@ namespace CapaLogica
 
         }
 
-        public Boolean ingresarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
+        public Boolean IngresarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
         {
             try
             {
-                Boolean insertaTipo = DatTipoDeHabitacion.Instancia.ingresarTipoH(tipoDeHabitacion);
+                Boolean insertaTipo = DatTipoDeHabitacion.Instancia.IngresarTipoH(tipoDeHabitacion);
 
                 return insertaTipo;
             }
@@ -50,11 +50,11 @@ namespace CapaLogica
             }
         }
 
-        public EntTipoDeHabitacion buscarTipoH(int TipodehabitacionID)
+        public EntTipoDeHabitacion BuscarTipoH(int TipodehabitacionID)
         {
             try
             {
-                return DatTipoDeHabitacion.Instancia.buscarTipoH(TipodehabitacionID);
+                return DatTipoDeHabitacion.Instancia.BuscarTipoH(TipodehabitacionID);
             }
             catch(Exception e)
             {
@@ -75,11 +75,11 @@ namespace CapaLogica
             
         }
 
-        public Boolean eliminarServicios(EntTipoDeHabitacion tipoDeHabitacion, EntServicioadicional serv)
+        public Boolean EliminarServicios(EntTipoDeHabitacion tipoDeHabitacion, EntServicioadicional serv)
         {
             try
             {
-                return DatTipoDeHabitacion.Instancia.eliminarServicios(tipoDeHabitacion, serv);
+                return DatTipoDeHabitacion.Instancia.EliminarServicios(tipoDeHabitacion, serv);
             }
             catch (Exception e)
             {
@@ -88,11 +88,11 @@ namespace CapaLogica
 
         }
 
-        public Boolean editarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
+        public Boolean EditarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
         {
             try
             {
-                return DatTipoDeHabitacion.Instancia.editarTipoH(tipoDeHabitacion);
+                return DatTipoDeHabitacion.Instancia.EditarTipoH(tipoDeHabitacion);
             }
             catch(Exception e)
             {
@@ -100,11 +100,11 @@ namespace CapaLogica
             }
         }
 
-        public Boolean eliminarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
+        public Boolean EliminarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
         {
             try
             {
-                return DatTipoDeHabitacion.Instancia.eliminarTipoH(tipoDeHabitacion);
+                return DatTipoDeHabitacion.Instancia.EliminarTipoH(tipoDeHabitacion);
             }
             catch (Exception e)
             {

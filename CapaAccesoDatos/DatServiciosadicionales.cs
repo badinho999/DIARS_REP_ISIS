@@ -24,7 +24,7 @@ namespace CapaAccesoDatos
         #region metodos
 
         //Listar servicios
-        public List<EntServicioadicional> listarServicios()
+        public List<EntServicioadicional> ListarServicios()
         {
             SqlCommand cmd = null;
             List<EntServicioadicional> servicioadicionals = new List<EntServicioadicional>();
@@ -32,17 +32,20 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection connection = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_ListarServicios", connection);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_ListarServicios", connection)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while(reader.Read())
                 {
-                    EntServicioadicional servicioadicional = new EntServicioadicional();
-
-                    servicioadicional.NombreDeServicio = Convert.ToString(reader["NombreServicio"]);
-                    servicioadicional.ServicioID = Convert.ToInt32(reader["ServicioadicionalID"]);
+                    EntServicioadicional servicioadicional = new EntServicioadicional
+                    {
+                        NombreDeServicio = Convert.ToString(reader["NombreServicio"]),
+                        ServicioID = Convert.ToInt32(reader["ServicioadicionalID"])
+                    };
 
                     servicioadicionals.Add(servicioadicional);
                 }
@@ -58,7 +61,7 @@ namespace CapaAccesoDatos
             return servicioadicionals;
         }
 
-        public Boolean insertarServicio(EntServicioadicional servicioadicional)
+        public Boolean InsertarServicio(EntServicioadicional servicioadicional)
         {
             SqlCommand cmd = null;
             Boolean insert;
@@ -66,8 +69,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection connection = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_InsertarServicios", connection);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_InsertarServicios", connection)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmstrNombreServicio", servicioadicional.NombreDeServicio);
                 connection.Open();
 
@@ -85,7 +90,7 @@ namespace CapaAccesoDatos
             return insert;
         }
 
-        public EntServicioadicional buscarServicio(int ServicioadicionalID)
+        public EntServicioadicional BuscarServicio(int ServicioadicionalID)
         {
             SqlCommand cmd = null;
             EntServicioadicional servicioadicional = null;
@@ -93,17 +98,21 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection connection = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_BuscarServicio", connection);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_BuscarServicio", connection)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmintServicioadicionalID", ServicioadicionalID);
                 connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while(reader.Read())
                 {
-                    servicioadicional = new EntServicioadicional();
-                    servicioadicional.NombreDeServicio = Convert.ToString(reader["NombreServicio"]);
-                    servicioadicional.ServicioID = Convert.ToInt32(reader["ServicioadicionalID"]);
+                    servicioadicional = new EntServicioadicional
+                    {
+                        NombreDeServicio = Convert.ToString(reader["NombreServicio"]),
+                        ServicioID = Convert.ToInt32(reader["ServicioadicionalID"])
+                    };
                 }
             }
             catch(SqlException ex)
@@ -117,7 +126,7 @@ namespace CapaAccesoDatos
             return servicioadicional;
         }
 
-        public Boolean eliminarServicio(EntServicioadicional servicioadicional)
+        public Boolean EliminarServicio(EntServicioadicional servicioadicional)
         {
             SqlCommand cmd = null;
             Boolean delete;
@@ -125,8 +134,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection connection = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_EliminarServicio", connection);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_EliminarServicio", connection)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmintServicioadicionalID", servicioadicional.ServicioID);
                 connection.Open();
 
@@ -144,7 +155,7 @@ namespace CapaAccesoDatos
             return delete;
         }
 
-        public Boolean editarServicio(EntServicioadicional servicioadicional)
+        public Boolean EditarServicio(EntServicioadicional servicioadicional)
         {
             SqlCommand cmd = null;
             Boolean edit;
@@ -152,8 +163,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection connection = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_EditarServicio", connection);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_EditarServicio", connection)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmintServicioadicionalID", servicioadicional.ServicioID);
                 cmd.Parameters.AddWithValue("@prmstrNombreServicio", servicioadicional.NombreDeServicio);
                 connection.Open();
@@ -175,7 +188,7 @@ namespace CapaAccesoDatos
 
 
         //Obtener servicios del tipo de habitacion
-        public List<EntServicioadicional> obtenerServicios(int TipodehabitacionID)
+        public List<EntServicioadicional> ObtenerServicios(int TipodehabitacionID)
         {
             SqlCommand cmd = null;
             List<EntServicioadicional> servicioadicionals = new List<EntServicioadicional>();
@@ -183,17 +196,20 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_ObtenerServicios", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_ObtenerServicios", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmintTipodehabitacionID", TipodehabitacionID);
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 while(dr.Read())
                 {
-                    EntServicioadicional servicioadicional = new EntServicioadicional();
-
-                    servicioadicional.NombreDeServicio = Convert.ToString(dr["NombreServicio"]);
-                    servicioadicional.ServicioID = Convert.ToInt32(dr["ServicioadicionalID"]);
+                    EntServicioadicional servicioadicional = new EntServicioadicional
+                    {
+                        NombreDeServicio = Convert.ToString(dr["NombreServicio"]),
+                        ServicioID = Convert.ToInt32(dr["ServicioadicionalID"])
+                    };
 
                     servicioadicionals.Add(servicioadicional);
                 }

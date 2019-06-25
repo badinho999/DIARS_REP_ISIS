@@ -22,7 +22,7 @@ namespace CapaLogica
         #endregion singleton
 
         #region metodos
-        public List<EntHabitacion> listarHabitaciones()
+        public List<EntHabitacion> ListarHabitaciones()
         {
             try
             {
@@ -36,7 +36,7 @@ namespace CapaLogica
 
         }
 
-        public Boolean insertarHabitacion(EntHabitacion habitacion)
+        public Boolean InsertarHabitacion(EntHabitacion habitacion)
         {
             try
             {
@@ -49,11 +49,11 @@ namespace CapaLogica
 
         }
 
-        public EntHabitacion buscarHabitacion(string NumeroHabitacion)
+        public EntHabitacion BuscarHabitacion(string NumeroHabitacion)
         {
             try
             {
-                return DatHabitacion.Instancia.buscarHabitacion(NumeroHabitacion);
+                return DatHabitacion.Instancia.BuscarHabitacion(NumeroHabitacion);
             }
             catch(Exception e)
             {
@@ -61,11 +61,11 @@ namespace CapaLogica
             }
         }
 
-        public Boolean eliminarHabitacion(EntHabitacion habitacion)
+        public Boolean EliminarHabitacion(EntHabitacion habitacion)
         {
             try
             {
-                return DatHabitacion.Instancia.eliminarHabitacion(habitacion);
+                return DatHabitacion.Instancia.EliminarHabitacion(habitacion);
             }
             catch(Exception e)
             {
@@ -73,11 +73,11 @@ namespace CapaLogica
             }
         }
 
-        public Boolean editarHabitacion(EntHabitacion habitacion)
+        public Boolean EditarHabitacion(EntHabitacion habitacion)
         {
             try
             {
-                return DatHabitacion.Instancia.editarHabitacion(habitacion);
+                return DatHabitacion.Instancia.EditarHabitacion(habitacion);
             }
             catch(Exception e)
             {

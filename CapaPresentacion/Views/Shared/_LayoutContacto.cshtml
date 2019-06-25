@@ -49,7 +49,7 @@
                     <div class="header_login"><a class="page-scroll" id="idLogin" href="/Login/VerificarAcceso">Iniciar Sesión</a></div>
 
                     <!-- Header Link -->
-                    <div class="header_link"><a href="#">Reserva Aquí</a></div>
+                    <div class="header_link">@Html.ActionLink("Reserva Aquí", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
 
                     <!-- Hamburger Button -->
                     <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -91,7 +91,7 @@
                         <li>@Html.ActionLink("Contacto", "Contact", "Menu", null, new { @class = "page-scroll" })</li>
                     </ul>
                 </nav>
-                <div class="button menu_button"><a href="#">book now</a></div>
+                <div class="button menu_button">@Html.ActionLink("Reserva Aquí", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
 
                 <!-- Menu Social -->
                 <div class="social menu_social">
@@ -123,14 +123,14 @@
                 <div class="row">
                     <div class="col">
                         <div class="booking_container d-flex flex-row align-items-end justify-content-start">
-                            <form action="#" class="booking_form">
+                            <form action="/RealizarReserva/HabitacionesDisponibles" method="post" class="booking_form">
                                 <div class="booking_form_container d-flex flex-lg-row flex-column align-items-start justify-content-start flex-wrap">
                                     <div class="booking_form_inputs d-flex flex-row align-items-start justify-content-between flex-wrap">
-                                        <div class="booking_dropdown"><input type="text" class="datepicker booking_input booking_input_a booking_in" placeholder="Check in" required="required"></div>
-                                        <div class="booking_dropdown"><input type="text" class="datepicker booking_input booking_input_a booking_out" placeholder="Check out" required="required"></div>
+                                        <div class="booking_dropdown"><input type="text" name="txtCheckIn" class="datepicker booking_input booking_input_a booking_in" placeholder="Check in" required="required"></div>
+                                        <div class="booking_dropdown"><input type="text" name="txtCheckOut" class="datepicker booking_input booking_input_a booking_out" placeholder="Check out" required="required"></div>
                                         <div class="custom-select">
-                                            <select>
-                                                <option value="0">Adults</option>
+                                            <select name="selectAdultos">
+                                                <option value="0">Adultos</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -139,8 +139,8 @@
                                             </select>
                                         </div>
                                         <div class="custom-select">
-                                            <select>
-                                                <option value="0">Children</option>
+                                            <select name="selectKids">
+                                                <option value="0">Niños</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -149,7 +149,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <button class="booking_form_button ml-lg-auto">Reservar</button>
+                                    <button type="submit" class="booking_form_button ml-lg-auto">Reservar</button>
                                 </div>
                             </form>
                         </div>
@@ -193,80 +193,164 @@
             </div>
 
             <!-- Map -->
-            <div class="contact_map_container">
-                <div class="map">
-                    <div id="google_map" class="google_map">
-                        <div class="map_container">
-                            <div id="map"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Map Content -->
-                <div class="contact_map_content">
-                    <div class="d-flex flex-column align-items-center justify-content-center">
-                        <img class="contact_info_logo_1" src="~/Bootstrap/images/logo_4.png" alt="">
-                        <img class="contact_info_logo_2" src="~/Bootstrap/images/logo_2.png" alt="">
-                        <div class="contact_info_list">
-                            <ul class="text-center">
-                                <li>132 Liberty Streetelit, Plano, Texas</li>
-                                <li>hello@home.com</li>
-                                <li>214-805-4428</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <!--The div element for the map -->
+            <div class="contenedorMap">
+                <h2 class="text-center mt-4 mb-4">Nuestra ubicación</h2>
+                <div id="map" @*style="width: 1100px; height: 1200px"*@></div>
             </div>
+            
+            <script>
+                // Initialize and add the map
+                function initMap() {
+                    // The location of Uluru
+                    var isis = { lat: -8.094346, lng: -79.0512677 };
+                    // The map, centered at Uluru
+                    var map = new google.maps.Map(
+                        document.getElementById('map'),
+                        {
+                            zoom: 16,
+                            center: isis,
+                            styles: [
+                                { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
+                                { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+                                { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+                                {
+                                    featureType: 'administrative.locality',
+                                    elementType: 'labels.text.fill',
+                                    stylers: [{ color: '#d59563' }]
+                                },
+                                {
+                                    featureType: 'poi',
+                                    elementType: 'labels.text.fill',
+                                    stylers: [{ color: '#d59563' }]
+                                },
+                                {
+                                    featureType: 'poi.park',
+                                    elementType: 'geometry',
+                                    stylers: [{ color: '#263c3f' }]
+                                },
+                                {
+                                    featureType: 'poi.park',
+                                    elementType: 'labels.text.fill',
+                                    stylers: [{ color: '#6b9a76' }]
+                                },
+                                {
+                                    featureType: 'road',
+                                    elementType: 'geometry',
+                                    stylers: [{ color: '#38414e' }]
+                                },
+                                {
+                                    featureType: 'road',
+                                    elementType: 'geometry.stroke',
+                                    stylers: [{ color: '#212a37' }]
+                                },
+                                {
+                                    featureType: 'road',
+                                    elementType: 'labels.text.fill',
+                                    stylers: [{ color: '#9ca5b3' }]
+                                },
+                                {
+                                    featureType: 'road.highway',
+                                    elementType: 'geometry',
+                                    stylers: [{ color: '#746855' }]
+                                },
+                                {
+                                    featureType: 'road.highway',
+                                    elementType: 'geometry.stroke',
+                                    stylers: [{ color: '#1f2835' }]
+                                },
+                                {
+                                    featureType: 'road.highway',
+                                    elementType: 'labels.text.fill',
+                                    stylers: [{ color: '#f3d19c' }]
+                                },
+                                {
+                                    featureType: 'transit',
+                                    elementType: 'geometry',
+                                    stylers: [{ color: '#2f3948' }]
+                                },
+                                {
+                                    featureType: 'transit.station',
+                                    elementType: 'labels.text.fill',
+                                    stylers: [{ color: '#d59563' }]
+                                },
+                                {
+                                    featureType: 'water',
+                                    elementType: 'geometry',
+                                    stylers: [{ color: '#17263c' }]
+                                },
+                                {
+                                    featureType: 'water',
+                                    elementType: 'labels.text.fill',
+                                    stylers: [{ color: '#515c6d' }]
+                                },
+                                {
+                                    featureType: 'water',
+                                    elementType: 'labels.text.stroke',
+                                    stylers: [{ color: '#17263c' }]
+                                }
+                            ]
+                        });
+                    // The marker, positioned at Uluru
+                    var marker = new google.maps.Marker({ position: isis, map: map });
+                    
+                }
+            </script>
         </div>
+    </div>
 
-        <!-- Footer -->
+    <!-- Footer -->
 
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="footer_logo text-center">
-                            <a href="#"><img src="~/Bootstrap/images/logo.png" alt=""></a>
-                        </div>
-                        <div class="footer_content">
-                            <div class="row">
-                                <div class="col-lg-4 footer_col">
-                                    <div class="footer_info d-flex flex-column align-items-lg-end align-items-center justify-content-start">
-                                        <div class="text-center">
-                                            <div>Teléfono:</div>
-                                            <div>+51 999 999 999</div>
-                                        </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="footer_logo text-center">
+                        <a href="#"><img src="~/Bootstrap/images/logo.png" alt=""></a>
+                    </div>
+                    <div class="footer_content">
+                        <div class="row">
+                            <div class="col-lg-4 footer_col">
+                                <div class="footer_info d-flex flex-column align-items-lg-end align-items-center justify-content-start">
+                                    <div class="text-center">
+                                        <div>Teléfono:</div>
+                                        <div>+51 999 999 999</div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 footer_col">
-                                    <div class="footer_info d-flex flex-column align-items-center justify-content-start">
-                                        <div class="text-center">
-                                            <div>Dirección:</div>
-                                            <div>San Isidro, I Etapa, Mz M, n° 14, Trujillo</div>
-                                        </div>
+                            </div>
+                            <div class="col-lg-4 footer_col">
+                                <div class="footer_info d-flex flex-column align-items-center justify-content-start">
+                                    <div class="text-center">
+                                        <div>Dirección:</div>
+                                        <div>San Isidro, I Etapa, Mz M, n° 14, Trujillo</div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 footer_col">
-                                    <div class="footer_info d-flex flex-column align-items-lg-start align-items-center justify-content-start">
-                                        <div class="text-center">
-                                            <div>E-Mail:</div>
-                                            <div>hotel.isis@gmail.com</div>
-                                        </div>
+                            </div>
+                            <div class="col-lg-4 footer_col">
+                                <div class="footer_info d-flex flex-column align-items-lg-start align-items-center justify-content-start">
+                                    <div class="text-center">
+                                        <div>E-Mail:</div>
+                                        <div>hotel.isis@gmail.com</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="footer_bar text-center">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;
-                            <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Esta Página web se hizo con <i class="fa fa-heart-o" aria-hidden="true"></i> <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </div>
+                    </div>
+                    <div class="footer_bar text-center">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Esta Página web se hizo con <i class="fa fa-heart-o" aria-hidden="true"></i> <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </div>
                 </div>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHiAbjzx5U1h9GyK3SoY0GIMpGLv4A4kw&callback=initMap">
+    </script>
+
     @Scripts.Render("~/bundles/contactjs")
     @RenderSection("Scripts", false/*required*/)
 </body>

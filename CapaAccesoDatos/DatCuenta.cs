@@ -30,8 +30,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_RegistrarCuenta", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_RegistrarCuenta", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmstrNombreUsuario", cuenta.NombreUsuario);
                 cmd.Parameters.AddWithValue("@prmstrEmail", cuenta.Email);
                 cmd.Parameters.AddWithValue("@prmstrPasswordAccount", cuenta.PasswordAccount);
@@ -57,16 +59,20 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_BuscarCuenta", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_BuscarCuenta", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmstrNombreUsuario", NombreUsuario);
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    cuenta = new EntCuenta();
-                    cuenta.NombreUsuario = Convert.ToString(dr["NombreUsuario"]);
-                    cuenta.Email = Convert.ToString(dr["Email"]);
+                    cuenta = new EntCuenta
+                    {
+                        NombreUsuario = Convert.ToString(dr["NombreUsuario"]),
+                        Email = Convert.ToString(dr["Email"])
+                    };
                 }
             }
             catch (SqlException e)
@@ -87,8 +93,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_EditarEmail", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_EditarEmail", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmstrNombreUsuario", cuenta.NombreUsuario);
                 cmd.Parameters.AddWithValue("@prmstrEmail", cuenta.Email);
                 cn.Open();
@@ -113,8 +121,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_CambiarPassword", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_CambiarPassword", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmstrNombreUsuario", cuenta.NombreUsuario);
                 cmd.Parameters.AddWithValue("@prmstrPasswordAccount", cuenta.PasswordAccount);
                 cn.Open();
@@ -139,8 +149,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_EliminarCuenta", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_EliminarCuenta", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmstrNombreUsuario", cuenta.NombreUsuario);
                 cn.Open();
                 int result = cmd.ExecuteNonQuery();
@@ -174,35 +186,42 @@ namespace CapaAccesoDatos
                 }
 
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand(procedure, cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand(procedure, cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmstrNombreUsuario", NombreUsuario);
                 cmd.Parameters.AddWithValue("@prmstrPassword", Password);
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    cuenta = new EntCuenta();
-
-                    cuenta.NombreUsuario = Convert.ToString(dr["NombreUsuario"]);
-                    cuenta.Email = Convert.ToString(dr["Email"]);
-                    cuenta.PasswordAccount = Convert.ToString(dr["PasswordAccount"]);
+                    cuenta = new EntCuenta
+                    {
+                        NombreUsuario = Convert.ToString(dr["NombreUsuario"]),
+                        Email = Convert.ToString(dr["Email"]),
+                        PasswordAccount = Convert.ToString(dr["PasswordAccount"])
+                    };
 
                     if (isHuesped)
                     {
-                        EntHuesped huesped = new EntHuesped();
-                        huesped.Dni = Convert.ToString(dr["Dni"]);
-                        huesped.Apellidos = Convert.ToString(dr["Apellidos"]);
-                        huesped.Nombre = Convert.ToString(dr["Nombre"]);
-                        huesped.Fechadenacimiento = Convert.ToString(dr["Fechadenacimiento"]);
+                        EntHuesped huesped = new EntHuesped
+                        {
+                            Dni = Convert.ToString(dr["Dni"]),
+                            Apellidos = Convert.ToString(dr["Apellidos"]),
+                            Nombre = Convert.ToString(dr["Nombre"]),
+                            Fechadenacimiento = Convert.ToString(dr["Fechadenacimiento"])
+                        };
                         cuenta.Huesped = huesped;
                     }
                     else
                     {
-                        EntAdministradorhotel a = new EntAdministradorhotel();
-                        a.Apellidos = Convert.ToString(dr["Apellidos"]);
-                        a.Nombre = Convert.ToString(dr["Nombre"]);
-                        a.Fechadenacimiento = Convert.ToString(dr["Fechadenacimiento"]);
+                        EntAdministradorhotel a = new EntAdministradorhotel
+                        {
+                            Apellidos = Convert.ToString(dr["Apellidos"]),
+                            Nombre = Convert.ToString(dr["Nombre"]),
+                            Fechadenacimiento = Convert.ToString(dr["Fechadenacimiento"])
+                        };
                         cuenta.Admin = a;
                     }
                 }

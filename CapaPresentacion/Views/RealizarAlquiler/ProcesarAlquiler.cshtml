@@ -1,0 +1,98 @@
+﻿@model CapaEntidades.EntAlquiler
+@using CapaEntidades;
+@using System.Globalization;
+@{
+    /**/
+
+    ViewBag.Title = "RealizarAlquiler";
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+    EntHabitacion habitacion = Model.Habitacion;
+    string cultureName = "en-US";
+    var culture = new CultureInfo(cultureName);
+    string fechaIngreso = Convert.ToDateTime(Model.FechadeIngreso).ToString("d", culture);
+    string fechaSalida = Convert.ToDateTime(Model.FechadeSalida).ToString("d", culture);
+    double precio = habitacion.Tipodehabitacion.Precio * 0.2;
+}
+
+@section Scripts
+{
+    <script>
+         $("#limpiar").empty()
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        //$("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <section class="container" id="realizarAlquiler">
+        <div class="form-content form-horizontal col-5 m-auto">
+            <h4>Realizar Alquiler</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Dni</label>
+                <div class="col-md-10">
+                    <input type="hidden"value="@habitacion.NumeroHabitacion"name="txtNumeroHabitacion"/>
+                    <input type="text" name="txtDni" class="form-control" value="@Model.Huesped.Dni" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-8">Fecha de Ingreso</label>
+                <div class="col-md-10">
+                    <input type="text" name="txtFechaIngreso" class="form-control" value="@fechaIngreso" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-8">Fecha de Salida</label>
+                <div class="col-md-10">
+                    <input type="text" name="txtFechaSalida" class="form-control" value="@fechaSalida" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-8">Cantidad de Adultos</label>
+                <div class="col-md-10">
+                    <input type="text" name="txtCantidadAdultos" class="form-control" value="@Model.CantidaAdultos" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-8">Cantidad de Niños</label>
+                <div class="col-md-10">
+                    <input type="text" name="txtCantidadKids" class="form-control" value="@Model.CantidadKids" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => habitacion.NumeroHabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => habitacion.NumeroHabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => habitacion.Tipodehabitacion.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => (precio), new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Alquilar" class="btn btn-myBtn" />
+                    <a class="ml-1 btn btn-MyDanger" href="/RealizarAlquiler/AlquilerMenu">Cancelar</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+}
+

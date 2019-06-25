@@ -25,7 +25,7 @@ namespace CapaAccesoDatos
 
         #region metodos
 
-        public List<EntHabitacion> ListarHabitacionesDisponibles(int candidadPersonas,string fechaIngreso)
+        public List<EntHabitacion> ListarHabitacionesDisponibles(int cantidadPersonas,string fechaIngreso)
         {
             SqlCommand cmd = null;
             List<EntHabitacion> lista = new List<EntHabitacion>();
@@ -33,17 +33,20 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_HabitacionesDisponiblesAlquiler", cn);
-                cmd.Parameters.AddWithValue("@cantidadPersonas", candidadPersonas);
+                cmd = new SqlCommand("Sp_HabitacionesDisponiblesAlquiler", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@fechaIngreso", fechaIngreso);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmintCantidadPersonas", cantidadPersonas);
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    EntHabitacion habitacion = new EntHabitacion();
-
-                    habitacion.NumeroHabitacion = Convert.ToString(dr["NumeroHabitacion"]);
+                    EntHabitacion habitacion = new EntHabitacion
+                    {
+                        NumeroHabitacion = Convert.ToString(dr["NumeroHabitacion"])
+                    };
 
                     lista.Add(habitacion);
                 }
@@ -67,8 +70,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_RealizarAlquiler", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_RealizarAlquiler", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmintCantidadAdultos", alquiler.CantidaAdultos);
                 cmd.Parameters.AddWithValue("@prmintCantidadKids", alquiler.CantidadKids);
                 cmd.Parameters.AddWithValue("@prmstrFechadeingreso", alquiler.FechadeIngreso);

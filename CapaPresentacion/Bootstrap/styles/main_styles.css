@@ -51,8 +51,8 @@ div
 	display: block;
 	position: relative;
 	-webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 ul
 {
@@ -241,8 +241,8 @@ section
 }
 .parallax-window
 {
-    min-height: 400px;
-    background: transparent;
+	min-height: 400px;
+	background: transparent;
 }
 .parallax_background
 {
@@ -453,7 +453,7 @@ section
 	font-size: 16px;
 	font-weight: 500;
 	color: #ffffff;
-    padding-bottom: 50px;
+	padding-bottom: 50px;
 	padding-left: 17px;
 	padding-right: 36px;
 	line-height: 55px;
@@ -724,13 +724,13 @@ section
 *********************************/
 
 .home {
-    height: 100vh;
-    width: 220vh;
-    background: url(../images/home.jpg);
-    background-size: cover;
-    background-position: center;
-    display: table;
-    background-attachment: fixed;
+	height: 100vh;
+	width: 220vh;
+	background: url(../images/home.jpg);
+	background-size: cover;
+	background-position: center;
+	display: table;
+	background-attachment: fixed;
 }
 .home_container
 {
@@ -1300,15 +1300,15 @@ section
 *********************************/
 
 .footer {
-    width: 220vh;
-    background: url(../images/footer.jpg);
-    background-size: cover;
-    background-position: center;
-    display: table;
-    background-attachment: fixed;
-    position: relative;
-    padding-top: 59px;
-    border-top: solid 2px #ff9000;
+	width: 220vh;
+	background: url(../images/footer.jpg);
+	background-size: cover;
+	background-position: center;
+	display: table;
+	background-attachment: fixed;
+	position: relative;
+	padding-top: 59px;
+	border-top: solid 2px #ff9000;
 }
 .footer_content
 {

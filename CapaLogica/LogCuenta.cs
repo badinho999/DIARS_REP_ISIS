@@ -31,7 +31,7 @@ namespace CapaLogica
             }
             catch (Exception e)
             {
-                throw e;
+                return false;
             }
 
         }

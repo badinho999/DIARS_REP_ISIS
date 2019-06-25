@@ -29,20 +29,23 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_ListarTiposH", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_ListarTiposH", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    EntTipoDeHabitacion tipoDeHabitacion = new EntTipoDeHabitacion();
-
-                    tipoDeHabitacion.Capacidad = Convert.ToInt32(dr["Capacidad"]);
-                    tipoDeHabitacion.Costoadicional = Convert.ToDouble(dr["Costoadicional"]);
-                    tipoDeHabitacion.Nombretipodehabitacion = Convert.ToString  (dr["Nombretipodehabitacion"]);
-                    tipoDeHabitacion.Numerodecamas = Convert.ToInt32(dr["Numerodecamas"]);
-                    tipoDeHabitacion.Precio = Convert.ToInt32(dr["Precio"]);
-                    tipoDeHabitacion.TipodehabitacionID = Convert.ToInt32(dr["TipodehabitacionID"]);
+                    EntTipoDeHabitacion tipoDeHabitacion = new EntTipoDeHabitacion
+                    {
+                        Capacidad = Convert.ToInt32(dr["Capacidad"]),
+                        Costoadicional = Convert.ToDouble(dr["Costoadicional"]),
+                        Nombretipodehabitacion = Convert.ToString(dr["Nombretipodehabitacion"]),
+                        Numerodecamas = Convert.ToInt32(dr["Numerodecamas"]),
+                        Precio = Convert.ToInt32(dr["Precio"]),
+                        TipodehabitacionID = Convert.ToInt32(dr["TipodehabitacionID"])
+                    };
 
                     lista.Add(tipoDeHabitacion);
                 }
@@ -59,7 +62,7 @@ namespace CapaAccesoDatos
             return lista;
         }
 
-        public Boolean ingresarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
+        public Boolean IngresarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
         {
             SqlCommand cmd = null;
             Boolean inserta;
@@ -67,8 +70,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_InsertarTipoH",cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_InsertarTipoH", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmintCapacidad",tipoDeHabitacion.Capacidad);
                 cmd.Parameters.AddWithValue("@prmdoubleCostoadicional", tipoDeHabitacion.Costoadicional);
                 cmd.Parameters.AddWithValue("@prmstrNombretipodehabitacion", tipoDeHabitacion.Nombretipodehabitacion);
@@ -97,8 +102,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_TipoHServicio", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_TipoHServicio", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmintTipodehabitacionID", tipoDeHabitacion.TipodehabitacionID);
                 cmd.Parameters.AddWithValue("@prmintServicioadicionalID", servicioadicional.ServicioID);
                 cn.Open();
@@ -116,7 +123,7 @@ namespace CapaAccesoDatos
             return inserta;
         }
 
-        public bool eliminarServicios(EntTipoDeHabitacion tipoDeHabitacion, EntServicioadicional servicioadicional)
+        public bool EliminarServicios(EntTipoDeHabitacion tipoDeHabitacion, EntServicioadicional servicioadicional)
         {
             SqlCommand cmd = null;
             Boolean delete;
@@ -124,8 +131,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_EliminarServicios", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_EliminarServicios", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmintTipodehabitacionID", tipoDeHabitacion.TipodehabitacionID);
                 cmd.Parameters.AddWithValue("@prmintServicioadicionalID", servicioadicional.ServicioID);
                 cn.Open();
@@ -143,7 +152,7 @@ namespace CapaAccesoDatos
             return delete;
         }
 
-        public EntTipoDeHabitacion buscarTipoH(int TipodehabitacionID)
+        public EntTipoDeHabitacion BuscarTipoH(int TipodehabitacionID)
         {
             SqlCommand cmd = null;
             EntTipoDeHabitacion tipoDeHabitacion = null;
@@ -151,21 +160,25 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection connection = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_BuscarTipoH", connection);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_BuscarTipoH", connection)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmintTipodehabitacionID", TipodehabitacionID);
                 connection.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
 
                 while (dr.Read())
                 {
-                    tipoDeHabitacion = new EntTipoDeHabitacion();
-                    tipoDeHabitacion.Capacidad = Convert.ToInt32(dr["Capacidad"]);
-                    tipoDeHabitacion.Costoadicional = Convert.ToDouble(dr["Costoadicional"]);
-                    tipoDeHabitacion.Nombretipodehabitacion = Convert.ToString(dr["Nombretipodehabitacion"]);
-                    tipoDeHabitacion.Numerodecamas = Convert.ToInt32(dr["Numerodecamas"]);
-                    tipoDeHabitacion.Precio = Convert.ToInt32(dr["Precio"]);
-                    tipoDeHabitacion.TipodehabitacionID = Convert.ToInt32(dr["TipodehabitacionID"]);
+                    tipoDeHabitacion = new EntTipoDeHabitacion
+                    {
+                        Capacidad = Convert.ToInt32(dr["Capacidad"]),
+                        Costoadicional = Convert.ToDouble(dr["Costoadicional"]),
+                        Nombretipodehabitacion = Convert.ToString(dr["Nombretipodehabitacion"]),
+                        Numerodecamas = Convert.ToInt32(dr["Numerodecamas"]),
+                        Precio = Convert.ToInt32(dr["Precio"]),
+                        TipodehabitacionID = Convert.ToInt32(dr["TipodehabitacionID"])
+                    };
                 }
             }
             catch (SqlException ex)
@@ -179,7 +192,7 @@ namespace CapaAccesoDatos
             return tipoDeHabitacion;
         }
 
-        public Boolean editarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
+        public Boolean EditarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
         {
             SqlCommand cmd = null;
             Boolean edit;
@@ -187,8 +200,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_EditarTipoH", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_EditarTipoH", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmintCapacidad", tipoDeHabitacion.Capacidad);
                 cmd.Parameters.AddWithValue("@prmdoubleCostoadicional", tipoDeHabitacion.Costoadicional);
                 cmd.Parameters.AddWithValue("@prmstrNombretipodehabitacion", tipoDeHabitacion.Nombretipodehabitacion);
@@ -210,7 +225,7 @@ namespace CapaAccesoDatos
             return edit;
         }
 
-        public Boolean eliminarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
+        public Boolean EliminarTipoH(EntTipoDeHabitacion tipoDeHabitacion)
         {
             SqlCommand cmd = null;
             Boolean delete;
@@ -218,8 +233,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_EliminarTipoH", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_EliminarTipoH", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmintTipodehabitacionID", tipoDeHabitacion.TipodehabitacionID);
                 cn.Open();
                 int i = cmd.ExecuteNonQuery();

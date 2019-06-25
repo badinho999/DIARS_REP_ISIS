@@ -2,7 +2,7 @@
 
 use Proyecto_DIARS_ISIS
 
-/*Tipo de habitaci�n*/
+/*Tipo de habitación*/
 Insert into Tipodehabitacion(Capacidad,Costoadicional,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
 Values(1,10,'Simple',1,30,NEXT VALUE FOR TipodehabitacionID)
 go
@@ -16,7 +16,7 @@ Insert into Tipodehabitacion(Capacidad,Costoadicional,Nombretipodehabitacion,Num
 Values(3,10,'Triple',3,70,NEXT VALUE FOR TipodehabitacionID)
 go
 Insert into Tipodehabitacion(Capacidad,Costoadicional,Nombretipodehabitacion,Numerodecamas,Precio,TipodehabitacionID)
-Values(4,20,'M�ltiple',4,80,NEXT VALUE FOR TipodehabitacionID)
+Values(4,20,'Múltiple',4,80,NEXT VALUE FOR TipodehabitacionID)
 go
 
 /*Servicio Adicional*/
@@ -31,7 +31,7 @@ Insert into Servicioadicional(NombreServicio)
 Values('Parqueadero')
 go
 Insert into Servicioadicional(NombreServicio)
-Values('Lavander�a')
+Values('Lavandería')
 go
 Insert into Servicioadicional(NombreServicio)
 Values('Transporte Hotel-Aeropuerto-Hotel')
@@ -182,7 +182,7 @@ Insert into Huesped(Apellidos,Fechadenacimiento,Nombre,Dni,NombreUsuario)
 Values('Cornejo Chunga','1999-03-31','Daniel Badinho','71778079','BadinhoCornejo')
 go
 Insert into Huesped(Apellidos,Fechadenacimiento,Nombre,Dni,NombreUsuario)
-Values('Pe�a Su�rez','1940-05-21','Joel Anthony','98723467','JoelPeña')
+Values('Peña Suárez','1940-05-21','Joel Anthony','98723467','JoelPeña')
 go
 Insert into Huesped(Apellidos,Fechadenacimiento,Nombre,Dni,NombreUsuario)
 Values('Rodriguez Alayo','1920-02-12','Gerodan Brian','14321356','rGeordan')
@@ -272,65 +272,68 @@ Select * from Habitacion h inner join Tipodehabitacion th on(h.TipodehabitacionI
 where th.Nombretipodehabitacion='Triple'
 
 Select * from Tipodehabitacion
+
+/*Delete from Reserva*/
+
 /*Simples*/
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','101')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(1,1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','101')
 GO
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','105')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(2,1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','105')
 GO
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','201')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(3,1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','201')
 GO
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','301')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(4,1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','301')
 GO
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','401')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(5,1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','401')
 GO
 /*Dobles*/
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','102')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(6,1,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','102')
 GO
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','202')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(7,2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','202')
 GO
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','302')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(8,2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','302')
 GO
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','402')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(9,2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','402')
 GO
 /*Triples*/
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(2,1,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','103')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(10,2,1,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','103')
 GO
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(2,1,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','203')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(11,2,1,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','203')
 GO
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(2,1,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','303')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(12,2,1,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','303')
 GO
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(3,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','403')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(13,3,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','403')
 GO
 /*Multiples*/
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(2,2,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','104')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(14,2,2,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','104')
 GO
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(2,2,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','204')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(15,2,2,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','204')
 GO
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(2,2,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','304')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(16,2,2,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','304')
 GO
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(4,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','404')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(17,4,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','404')
 GO
 /*Matrimoniales*/
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','305')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(18,2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','305')
 GO
-Insert into Reserva(CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
-Values(2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','405')
+Insert into Reserva(ReservaID,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Fechadereserva,Dni,NumeroHabitacion)
+Values(19,2,0,convert(date, getdate(), 11),DATEADD(DAY,1, convert(date, getdate(), 11)),convert(date, getdate(), 11),'71778079','405')
 GO

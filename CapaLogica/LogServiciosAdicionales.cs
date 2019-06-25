@@ -22,11 +22,11 @@ namespace CapaLogica
         #endregion singleton
         #region metodos
 
-        public List<EntServicioadicional> obtenerServicios(int TipodehabitacionID)
+        public List<EntServicioadicional> ObtenerServicios(int TipodehabitacionID)
         {
             try
             {
-                return DatServiciosadicionales.Instancia.obtenerServicios(TipodehabitacionID);
+                return DatServiciosadicionales.Instancia.ObtenerServicios(TipodehabitacionID);
             }
             catch (Exception e)
             {
@@ -34,11 +34,11 @@ namespace CapaLogica
             }
         }
 
-        public List<EntServicioadicional> listarServicios()
+        public List<EntServicioadicional> ListarServicios()
         {
             try
             {
-                return DatServiciosadicionales.Instancia.listarServicios();
+                return DatServiciosadicionales.Instancia.ListarServicios();
             }
             catch(Exception e)
             {
@@ -46,11 +46,11 @@ namespace CapaLogica
             }
         }
 
-        public Boolean insertarServicio(EntServicioadicional servicioadicional)
+        public Boolean InsertarServicio(EntServicioadicional servicioadicional)
         {
             try
             {
-                return DatServiciosadicionales.Instancia.insertarServicio(servicioadicional);
+                return DatServiciosadicionales.Instancia.InsertarServicio(servicioadicional);
             }
             catch(Exception e)
             {
@@ -58,11 +58,11 @@ namespace CapaLogica
             }
         }
 
-        public EntServicioadicional buscarServicio(int ServicioadicionalID)
+        public EntServicioadicional BuscarServicio(int ServicioadicionalID)
         {
             try
             {
-                return DatServiciosadicionales.Instancia.buscarServicio(ServicioadicionalID);
+                return DatServiciosadicionales.Instancia.BuscarServicio(ServicioadicionalID);
             }
             catch(Exception e)
             {
@@ -70,11 +70,11 @@ namespace CapaLogica
             }
         }
 
-        public Boolean eliminarServicio(EntServicioadicional servicioadicional)
+        public Boolean EliminarServicio(EntServicioadicional servicioadicional)
         {
             try
             {
-                return DatServiciosadicionales.Instancia.eliminarServicio(servicioadicional);
+                return DatServiciosadicionales.Instancia.EliminarServicio(servicioadicional);
             }
             catch(Exception e)
             {
@@ -82,11 +82,11 @@ namespace CapaLogica
             }
         }
 
-        public Boolean editarServicio(EntServicioadicional servicioadicional)
+        public Boolean EditarServicio(EntServicioadicional servicioadicional)
         {
             try
             {
-                return DatServiciosadicionales.Instancia.editarServicio(servicioadicional);
+                return DatServiciosadicionales.Instancia.EditarServicio(servicioadicional);
             }
             catch(Exception e)
             {

@@ -10,12 +10,26 @@ namespace CapaEntidades
 {
     public class EntHabitacion
     {
-        private string numeroHabitacion;
-        private EntTipoDeHabitacion tipodehabitacion;
+
         [Required]
         [StringLength(4)]
-        public string NumeroHabitacion { get => numeroHabitacion; set => numeroHabitacion = value; }
+        public string NumeroHabitacion { get; set; }
         [Required]
-        public EntTipoDeHabitacion Tipodehabitacion { get => tipodehabitacion; set => tipodehabitacion = value; }
+        public EntTipoDeHabitacion Tipodehabitacion { get; set; }
+
+        #region methods
+
+        public void AplicarDescuentoPorReserva()
+        {
+            Tipodehabitacion.Precio *= (1-0.2);
+        }
+
+        public double CalcularPrecioOriginal()
+        {
+            return (Tipodehabitacion.Precio / (1 - 0.20));
+        }
+
+        #endregion methods
+
     }
 }

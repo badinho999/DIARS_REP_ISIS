@@ -34,6 +34,8 @@
     text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
 
+
+
 body {
     font-family: 'Lato', sans-serif;
     font-size: 15px;
@@ -1047,6 +1049,8 @@ section {
 
 .map {
     width: 100%;
+    
+    margin-top: 30px;
 }
 
 .google_map {
@@ -1060,10 +1064,21 @@ section {
     overflow: hidden;
 }
 
-#map {
-    width: 100%;
-    height: calc(100% + 30px);
+#map
+{
+    height: 500px;
+    width: 1200px;
+    margin: auto;
+    /*margin-top: 20%;
+    margin-left: 8%*/
 }
+.contenedorMap
+{
+    margin-top: 8%;
+    margin-bottom: 40px;
+}
+
+
 
 .contact_map_content {
     position: absolute;

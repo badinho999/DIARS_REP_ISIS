@@ -2,16 +2,9 @@
 @using CapaEntidades;
 @{
     ViewBag.Title = "eliminarCuenta";
-    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
-    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+    Layout = "~/Views/Shared/_LayoutRegistro.cshtml";
 }
-@section Scripts
-{
-    <script>
-        $("a#adminName").html("@cuenta.NombreUsuario");
-        //$("a#adminName").attr("href", "/Login/CerrarSesion")
-    </script>
-}
+
 <section class="container" id="listarHuesped">
     <div class="form-content-delete form-horizontal col-5 m-auto">
         <h3 class="red-title">¿Seguro de anular el registro?</h3>
@@ -21,10 +14,21 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-actions no-color">
-                <input type="submit" value="Sí" class="btn btn-myBtn" /> |
-                @Html.ActionLink("No", "registrarHuesped", new { NombreUsuario = Model.NombreUsuario }, new { @class = "ml-1 btn btn-MyDanger" })
+            <div class="container card text-center mt-4 mb-4">
+                <div class="card-header">
+                    Cancelar registro
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title">¿Seguro que desea cancelar el registro?</h5>
+                </div>
+                <div class="card-footer">
+                    <div class="form-group text-center">
+                        <input type="submit" value="Sí" class="btn btn-primary" /> 
+                        @Html.ActionLink("No", "registrarHuesped", new { NombreUsuario = Model.NombreUsuario }, new { @class = "ml-1 btn btn-danger" })
+                    </div>
+                </div>
             </div>
+            
         }
     </div>
 </section>

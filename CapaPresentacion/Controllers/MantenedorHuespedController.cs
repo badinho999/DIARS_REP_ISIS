@@ -25,7 +25,7 @@ namespace CapaPresentacion.Controllers
         public ActionResult listarHuesped()
         {
             verificarSesion();
-            List<EntHuesped> lista = LogHuesped.Instancia.listarHuesped();
+            List<EntHuesped> lista = LogHuesped.Instancia.ListarHuesped();
             ViewBag.lista = lista;
             return View(lista);
         }
@@ -40,25 +40,26 @@ namespace CapaPresentacion.Controllers
         [HttpPost]
         public ActionResult registrarCuenta(EntCuenta cuenta)
         {
+
             if(!ModelState.IsValid)
             {
-                return View("registrarCuenta");
+                return RedirectToAction("VerificarAcceso", "Login", cuenta);
             }
             try
             {
                 Boolean registra = LogCuenta.Instancia.Registrarcuenta(cuenta);
                 if (registra)
                 {
-                    return RedirectToAction("registrarHuesped", new { NombreUsuario = cuenta.NombreUsuario });
+                    return RedirectToAction("registrarHuesped","MantenedorHuesped", new { cuenta.NombreUsuario });
                 }
                 else
                 {
-                    return View(cuenta);
+                    return RedirectToAction("VerificarAcceso", "Login", cuenta);
                 }
             }
             catch (ApplicationException ex)
             {
-                return RedirectToAction("registrarCuenta", new { mesjException = ex.Message });
+                return RedirectToAction("VerificarAcceso", "Login", cuenta);
             }
         }
 
@@ -79,7 +80,7 @@ namespace CapaPresentacion.Controllers
                 Boolean delete = LogCuenta.Instancia.EliminarCuenta(cuenta);
                 if (delete)
                 {
-                    return RedirectToAction("listarHuesped");
+                    return RedirectToAction("VerificarAcceso", "Login", cuenta);
                 }
                 else
                 {
@@ -116,10 +117,10 @@ namespace CapaPresentacion.Controllers
                     }
                 }
                 
-                Boolean registra = LogHuesped.Instancia.registrarHuesped(huesped);
+                Boolean registra = LogHuesped.Instancia.RegistrarHuesped(huesped);
                 if (registra)
                 {
-                    return RedirectToAction("listarHuesped");
+                    return RedirectToAction("Inicio","Menu");
                 }
                 else
                 {
@@ -147,7 +148,7 @@ namespace CapaPresentacion.Controllers
         {
             try
             {
-                Boolean edita = LogHuesped.Instancia.editarHuesped(huesped);
+                Boolean edita = LogHuesped.Instancia.EditarHuesped(huesped);
                 if (edita)
                 {
                     return RedirectToAction("listarHuesped");
@@ -177,7 +178,7 @@ namespace CapaPresentacion.Controllers
         {
             try
             {
-                Boolean delete = LogHuesped.Instancia.eliminarHuesped(huesped);
+                Boolean delete = LogHuesped.Instancia.EliminarHuesped(huesped);
                 if (delete)
                 {
                     return RedirectToAction("listarHuesped");

@@ -1,0 +1,52 @@
+﻿
+@model CapaPresentacion.Models.ConfirmedViewData
+@using CapaEntidades;
+@{
+    ViewBag.Title = "Confirmed";
+    Layout = "~/Views/Shared/_LayoutReservar.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+}
+
+@if (cuenta != null)
+{
+    @section Scripts
+    {
+        <script>
+
+            $("#limpiar").empty()
+            $("a#idLogin").html("Cerrar Sesión");
+            $("a#idLogin").attr("href", "/Login/CerrarSesion")
+        </script>
+    }
+
+
+    <div class="container card text-center mt-4 mb-4">
+        <div class="card-header">
+            Confirmar reserva
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-primary">¿Desea finalizar la reserva?</h5>
+            <p class="card-text text-black-50">Monto a pagar: S/.@Model.Monto</p>
+            @using (Html.BeginForm("capture", "paypal", FormMethod.Post, new { @class = "form-group pt-4" }))
+            {
+            @*<form action="/paypal/capture" method="post">*@
+            <input type="hidden" name="authorizationId" value="@Model.AuthorizationId" />
+            <button type="submit" class="btn btn-success">Aceptar</button>
+            @*</form>*@
+            }
+
+
+            @using (Html.BeginForm("void", "paypal", FormMethod.Post, new { @class = "form-group" }))
+            {
+            @*<form action="/paypal/void" method="post">*@
+            <input type="hidden" name="authorizationId" value="@Model.AuthorizationId" />
+            <button type="submit" class="btn btn-danger">Cancel</button>
+            @*</form>*@
+            }
+        </div>
+        <div class="card-footer text-center text-muted">
+            Código de reserva: @Model.ReservaID
+            <p><a href="/" class="btn btn-primary mt-4 ml-4">Volver al inicio</a></p>
+        </div>
+    </div>
+}

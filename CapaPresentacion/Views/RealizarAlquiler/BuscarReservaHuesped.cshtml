@@ -1,0 +1,38 @@
+﻿@model CapaEntidades.EntHuesped
+@using CapaEntidades;
+@{
+    ViewBag.Title = "BuscarReservaHuesped";
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+}
+
+@section Scripts
+{
+    @Styles.Render("~/bundles/js")
+    <script>
+        $("#limpiar").empty()
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        $("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
+}
+
+<div class="container m-auto">
+    <div class="card mb-4">
+        <div class="card-header text-center">
+            Buscar reserva de huesped
+        </div>
+        <div class="card-body text-center">
+            <h5 class="card-title">Ingrese DNI del cliente</h5>
+            @using (Html.BeginForm("ReservasDeHuesped", "RealizarAlquiler",FormMethod.Post,new { @class="form-group", id="formDNI" }))
+            {
+                @Html.EditorFor(model => model.Dni,new { @class="form-control" })
+                
+            }
+        </div>
+        <div class="card-footer text-center">
+            <input type="submit" class="btn btn-primary" form="formDNI" name="Buscar" />
+        </div>
+
+    </div>
+</div>
+

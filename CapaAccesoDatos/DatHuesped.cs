@@ -29,24 +29,29 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_ListarHuesped", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_ListarHuesped", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    EntHuesped huesped = new EntHuesped();
-                    EntCuenta cuenta = new EntCuenta();
+                    
+                    EntCuenta cuenta = new EntCuenta
+                    {
+                        NombreUsuario = Convert.ToString(dr["NombreUsuario"]),
+                        Email = Convert.ToString(dr["Email"])
+                    };
+                    EntHuesped huesped = new EntHuesped
+                    {
+                        Dni = Convert.ToString(dr["Dni"]),
+                        Nombre = Convert.ToString(dr["Nombre"]),
+                        Apellidos = Convert.ToString(dr["Apellidos"]),
+                        Fechadenacimiento = Convert.ToString(dr["Fechadenacimiento"]),
 
-                    cuenta.NombreUsuario = Convert.ToString(dr["NombreUsuario"]);
-                    cuenta.Email = Convert.ToString(dr["Email"]);
-
-                    huesped.Dni = Convert.ToString(dr["Dni"]);
-                    huesped.Nombre = Convert.ToString(dr["Nombre"]);
-                    huesped.Apellidos = Convert.ToString(dr["Apellidos"]);
-                    huesped.Fechadenacimiento = Convert.ToString(dr["Fechadenacimiento"]);
-
-                    huesped.Cuenta = cuenta;
+                        Cuenta = cuenta
+                    };
 
                     lista.Add(huesped);
                 }
@@ -70,8 +75,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_RegistrarHuesped", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_RegistrarHuesped", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmstrApellidos", huesped.Apellidos);
                 cmd.Parameters.AddWithValue("@prmstrFechadenacimiento", huesped.Fechadenacimiento);
                 cmd.Parameters.AddWithValue("@prmstrNombre", huesped.Nombre);
@@ -99,25 +106,30 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_BuscarHuesped", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_BuscarHuesped", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmstrDni", Dni);
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    huesped = new EntHuesped();
-                    EntCuenta cuenta = new EntCuenta();
+                   
+                    EntCuenta cuenta = new EntCuenta
+                    {
+                        NombreUsuario = Convert.ToString(dr["NombreUsuario"]),
+                        Email = Convert.ToString(dr["Email"])
+                    };
+                    huesped = new EntHuesped
+                    {
+                        Dni = Convert.ToString(dr["Dni"]),
+                        Nombre = Convert.ToString(dr["Nombre"]),
+                        Apellidos = Convert.ToString(dr["Apellidos"]),
+                        Fechadenacimiento = Convert.ToString(dr["Fechadenacimiento"]),
 
-                    cuenta.NombreUsuario = Convert.ToString(dr["NombreUsuario"]);
-                    cuenta.Email = Convert.ToString(dr["Email"]);
-
-                    huesped.Dni = Convert.ToString(dr["Dni"]);
-                    huesped.Nombre = Convert.ToString(dr["Nombre"]);
-                    huesped.Apellidos = Convert.ToString(dr["Apellidos"]);
-                    huesped.Fechadenacimiento = Convert.ToString(dr["Fechadenacimiento"]);
-
-                    huesped.Cuenta = cuenta;
+                        Cuenta = cuenta
+                    };
                 }
             }
             catch (SqlException e)
@@ -138,8 +150,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_EditarHuesped", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_EditarHuesped", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmstrFechadenacimiento", huesped.Fechadenacimiento);
                 cmd.Parameters.AddWithValue("@prmstrNombre", huesped.Nombre);
                 cmd.Parameters.AddWithValue("@prmstrDni", huesped.Dni);
@@ -166,8 +180,10 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_EliminarHuesped", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_EliminarHuesped", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@prmstrDni", huesped.Dni);
                 cn.Open();
                 int result = cmd.ExecuteNonQuery();

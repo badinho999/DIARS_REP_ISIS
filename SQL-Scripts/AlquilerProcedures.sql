@@ -3,14 +3,14 @@ go
 
 Create proc Sp_HabitacionesDisponiblesAlquiler
 (
-	@cantidadPersonas int,
-	@fechaIngreso date
+	@fechaIngreso date,
+	@prmintCantidadPersonas int
 )
 as
 begin
 	Select * from Habitacion h inner join Tipodehabitacion th on(h.TipodehabitacionID = th.TipodehabitacionID)
 	inner join Alquiler a on(h.NumeroHabitacion = a.NumeroHabitacion)
-	where  th.Capacidad >= @cantidadPersonas AND a.Fechadeingreso = @fechaIngreso
+	where  a.Fechadeingreso = @fechaIngreso and th.Capacidad+1 > @prmintCantidadPersonas
 end
 go
 

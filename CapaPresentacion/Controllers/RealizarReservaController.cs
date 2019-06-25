@@ -22,50 +22,8 @@ namespace CapaPresentacion.Controllers
             }
         }
 
-        public EntHabitacion buscarHabitacionRepetida(List<EntHabitacion> listaHabitaciones, string numeroDeHabitacion)
-        {
-            EntHabitacion habitacionRet = new EntHabitacion();
-            bool encontrado = false;
-
-            foreach (EntHabitacion habitacion in listaHabitaciones)
-            {
-                if (habitacion.NumeroHabitacion.Equals(numeroDeHabitacion))
-                {
-                    encontrado = true;
-                    habitacionRet = habitacion;
-                }
-                else
-                {
-                    encontrado = false;
-                }
-            }
-
-            if (encontrado)
-            {
-                return habitacionRet;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public void agregarAlista(List<EntHabitacion> listaHabitaciones, string numeroDeHabitacion)
-        {
-            if (buscarHabitacionRepetida(listaHabitaciones, numeroDeHabitacion) == null)
-                listaHabitaciones.Add(LogHabitacion.Instancia.buscarHabitacion(numeroDeHabitacion));
-        }
-
-        public void eliminarHabitacionNoDisponible(List<EntHabitacion> listaHabitacionesDisponibles, List<EntHabitacion> listaHabitacionesNoDisponibles)
-        {
-
-            foreach (EntHabitacion habitacion in listaHabitacionesNoDisponibles)
-            {
-                listaHabitacionesDisponibles.RemoveAll(x => x.NumeroHabitacion == habitacion.NumeroHabitacion);
-            }
-        }
-
         #endregion funciones
+
         // GET: RealizarReserva
         public ActionResult HabitacionesDisponibles(FormCollection frm)
         {
@@ -81,71 +39,82 @@ namespace CapaPresentacion.Controllers
             int cantidadKids = int.Parse(frm["selectKids"]);
             int cantidadPersonas = cantidadAdultos + cantidadKids;
 
-            List<EntHabitacion> listaHabitacionesDisponibles = new List<EntHabitacion>();
-            List<EntHabitacion> listaHabitacionesNoDisponibles = new List<EntHabitacion>();
-
             DateTime fechaIngreso = Convert.ToDateTime(_fechaIngreso,CultureInfo.InvariantCulture),
             fechaSalida = Convert.ToDateTime(_fechaSalida,CultureInfo.InvariantCulture);
-            bool esMayor = false;
 
             try
             {
-                List<EntReserva> reservas;
+                TimeSpan diferencia = fechaSalida - fechaIngreso;
 
-                reservas = LogReserva.Instancia.ListarHabitacionesDisponibles(cantidadPersonas);
+                TimeSpan diferenciaIngreso = fechaIngreso - DateTime.Today.Date;
+                TimeSpan diferenciaSalida = fechaSalida - DateTime.Today.Date;
 
-                foreach (EntReserva reserva in reservas)
+                if (diferenciaIngreso.Days < 0 || diferenciaSalida.Days < 0)
                 {
-                    DateTime fechaIngresoAux, fechaSalidaAux;
-
-                    fechaIngresoAux = Convert.ToDateTime(reserva.FechadeIngreso);
-                    fechaSalidaAux = Convert.ToDateTime(reserva.FechadeSalida);
-
-                    if (DateTime.Compare(fechaIngreso, fechaSalidaAux) > 0)
+                    EntReservaViewModel ViewModelError = new EntReservaViewModel
                     {
-                        esMayor = true;
-                    }
-                    else if (DateTime.Compare(fechaIngreso, fechaIngresoAux) < 0)
-                    {
-                        esMayor = false;
-                    }
-
-                    if (esMayor)
-                    {
-                        agregarAlista(listaHabitacionesDisponibles, reserva.Habitacion.NumeroHabitacion);
-                    }
-                    else
-                    {
-                        if (DateTime.Compare(fechaSalida, fechaIngresoAux) < 0)
-                        {
-                            agregarAlista(listaHabitacionesDisponibles, reserva.Habitacion.NumeroHabitacion);
-                        }
-                        else
-                        {
-                            agregarAlista(listaHabitacionesNoDisponibles, reserva.Habitacion.NumeroHabitacion);
-                        }
-                    }
+                        ErrorID = 0
+                    };
+                    return View(ViewModelError);
                 }
 
-                eliminarHabitacionNoDisponible(listaHabitacionesDisponibles, listaHabitacionesNoDisponibles);
+                if (diferencia.Days > 28)
+                {
+                    EntReservaViewModel ViewModelError = new EntReservaViewModel
+                    {
+                        ErrorID = 1
+                    };
+                    return View(ViewModelError);
+                    
+                }
+                if (cantidadAdultos == 0)
+                {
+                    EntReservaViewModel ViewModelError = new EntReservaViewModel
+                    {
+                        ErrorID = 2
+                    };
+                    return View(ViewModelError);
+                    
+                }
+                if(cantidadPersonas>6)
+                {
+                    EntReservaViewModel ViewModelError = new EntReservaViewModel
+                    {
+                        ErrorID = 3
+                    };
+                    return View(ViewModelError);
+                }
+
+                List<EntHabitacion> listaHabitacionesDisponibles = LogReserva.Instancia.ListarHabitacionesDisponibles(cantidadPersonas,fechaIngreso, fechaSalida);
 
                 List<EntHabitacion> lista = new List<EntHabitacion>();
                 foreach (EntHabitacion habitacion in listaHabitacionesDisponibles)
                 {
                     int ID = habitacion.Tipodehabitacion.TipodehabitacionID;
-                    List<EntServicioadicional> servs = LogServiciosAdicionales.Instancia.obtenerServicios(ID);
+                    List<EntServicioadicional> servs = LogServiciosAdicionales.Instancia.ObtenerServicios(ID);
                     habitacion.Tipodehabitacion.ServiciosAdicionales = servs;
                     lista.Add(habitacion);
                 }
 
-                ViewBag.FechaReserva = DateTime.Today.ToString("d", culture);
-                ViewBag.FechaIngreso = _fechaIngreso;
-                ViewBag.FechaSalida = _fechaSalida;
-                ViewBag.CantidadAdultos = cantidadAdultos;
-                ViewBag.CantidadKids = cantidadKids;
+                EntReserva reserva = new EntReserva
+                {
+                    Fechadereserva = DateTime.Today.ToString("d", culture),
+                    FechadeIngreso = _fechaIngreso,
+                    FechadeSalida = _fechaSalida,
+                    CantidaAdultos = cantidadAdultos,
+                    CantidadKids = cantidadKids
 
-                ViewBag.lista = lista;
-                return View(lista);
+                };
+
+                EntReservaViewModel ViewModel = new EntReservaViewModel
+                {
+                    Reserva = reserva,
+                    Habitaciones = lista,
+                    ErrorID = -1
+                };
+                
+
+                return View(ViewModel);
             }
             catch (Exception err)
             {
@@ -157,16 +126,23 @@ namespace CapaPresentacion.Controllers
         public ActionResult RealizarReserva(string numeroHabitacion,string fechaReserva,string fechaIngreso, string fechaSalida, int cantidadAdultos, int cantidadKids)
         {
             verificarSesion();
-            ViewBag.FechaReserva = fechaReserva;
-            ViewBag.FechaIngreso = fechaIngreso;
-            ViewBag.FechaSalida = fechaSalida;
-            ViewBag.CantidadAdultos = cantidadAdultos;
-            ViewBag.CantidadKids = cantidadKids;
+            
 
             EntHabitacion habitacion = new EntHabitacion();
-            habitacion = LogHabitacion.Instancia.buscarHabitacion(numeroHabitacion);
+            habitacion = LogHabitacion.Instancia.BuscarHabitacion(numeroHabitacion);
+            habitacion.AplicarDescuentoPorReserva();
 
-            return View(habitacion);
+            EntReserva reserva = new EntReserva
+            {
+                Fechadereserva = fechaReserva,
+                FechadeIngreso = fechaIngreso,
+                FechadeSalida = fechaSalida,
+                CantidaAdultos = cantidadAdultos,
+                CantidadKids = cantidadKids,
+                Habitacion = habitacion
+            };
+
+            return View(reserva);
         }
 
         [HttpPost]
@@ -178,25 +154,34 @@ namespace CapaPresentacion.Controllers
 
             EntHuesped huesped = cuenta.Huesped;
 
-            EntReserva reserva = new EntReserva();
-            reserva.Fechadereserva = frm["txtFechaReserva"];
-            reserva.FechadeIngreso = frm["txtFechaIngreso"];
-            reserva.FechadeSalida = frm["txtFechaSalida"];
+            Random rdn = new Random();
 
-            reserva.CantidaAdultos = int.Parse(frm["txtCantidadAdultos"]);
+            EntReserva reserva = new EntReserva
+            {
+                ReservaID = rdn.Next(20,int.MaxValue),
+                Fechadereserva = frm["txtFechaReserva"],
+                FechadeIngreso = frm["txtFechaIngreso"],
+                FechadeSalida = frm["txtFechaSalida"],
 
-            reserva.CantidadKids = int.Parse(frm["txtCantidadKids"]);
+                CantidaAdultos = int.Parse(frm["txtCantidadAdultos"]),
 
-            reserva.Habitacion = habitacion;
-            reserva.Huesped = huesped;
+                CantidadKids = int.Parse(frm["txtCantidadKids"]),
+
+                Habitacion = habitacion,
+                Huesped = huesped
+            };
 
             try
             {
                 Boolean alquila = LogReserva.Instancia.RealizarReserva(reserva);
                 if (alquila)
                 {
-                    return RedirectToAction("Inicio", "Menu");
-                }
+                    double precio = double.Parse(frm["precio"]);
+                    ((EntCuenta)Session["cuenta"]).ReservaID = reserva.ReservaID;
+                    ((EntCuenta)Session["cuenta"]).Monto = precio;
+
+                    return RedirectToAction("CreatePayment", "Paypal",new { id = reserva.ReservaID, monto = precio, tax = 0, shipping = 0 });
+                }   
                 else
                 {
                     return View(reserva);

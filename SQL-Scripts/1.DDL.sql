@@ -13,7 +13,8 @@ Create TABLE [Comprobantepagoreserva]
 	[Fechadeemision] date NULL,
 	[Ruc] char(11) NULL,
 	[ComprobantepagoreservaID] int PRIMARY KEY NOT NULL,
-	[ReservaID] int IDENTITY(1,1) NOT NULL
+	[ReservaID] int IDENTITY(1,1) NOT NULL,
+	[Monto] decimal(18,0) NULL
 )
 GO
 
@@ -22,7 +23,8 @@ CREATE TABLE [Comprobantepagoalquiler]
 	[Fechadeemision] date NULL,
 	[Ruc] char(11) NULL,
 	[ComprobantepagoalquilerID] int PRIMARY KEY NOT NULL,
-	[AlquilerID] int IDENTITY(1,1) NOT NULL
+	[AlquilerID] int IDENTITY(1,1) NOT NULL,
+	[Monto] decimal(18,0) NULL
 )
 GO
 
@@ -36,7 +38,7 @@ GO
 
 CREATE TABLE [Servicioadicional]
 (
-	[NombreServicio] varchar(50) NULL,
+	[NombreServicionvarchar(50) NULL,
 	[ServicioadicionalID] int IDENTITY(1,1) PRIMARY KEY NOT NULL
 )
 GO
@@ -49,7 +51,7 @@ CREATE TABLE [dbo].[Alquiler]
 	[Fechadesalida] [date] NOT NULL,
 	[AlquilerID] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
 	[Dni] [char](8) NOT NULL,
-	[NumeroHabitacion] [varchar](4) NOT NULL,
+	[NumeroHabitacion] nvarchar(4) NOT NULL,
 )
 GO
 
@@ -57,18 +59,18 @@ CREATE TABLE [dbo].[Reserva]
 (
 	[CantidadAdultos] [int] NOT NULL,
 	[CantidadKids] [int] NOT NULL,
-	[Fechadeingreso] [date] NOT NULL,
-	[Fechadesalida] [date] NOT NULL,
+	[FechadeIngreso] [date] NOT NULL,
+	[FechadeSalida] [date] NOT NULL,
 	[Fechadereserva] [date] NULL,
 	[ReservaID] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
 	[Dni] [char](8) NOT NULL,
-	[NumeroHabitacion] [varchar](4) NOT NULL,
+	[NumeroHabitacion] nvarchar(4) NOT NULL,
 )
 GO
 
 CREATE TABLE [dbo].[Habitacion]
 (
-	[NumeroHabitacion] [varchar](4) PRIMARY KEY NOT NULL,
+	[NumeroHabitacion] nvarchar(4) PRIMARY KEY NOT NULL,
 	[TipodehabitacionID] [int] NOT NULL,
 )
 GO
@@ -76,7 +78,7 @@ GO
 CREATE TABLE [dbo].[Tipodehabitacion](
 	[Capacidad] [int] NULL,
 	[Costoadicional] [decimal](6, 2) NULL,
-	[Nombretipodehabitacion] [varchar](50) NULL,
+	[Nombretipodehabitacion]nvarchar](50) NULL,
 	[Numerodecamas] [int] NULL,
 	[Precio] [decimal](6, 2) NULL,
 	[TipodehabitacionID] [int] PRIMARY KEY NOT NULL,
@@ -85,29 +87,29 @@ GO
 
 CREATE TABLE [dbo].[Huesped]
 (
-	[Apellidos] [varchar](50) NULL,
+	[Apellidos]nvarchar](50) NULL,
 	[Fechadenacimiento] [date] NULL,
-	[Nombre] [varchar](50) NULL,
+	[Nombre]nvarchar](50) NULL,
 	[Dni] [char](8) PRIMARY KEY NOT NULL,
-	[NombreUsuario] [varchar](50) NOT NULL
+	[NombreUsuario] nvarchar(50) NOT NULL
 )
 GO
 
 CREATE TABLE [Administradorhotel]
 (
-	[Apellidos] varchar(50) NULL,
+	[Apellidosnvarchar(50) NULL,
 	[Fechadenacimiento] date NULL,
-	[Nombre] varchar(50) NULL,
+	[Nombrenvarchar(50) NULL,
 	[AdministradorhotelID] int IDENTITY(1,1) PRIMARY KEY NOT NULL
-	[NombreUsuario] [varchar](50) NOT NULL
+	[NombreUsuario] nvarchar(50) NOT NULL
 )
 GO
 
 CREATE TABLE [Cuenta]
 (
-	[NombreUsuario] varchar(50) PRIMARY KEY NOT NULL,
-	[Email] varchar(50) NOT NULL,
-	[PasswordAccount] varchar(50) NOT NULL,
+	[NombreUsuarionvarchar(50) PRIMARY KEY NOT NULL,
+	[Emailnvarchar(50) NOT NULL,
+	[PasswordAccountnvarchar(50) NOT NULL,
 	[FechaCreacion] date NOT NULL
 )
 GO

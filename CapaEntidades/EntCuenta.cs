@@ -9,22 +9,18 @@ namespace CapaEntidades
 {
     public class EntCuenta
     {
-        private string nombreUsuario;
-        private string email;
-        private string passwordAccount;
-        private string fechaCreacion;
-        private EntHuesped huesped;
-        private EntAdministradorhotel admin;
-
         [Required]
-        public string NombreUsuario { get => nombreUsuario; set => nombreUsuario = value; }
+        public string NombreUsuario { get; set; }
         [Required]
         [EmailAddress]
-        public string Email { get => email; set => email = value; }
+        public string Email { get; set; }
         [Required]
-        public string PasswordAccount { get => passwordAccount; set => passwordAccount = value; }
-        public string FechaCreacion { get => fechaCreacion; set => fechaCreacion = value; }
-        public EntHuesped Huesped { get => huesped; set => huesped = value; }
-        public EntAdministradorhotel Admin { get => admin; set => admin = value; }
+        public string PasswordAccount { get; set; }
+        public string FechaCreacion { get; set; }
+        public EntHuesped Huesped { get; set; }
+        public EntAdministradorhotel Admin { get; set; }
+
+        public double Monto { get; set; }
+        public int ReservaID { get; set; }
     }
 }

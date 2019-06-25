@@ -25,7 +25,7 @@ namespace CapaAccesoDatos
 
         #region metodos
 
-        public List<EntReserva> ListarHabitacionesDisponibles(int candidadPersonas)
+        public List<EntReserva> ListarHabitacionesDisponibles(int cantidadPersonas)
         {
             SqlCommand cmd = null;
             List<EntReserva> lista = new List<EntReserva>();
@@ -33,20 +33,28 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_HabitacionesDisponibles", cn);
-                cmd.Parameters.AddWithValue("@cantidadPersonas",candidadPersonas);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_HabitacionesDisponibles", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
+
+                cmd.Parameters.AddWithValue("@prmintCantidadPersonas",cantidadPersonas);
+
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 while(dr.Read())
                 {
-                    EntReserva reserva = new EntReserva();
-                    EntHabitacion habitacion = new EntHabitacion();
 
-                    reserva.FechadeIngreso = Convert.ToString(dr["FechaIngreso"]);
-                    reserva.FechadeSalida = Convert.ToString(dr["FechaSalida"]);
-                    habitacion.NumeroHabitacion = Convert.ToString(dr["NumeroHabitacion"]);
-                    reserva.Habitacion = habitacion;
+                    EntHabitacion habitacion = new EntHabitacion
+                    {
+                        NumeroHabitacion = Convert.ToString(dr["NumeroHabitacion"])
+                    };
+                    EntReserva reserva = new EntReserva
+                    {
+                        FechadeIngreso = Convert.ToString(dr["FechaIngreso"]),
+                        FechadeSalida = Convert.ToString(dr["FechaSalida"]),
+                        Habitacion = habitacion
+                    };
 
                     lista.Add(reserva);
                 }
@@ -70,8 +78,12 @@ namespace CapaAccesoDatos
             try
             {
                 SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("Sp_RealizarReserva", cn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd = new SqlCommand("Sp_RealizarReserva", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                };
+
+                cmd.Parameters.AddWithValue("@prmintReservaID", reserva.ReservaID);
                 cmd.Parameters.AddWithValue("@prmstrFechaReserva", reserva.Fechadereserva);
                 cmd.Parameters.AddWithValue("@prmintCantidadAdultos", reserva.CantidaAdultos);
                 cmd.Parameters.AddWithValue("@prmintCantidadKids", reserva.CantidadKids);
@@ -92,6 +104,140 @@ namespace CapaAccesoDatos
                 cmd.Connection.Close();
             }
             return reservar;
+        }
+
+        public List<EntReserva> BuscarReservaDeHueped(string dni)
+        {
+            SqlCommand cmd = null;
+            List<EntReserva> lista = new List<EntReserva>();
+
+            try
+            {
+                SqlConnection cn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("SP_BuscarReservaDeHuesped", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
+
+                cmd.Parameters.AddWithValue("@prmstrDni", dni);
+
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+
+                    EntTipoDeHabitacion tipoDeHabitacion = new EntTipoDeHabitacion
+                    {
+                        Capacidad = Convert.ToInt32(dr["Capacidad"]),
+                        Nombretipodehabitacion = Convert.ToString(dr["Nombretipodehabitacion"]),
+                        Costoadicional = Convert.ToInt32(dr["Costoadicional"]),
+                        Numerodecamas = Convert.ToInt32(dr["Numerodecamas"]),
+                        Precio = Convert.ToDouble(dr["Numerodecamas"]),
+                        TipodehabitacionID = Convert.ToInt32(dr["TipodehabitacionID"]),
+                    };
+
+                    EntHabitacion habitacion = new EntHabitacion
+                    {
+                        NumeroHabitacion = Convert.ToString(dr["NumeroHabitacion"]),
+                        Tipodehabitacion = tipoDeHabitacion
+                    };
+                    EntHuesped huesped = new EntHuesped
+                    {
+                        Dni = Convert.ToString(dr["Dni"])
+                    };
+                    EntReserva reserva = new EntReserva
+                    {
+                        ReservaID = Convert.ToInt32(dr["ReservaID"]),
+                        FechadeIngreso = Convert.ToString(dr["FechaIngreso"]),
+                        FechadeSalida = Convert.ToString(dr["FechaSalida"]),
+                        CantidaAdultos = Convert.ToInt32(dr["CantidadAdultos"]),
+                        CantidadKids = Convert.ToInt32(dr["CantidadKids"]),
+                        Fechadereserva = Convert.ToString(dr["Fechadereserva"]),
+                        Habitacion = habitacion,
+                        Huesped = huesped
+                        
+                    };
+
+                    lista.Add(reserva);
+                }
+
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+            return lista;
+        }
+
+        public EntReserva BuscarReserva(int ReservaID)
+        {
+            SqlCommand cmd = null;
+            EntReserva reserva = null;
+
+            try
+            {
+                SqlConnection cn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("SP_BuscarReserva", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
+
+                cmd.Parameters.AddWithValue("@prmintReservaID", ReservaID);
+
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+
+                    EntTipoDeHabitacion tipoDeHabitacion = new EntTipoDeHabitacion
+                    {
+                        Capacidad = Convert.ToInt32(dr["Capacidad"]),
+                        Nombretipodehabitacion = Convert.ToString(dr["Nombretipodehabitacion"]),
+                        Costoadicional = Convert.ToInt32(dr["Costoadicional"]),
+                        Numerodecamas = Convert.ToInt32(dr["Numerodecamas"]),
+                        Precio = Convert.ToDouble(dr["Precio"]),
+                        TipodehabitacionID = Convert.ToInt32(dr["TipodehabitacionID"]),
+                    };
+
+                    EntHabitacion habitacion = new EntHabitacion
+                    {
+                        NumeroHabitacion = Convert.ToString(dr["NumeroHabitacion"]),
+                        Tipodehabitacion = tipoDeHabitacion
+                    };
+                    EntHuesped huesped = new EntHuesped
+                    {
+                        Dni = Convert.ToString(dr["Dni"])
+                    };
+                    reserva = new EntReserva
+                    {
+                        ReservaID = Convert.ToInt32(dr["ReservaID"]),
+                        FechadeIngreso = Convert.ToString(dr["FechaIngreso"]),
+                        FechadeSalida = Convert.ToString(dr["FechaSalida"]),
+                        CantidaAdultos = Convert.ToInt32(dr["CantidadAdultos"]),
+                        CantidadKids = Convert.ToInt32(dr["CantidadKids"]),
+                        Fechadereserva = Convert.ToString(dr["Fechadereserva"]),
+                        Habitacion = habitacion,
+                        Huesped = huesped
+
+                    };
+                }
+
+            }
+            catch (SqlException e)
+            {
+
+                throw e;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+            return reserva;
+
         }
 
         #endregion metodos

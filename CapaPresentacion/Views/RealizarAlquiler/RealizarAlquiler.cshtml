@@ -1,4 +1,4 @@
-﻿@model CapaEntidades.EntHabitacion
+﻿@model CapaEntidades.EntAlquiler
 @using CapaEntidades;
 @{
     /**/
@@ -6,15 +6,13 @@
     ViewBag.Title = "RealizarAlquiler";
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
     EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
-    string fechaIngreso = ViewBag.FechaIngreso;
-    string fechaSalida = ViewBag.FechaSalida;
-    int cantidadAdultos = ViewBag.CantidadAdultos;
-    int cantidadKids = ViewBag.CantidadKIds;
+    EntHabitacion habitacion = Model.Habitacion;
 }
 
 @section Scripts
 {
     <script>
+         $("#limpiar").empty()
         $("a#adminName").html("@cuenta.NombreUsuario");
         //$("a#adminName").attr("href", "/Login/CerrarSesion")
     </script>
@@ -31,49 +29,50 @@
             <div class="form-group">
                 <label class="control-label col-md-2">Dni</label>
                 <div class="col-md-10">
-                    <input type="text" name="txtDni" class="form-control" required="required">
+                    <input type="hidden" value="@habitacion.NumeroHabitacion" name="txtNumeroHabitacion" />
+                    <input type="text" name="txtDni" class="form-control" value="@Model.Huesped.Dni" readonly="readonly">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-8">Fecha de Ingreso</label>
                 <div class="col-md-10">
-                    <input type="text" name="txtFechaIngreso" class="form-control" value="@fechaIngreso" readonly="readonly">
+                    <input type="text" name="txtFechaIngreso" class="form-control" value="@Model.FechadeIngreso" readonly="readonly">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-8">Fecha de Salida</label>
                 <div class="col-md-10">
-                    <input type="text" name="txtFechaSalida" class="form-control" value="@fechaSalida" readonly="readonly">
+                    <input type="text" name="txtFechaSalida" class="form-control" value="@Model.FechadeSalida" readonly="readonly">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-8">Cantidad de Adultos</label>
                 <div class="col-md-10">
-                    <input type="text" name="txtCantidadAdultos" class="form-control" value="@cantidadAdultos" readonly="readonly">
+                    <input type="text" name="txtCantidadAdultos" class="form-control" value="@Model.CantidaAdultos" readonly="readonly">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-8">Cantidad de Niños</label>
                 <div class="col-md-10">
-                    <input type="text" name="txtCantidadKids" class="form-control" value="@cantidadKids" readonly="readonly">
+                    <input type="text" name="txtCantidadKids" class="form-control" value="@Model.CantidadKids" readonly="readonly">
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.NumeroHabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => habitacion.NumeroHabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.NumeroHabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    @Html.EditorFor(model => habitacion.NumeroHabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.Tipodehabitacion.Nombretipodehabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Tipodehabitacion.Nombretipodehabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    @Html.EditorFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.Tipodehabitacion.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => habitacion.Tipodehabitacion.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Tipodehabitacion.Precio, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    @Html.EditorFor(model => habitacion.Tipodehabitacion.Precio, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
                 </div>
             </div>
 

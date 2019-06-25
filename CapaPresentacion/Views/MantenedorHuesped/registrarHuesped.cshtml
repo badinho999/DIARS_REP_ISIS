@@ -2,67 +2,67 @@
 @using CapaEntidades;
 @{
     ViewBag.Title = "registrarHuesped";
-    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
-    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+    Layout = "~/Views/Shared/_LayoutRegistro.cshtml";
 }
 
-@section Scripts
-{
-    <script>
-        $("a#adminName").html("@cuenta.NombreUsuario");
-        //$("a#adminName").attr("href", "/Login/CerrarSesion")
-    </script>
-}
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <section class="container" id="listarHuesped">
         <input type="hidden" name="username" value="@ViewBag.NombreUsuario" />
-        <div class="form-content m-auto form-horizontal col-5">
-            <h4>Datos personales</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                <label class="control-label col-md-2">Apellidos</label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Apellidos, "", new { @class = "text-danger" })
+        <div class="container card text-center mt-4 mb-4">
+            <div class="card-header">
+                Hola @ViewBag.NombreUsuario! nuestras habitaciones te están esperando
+            </div>
+            <div class="card-body text-center">
+                <h5>Ingrese sus datos personales</h5>
+                <p class="card-text text-info mb-3">Tus datos se mantendrán bajo estricta confidencialidad</p>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label class="control-label col-md-2">Apellidos</label>
+                    <div class="m-auto col-md-10">
+                        @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "m-lg-auto form-control text-center col-md-4" } })
+                        @Html.ValidationMessageFor(model => model.Apellidos, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-8">Fecha de nacimiento</label>
+                    <div class="input-group date fechaNac m-auto col-md-10">
+                        @Html.EditorFor(model => model.Fechadenacimiento, new { htmlAttributes = new { @class = "datepicker m-lg-auto form-control text-center col-md-4" } })
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                        @Html.ValidationMessageFor(model => model.Fechadenacimiento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Nombre</label>
+                    <div class="m-auto col-md-10">
+                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "m-lg-auto form-control text-center col-md-4" } })
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">DNI</label>
+                    <div class="m-auto col-md-10">
+                        @Html.EditorFor(model => model.Dni, new { htmlAttributes = new { @class = "m-lg-auto form-control text-center col-md-4" } })
+                        @Html.ValidationMessageFor(model => model.Dni, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-footer text-center">
+                <div class="form-group text-center">
+                    <div class="col-md-offset-2 m-auto col-md-10">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        @Html.ActionLink("Cancelar", "eliminarCuenta", new { NombreUsuario = ViewBag.NombreUsuario }, new { @class = "ml-1 btn btn-danger" })
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label col-md-8">Fecha de nacimiento</label>
-                <div class="input-group date fechaNac col-md-10">
-                    @Html.EditorFor(model => model.Fechadenacimiento, new { htmlAttributes = new { @class = "form-control" } })
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                    @Html.ValidationMessageFor(model => model.Fechadenacimiento, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-2">Nombre</label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-2">DNI</label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Dni, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Dni, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-myBtn" />
-                    @Html.ActionLink("Cancelar", "eliminarCuenta", new { NombreUsuario = ViewBag.NombreUsuario }, new { @class = "ml-1 btn btn-MyDanger" })
-                </div>
-            </div>
+            
         </div>
-    </section>
 }

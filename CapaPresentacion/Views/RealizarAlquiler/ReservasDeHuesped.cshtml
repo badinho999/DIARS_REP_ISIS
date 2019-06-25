@@ -1,0 +1,87 @@
+﻿@model IEnumerable<CapaEntidades.EntReserva>
+@using CapaEntidades;
+@using System.Globalization;
+@{
+    ViewBag.Title = "ReservasDeHuesped";
+    Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+    string cultureName = "en-US";
+    var culture = new CultureInfo(cultureName);
+}
+
+@section Scripts
+{
+    @Styles.Render("~/bundles/js")
+    <script>
+        $("#limpiar").empty()
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        $("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
+}
+
+<h2 class="text-center text-white mb-4">ReservasDeHuesped</h2>
+
+@if (Model != null)
+{
+    <table class="table m-auto col-15 table-striped table-dark">
+        <tr>
+            <th>
+                <label>Fecha de reserva</label>
+            </th>
+            <th>
+                <label>Cantidad de adultos</label>
+            </th>
+            <th>
+                <label>Cantidad de niño</label>
+            </th>
+            <th>
+                <label>Fecha de ingreso</label>
+            </th>
+            <th>
+                <label>Fecha de salida</label>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+
+
+            string fechaIngreso = Convert.ToDateTime(item.FechadeIngreso).ToString("d", culture); 
+            string fechaSalida = Convert.ToDateTime(item.FechadeSalida).ToString("d", culture);
+            string fechaReserva = Convert.ToDateTime(item.Fechadereserva).ToString("d", culture);
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => fechaReserva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantidaAdultos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantidadKids)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => fechaIngreso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => fechaSalida)
+                <td>
+                    @Html.ActionLink("Procesar", "ProcesarAlquiler", new { reservaID = item.ReservaID }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}
+else
+{
+    <div class="alert alert-danger mt-1">
+        No tiene reservas
+    </div>
+}
+
+<hr />
+<hr />
+

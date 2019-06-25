@@ -1,87 +1,112 @@
-﻿@model IEnumerable<CapaEntidades.EntHabitacion>
+﻿@model CapaEntidades.EntReservaViewModel
 @using CapaEntidades;
 @{
     Layout = "~/Views/Shared/_LayoutReservar.cshtml";
+    EntReserva reserva = Model.Reserva;
 }
 
-@section Rooms{
-    
-<section class="container" id="listarHabitaciones">
-    <div class="pb-4 form-header no-color">
-        <a class="btn btn-myBtn" href="/MantenedorHabitaciones/insertarHabitacion">Nueva habitación</a>
+@if (Model.ErrorID == 0)
+{
+    <div class="alert alert-danger text-center mt-4">
+        Ingrese una fecha válida
+    </div>
+}
+@if (Model.ErrorID == 1)
+{
+    <div class="alert alert-danger text-center mt-4">
+        La diferencia de fechas no debe ser mayor a 28
+    </div>
+}
+
+@if (Model.ErrorID == 2)
+{
+    <div class="alert alert-danger text-center mt-4">
+        Ingrese al menos un adulto
+    </div>
+}
+@if (Model.ErrorID == 3)
+{
+    <div class="alert alert-danger text-center mt-4">
+        Máximo 6 personas
+    </div>
+}
+
+@if (Model.Habitaciones != null && Model.ErrorID < 0 && Model.Habitaciones.Count != 0)
+{
+    @section Scripts
+    {
+        <script>
+            $("#limpiar").empty()
+        </script>
+
+    }
+    <div class="container">
+        <!-- Room -->
+        <div class="rooms">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card-columns">
+                            @foreach (var item in Model.Habitaciones)
+                            {
+
+                                <div class="card">
+                                    @switch (item.Tipodehabitacion.Nombretipodehabitacion)
+                                    {
+                                        case "Simple":
+                                            <img class="card-img-top" src="~/Bootstrap/images/room_1.jpg" alt="Room image description">
+                                            break;
+                                        case "Matrimonial":
+                                            <img class="card-img-top" src="~/Bootstrap/images/offer_4.jpg" alt="Room image description">
+                                            break;
+                                        case "Doble":
+                                            <img class="card-img-top" src="~/Bootstrap/images/room_3.jpg" alt="Room image description">
+                                            break;
+                                        case "Triple":
+                                            <img class="card-img-top" src="~/Bootstrap/images/room_4.jpg" alt="Room image description">
+                                            break;
+                                        case "Múltiple":
+                                            <img class="card-img-top" src="~/Bootstrap/images/room_2.jpg" alt="Room image description">
+                                            break;
+                                    }
+                                    <div class="card-body">
+                                        <div class="rooms_title"><h2>@item.Tipodehabitacion.Nombretipodehabitacion: @item.NumeroHabitacion </h2></div>
+                                        <div class="rooms_list">
+                                            @foreach (var serv in item.Tipodehabitacion.ServiciosAdicionales)
+                                            {
+                                                <ul>
+                                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                                        <span>@serv.NombreDeServicio</span>
+                                                    </li>
+                                                </ul>
+                                            }
+
+                                        </div>
+                                        <div class="rooms_price">S/.@item.Tipodehabitacion.Precio<span>Noche</span></div>
+                                        <div class="button rooms_button">
+                                            @Html.ActionLink("RESERVAR", "RealizarReserva", new { NumeroHabitacion = item.NumeroHabitacion,fechaReserva = reserva.Fechadereserva,fechaIngreso = reserva.FechadeIngreso,
+                                  fechaSalida = reserva.FechadeSalida, cantidadAdultos = reserva.CantidaAdultos
+                                  , cantidadKids = reserva.CantidadKids}, new { @class = "d-block mb-2 link-master btn btn-myBtn" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <table class="table m-auto col-15 table-striped table-dark">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NumeroHabitacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipodehabitacion.Nombretipodehabitacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipodehabitacion.Numerodecamas)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipodehabitacion.Capacidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipodehabitacion.Precio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipodehabitacion.Costoadicional)
-            </th>
-            <th>
-                Servicios
-            </th>
-            <th>
-                Actions
-            </th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NumeroHabitacion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Nombretipodehabitacion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Numerodecamas)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Capacidad)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Precio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Costoadicional)
-                </td>
-
-                <td>
-                    @{
-                        string servicios = string.Join
-                        (
-                            ", ",
-                            (from row in item.Tipodehabitacion.ServiciosAdicionales
-                             select row.NombreDeServicio).ToArray()
-                        );
-                        @servicios.ToString()
-                    }
-                </td>
-                <td class="options">
-                    @Html.ActionLink("RESERVAR", "RealizarReserva", new { NumeroHabitacion = item.NumeroHabitacion,fechaReserva = ViewBag.FechaReserva
-                   ,fechaIngreso = ViewBag.FechaIngreso,
-                   fechaSalida = ViewBag.FechaSalida, cantidadAdultos = ViewBag.CantidadAdultos
-                   , cantidadKids = ViewBag.CantidadKids}, new { @class = "d-block mb-2 link-master btn btn-myBtn" })
-                </td>
-            </tr>
-        }
-
-    </table>
-</section>
 }
-    
+else if (Model.ErrorID < 0)
+{
+
+    <div class="alert alert-danger text-center mt-4">
+        No hay habitaciones disponibles para la fecha seleccionada
+    </div>
+
+}
+

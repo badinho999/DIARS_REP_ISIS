@@ -49,7 +49,7 @@
                     <div class="header_login"><a class="page-scroll" id="idLogin" href="/Login/VerificarAcceso">Iniciar Sesión</a></div>
 
                     <!-- Header Link -->
-                    <div class="header_link"><a href="#">Reserva Aquí</a></div>
+                    <div class="header_link">@Html.ActionLink("Reserva Aquí", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
 
                     <!-- Hamburger Button -->
                     <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -91,7 +91,7 @@
                         <li>@Html.ActionLink("Contacto", "Contact", "Menu", null, new { @class = "page-scroll" })</li>
                     </ul>
                 </nav>
-                <div class="button menu_button"><a href="#">book now</a></div>
+                <div class="button menu_button">@Html.ActionLink("Reserva Aquí", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
 
                 <!-- Menu Social -->
                 <div class="social menu_social">

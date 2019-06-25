@@ -1,11 +1,12 @@
-﻿
+﻿@model CapaEntidades.EntCuenta
+@using CapaEntidades;
 @{
     ViewBag.Title = "VerificarAcceso";
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 
-<div class="container-fluid ">
-    <div class="contenedor-form">
+
+    <div class="contenedor-form mt-4 mb-4">
         <div class="toggle">
             <span>Crear Cuenta</span>
         </div>
@@ -20,17 +21,24 @@
 
         <div class="formulario">
             <h2>Crea tu cuenta</h2>
-            <form action="/Login/VerificarAcceso" method="post">
-                <input type="text" placeholder="Usuario" required />
-                <input type="password" placeholder="Contraseña" required />
-                <input type="email" placeholder="Correo electrónico" required />
-                <input type="text" placeholder="Teléfono" required />
-                <input type="submit" placeholder="Registrarse" />
-            </form>
+            @using (Html.BeginForm("registrarCuenta", "MantenedorHuesped"))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @type = "text", placeholder = "Usuario" } })
+                @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.PasswordAccount, new { htmlAttributes = new { @type = "password", placeholder = "Contraseña" } })
+                @Html.ValidationMessageFor(model => model.PasswordAccount, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @type = "email", placeholder = "Email" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                <input type="submit" name="Registrarse" />
+            }
+
+
         </div>
         <div class="reset-password">
             <a href="#">Olvide mi contraseña?</a>
         </div>
     </div>
-</div>
+
 

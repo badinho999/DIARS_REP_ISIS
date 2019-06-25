@@ -50,9 +50,15 @@
     <Reference Include="dotless.Core, Version=1.4.0.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <HintPath>..\packages\dotless.1.4.0.0\lib\dotless.Core.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net45\PayPal.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -295,6 +301,7 @@
     <Content Include="Bootstrap\styles\bootstrap-4.1.2\popper.js" />
     <Content Include="Bootstrap\styles\contact.css" />
     <Content Include="Bootstrap\styles\contact2.css" />
+    <Content Include="Bootstrap\styles\contact3.css" />
     <Content Include="Bootstrap\styles\contacto.css" />
     <Content Include="Bootstrap\styles\contact_responsive.css" />
     <Content Include="Bootstrap\styles\elements.css" />
@@ -364,6 +371,14 @@
     <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="Bootstrap\plugins\font-awesome-4.7.0\scss\_variables.scss" />
     <Content Include="Bootstrap\plugins\jquery-datepicker\package.json" />
+    <Content Include="Config\Web.config" />
+    <None Include="Config\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Config\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="my_app.log" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -382,7 +397,20 @@
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\PayPal\Confirmed.cshtml" />
+    <Content Include="Views\PayPal\Success.cshtml" />
+    <Content Include="Views\PayPal\Void.cshtml" />
+    <Content Include="Views\Shared\_LayoutRegistro.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -394,15 +422,19 @@
     <Compile Include="Controllers\MantenedorServiciosController.cs" />
     <Compile Include="Controllers\MantenedorTipoHabitacionController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\PayPalController.cs" />
     <Compile Include="Controllers\RealizarAlquilerController.cs" />
     <Compile Include="Controllers\RealizarReservaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConfirmedViewData.cs" />
+    <Compile Include="Models\PayPalViewData.cs" />
+    <Compile Include="Models\Utilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <None Include="Views\web.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -466,17 +498,13 @@
     <Content Include="Views\RealizarAlquiler\HabitacionesDisponibles.cshtml" />
     <Content Include="Views\RealizarAlquiler\RealizarAlquiler.cshtml" />
     <Content Include="Views\RealizarReserva\RealizarReserva.cshtml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
+    <Content Include="Views\RealizarAlquiler\ReservasDeHuesped.cshtml" />
+    <Content Include="Views\RealizarAlquiler\BuscarReservaHuesped.cshtml" />
+    <Content Include="Views\RealizarAlquiler\ProcesarAlquiler.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="img\" />
-    <Folder Include="Models\" />
     <Folder Include="vendor\jquery\" />
   </ItemGroup>
   <ItemGroup>

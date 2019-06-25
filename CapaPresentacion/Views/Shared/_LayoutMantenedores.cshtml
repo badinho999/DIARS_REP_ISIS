@@ -21,9 +21,8 @@
             <!-- Main Nav -->
             <nav class="main_nav">
                 <ul class="d-flex flex-row align-items-center justify-content-start">
-                    <li>@Html.ActionLink("Alquilar", "AlquilerMenu", "RealizarAlquiler", null, new { @class = "page-scroll" })</li>
+                    <li>@Html.ActionLink("Alquilar", "BuscarReservaHuesped", "RealizarAlquiler", null, new { @class = "page-scroll" })</li>
                     <li>@Html.ActionLink("Habitación", "listarHabitaciones", "MantenedorHabitaciones", null, new { @class = "page-scroll" })</li>
-                    <li>@Html.ActionLink("Mantenedor Huesped", "listarHuesped", "MantenedorHuesped", null, new { @class = "page-scroll" })</li>
                     <li>@Html.ActionLink("Servicios Adicionales", "listarServicios", "MantenedorServicios", null, new { @class = "page-scroll" })</li>
                     <li>@Html.ActionLink("Tipo de Habitación", "listarTiposH", "MantenedorTipoHabitacion", null, new { @class = "page-scroll" })</li>
 
@@ -85,7 +84,6 @@
                     <ul>
                         <li>@Html.ActionLink("Alquilar", "AlquilerMenu", "RealizarAlquiler", null, new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Habitación", "listarHabitaciones", "MantenedorHabitaciones", null, new { @class = "page-scroll" })</li>
-                        <li>@Html.ActionLink("Mantenedor Huesped", "listarHuesped", "MantenedorHuesped", null, new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Servicios Adicionales", "listarServicios", "MantenedorServicios", null, new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Tipo de Habitación", "listarTiposH", "MantenedorTipoHabitacion", null, new { @class = "page-scroll" })</li>
                     </ul>
@@ -112,7 +110,136 @@
             <div class="home_container d-flex flex-column align-items-center justify-content-center">
                 <div class="home_title"><h1>Mantenedores</h1></div>
             </div>
+
+
+
         </div>
+        <!-- Rooms -->
+        <div id="limpiar">
+            <div class="rooms_right container_wrapper">
+                <div class="container">
+                    <div class="row row-eq-height">
+                        <!-- Rooms Image -->
+                        <div class="col-xl-6 order-xl-1 order-2">
+                            <div class="rooms_slider_container">
+                                <div class="owl-carousel owl-theme rooms_slider">
+                                    <!-- Slide -->
+                                    <div class="slide">
+                                        <div class="background_image" style="background-image:url(../../Bootstrap/images/rooms_1.jpg)"></div>
+                                    </div>
+
+                                    <!-- Slide -->
+                                    <div class="slide">
+                                        <div class="background_image" style="background-image:url(../../Bootstrap/images/rooms_1.jpg)"></div>
+                                    </div>
+
+                                    <!-- Slide -->
+                                    <div class="slide">
+                                        <div class="background_image" style="background-image:url(../../Bootstrap/images/rooms_1.jpg)"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rooms Content -->
+                        <div class="col-xl-6 order-xl-2 order-1">
+                            <div class="rooms_right_content">
+                                <div class="section_title">
+                                    <div>Cuartos</div>
+                                    <h1>Suit Matrimonial</h1>
+                                </div>
+                                <div class="rooms_text">
+                                    <p>Disfruta un momento agradable con tu pareja en esta romántica suit</p>
+                                </div>
+                                <div class="rooms_list">
+                                    <ul>
+                                        <li class="d-flex flex-row align-items-center justify-content-start">
+                                            <img src="~/Bootstrap/images/check.png" alt="">
+                                            <span>Cama 2 Plazas Royal King</span>
+                                        </li>
+                                        <li class="d-flex flex-row align-items-center justify-content-start">
+                                            <img src="~/Bootstrap/images/check.png" alt="">
+                                            <span>Jacuzzi</span>
+                                        </li>
+                                        <li class="d-flex flex-row align-items-center justify-content-start">
+                                            <img src="~/Bootstrap/images/check.png" alt="">
+                                            <span>Agua Caliente & Cable con más de 200 canales</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="rooms_price">S/.50.00/<span>Noche</span></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rooms -->
+
+            <div class="rooms_left container_wrapper">
+                <div class="container">
+                    <div class="row row-eq-height">
+
+                        <!-- Rooms Content -->
+                        <div class="col-xl-6">
+                            <div class="rooms_left_content">
+                                <div class="section_title">
+                                    <div>Cuartos</div>
+                                    <h1>Habitación Simple</h1>
+                                </div>
+                                <div class="rooms_text">
+                                    <p>Un espacio solo para ti, disfruta de la mayor comodidad y servicios</p>
+                                </div>
+                                <div class="rooms_list">
+                                    <ul>
+                                        <li class="d-flex flex-row align-items-center justify-content-start">
+                                            <img src="~/Bootstrap/images/check.png" alt="">
+                                            <span>Cama de plaza y media</span>
+                                        </li>
+                                        <li class="d-flex flex-row align-items-center justify-content-start">
+                                            <img src="~/Bootstrap/images/check.png" alt="">
+                                            <span>Agua Caliente</span>
+                                        </li>
+                                        <li class="d-flex flex-row align-items-center justify-content-start">
+                                            <img src="~/Bootstrap/images/check.png" alt="">
+                                            <span>Cable con 50 canales</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="rooms_price">S/.30.00/<span>Noche</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Rooms Image -->
+                        <div class="col-xl-6 order-xl-1 order-2">
+                            <div class="rooms_slider_container">
+                                <div class="owl-carousel owl-theme rooms_slider">
+                                    <!-- Slide -->
+                                    <div class="slide">
+                                        <div class="background_image" style="background-image:url(../../Bootstrap/images/rooms_2.jpg)"></div>
+                                    </div>
+
+                                    <!-- Slide -->
+                                    <div class="slide">
+                                        <div class="background_image" style="background-image:url(../../Bootstrap/images/rooms_2.jpg)"></div>
+                                    </div>
+
+                                    <!-- Slide -->
+                                    <div class="slide">
+                                        <div class="background_image" style="background-image:url(../../Bootstrap/images/rooms_2.jpg)"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
 
 
         @RenderBody()

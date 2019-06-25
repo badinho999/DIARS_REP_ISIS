@@ -49,7 +49,7 @@
                     <div class="header_login"><a class="page-scroll" id="idLogin" href="/Login/VerificarAcceso">Iniciar Sesión</a></div>
 
                     <!-- Header Link -->
-                    <div class="header_link"><a href="#">Reserva Aquí</a></div>
+                    <div class="header_link">@Html.ActionLink("Reserva Aquí", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
 
                     <!-- Hamburger Button -->
                     <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -91,7 +91,7 @@
                         <li>@Html.ActionLink("Contacto", "Contact", "Menu", null, new { @class = "page-scroll" })</li>
                     </ul>
                 </nav>
-                <div class="button menu_button"><a href="#">Reserva Ahora</a></div>
+                <div class="button menu_button">@Html.ActionLink("Reserva Ahora", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
 
                 <!-- Menu Social -->
                 <div class="social menu_social">
@@ -113,7 +113,7 @@
             <!-- Para cambiar la imagen, ir a rooms.css, a la funcion .home y cambiar la ruta-->
             <div class="home_container d-flex flex-column align-items-center justify-content-center">
                 <div class="home_title"><h1>Habitaciones</h1></div>
-                <div class="button home_button"><a href="#">Reserva ahora</a></div>
+                <div class="button home_button">@Html.ActionLink("Reserva Ahora", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
             </div>
         </div>
 
@@ -124,13 +124,13 @@
                 <div class="row">
                     <div class="col">
                         <div class="booking_container d-flex flex-row align-items-end justify-content-start">
-                            <form action="#" class="booking_form">
+                            <form action="/RealizarReserva/HabitacionesDisponibles" method="post" class="booking_form">
                                 <div class="booking_form_container d-flex flex-lg-row flex-column align-items-start justify-content-start flex-wrap">
                                     <div class="booking_form_inputs d-flex flex-row align-items-start justify-content-between flex-wrap">
-                                        <div class="booking_dropdown"><input type="text" class="datepicker booking_input booking_input_a booking_in" placeholder="Check in" required="required"></div>
-                                        <div class="booking_dropdown"><input type="text" class="datepicker booking_input booking_input_a booking_out" placeholder="Check out" required="required"></div>
+                                        <div class="booking_dropdown"><input type="text" name="txtCheckIn" class="datepicker booking_input booking_input_a booking_in" placeholder="Check in" required="required"></div>
+                                        <div class="booking_dropdown"><input type="text" name="txtCheckOut" class="datepicker booking_input booking_input_a booking_out" placeholder="Check out" required="required"></div>
                                         <div class="custom-select">
-                                            <select>
+                                            <select name="selectAdultos">
                                                 <option value="0">Adultos</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -140,7 +140,7 @@
                                             </select>
                                         </div>
                                         <div class="custom-select">
-                                            <select>
+                                            <select name="selectKids">
                                                 <option value="0">Niños</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -150,7 +150,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <button class="booking_form_button ml-lg-auto">Reservar</button>
+                                    <button type="submit" class="booking_form_button ml-lg-auto">Reservar</button>
                                 </div>
                             </form>
                         </div>
@@ -189,7 +189,7 @@
                                         </ul>
                                     </div>
                                     <div class="rooms_price">S/.30.00/<span>Noche</span></div>
-                                    <div class="button rooms_button"><a href="#">reservar</a></div>
+                                    <div class="button rooms_button">@Html.ActionLink("Reservar", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
                                 </div>
                             </div>
 
@@ -219,7 +219,7 @@
                                         </ul>
                                     </div>
                                     <div class="rooms_price">S/. 50.00 <span>Noche</span></div>
-                                    <div class="button rooms_button"><a href="#">Reservar</a></div>
+                                    <div class="button rooms_button">@Html.ActionLink("Reserva Aquí", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
                                 </div>
                             </div>
 
@@ -248,7 +248,7 @@
                                         </ul>
                                     </div>
                                     <div class="rooms_price">S/.70.00 <span>Noche</span></div>
-                                    <div class="button rooms_button"><a href="#">Reservar</a></div>
+                                    <div class="button rooms_button">@Html.ActionLink("Reserva Aquí", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
                                 </div>
                             </div>
 
@@ -277,7 +277,7 @@
                                             </li>
                                         </ul>
                                         <div class="rooms_price">S/.50.00/<span>Noche</span></div>
-                                        <div class="button rooms_button"><a href="#">Reservar</a></div>
+                                        <div class="button rooms_button">@Html.ActionLink("Reserva Aquí", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
                                     </div>
                                 </div>
                             </div>
@@ -312,7 +312,7 @@
                                         </ul>
                                     </div>
                                     <div class="rooms_price">S/.80.00 <span>Noche</span></div>
-                                    <div class="button rooms_button"><a href="#">Reservar</a></div>
+                                    <div class="button rooms_button">@Html.ActionLink("Reserva Aquí", "Reservar", "Menu", null, new { @class = "page-scroll" })></div>
                                 </div>
                             </div>
 

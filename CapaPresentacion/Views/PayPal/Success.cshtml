@@ -1,0 +1,38 @@
+﻿
+@model CapaPresentacion.Models.ConfirmedViewData
+@using CapaEntidades;
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_LayoutReservar.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+}
+
+@if (cuenta != null)
+{
+    @section Scripts
+    {
+        <script>
+
+            $("#limpiar").empty()
+            $("a#idLogin").html("Cerrar Sesión");
+            $("a#idLogin").attr("href", "/Login/CerrarSesion")
+        </script>
+    }
+    <div class="container card mt-4 mb-4">
+        <div class="card-header text-center">
+            <h2>Pago realizado con éxito</h2>
+            <hr />
+        </div>
+        <div class="card-body text-center">
+            <h5 class="card-title">Serie: @Model.Serie</h5>
+            <p class="card-text">RUC: RUC00000001</p>
+            <p class="card-text">Total a pagar: S/.@Model.Monto</p>
+            <p class="card-text">ReservaID: @Model.ReservaID</p>
+            <p class="card-text text-muted">Tome captura de esta información</p>
+        </div>
+        <div class="card-footer text-center">
+            <p><a href="/" class="btn btn-primary">Volver al sitio</a></p>
+        </div>
+
+    </div>
+}

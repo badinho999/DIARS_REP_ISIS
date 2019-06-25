@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,12 +24,18 @@ namespace CapaLogica
 
         #region metodos
 
-        public List<EntHabitacion> ListarHabitacionesDisponibles(int candidadPersonas,string fechaIngreso)
+        public List<EntHabitacion> ListarHabitacionesDisponibles(int cantidadPersonas,string fechaIngreso,DateTime fechaSalida)
         {
             try
             {
-                List<EntHabitacion> lista = DatAlquiler.Instancia.ListarHabitacionesDisponibles(candidadPersonas,fechaIngreso);
-                return lista;
+                DateTime _fechaIngreso = Convert.ToDateTime(fechaIngreso, CultureInfo.InvariantCulture);
+                List<EntHabitacion> listaHabitacionesDisponibles = LogReserva.Instancia.ListarHabitacionesDisponibles(cantidadPersonas,_fechaIngreso, fechaSalida);
+                List<EntHabitacion> alquilers = DatAlquiler.Instancia.ListarHabitacionesDisponibles(cantidadPersonas,fechaIngreso);
+
+
+                LogMap.Instancia.EliminarHabitacionNoDisponible(listaHabitacionesDisponibles, alquilers);
+
+                return listaHabitacionesDisponibles;
             }
             catch (Exception e)
             {

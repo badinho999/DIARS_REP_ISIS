@@ -14,6 +14,12 @@ namespace CapaPresentacion
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "GenerarCPReserva",
+                "{controller}/{action}/{id}/{monto}/{tax}/{shipping}",
+                new { controller = "CreatePayment", action = "PayPal" }
+                );
+
+            routes.MapRoute(
                 "RealizarReserva",
                 "{controller}/{action}/{id}/{fechaReserva}/{fechaIngreso}/{fechaSalida}/{cantidadAdultos}/{cantidadKids}",
                 new { controller = "RealizarReserva", action = "RealizarReserva" }
@@ -21,7 +27,7 @@ namespace CapaPresentacion
 
             routes.MapRoute(
                 "RealizarAlquiler",
-                "{controller}/{action}/{id}/{fechaIngreso}/{fechaSalida}/{cantidadAdultos}/{cantidadKids}",
+                "{controller}/{action}/{id}/{dni}/{fechaIngreso}/{fechaSalida}/{cantidadAdultos}/{cantidadKids}",
                 new {controller = "RealizarAlquiler",action = "RealizarAlquiler" }
                 );
 

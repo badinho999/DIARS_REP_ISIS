@@ -6,16 +6,11 @@ using System.Threading.Tasks;
 
 namespace CapaEntidades
 {
-    class EntComprobantedepagoalquiler
+    public class EntComprobantedepagoalquiler
     {
-        private string fechadeemision;
-        private string ruc;
-        private int numeroSerie;
-        private EntAlquiler alquiler;
-
-        public string Fechadeemision { get => fechadeemision; set => fechadeemision = value; }
-        public string Ruc { get => ruc; set => ruc = value; }
-        public int NumeroSerie { get => numeroSerie; set => numeroSerie = value; }
-        internal EntAlquiler Alquiler { get => alquiler; set => alquiler = value; }
+        public string Fechadeemision { get; set; }
+        public string Ruc { get; set; }
+        public int NumeroSerie { get; set; }
+        internal EntAlquiler Alquiler { get; set; }
     }
 }

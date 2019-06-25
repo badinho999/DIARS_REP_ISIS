@@ -22,7 +22,7 @@ namespace CapaPresentacion.Controllers
         public ActionResult listarServicios()
         {
             verificarSesion();
-            List<EntServicioadicional> lista = LogServiciosAdicionales.Instancia.listarServicios();
+            List<EntServicioadicional> lista = LogServiciosAdicionales.Instancia.ListarServicios();
             ViewBag.lista = lista;
             return View(lista);
         }
@@ -39,7 +39,7 @@ namespace CapaPresentacion.Controllers
         {
             try
             {
-                Boolean insert = LogServiciosAdicionales.Instancia.insertarServicio(servicioadicional);
+                Boolean insert = LogServiciosAdicionales.Instancia.InsertarServicio(servicioadicional);
                 if (insert)
                 {
                     return RedirectToAction("listarServicios");
@@ -60,7 +60,7 @@ namespace CapaPresentacion.Controllers
         {
             verificarSesion();
             EntServicioadicional servicioadicional = new EntServicioadicional();
-            servicioadicional = LogServiciosAdicionales.Instancia.buscarServicio(ServicioID);
+            servicioadicional = LogServiciosAdicionales.Instancia.BuscarServicio(ServicioID);
             return View(servicioadicional);
         }
 
@@ -69,7 +69,7 @@ namespace CapaPresentacion.Controllers
         {
             try
             {
-                Boolean edita = LogServiciosAdicionales.Instancia.editarServicio(servicioadicional);
+                Boolean edita = LogServiciosAdicionales.Instancia.EditarServicio(servicioadicional);
                 if (edita)
                 {
                     return RedirectToAction("listarServicios");
@@ -90,7 +90,7 @@ namespace CapaPresentacion.Controllers
         {
             verificarSesion();
             EntServicioadicional servicioadicional = new EntServicioadicional();
-            servicioadicional = LogServiciosAdicionales.Instancia.buscarServicio(ServicioID);
+            servicioadicional = LogServiciosAdicionales.Instancia.BuscarServicio(ServicioID);
             return View(servicioadicional);
         }
 
@@ -99,7 +99,7 @@ namespace CapaPresentacion.Controllers
         {
             try
             {
-                Boolean delete = LogServiciosAdicionales.Instancia.eliminarServicio(servicioadicional);
+                Boolean delete = LogServiciosAdicionales.Instancia.EliminarServicio(servicioadicional);
                 if (delete)
                 {
                     return RedirectToAction("listarServicios");

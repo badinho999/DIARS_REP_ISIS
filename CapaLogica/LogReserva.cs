@@ -23,12 +23,56 @@ namespace CapaLogica
 
         #region metodos
 
-        public List<EntReserva> ListarHabitacionesDisponibles(int candidadPersonas)
+        
+
+        public List<EntHabitacion> ListarHabitacionesDisponibles(int cantidadPersonas,DateTime fechaIngreso, DateTime fechaSalida)
         {
             try
             {
-                List<EntReserva> lista = DatReserva.Instancia.ListarHabitacionesDisponibles(candidadPersonas);
-                return lista;
+                List<EntHabitacion> listaHabitacionesDisponibles = new List<EntHabitacion>();
+                List<EntHabitacion> listaHabitacionesNoDisponibles = new List<EntHabitacion>();
+                bool esMayor = false;
+
+                List<EntReserva> reservas;
+
+                reservas = DatReserva.Instancia.ListarHabitacionesDisponibles(cantidadPersonas);
+
+                LogMap map = LogMap.Instancia;
+
+                foreach (EntReserva reserva in reservas)
+                {
+                    DateTime fechaIngresoAux, fechaSalidaAux;
+
+                    fechaIngresoAux = Convert.ToDateTime(reserva.FechadeIngreso);
+                    fechaSalidaAux = Convert.ToDateTime(reserva.FechadeSalida);
+
+                    if (DateTime.Compare(fechaIngreso, fechaSalidaAux) > 0)
+                    {
+                        esMayor = true;
+                    }
+                    else if (DateTime.Compare(fechaIngreso, fechaIngresoAux) < 0)
+                    {
+                        esMayor = false;
+                    }
+
+                    if (esMayor)
+                    {
+                        map.AgregarAlista(listaHabitacionesDisponibles, reserva.Habitacion.NumeroHabitacion);
+                    }
+                    else
+                    {
+                        if (DateTime.Compare(fechaSalida, fechaIngresoAux) < 0)
+                        {
+                            map.AgregarAlista(listaHabitacionesDisponibles, reserva.Habitacion.NumeroHabitacion);
+                        }
+                        else
+                        {
+                            map.AgregarAlista(listaHabitacionesNoDisponibles, reserva.Habitacion.NumeroHabitacion);
+                        }
+                    }
+                }
+                map.EliminarHabitacionNoDisponible(listaHabitacionesDisponibles, listaHabitacionesNoDisponibles);
+                return listaHabitacionesDisponibles;
             }
             catch (Exception e)
             {
@@ -44,6 +88,32 @@ namespace CapaLogica
             }
             catch(Exception e)
             {
+                throw e;
+            }
+        }
+
+        public List<EntReserva> BuscarReservaDeHueped(string dni)
+        {
+            try
+            {
+                return DatReserva.Instancia.BuscarReservaDeHueped(dni);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+
+        public EntReserva BuscarReserva(int ReservaID)
+        {
+            try
+            {
+                return DatReserva.Instancia.BuscarReserva(ReservaID);
+            }
+            catch (Exception e)
+            {
+
                 throw e;
             }
         }

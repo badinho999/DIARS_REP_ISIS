@@ -42,9 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LogAlquiler.cs" />
+    <Compile Include="LogComprobanteReserva.cs" />
     <Compile Include="LogCuenta.cs" />
     <Compile Include="LogHabitacion.cs" />
     <Compile Include="LogHuesped.cs" />
+    <Compile Include="LogMap.cs" />
     <Compile Include="LogReserva.cs" />
     <Compile Include="LogServiciosAdicionales.cs" />
     <Compile Include="LogTipoDeHabitacion.cs" />

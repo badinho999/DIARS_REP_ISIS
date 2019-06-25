@@ -25,10 +25,10 @@ namespace CapaPresentacion.Controllers
             verificarSesion();
 
             List<EntHabitacion> lista = new List<EntHabitacion>();
-            foreach (EntHabitacion habitacion in LogHabitacion.Instancia.listarHabitaciones())
+            foreach (EntHabitacion habitacion in LogHabitacion.Instancia.ListarHabitaciones())
             {
                 int ID = habitacion.Tipodehabitacion.TipodehabitacionID;
-                List<EntServicioadicional> servs = LogServiciosAdicionales.Instancia.obtenerServicios(ID);
+                List<EntServicioadicional> servs = LogServiciosAdicionales.Instancia.ObtenerServicios(ID);
                 habitacion.Tipodehabitacion.ServiciosAdicionales = servs;
                 lista.Add(habitacion);
             }
@@ -40,7 +40,7 @@ namespace CapaPresentacion.Controllers
         public ActionResult insertarHabitacion()
         {
             verificarSesion();
-            List<EntTipoDeHabitacion> listarTiposH = LogTipoDeHabitacion.Instancia.listarTiposH();
+            List<EntTipoDeHabitacion> listarTiposH = LogTipoDeHabitacion.Instancia.ListarTiposH();
 
             var listaTipos = new SelectList(listarTiposH, "TipodehabitacionID", "Nombretipodehabitacion");
             ViewBag.ListarTiposH = listaTipos;
@@ -60,7 +60,7 @@ namespace CapaPresentacion.Controllers
                 habitacion.Tipodehabitacion = new EntTipoDeHabitacion();
                 habitacion.Tipodehabitacion.TipodehabitacionID = Convert.ToInt32(frm["cboTiposH"]);
 
-                Boolean inserta = LogHabitacion.Instancia.insertarHabitacion(habitacion);
+                Boolean inserta = LogHabitacion.Instancia.InsertarHabitacion(habitacion);
                 if (inserta)
                 {
                     return RedirectToAction("listarHabitaciones");
@@ -81,7 +81,7 @@ namespace CapaPresentacion.Controllers
         {
             verificarSesion();
             EntHabitacion habitacion = new EntHabitacion(); 
-            habitacion = LogHabitacion.Instancia.buscarHabitacion(NumeroHabitacion);
+            habitacion = LogHabitacion.Instancia.BuscarHabitacion(NumeroHabitacion);
             return View(habitacion);
         }
 
@@ -90,7 +90,7 @@ namespace CapaPresentacion.Controllers
         {
             try
             {
-                Boolean delete = LogHabitacion.Instancia.eliminarHabitacion(habitacion);
+                Boolean delete = LogHabitacion.Instancia.EliminarHabitacion(habitacion);
                 if(delete)
                 {
                     return RedirectToAction("listarHabitaciones");
@@ -110,13 +110,13 @@ namespace CapaPresentacion.Controllers
         public ActionResult editarHabitacion(string NumeroHabitacion)
         {
             verificarSesion();
-            List<EntTipoDeHabitacion> listarTiposH = LogTipoDeHabitacion.Instancia.listarTiposH();
+            List<EntTipoDeHabitacion> listarTiposH = LogTipoDeHabitacion.Instancia.ListarTiposH();
 
             var listaTipos = new SelectList(listarTiposH, "TipodehabitacionID", "Nombretipodehabitacion");
             ViewBag.ListarTiposH = listaTipos;
 
             EntHabitacion habitacion = new EntHabitacion();
-            habitacion = LogHabitacion.Instancia.buscarHabitacion(NumeroHabitacion);
+            habitacion = LogHabitacion.Instancia.BuscarHabitacion(NumeroHabitacion);
 
             return View(habitacion);
         }
@@ -129,7 +129,7 @@ namespace CapaPresentacion.Controllers
                 habitacion.Tipodehabitacion = new EntTipoDeHabitacion();
                 habitacion.Tipodehabitacion.TipodehabitacionID = Convert.ToInt32(frm["cboTiposH"]);
 
-                Boolean edit = LogHabitacion.Instancia.editarHabitacion(habitacion);
+                Boolean edit = LogHabitacion.Instancia.EditarHabitacion(habitacion);
                 if (edit)
                 {
                     return RedirectToAction("listarHabitaciones");

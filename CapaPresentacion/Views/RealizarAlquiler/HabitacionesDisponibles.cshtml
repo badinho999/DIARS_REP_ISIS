@@ -1,80 +1,174 @@
-﻿@model IEnumerable<CapaEntidades.EntHabitacion>
-
+﻿@model CapaEntidades.EntAlquilerViewModel
+@using CapaEntidades;
+@using System.Globalization;
 @{
     ViewBag.Title = "HabitacionesDisponibles";
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntAlquiler alquiler = Model.Alquiler;
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+    string cultureName = "en-US";
+    var culture = new CultureInfo(cultureName);
 }
 
-<h2>Habitaciones Disponibles</h2>
+@section Scripts
+{
+    @Styles.Render("~/bundles/js")
+    <script>
+        $("#limpiar").empty()
+
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        $("a#adminName").attr("href", "/Login/CerrarSesion")
+    </script>
+}
 
 
-<table class="table m-auto col-15 table-striped table-dark">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NumeroHabitacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipodehabitacion.Nombretipodehabitacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipodehabitacion.Numerodecamas)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipodehabitacion.Capacidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipodehabitacion.Precio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipodehabitacion.Costoadicional)
-        </th>
-        <th>
-            Servicios
-        </th>
-        <th>
-            Actions
-        </th>
-    </tr>
+<!-- Booking -->
 
-    @foreach (var item in Model)
+<div class="booking mb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="booking_container d-flex flex-row align-items-end justify-content-start">
+                    <form action="/RealizarAlquiler/HabitacionesDisponibles" method="post" class="booking_form">
+                        <div class="booking_form_container d-flex flex-lg-row flex-column align-items-start justify-content-start flex-wrap">
+                            <input type="hidden" name="txtdni" value="@Model.Alquiler.Huesped.Dni" />
+                            <div class="booking_form_inputs d-flex flex-row align-items-start justify-content-between flex-wrap">
+                                <div class="booking_dropdown"><input type="text" name="txtCheckIn" class="booking_input booking_input_a booking_in" disabled="disabled" value="@DateTime.Today.ToString("d",culture)"></div>
+                                <div class="booking_dropdown"><input type="text" name="txtCheckOut" class="datepicker booking_input booking_input_a booking_out" placeholder="Check out" required="required"></div>
+                                <div class="custom-select">
+                                    <select name="selectAdultos">
+                                        <option value="0">Adultos</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                                <div class="custom-select">
+                                    <select name="selectKids">
+                                        <option value="0">Niños</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <button class="booking_form_button ml-lg-auto">Alquilar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="m-auto text-center">Habitaciones Disponibles</h2>
+
+
+@if (Model.ErrorID == 0)
+{
+    <div class="alert alert-danger text-center mt-4">
+        Ingrese una fecha válida
+    </div>
+}
+@if (Model.ErrorID == 1)
+{
+    <div class="alert alert-danger text-center mt-4">
+        La diferencia de fechas no debe ser mayor a 28
+    </div>
+}
+
+@if (Model.ErrorID == 2)
+{
+    <div class="alert alert-danger text-center mt-4">
+        Ingrese al menos un adulto
+    </div>
+}
+@if (Model.ErrorID == 3)
+{
+    <div class="alert alert-danger text-center mt-4">
+        Máximo 6 personas
+    </div>
+}
+
+@if (Model.Habitaciones != null && Model.ErrorID < 0 && Model.Habitaciones.Count != 0)
+{
+    @section Scripts
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroHabitacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipodehabitacion.Nombretipodehabitacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipodehabitacion.Numerodecamas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipodehabitacion.Capacidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipodehabitacion.Precio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipodehabitacion.Costoadicional)
-            </td>
+        <script>
+            $("#limpiar").empty()
+        </script>
 
-            <td>
-                @{
-                    string servicios = string.Join
-                    (
-                        ", ",
-                        (from row in item.Tipodehabitacion.ServiciosAdicionales
-                         select row.NombreDeServicio).ToArray()
-                    );
-                    @servicios.ToString()
-                }
-            </td>
-            <td class="options">
-                @Html.ActionLink("RESERVAR", "RealizarAlquiler", new { NumeroHabitacion = item.NumeroHabitacion,fechaIngreso = ViewBag.FechaIngreso,
-               fechaSalida = ViewBag.FechaSalida, cantidadAdultos = ViewBag.CantidadAdultos
-               , cantidadKids = ViewBag.CantidadKids}, new { @class = "d-block mb-2 link-master btn btn-myBtn" })
-            </td>
-        </tr>
     }
+    <div class="container">
+        <!-- Room -->
+        <div class="rooms">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card-columns">
+                            @foreach (var item in Model.Habitaciones)
+                            {
 
-</table>
+                                <div class="card">
+                                    @switch (item.Tipodehabitacion.Nombretipodehabitacion)
+                                    {
+                                        case "Simple":
+                                            <img class="card-img-top" src="~/Bootstrap/images/room_1.jpg" alt="Room image description">
+                                            break;
+                                        case "Matrimonial":
+                                            <img class="card-img-top" src="~/Bootstrap/images/offer_4.jpg" alt="Room image description">
+                                            break;
+                                        case "Doble":
+                                            <img class="card-img-top" src="~/Bootstrap/images/room_3.jpg" alt="Room image description">
+                                            break;
+                                        case "Triple":
+                                            <img class="card-img-top" src="~/Bootstrap/images/room_4.jpg" alt="Room image description">
+                                            break;
+                                        case "Múltiple":
+                                            <img class="card-img-top" src="~/Bootstrap/images/room_2.jpg" alt="Room image description">
+                                            break;
+                                    }
+                                    <div class="card-body">
+                                        <div class="rooms_title"><h2>@item.Tipodehabitacion.Nombretipodehabitacion: @item.NumeroHabitacion </h2></div>
+                                        <div class="rooms_list">
+                                            @foreach (var serv in item.Tipodehabitacion.ServiciosAdicionales)
+                                            {
+                                                <ul>
+                                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                                        <span>@serv.NombreDeServicio</span>
+                                                    </li>
+                                                </ul>
+                                            }
+
+                                        </div>
+                                        <div class="rooms_price">S/.@item.Tipodehabitacion.Precio<span>Noche</span></div>
+                                        <div class="button rooms_button">
+                                            @Html.ActionLink("RESERVAR", "RealizarReserva", new { NumeroHabitacion = item.NumeroHabitacion,dni = alquiler.Huesped.Dni,fechaIngreso = alquiler.FechadeIngreso,
+                                  fechaSalida = alquiler.FechadeSalida, cantidadAdultos = alquiler.CantidaAdultos
+                                  , cantidadKids = alquiler.CantidadKids}, new { @class = "d-block mb-2 link-master btn btn-myBtn" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+else if (Model.ErrorID < 0)
+{
+
+    <div class="alert alert-danger text-center mt-4">
+        No hay habitaciones disponibles para la fecha seleccionada
+    </div>
+
+}

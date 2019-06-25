@@ -1,16 +1,32 @@
 ﻿@model CapaEntidades.EntTipoDeHabitacion
-
+@using CapaEntidades;
 @{
     ViewBag.Title = "eliminarServicios";
     Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
 }
 
-<h2>eliminarServicios</h2>
+
+@section Scripts
+{
+    @Styles.Render("~/bundles/js")
+    <script>
+        $("#limpiar").empty()
+        $("a#adminName").html("@cuenta.NombreUsuario");
+        $("a#adminName").attr("href", "/Login/CerrarSesion")
+        $('#MultiServ').multiSelect({
+            afterSelect: function (values) {
+            },
+            afterDeselect: function (values) {
+            }
+        });
+    </script>
+}
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <section class="container" id="listarTiposH">
         <div class="form-content m-auto form-horizontal col-5">
             <h4>Eliminar servicios de @Model.Nombretipodehabitacion</h4>
