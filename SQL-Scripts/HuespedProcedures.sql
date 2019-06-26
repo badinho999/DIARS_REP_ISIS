@@ -1,5 +1,6 @@
 /*HuespedProcedures*/
 use [Proyecto_DIARS_ISIS]
+go
 
 CREATE procedure [dbo].[Sp_ListarHuesped]
 as

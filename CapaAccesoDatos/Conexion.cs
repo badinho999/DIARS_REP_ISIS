@@ -24,7 +24,7 @@ namespace CapaAccesoDatos
         public SqlConnection Conectar()
         {
             SqlConnection cn = new SqlConnection();
-            cn.ConnectionString = "Data Source=BADINHO\\SQLEXPRESS;initial Catalog=Proyecto_DIARS_ISIS;" + "Integrated Security=true";
+            cn.ConnectionString = "Data Source=RAYZOR;initial Catalog=Proyecto_DIARS_ISIS;" + "Integrated Security=true";
             return cn;
         }
         #endregion metodos

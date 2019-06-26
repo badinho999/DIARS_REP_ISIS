@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
 }
-@if(cuenta!=null)
+@if (cuenta != null)
 {
     @section Scripts
     {
@@ -13,4 +13,392 @@
         </script>
     }
 }
+<!-- Home -->
+
+<div class="home" style="background-image: url(../../Bootstrap/images/home.jpg)">
+    <!-- Para cambiar la imagen, ir a main_styles.css, a la funcion .home y cambiar la ruta-->
+    <div class="home_container d-flex flex-column align-items-center justify-content-center">
+        <div class="home_title"><h1>Reserva tu estadía</h1></div>
+        <div class="home_text text-center">Desde 1997, comodidad, placer y excelente servicio, "Hotel ISIS"</div>
+        <div class="button home_button"><a href="#">Reserva ahora</a></div>
+    </div>
+</div>
+
+
+
+<!-- Booking -->
+
+<div class="booking">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="booking_container d-flex flex-row align-items-end justify-content-start">
+                    <form action="/RealizarReserva/HabitacionesDisponibles" method="post" class="booking_form">
+                        <div class="booking_form_container d-flex flex-lg-row flex-column align-items-start justify-content-start flex-wrap">
+                            <div class="booking_form_inputs d-flex flex-row align-items-start justify-content-between flex-wrap">
+                                <div class="booking_dropdown"><input type="text" name="txtCheckIn" class="datepicker booking_input booking_input_a booking_in" placeholder="Check in" required="required"></div>
+                                <div class="booking_dropdown"><input type="text" name="txtCheckOut" class="datepicker booking_input booking_input_a booking_out" placeholder="Check out" required="required"></div>
+                                <div class="custom-select">
+                                    <select name="selectAdultos">
+                                        <option value="0">Adultos</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <div class="custom-select">
+                                    <select name="selectKids">
+                                        <option value="0">Niños</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="booking_form_button ml-lg-auto">Reservar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Intro -->
+
+<div class="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title text-center">
+                    <div>Bienvenidos</div>
+                    <h1>Al increíble hotel frente al mar</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row intro_row">
+            <div class="col-xl-8 col-lg-10 offset-xl-2 offset-lg-1">
+                <div class="intro_text text-center">
+                    <p>Podrás gozar de la mejor experiencia de servicio con vista al mar y diversas actividades de recreación programadas por nuestros asesores particulares</p>
+                </div>
+            </div>
+        </div>
+        <div class="row gallery_row">
+            <div class="col">
+
+                <!-- Gallery -->
+                <div class="gallery_slider_container">
+                    <div class="owl-carousel owl-theme gallery_slider">
+
+                        <!-- Slide -->
+                        <div class="gallery_slide">
+                            <img src="~/Bootstrap/images/gallery_1.jpg" alt="">
+                            <div class="gallery_overlay">
+                                <div class="text-center d-flex flex-column align-items-center justify-content-center">
+                                    <a href="#">
+                                        <span>+</span>
+                                        <span>See More</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide -->
+                        <div class="gallery_slide">
+                            <img src="~/Bootstrap/images/gallery_2.jpg" alt="">
+                            <div class="gallery_overlay">
+                                <div class="text-center d-flex flex-column align-items-center justify-content-center">
+                                    <a href="#">
+                                        <span>+</span>
+                                        <span>See More</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide -->
+                        <div class="gallery_slide">
+                            <img src="~/Bootstrap/images/gallery_3.jpg" alt="">
+                            <div class="gallery_overlay">
+                                <div class="text-center d-flex flex-column align-items-center justify-content-center">
+                                    <a href="#">
+                                        <span>+</span>
+                                        <span>See More</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide -->
+                        <div class="gallery_slide">
+                            <img src="~/Bootstrap/images/gallery_4.jpg" alt="">
+                            <div class="gallery_overlay">
+                                <div class="text-center d-flex flex-column align-items-center justify-content-center">
+                                    <a href="#">
+                                        <span>+</span>
+                                        <span>Ver Más</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rooms -->
+<div class="rooms_right container_wrapper">
+    <div class="container">
+        <div class="row row-eq-height">
+            <!-- Rooms Image -->
+            <div class="col-xl-6 order-xl-1 order-2">
+                <div class="rooms_slider_container">
+                    <div class="owl-carousel owl-theme rooms_slider">
+                        <!-- Slide -->
+                        <div class="slide">
+                            <div class="background_image" style="background-image:url(../../Bootstrap/images/rooms_1.jpg)"></div>
+                        </div>
+
+                        <!-- Slide -->
+                        <div class="slide">
+                            <div class="background_image" style="background-image:url(../../Bootstrap/images/rooms_1.jpg)"></div>
+                        </div>
+
+                        <!-- Slide -->
+                        <div class="slide">
+                            <div class="background_image" style="background-image:url(../../Bootstrap/images/rooms_1.jpg)"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rooms Content -->
+            <div class="col-xl-6 order-xl-2 order-1">
+                <div class="rooms_right_content">
+                    <div class="section_title">
+                        <div>Cuartos</div>
+                        <h1>Suit Matrimonial</h1>
+                    </div>
+                    <div class="rooms_text">
+                        <p>Disfruta un momento agradable con tu pareja en esta romántica suit</p>
+                    </div>
+                    <div class="rooms_list">
+                        <ul>
+                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                <img src="~/Bootstrap/images/check.png" alt="">
+                                <span>Cama 2 Plazas Royal King</span>
+                            </li>
+                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                <img src="~/Bootstrap/images/check.png" alt="">
+                                <span>Jacuzzi</span>
+                            </li>
+                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                <img src="~/Bootstrap/images/check.png" alt="">
+                                <span>Agua Caliente & Cable con más de 200 canales</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rooms_price">S/.50.00/<span>Noche</span></div>
+                    <div class="button rooms_button"><a href="#">Reservar</a></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Rooms -->
+
+<div class="rooms_left container_wrapper">
+    <div class="container">
+        <div class="row row-eq-height">
+
+            <!-- Rooms Content -->
+            <div class="col-xl-6">
+                <div class="rooms_left_content">
+                    <div class="section_title">
+                        <div>Cuartos</div>
+                        <h1>Habitación Simple</h1>
+                    </div>
+                    <div class="rooms_text">
+                        <p>Un espacio solo para ti, disfruta de la mayor comodidad y servicios</p>
+                    </div>
+                    <div class="rooms_list">
+                        <ul>
+                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                <img src="~/Bootstrap/images/check.png" alt="">
+                                <span>Cama de plaza y media</span>
+                            </li>
+                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                <img src="~/Bootstrap/images/check.png" alt="">
+                                <span>Agua Caliente</span>
+                            </li>
+                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                <img src="~/Bootstrap/images/check.png" alt="">
+                                <span>Cable con 50 canales</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rooms_price">S/.30.00/<span>Noche</span></div>
+                    <div class="button rooms_button"><a href="#">reservar</a></div>
+                </div>
+            </div>
+
+            <!-- Rooms Image -->
+            <div class="col-xl-6 order-xl-1 order-2">
+                <div class="rooms_slider_container">
+                    <div class="owl-carousel owl-theme rooms_slider">
+                        <!-- Slide -->
+                        <div class="slide">
+                            <div class="background_image" style="background-image:url(../../Bootstrap/images/rooms_2.jpg)"></div>
+                        </div>
+
+                        <!-- Slide -->
+                        <div class="slide">
+                            <div class="background_image" style="background-image:url(../../Bootstrap/images/rooms_2.jpg)"></div>
+                        </div>
+
+                        <!-- Slide -->
+                        <div class="slide">
+                            <div class="background_image" style="background-image:url(../../Bootstrap/images/rooms_2.jpg)"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Discover -->
+
+<div class="discover">
+
+    <!-- Discover Content -->
+    <div class="discover_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="section_title">
+                        <div>Hotel</div>
+                        <h1>Descubre Marimar Hotel</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row discover_row">
+                <div class="col-lg-5">
+                    <div class="discover_highlight">
+                        <p>Descubre la magia de hospedarte con nosotros</p>
+                    </div>
+                    <div class="button discover_button"><a href="#">Descubre</a></div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="discover_text">
+                        <p>Fundado en 1997 con un solo objetivo: tu comodidad con el mejor servicio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Discover Slider -->
+    <div class="discover_slider_container">
+        <div class="owl-carousel owl-theme discover_slider">
+
+            <!-- Slide -->
+            <div class="slide">
+                <div class="background_image" style="background-image:url(../../Bootstrap/images/discover_1.jpg)"></div>
+                <div class="discover_overlay d-flex flex-column align-items-center justify-content-center">
+                    <h1><a href="#">Bodas</a></h1>
+                </div>
+            </div>
+
+            <!-- Slide -->
+            <div class="slide">
+                <div class="background_image" style="background-image:url(../../Bootstrap/images/discover_2.jpg)"></div>
+                <div class="discover_overlay d-flex flex-column align-items-center justify-content-center">
+                    <h1><a href="#">Fiestas</a></h1>
+                </div>
+            </div>
+
+            <!-- Slide -->
+            <div class="slide">
+                <div class="background_image" style="background-image:url(../../Bootstrap/images/discover_3.jpg)"></div>
+                <div class="discover_overlay d-flex flex-column align-items-center justify-content-center">
+                    <h1><a href="#">Relax</a></h1>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Testimonials -->
+
+<div class="testimonials">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title text-center">
+                    <div>Clientess</div>
+                    <h1>Testimonios</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row testimonials_row">
+            <div class="col">
+
+                <!-- Testimonials Slider -->
+                <div class="testimonials_slider_container">
+                    <div class="owl-carousel owl-theme testimonials_slider">
+
+                        <!-- Slide -->
+                        <div>
+                            <div class="testimonial_text text-center">
+                                <p>Excelente servicio, el Jacuzzi estuvo genial</p>
+                            </div>
+                            <div class="testimonial_author text-center">
+                                <div class="testimonial_author_image"><img src="~/Bootstrap/images/author_1.jpg" alt=""></div>
+                                <div class="testimonial_author_name"><a href="#">Matrimonio Gomez,</a><span> Cliente</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Slide -->
+                        <div>
+                            <div class="testimonial_text text-center">
+                                <p>Sin duda volvería otra vez, gracias por la estadía Hotel ISIS</p>
+                            </div>
+                            <div class="testimonial_author text-center">
+                                <div class="testimonial_author_image"><img src="~/Bootstrap/images/author_1.jpg" alt=""></div>
+                                <div class="testimonial_author_name"><a href="#">Ivonne Sanchez,</a><span> Clienta</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Slide -->
+                        <div>
+                            <div class="testimonial_text text-center">
+                                <p>Sin duda un hotel con un servicio de calidad</p>
+                            </div>
+                            <div class="testimonial_author text-center">
+                                <div class="testimonial_author_image"><img src="~/Bootstrap/images/author_1.jpg" alt=""></div>
+                                <div class="testimonial_author_name"><a href="#">Juan Torres,</a><span> Cliente</span></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

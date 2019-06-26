@@ -156,4 +156,4 @@ GO
 ALTER TABLE [ServAdicionalTipoH] ADD CONSTRAINT [FK_ServicioAdicionalTipoDeHabitacion_ServicioAdicional]
 	FOREIGN KEY ([ServicioadicionalID]) REFERENCES [Servicioadicional] ([ServicioadicionalID]) ON DELETE No Action ON UPDATE No Action
 GO
-//prro
+/*Pprro*/

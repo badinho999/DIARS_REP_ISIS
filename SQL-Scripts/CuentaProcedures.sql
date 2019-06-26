@@ -1,4 +1,5 @@
 use Proyecto_DIARS_ISIS
+go
 CREATE procedure Sp_RegistrarCuenta
 (
 	@prmstrNombreUsuario varchar(50),

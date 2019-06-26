@@ -1,6 +1,7 @@
 /*HabitacionesProcedures*/
-
-CREATE procedure [dbo].[Sp_ListarHabitaciones]
+use Proyecto_DIARS_ISIS
+go
+CREATE procedure Sp_ListarHabitaciones
 as
 begin
 Select	h.NumeroHabitacion, th.Nombretipodehabitacion, 
@@ -9,7 +10,7 @@ from Habitacion h inner join Tipodehabitacion th on(h.TipodehabitacionID=th.Tipo
 end
 go
 
-CREATE procedure [dbo].[Sp_InsertarHabitacion]
+CREATE procedure Sp_InsertarHabitacion
 (
 	@prmstrNumeroHabitacion varchar(4),
 	@prmintTipodehabitacionID int
@@ -59,6 +60,6 @@ Select	h.NumeroHabitacion, th.Nombretipodehabitacion,
 		th.TipodehabitacionID, 
 		th.Numerodecamas,th.Precio,th.Capacidad,th.Precio,th.Costoadicional
 from Habitacion h inner join Tipodehabitacion th on(h.TipodehabitacionID=th.TipodehabitacionID)
-where h.NumeroHabitacion = '101'
+where h.NumeroHabitacion = @prmstrNumeroHabitacion
 end
 go
