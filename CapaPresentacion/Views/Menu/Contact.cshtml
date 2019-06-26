@@ -1,6 +1,6 @@
 ﻿@using CapaEntidades;
 @{
-    Layout = "~/Views/Shared/_LayoutContacto.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
 }
 @if (cuenta != null)
@@ -14,3 +14,196 @@
     }
 }
 
+<!-- Home -->
+
+<div class="home" style="background-image: url(../../Bootstrap/images/contact.jpg)">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="~/Bootstrap/images/contact.jpg" data-speed="0.8"></div>
+    <div class="home_container d-flex flex-column align-items-center justify-content-center">
+        <div class="home_title"><h1>Contacto</h1></div>
+    </div>
+</div>
+
+<!-- Booking -->
+
+<div class="booking">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="booking_container d-flex flex-row align-items-end justify-content-start">
+                    <form action="/RealizarReserva/HabitacionesDisponibles" method="post" class="booking_form">
+                        <div class="booking_form_container d-flex flex-lg-row flex-column align-items-start justify-content-start flex-wrap">
+                            <div class="booking_form_inputs d-flex flex-row align-items-start justify-content-between flex-wrap">
+                                <div class="booking_dropdown"><input type="text" name="txtCheckIn" class="datepicker booking_input booking_input_a booking_in" placeholder="Check in" required="required"></div>
+                                <div class="booking_dropdown"><input type="text" name="txtCheckOut" class="datepicker booking_input booking_input_a booking_out" placeholder="Check out" required="required"></div>
+                                <div class="custom-select">
+                                    <select name="selectAdultos">
+                                        <option value="0">Adultos</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <div class="custom-select">
+                                    <select name="selectKids">
+                                        <option value="0">Niños</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="booking_form_button ml-lg-auto">Reservar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact -->
+
+<div class="contact">
+    <div class="contact_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="section_title text-center">
+                        <div>Ciao</div>
+                        <h1>Di Hola</h1>
+                    </div>
+                    <div class="contact_text text-center">
+                        <p>Si tienes alguna duda o consulta, no dudes en enviarnos un mensaje, estaremos mas que dispuestos a responderte en la brevedad posible</p>
+                    </div>
+                    <div class="contact_form_container">
+                        <form action="#" class="contact_form text-center">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text" class="contact_input" placeholder="Tu nombre" required="required">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="email" class="contact_input" placeholder="Tu email" required="required">
+                                </div>
+                            </div>
+                            <input type="text" class="contact_input" placeholder="Asunto">
+                            <textarea class="contact_input" placeholder="Mensaje" required="required"></textarea>
+                            <button class="contact_button">send message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map -->
+    <!--The div element for the map -->
+    <div class="contenedorMap">
+        <h2 class="text-center mt-4 mb-4">Nuestra Ubicación</h2>
+        <div id="map" @*style="width: 1100px; height: 1200px"*@></div>
+    </div>
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            var isis = { lat: -8.094346, lng: -79.0512677 };
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'),
+                {
+                    zoom: 16,
+                    center: isis,
+                    styles: [
+                        { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
+                        { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+                        { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+                        {
+                            featureType: 'administrative.locality',
+                            elementType: 'labels.text.fill',
+                            stylers: [{ color: '#d59563' }]
+                        },
+                        {
+                            featureType: 'poi',
+                            elementType: 'labels.text.fill',
+                            stylers: [{ color: '#d59563' }]
+                        },
+                        {
+                            featureType: 'poi.park',
+                            elementType: 'geometry',
+                            stylers: [{ color: '#263c3f' }]
+                        },
+                        {
+                            featureType: 'poi.park',
+                            elementType: 'labels.text.fill',
+                            stylers: [{ color: '#6b9a76' }]
+                        },
+                        {
+                            featureType: 'road',
+                            elementType: 'geometry',
+                            stylers: [{ color: '#38414e' }]
+                        },
+                        {
+                            featureType: 'road',
+                            elementType: 'geometry.stroke',
+                            stylers: [{ color: '#212a37' }]
+                        },
+                        {
+                            featureType: 'road',
+                            elementType: 'labels.text.fill',
+                            stylers: [{ color: '#9ca5b3' }]
+                        },
+                        {
+                            featureType: 'road.highway',
+                            elementType: 'geometry',
+                            stylers: [{ color: '#746855' }]
+                        },
+                        {
+                            featureType: 'road.highway',
+                            elementType: 'geometry.stroke',
+                            stylers: [{ color: '#1f2835' }]
+                        },
+                        {
+                            featureType: 'road.highway',
+                            elementType: 'labels.text.fill',
+                            stylers: [{ color: '#f3d19c' }]
+                        },
+                        {
+                            featureType: 'transit',
+                            elementType: 'geometry',
+                            stylers: [{ color: '#2f3948' }]
+                        },
+                        {
+                            featureType: 'transit.station',
+                            elementType: 'labels.text.fill',
+                            stylers: [{ color: '#d59563' }]
+                        },
+                        {
+                            featureType: 'water',
+                            elementType: 'geometry',
+                            stylers: [{ color: '#17263c' }]
+                        },
+                        {
+                            featureType: 'water',
+                            elementType: 'labels.text.fill',
+                            stylers: [{ color: '#515c6d' }]
+                        },
+                        {
+                            featureType: 'water',
+                            elementType: 'labels.text.stroke',
+                            stylers: [{ color: '#17263c' }]
+                        }
+                    ]
+                });
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({ position: isis, map: map });
+        }
+    </script>
+</div>
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHiAbjzx5U1h9GyK3SoY0GIMpGLv4A4kw&callback=initMap">
+    </script>

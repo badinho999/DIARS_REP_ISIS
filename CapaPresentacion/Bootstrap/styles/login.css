@@ -840,7 +840,7 @@ section
 .home
 {
     height: 60vh;
-    width: 220vh;
+    width: 100%;
     /**/ /**/
 }
 
@@ -998,9 +998,9 @@ section
 /*********************************
 7. Footer
 *********************************/
-.footer
-{
-    width: 220vh;
+.footer {
+    height: 45vh;
+    width: 100%;
     background: url(../images/footer.jpg);
     background-size: cover;
     background-position: center;

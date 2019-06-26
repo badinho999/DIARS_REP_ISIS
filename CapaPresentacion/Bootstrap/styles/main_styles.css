@@ -15,7 +15,11 @@
 8. Rooms
 9. Discover
 10. Testimonials
-11. Footer
+11. Offering
+12. Rooms
+13. Contact
+14. Login
+N. Footer
 
 
 ******************************/
@@ -1147,10 +1151,11 @@ section
 9. Discover
 *********************************/
 
-.discover
+.discover 
 {
-	background: #ffffff;
-	padding-top: 123px;
+    background: #ffffff;
+    padding-top: 122px;
+    padding-bottom: 110px;
 }
 .discover_content
 {
@@ -1208,6 +1213,36 @@ section
 .discover_overlay > h1 a:hover
 {
 	color: #ff9000;
+}
+
+.milestones {
+    padding-top: 68px;
+}
+
+.milestone {
+    width: 50%;
+    margin-bottom: 49px;
+}
+
+.milestone_counter {
+    font-family: 'Playfair Display', serif;
+    font-size: 136px;
+    font-weight: 700;
+    font-style: italic;
+    color: #7b7e84;
+    line-height: 0.75;
+}
+
+.milestone:last-child .milestone_counter {
+    color: #ff9000;
+}
+
+.milestone_text {
+    font-size: 24px;
+    font-weight: 400;
+    color: #150f24;
+    margin-top: 42px;
+    line-height: 1.2;
 }
 
 /*********************************
@@ -1295,19 +1330,593 @@ section
 }
 
 /*********************************
-11. Footer
+11. Offering
+*********************************/
+
+.offering
+{
+	background: #211c32;
+	padding-top: 104px;
+	padding-bottom: 50px;
+}
+.offering .section_title > div
+{
+	color: rgba(255,255,255,0.08);
+}
+.offering .section_title h1
+{
+	color: #ffffff;
+	margin-top: -30px;
+}
+.offering_row
+{
+	margin-top: 102px;
+}
+.offer
+{
+	margin-bottom: 60px;
+}
+.offer_title
+{
+	margin-top: 48px;
+}
+.offer_title h3
+{
+	color: #ffffff;
+}
+.offer_text
+{
+	margin-top: 25px;
+}
+.offer_text p
+{
+	color: #bfc8d8;
+}
+.offer_button
+{
+	margin-top: 31px;
+}
+.offer_button a
+{
+	position: relative;
+	font-size: 14px;
+	font-weight: 700;
+	color: #ff9000;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+}
+.offer_button a::after
+{
+	display: block;
+	position: absolute;
+	bottom: -3px;
+	left: 0;
+	width: 0%;
+	height: 2px;
+	background: #ff9000;
+	content: '';
+	-webkit-transition: all 400ms ease;
+	-moz-transition: all 400ms ease;
+	-ms-transition: all 400ms ease;
+	-o-transition: all 400ms ease;
+	transition: all 400ms ease;
+}
+.offer_button a:hover::after
+{
+	width: 100%;
+}
+
+/*********************************
+12. Rooms
+*********************************/
+
+.rooms
+{
+	background: #ffffff;
+	padding-top: 110px;
+	padding-bottom: 110px;
+}
+.card-columns
+{
+	-webkit-column-count: 2;
+	column-count: 2;
+	-webkit-column-gap: 30px;
+	column-gap: 30px;
+}
+.card-columns .card
+{
+	margin-bottom: 35px;
+}
+.card
+{
+	border: none;
+	border-radius: 0px;
+}
+.card-img-top
+{
+	border-radius: 0px;
+}
+.card-body
+{
+	background: #f4f5fa;
+	padding-left: 80px;
+	padding-top: 71px;
+	padding-right: 50px;
+	padding-bottom: 101px;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.card-special .card-body
+{
+	background: #171126;
+}
+.rooms_title h2
+{
+	color: #150f24;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.card-special .rooms_title h2
+{
+	color: #ffffff;
+}
+.rooms_text
+{
+	margin-top: 30px;
+}
+.rooms_text p
+{
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.card-special .rooms_text p
+{
+	color: #ffffff;
+}
+.rooms_list
+{
+	margin-top: 36px;
+}
+.rooms_list ul li:not(:last-of-type)
+{
+	margin-bottom: 14px;
+}
+.rooms_list ul li img
+{
+	margin-right: 22px;
+}
+.rooms_list ul li span
+{
+	font-size: 15px;
+	font-weight: 400;
+	color: #4a4f59;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.card-special .rooms_list ul li span
+{
+	color: #ffffff;
+}
+.rooms_price
+{
+	margin-top: 33px;
+	font-size: 36px;
+	font-weight: 700;
+	color: #ff9000;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.card-special .rooms_price,
+.card-special .rooms_price span
+{
+	color: #ffffff;
+}
+.rooms_price span
+{
+	font-size: 18px;
+	font-weight: 700;
+	color: #4a4f59;
+	margin-left: 5px;
+}
+.rooms_button
+{
+	margin-top: 41px;
+}
+.card-special-panel
+{
+	position: absolute;
+	top: 27px;
+	right: -78px;
+	width: 181px;
+	height: 71px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 700;
+	color: #ffffff;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	line-height: 71px;
+	background: #443586;
+}
+.load_more_container
+{
+	margin-top: 75px;
+}
+.load_more_button
+{
+	width: 282px;
+	height: 65px;
+	background: #171126;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	border: solid 2px #171126;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.load_more_button:hover
+{
+	background: transparent;
+}
+.load_more_button a
+{
+	display: block;
+	height: 100%;
+	line-height: 61px;
+	font-size: 14px;
+	font-weight: 700;
+	color: #ffffff;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+}
+.load_more_button:hover a
+{
+	color: #171126;
+}
+
+/*********************************
+13. Contact
+*********************************/
+
+.contact 
+{
+    background: #ffffff;
+    padding-top: 120px;
+}
+
+.contact_text 
+{
+    padding-left: 135px;
+    padding-right: 135px;
+    margin-top: 58px;
+}
+
+.contact_form_container 
+{
+    margin-top: 100px;
+}
+
+.contact_form 
+{
+    display: block;
+    width: 100%;
+}
+
+.contact_input 
+{
+    width: 100%;
+    height: 65px;
+    padding-left: 24px;
+    margin-bottom: 25px;
+    border: none;
+    outline: none;
+    background: #f4f5fa;
+}
+
+.contact_form textarea 
+{
+    width: 100%;
+    height: 249px;
+    padding-top: 20px;
+}
+
+.contact_input::-webkit-input-placeholder 
+{
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #4a4f59 !important;
+}
+
+.contact_input:-moz-placeholder 
+{
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #4a4f59 !important;
+}
+
+.contact_input::-moz-placeholder 
+{
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #4a4f59 !important;
+}
+
+.contact_input:-ms-input-placeholder 
+{
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #4a4f59 !important;
+}
+
+.contact_input::input-placeholder 
+{
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #4a4f59 !important;
+}
+
+.contact_button {
+    width: 203px;
+    height: 65px;
+    background: #ff9000;
+    border: solid 2px #ff9000;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-top: 12px;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+
+.contact_button:hover 
+{
+    background: transparent;
+    color: #ff9000;
+}
+
+.contact_map_container 
+{
+    margin-top: 112px;
+}
+
+.map 
+{
+    width: 100%;
+    margin-top: 30px;
+}
+
+.google_map 
+{
+    width: 100%;
+    height: 769px;
+}
+
+.map_container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#map {
+    height: 500px;
+    width: 1200px;
+    margin: auto;
+    /*margin-top: 20%;
+    margin-left: 8%*/
+}
+
+.contenedorMap {
+    margin-top: 2%;
+    margin-bottom: 40px;
+}
+
+.contenedorMap h2
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-size: 60px;
+    color: #000000;
+}
+
+.contact_map_content 
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 459px;
+    height: 537px;
+    background: #190a49;
+}
+
+ .contact_map_content > div 
+{
+    height: 100%;
+}
+
+.contact_info_list {
+    margin-top: 65px;
+}
+
+.contact_info_list ul li 
+{
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.contact_info_list ul li:not(:last-of-type) 
+{
+    margin-bottom: 12px;
+}
+
+.contact_info_logo_2 
+{
+    display: none;
+}
+
+/*********************************
+14.  Login
+*********************************/
+
+.contenedor-form
+{
+    position: relative;
+    background: rgba(0,0,0,.7);
+    width: 100%;
+    max-width: 500px;
+    margin: 30% auto;
+    color: #FFF;
+    border-radius: 5px;
+    /*padding: 40px;*/
+}
+
+    .contenedor-form .toggle
+    {
+        position: absolute;
+        top: 7px;
+        right: 7px;
+        width: 100px;
+        height: 30px;
+        font-size: 12px;
+        line-height: 25px;
+        text-align: center;
+        border-top: 2px solid #ff851b;
+        border-bottom: 2px solid #ff851b;
+        cursor: pointer;
+        transition: all .5s ease;
+    }
+
+        .contenedor-form .toggle:hover
+        {
+            border-top: 2px solid #0075d9;
+            border-bottom: 2px solid #0075d9;
+        }
+
+        .contenedor-form .toggle span
+        {
+            letter-spacing: 1px;
+        }
+
+    .contenedor-form input[type="text"],
+    .contenedor-form input[type="password"],
+    .contenedor-form input[type="email"]
+    {
+        outline: none;
+        display: block;
+        background: rgba(0,0,0,.5);
+        width: 100%;
+        padding: 10px 15px;
+        color: #fff;
+        border: none;
+        border-radius: 2px;
+        border-bottom: 4px solid #ff851b;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0 0 20px 0;
+        transition: all .5s ease;
+    }
+
+        .contenedor-form input[type="text"]:focus,
+        .contenedor-form input[type="password"]:focus,
+        .contenedor-form input[type="email"]:focus
+        {
+            border-bottom: 4px solid #0075d9;
+        }
+
+    .contenedor-form input[type="submit"]
+    {
+        background: #ff851b;
+        color: #fff;
+        border: none;
+        width: 100%;
+        padding: 10px 0;
+        font-weight: normal;
+        font-family: Roboto;
+        letter-spacing: 1px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all .5s ease-in;
+    }
+
+        .contenedor-form input[type="submit"]:hover
+        {
+            background: rgba(0,117,217,0.7);
+        }
+
+    .contenedor-form .reset-password
+    {
+        background: rgba(0,117,217,0.7);
+        width: 100%;
+        padding: 15px 0;
+        text-align: center;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+        .contenedor-form .reset-password a
+        {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+    .contenedor-form .formulario
+    {
+        padding: 40px;
+        display: none;
+    }
+
+        .contenedor-form .formulario:nth-child(2)
+        {
+            display: block;
+        }
+
+
+/*********************************
+N. Footer
 *********************************/
 
 .footer {
-	width: 220vh;
-	background: url(../images/footer.jpg);
-	background-size: cover;
-	background-position: center;
-	display: table;
-	background-attachment: fixed;
-	position: relative;
-	padding-top: 59px;
-	border-top: solid 2px #ff9000;
+    height: 45vh;
+    width: 100%;
+    background: url(../images/footer.jpg);
+    background-size: cover;
+    background-position: center;
+    display: table;
+    background-attachment: fixed;
+    position: relative;
+    padding-top: 59px;
+    border-top: solid 2px #ff9000;
 }
 .footer_content
 {
@@ -1315,7 +1924,7 @@ section
 	padding-bottom: 80px;
 }
 .footer_col:first-child .footer_info > div
-{
+s{
 	padding-right: 20px;
 }
 .footer_col:nth-child(3) .footer_info > div

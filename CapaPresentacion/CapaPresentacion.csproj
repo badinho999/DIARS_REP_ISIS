@@ -299,10 +299,7 @@
     <Content Include="Bootstrap\styles\bootstrap-4.1.2\bootstrap.min.css" />
     <Content Include="Bootstrap\styles\bootstrap-4.1.2\bootstrap.min.js" />
     <Content Include="Bootstrap\styles\bootstrap-4.1.2\popper.js" />
-    <Content Include="Bootstrap\styles\contact.css" />
-    <Content Include="Bootstrap\styles\contact2.css" />
     <Content Include="Bootstrap\styles\contact3.css" />
-    <Content Include="Bootstrap\styles\contacto.css" />
     <Content Include="Bootstrap\styles\contact_responsive.css" />
     <Content Include="Bootstrap\styles\elements.css" />
     <Content Include="Bootstrap\styles\elements_responsive.css" />
@@ -481,12 +478,9 @@
     <Content Include="Views\MantenedorHuesped\eliminarCuenta.cshtml" />
     <Content Include="Views\Login\VerificarAcceso.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\_LayoutContacto.cshtml" />
-    <Content Include="Views\Shared\_LayoutHabitaciones.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Shared\_LayoutNovedades.cshtml" />
     <Content Include="Views\Shared\_LayoutReservar.cshtml" />
-    <Content Include="Views\Shared\_LayoutSobre.cshtml" />
     <Content Include="Views\Menu\About.cshtml" />
     <Content Include="Views\Menu\Rooms.cshtml" />
     <Content Include="Views\Menu\Contact.cshtml" />
