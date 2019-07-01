@@ -1,9 +1,12 @@
 ﻿@model  CapaEntidades.EntReservaViewModel
 @using CapaEntidades
+@using System.Globalization;
 @{
     ViewBag.Title = "MisReservas";
     Layout = "~/Views/Shared/_Layout.cshtml";
     EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+    string cultureName = "en-US";
+    var culture = new CultureInfo(cultureName);
 }
 
 @if (cuenta != null)
@@ -62,9 +65,13 @@
 
             @foreach (var item in Model.Reservas)
             {
+                string fechaIngreso = Convert.ToDateTime(item.FechadeIngreso).ToString("d", culture);
+                string fechaSalida = Convert.ToDateTime(item.FechadeSalida).ToString("d", culture);
+                string fechaReserva = Convert.ToDateTime(item.Fechadereserva).ToString("d", culture);
+
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Fechadereserva)
+                        @Html.DisplayFor(modelItem => fechaReserva)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.CantidaAdultos)
@@ -73,10 +80,10 @@
                         @Html.DisplayFor(modelItem => item.CantidadKids)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.FechadeIngreso)
+                        @Html.DisplayFor(modelItem => fechaIngreso)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.FechadeSalida)
+                        @Html.DisplayFor(modelItem => fechaSalida)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.ReservaID)
