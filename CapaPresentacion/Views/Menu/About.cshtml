@@ -3,17 +3,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
 }
+
 @if (cuenta != null)
 {
+    var a = 1;
+
     @section Scripts
     {
         <script>
-            $("a#idLogin").html("Cerrar Sesión");
-            $("a#idLogin").attr("href", "/Login/CerrarSesion")
+
+          $("a#idLogin").attr("href", "#");
+            $("a#idLogin").removeAttr("data-toggle");
+            $("a#idLogin").removeAttr("data-target");
+            $("a#idLogin").html("@cuenta.Huesped.UserName");
+
+            $("a#idsignUp").removeAttr("data-toggle");
+            $("a#idsignUp").removeAttr("data-target");
+            $("a#idsignUp").attr("href", "/Login/CerrarSesion");
+            $("a#idsignUp").html("Cerrar Sesión");
+            $("#misReservas").removeAttr("hidden");
         </script>
     }
-}
 
+}
 <!-- Home -->
 
 <div class="home" style="background-image: url(../../Bootstrap/images/about.jpg)">

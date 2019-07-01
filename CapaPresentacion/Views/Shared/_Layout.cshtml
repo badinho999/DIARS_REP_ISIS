@@ -9,7 +9,7 @@
     @Styles.Render("~/bundles/css")
 </head>
 <body>
-    
+
     <div class="super_container">
 
         <!-- Header -->
@@ -27,6 +27,8 @@
                         <li>@Html.ActionLink("Sobre Nosotros", "About", "Menu", null, new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Habitaciones", "Rooms", "Menu", null, new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Contacto", "Contact", "Menu", null, new { @class = "page-scroll" })</li>
+                        <li id="misReservas" hidden>@Html.ActionLink("Mis reservas", "MisReservas", "AnularReserva", null, new { @class = "page-scroll" })</li>
+
                     </ul>
                 </nav>
 
@@ -46,10 +48,8 @@
 
                     <!--Login Status-->
 
-                    <div class="header_login"><a class="page-scroll" id="idLogin" href="/Login/VerificarAcceso">Iniciar Sesión</a></div>
-
-                    <!-- Header Link -->
-                    <div class="header_link">@Html.ActionLink("Reserva Aquí", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
+                    <div class="header_login"><a class="page-scroll" id="idLogin" data-toggle="modal" data-target="#mlogin">Iniciar Sesión</a></div>
+                    <div class="header_login"><a class="page-scroll" id="idsignUp" data-toggle="modal" data-target="#signUp">Crear cuenta</a></div>
 
                     <!-- Hamburger Button -->
                     <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -89,6 +89,7 @@
                         <li>@Html.ActionLink("Sobre Nosotros", "About", "Menu", null, new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Habitaciones", "Rooms", "Menu", null, new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Contacto", "Contact", "Menu", null, new { @class = "page-scroll" })</li>
+                        <li id="misReservas" hidden>@Html.ActionLink("Mis reservas", "MisReservas", "AnularReserva", null, new { @class = "page-scroll" })</li>
                     </ul>
                 </nav>
                 <div class="button menu_button">@Html.ActionLink("Reserva Aquí", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
@@ -108,6 +109,8 @@
         </div>
 
         @RenderBody()
+        @Html.Partial("_SignUp")
+        @Html.Partial("_LogIn")
 
         <!-- Footer -->
 
@@ -157,7 +160,18 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        $(function () {
+            $('.datepicker').datepicker({
+                defaultViewDate: { year: 1977, month: 04, day: 25 }
+            });
+        });
+    </script>
+
     @Scripts.Render("~/bundles/js")
-    @RenderSection("Scripts", false/*required*/)
+    @RenderSection("Scripts",false/*required*/)
+    @Scripts.Render("~/bundles/main")
+
 </body>
 </html>

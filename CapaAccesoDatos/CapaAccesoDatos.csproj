@@ -42,11 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="DatAccountHashTable.cs" />
     <Compile Include="DatAlquiler.cs" />
     <Compile Include="DatComprobanteDePagoReserva.cs" />
     <Compile Include="DatCuenta.cs" />
     <Compile Include="DatHabitacion.cs" />
+    <Compile Include="DatHashtable.cs" />
     <Compile Include="DatHuesped.cs" />
+    <Compile Include="DatPasswordAccount.cs" />
     <Compile Include="DatReserva.cs" />
     <Compile Include="DatServiciosadicionales.cs" />
     <Compile Include="DatTipoDeHabitacion.cs" />

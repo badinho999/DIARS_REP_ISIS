@@ -14,8 +14,16 @@
         <script>
 
             $("#limpiar").empty()
-            $("a#idLogin").html("Cerrar Sesión");
-            $("a#idLogin").attr("href", "/Login/CerrarSesion")
+            $("a#idLogin").attr("href", "#");
+            $("a#idLogin").removeAttr("data-toggle");
+            $("a#idLogin").removeAttr("data-target");
+            $("a#idLogin").html("@cuenta.Huesped.UserName");
+
+            $("a#idsignUp").removeAttr("data-toggle");
+            $("a#idsignUp").removeAttr("data-target");
+            $("a#idsignUp").attr("href", "/Login/CerrarSesion");
+            $("a#idsignUp").html("Cerrar Sesión");
+            $("li#misReservas").removeAttr("hidden");
         </script>
     }
 

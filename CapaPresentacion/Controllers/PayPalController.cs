@@ -228,6 +228,10 @@ namespace CapaPresentacion.Controllers
 
                     viewData.JsonResponse = JObject.Parse(voidedAuthorization.ConvertToJson()).ToString(Formatting.Indented);
 
+                    var reservaID = ((EntCuenta)Session["cuenta"]).ReservaID;
+
+                    bool eliminaReserva = LogReserva.Instancia.EliminarReserva(reservaID);
+
                     return RedirectToAction("Inicio","Menu");
                 }
 

@@ -2,7 +2,7 @@
 Use Proyecto_DIARS_ISIS
 go
 
-Create proc Sp_HabitacionesDisponibles
+Alter proc Sp_HabitacionesDisponibles
 (
 	@prmintCantidadPersonas int
 )
@@ -10,12 +10,12 @@ as
 begin
 	Select * from Habitacion h inner join Tipodehabitacion th on(h.TipodehabitacionID = th.TipodehabitacionID)
 	inner join Reserva r on(h.NumeroHabitacion = r.NumeroHabitacion)
-	where th.Capacidad+1 > @prmintCantidadPersonas
+	where th.Capacidad+1 > @prmintCantidadPersonas And r.Activa = 1
 	order by r.FechaSalida desc
 end
 go
 
-Create proc Sp_RealizarReserva
+Alter proc Sp_RealizarReserva
 (
 	@prmintReservaID int,
 	@prmintCantidadAdultos int,
@@ -28,7 +28,7 @@ Create proc Sp_RealizarReserva
 )
 as
 begin
-	Insert into Reserva(ReservaID,Fechadereserva,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Dni,NumeroHabitacion)
+	Insert into Reserva(ReservaID,Fechadereserva,CantidadAdultos,CantidadKids,FechaIngreso,FechaSalida,Dni,NumeroHabitacion,Activa)
 	Values
 	(
 		@prmintReservaID,
@@ -38,7 +38,8 @@ begin
 		@prmstrFechadeingreso,
 		@prmstrFechadesalida,
 		@prmstrDni,
-		@prmstrNumeroHabitacion
+		@prmstrNumeroHabitacion,
+		1
 	)
 end
 go
@@ -71,3 +72,43 @@ begin
 end
 go
 
+Create Proc SP_EliminarReserva
+(
+	@prmintReservaID int
+)
+as
+begin
+	Delete from Reserva
+	Where ReservaID = @prmintReservaID
+end
+go
+
+ALTER Proc SP_MisReservas
+(
+	@prmstrDni	char(8)
+)
+as
+begin
+	Select *
+	from Reserva rev inner join Huesped hu on(rev.Dni=hu.Dni)
+	inner join Habitacion h on(rev.NumeroHabitacion=h.NumeroHabitacion)
+	inner join Tipodehabitacion th on(h.TipodehabitacionID=th.TipodehabitacionID)
+	where rev.Dni = @prmstrDni and DATEDIFF (YEAR,convert(varchar, getdate(), 111),rev.FechaIngreso) >= 0
+	and DATEDIFF (MONTH,convert(varchar, getdate(), 111),rev.FechaIngreso) >= 0
+	and DATEDIFF (DAY,convert(varchar, getdate(), 111),rev.FechaIngreso) >= 0
+end
+go
+
+Create Proc SP_AnularReserva
+(
+	@prmintReservaID int
+)
+as
+begin
+	Update Reserva
+	set Activa = 0
+	Where ReservaID = @prmintReservaID
+end
+go
+
+Select * from Reserva

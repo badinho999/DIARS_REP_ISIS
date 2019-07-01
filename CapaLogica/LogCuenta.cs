@@ -23,11 +23,19 @@ namespace CapaLogica
 
         #region metodos
 
-        public Boolean Registrarcuenta(EntCuenta cuenta)
+        public bool CrearCuenta(EntCuenta cuenta)
         {
             try
             {
-                return DatCuenta.Instancia.RegistrarCuenta(cuenta);
+                EntCuenta emailAccountFinded = DatCuenta.Instance.BuscarEmail(cuenta.Email);
+               
+
+                if (emailAccountFinded != null)
+                {
+                    return false;
+                }
+
+                return DatCuenta.Instance.CrearCuenta(cuenta);
             }
             catch (Exception e)
             {
@@ -36,11 +44,11 @@ namespace CapaLogica
 
         }
 
-        public EntCuenta BuscarCuenta(String NombreUsuario)
+        public EntCuenta BuscarCuenta(string Email)
         {
             try
             {
-                return DatCuenta.Instancia.BuscarCuenta(NombreUsuario);
+                return DatCuenta.Instance.BuscarCuenta(Email);
             }
             catch (Exception e)
             {
@@ -49,37 +57,11 @@ namespace CapaLogica
 
         }
 
-        public Boolean CambiarEmail(EntCuenta cuenta)
+        public bool EliminarCuenta(EntCuenta cuenta)
         {
             try
             {
-                return DatCuenta.Instancia.CambiarEmail(cuenta);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-        }
-
-        public Boolean CambiarPassword(EntCuenta cuenta)
-        {
-            try
-            {
-                return DatCuenta.Instancia.CambiarPassword(cuenta);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-        }
-
-        public Boolean EliminarCuenta(EntCuenta cuenta)
-        {
-            try
-            {
-                return DatCuenta.Instancia.EliminarCuenta(cuenta);
+                return DatCuenta.Instance.EliminarCuenta(cuenta);
             }
             catch (Exception e)
             {
@@ -92,10 +74,23 @@ namespace CapaLogica
         {
             try
             {
-                return DatCuenta.Instancia.VerificarAcceso(NombreUsuario, Password);
+                return DatCuenta.Instance.VerificarAcceso(NombreUsuario, Password);
             }
             catch (Exception e)
             {
+                throw e;
+            }
+        }
+
+        public EntCuenta VerifyEmail(string email)
+        {
+            try
+            {
+                return DatCuenta.Instance.BuscarEmail(email);
+            }
+            catch (Exception e)
+            {
+
                 throw e;
             }
         }

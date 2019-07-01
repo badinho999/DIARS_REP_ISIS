@@ -10,6 +10,7 @@ namespace CapaEntidades
     {
         public EntReserva Reserva { get; set; }
         public List<EntHabitacion> Habitaciones { get; set; }
+        public List<EntReserva> Reservas { get; set; }
         public int ErrorID { get; set; }
     }
 }

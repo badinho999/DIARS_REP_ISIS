@@ -42,7 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntAdministradorhotel.cs" />
+    <Compile Include="EntAccountHashTable.cs" />
+    <Compile Include="EntAccountViewData.cs" />
+    <Compile Include="EntHashtable.cs" />
+    <Compile Include="EntPasswordAccount.cs" />
+    <Compile Include="EntRecepcionista.cs" />
     <Compile Include="EntAlquilerViewModel.cs" />
     <Compile Include="EntCuenta.cs" />
     <Compile Include="EntAlquiler.cs" />
@@ -51,6 +55,8 @@
     <Compile Include="EntHabitacion.cs" />
     <Compile Include="EntHuesped.cs" />
     <Compile Include="EntReservaViewModel.cs" />
+    <Compile Include="EntUserAccount.cs" />
+    <Compile Include="EntUserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EntReserva.cs" />
     <Compile Include="EntTipoDeHabitacion.cs" />

@@ -55,6 +55,15 @@ CREATE TABLE [dbo].[Alquiler]
 )
 GO
 
+CREATE TABLE [AlquilerControl]
+(
+	[AlquilerControlID] int identity(1,1) Primary Key Not Null,
+	[Entrada] datetime Not Null,
+	[Salida] datetime Null,
+	[AlquilerID] int Not Null
+)	
+GO
+
 CREATE TABLE [dbo].[Reserva]
 (
 	[CantidadAdultos] [int] NOT NULL,
@@ -85,41 +94,85 @@ CREATE TABLE [dbo].[Tipodehabitacion](
 )
 GO
 
-CREATE TABLE [dbo].[Huesped]
+/*NEW*/
+
+Create TABLE [Huesped]
 (
-	[Apellidos]nvarchar](50) NULL,
-	[Fechadenacimiento] [date] NULL,
-	[Nombre]nvarchar](50) NULL,
 	[Dni] [char](8) PRIMARY KEY NOT NULL,
 	[NombreUsuario] nvarchar(50) NOT NULL
 )
 GO
 
-CREATE TABLE [Administradorhotel]
+CREATE TABLE [Recepcionista]
 (
-	[Apellidosnvarchar(50) NULL,
-	[Fechadenacimiento] date NULL,
-	[Nombrenvarchar(50) NULL,
-	[AdministradorhotelID] int IDENTITY(1,1) PRIMARY KEY NOT NULL
+	[RecepcionistaID] int IDENTITY(1,1) PRIMARY KEY NOT NULL,
 	[NombreUsuario] nvarchar(50) NOT NULL
 )
 GO
 
-CREATE TABLE [Cuenta]
+CREATE TABLE [UserAccount]
 (
-	[NombreUsuarionvarchar(50) PRIMARY KEY NOT NULL,
-	[Emailnvarchar(50) NOT NULL,
-	[PasswordAccountnvarchar(50) NOT NULL,
-	[FechaCreacion] date NOT NULL
+	[UserName] nvarchar(50) PRIMARY KEY NOT NULL,
+	FechaNacimiento datetime,
+	Nombre nvarchar(50),
+	Apellidos nvarchar(50)
 )
 GO
 
-ALTER TABLE [Huesped] ADD CONSTRAINT [FK_Huesped_Cuenta] 
-	FOREIGN KEY ([NombreUsuario]) REFERENCES [Cuenta] ([NombreUsuario]) ON DELETE No Action ON UPDATE No Action
+Create TABLE [Cuenta]
+(
+	[Email] nvarchar(50) PRIMARY KEY NOT NULL,
+	[FechaCreacion] datetime NOT NULL,
+	[UserName] nvarchar(50) NOT NULL
+)
 GO
 
-ALTER TABLE [Administradorhotel] ADD CONSTRAINT [FK_Administradorhotel_Cuenta] 
-	FOREIGN KEY ([NombreUsuario]) REFERENCES [Cuenta] ([NombreUsuario]) ON DELETE No Action ON UPDATE No Action
+CREATE TABLE [Passwordaccount]
+(
+	[Passwordstring] nvarchar(350) NULL,
+	[HashCode] nvarchar(50) NULL,
+	[PasswordaccountID] int IDENTITY(1,1) NOT NULL
+)
+GO
+
+CREATE TABLE HashTable
+(
+	[HashCode] nvarchar(50) PRIMARY KEY NOT NULL,
+)
+GO
+
+CREATE TABLE [AccountHashTable]
+(
+	[HashCode] nvarchar (50),
+	[Email] nvarchar(50),
+	[Activa] bit,
+	[AccountHashTableID] int IDENTITY(1,1) PRIMARY KEY NOT NULL
+)
+go
+
+
+ALTER TABLE [Huesped] ADD CONSTRAINT [FK_User_Huesped]
+	FOREIGN KEY ([UserName]) REFERENCES [UserAccount] ([UserName]) ON DELETE Cascade ON UPDATE No Action
+GO
+
+ALTER TABLE [Recepcionista] ADD CONSTRAINT [FK_User_Recep]
+	FOREIGN KEY ([UserName]) REFERENCES [UserAccount] ([UserName]) ON DELETE No Action ON UPDATE No Action
+GO
+
+ALTER TABLE [Cuenta] ADD CONSTRAINT [FK_Account_User]
+	FOREIGN KEY ([UserName]) REFERENCES [UserAccount] ([UserName]) ON DELETE No Action ON UPDATE No Action
+GO
+
+ALTER TABLE [Passwordaccount] ADD CONSTRAINT [FK_Password_Hash]
+	FOREIGN KEY ([HashCode]) REFERENCES [HashTable] ([HashCode]) ON DELETE No Action ON UPDATE No Action
+GO
+
+ALTER TABLE [AccountHashTable] ADD CONSTRAINT [FK_Account_Hash]
+	FOREIGN KEY ([HashCode]) REFERENCES [HashTable] ([HashCode]) ON DELETE No Action ON UPDATE No Action
+GO
+
+ALTER TABLE [AccountHashTable] ADD CONSTRAINT [FK_Account_Cuenta]
+	FOREIGN KEY ([Email]) REFERENCES [Cuenta] ([Email]) ON DELETE No Action ON UPDATE No Action
 GO
 
 ALTER TABLE [Alquiler] ADD CONSTRAINT [FK_Alquiler_Huesped]
@@ -140,6 +193,10 @@ GO
 
 ALTER TABLE [Habitacion] ADD CONSTRAINT [FK_Habitacion_Tipodehabitacion]
 	FOREIGN KEY ([TipodehabitacionID]) REFERENCES [Tipodehabitacion] ([TipodehabitacionID]) ON DELETE No Action ON UPDATE No Action
+GO
+
+ALTER TABLE [AlquilerControl] ADD CONSTRAINT [FK_AlquilerControl_Alquiler]
+	FOREIGN KEY ([AlquilerID]) REFERENCES [Alquiler] ([AlquilerID]) ON DELETE No Action ON UPDATE No Action
 GO
 
 ALTER TABLE [Comprobantepagoalquiler] ADD CONSTRAINT [FK_Comprobantepagoalquiler_Alquiler]

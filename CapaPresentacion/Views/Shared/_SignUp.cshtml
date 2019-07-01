@@ -1,0 +1,82 @@
+﻿<!-- Modal Cliente-->
+<div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Sign up</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label>Nombre de usuario</label>
+                        <input type="text" class="form-control text-black-50" id="username" placeholder="Nombre de usuario" />
+                        <span id="usrVal" style="display: none;">Complete este campo</span>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Número de DNI</label>
+                        <input type="text" class="form-control text-black-50" id="dni" maxlength="8" placeholder="DNI" />
+                        <span id="dniVal" style="display: none;">Debe contener 8 caracteres</span>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Apellidos</label>
+                        <input type="text" class="form-control text-black-50" id="apellidos" placeholder="Apellidos" />
+                        <span id="apeVal" style="display: none;">Completa este campo</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control text-black-50" id="nombre" placeholder="Nombre" />
+                        <span id="nameVal" style="display: none;">Completa este campo</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de nacimiento</label>
+                        <input type="text" class="form-control text-black-50 datepicker" id="fn" placeholder="MM/dd/yyyy" />
+                        <span id="dateVal" style="display: none;">Completa este campo</span>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnSave" onclick="return signUp();">Continuar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Cuenta-->
+<div class="modal fade" id="maccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Sign up</h5>
+                <button type="button" class="close" data-dismiss="modal" onclick="return deleteClient();" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="accountModal">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control text-black-50" id="email" placeholder="Email" />
+                        <span id="emailVal" style="display: none;">Completa este campo</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" class="form-control text-black-50" id="pass" placeholder="Password" />
+                        <span id="passVal" style="display: none;">Completa este campo</span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="return deleteClient()">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btnEnd" onclick="return signUpEnd();">Finalizar</button>
+            </div>
+        </div>
+    </div>
+</div>

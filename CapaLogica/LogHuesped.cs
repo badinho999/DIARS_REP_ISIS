@@ -27,7 +27,7 @@ namespace CapaLogica
         {
             try
             {
-                List<EntHuesped> lista = DatHuesped.Instancia.ListarHuesped();
+                List<EntHuesped> lista = DatHuesped.Instance.ListarHuesped();
                 return lista;
             }
             catch (Exception e)
@@ -37,11 +37,38 @@ namespace CapaLogica
 
         }
 
-        public Boolean RegistrarHuesped(EntHuesped huesped)
+        public bool CrearUser(EntHuesped userHuesped)
         {
             try
             {
-                return DatHuesped.Instancia.RegistrarHuesped(huesped);
+                EntHuesped userFinded = DatHuesped.Instance.BuscarUsername(userHuesped.UserName);
+
+                if (userFinded != null)
+                {
+                    return false;
+                }
+
+                return DatHuesped.Instance.CrearUser(userHuesped);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+
+        public bool RegistrarHuesped(EntHuesped huesped)
+        {
+            try
+            {
+                EntHuesped dniFinded = DatHuesped.Instance.BuscarDni(huesped.Dni);
+
+                if (dniFinded != null)
+                {
+                    return false;
+                }
+
+                return DatHuesped.Instance.RegistrarHuesped(huesped);
             }
             catch (Exception e)
             {
@@ -54,7 +81,7 @@ namespace CapaLogica
         {
             try
             {
-                return DatHuesped.Instancia.BuscarHuesped(Dni);
+                return DatHuesped.Instance.BuscarHuesped(Dni);
             }
             catch (Exception e)
             {
@@ -63,11 +90,11 @@ namespace CapaLogica
 
         }
 
-        public Boolean EditarHuesped(EntHuesped huesped)
+        public bool EliminarHuesped(EntHuesped huesped)
         {
             try
             {
-                return DatHuesped.Instancia.EditarHuesped(huesped);
+                return DatHuesped.Instance.EliminarHuesped(huesped);
             }
             catch (Exception e)
             {
@@ -76,17 +103,30 @@ namespace CapaLogica
 
         }
 
-        public Boolean EliminarHuesped(EntHuesped huesped)
+        public EntHuesped BuscarDni(string Dni)
         {
             try
             {
-                return DatHuesped.Instancia.EliminarHuesped(huesped);
+                return DatHuesped.Instance.BuscarDni(Dni);
             }
             catch (Exception e)
             {
+
                 throw e;
             }
+        }
 
+        public EntHuesped BuscarUsername(string UserName)
+        {
+            try
+            {
+                return DatHuesped.Instance.BuscarUsername(UserName);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
         }
 
         #endregion metodos

@@ -53,6 +53,7 @@ namespace CapaAccesoDatos
                     {
                         FechadeIngreso = Convert.ToString(dr["FechaIngreso"]),
                         FechadeSalida = Convert.ToString(dr["FechaSalida"]),
+                        Activa = Convert.ToBoolean(dr["Activa"]),
                         Habitacion = habitacion
                     };
 
@@ -153,9 +154,78 @@ namespace CapaAccesoDatos
                         CantidaAdultos = Convert.ToInt32(dr["CantidadAdultos"]),
                         CantidadKids = Convert.ToInt32(dr["CantidadKids"]),
                         Fechadereserva = Convert.ToString(dr["Fechadereserva"]),
+                        Activa = Convert.ToBoolean(dr["Activa"]),
                         Habitacion = habitacion,
                         Huesped = huesped
                         
+                    };
+
+                    lista.Add(reserva);
+                }
+
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+            return lista;
+        }
+
+        public List<EntReserva> MisReservas(string dni)
+        {
+            SqlCommand cmd = null;
+            List<EntReserva> lista = new List<EntReserva>();
+
+            try
+            {
+                SqlConnection cn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("SP_MisReservas", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
+
+                cmd.Parameters.AddWithValue("@prmstrDni", dni);
+
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+
+                    EntTipoDeHabitacion tipoDeHabitacion = new EntTipoDeHabitacion
+                    {
+                        Capacidad = Convert.ToInt32(dr["Capacidad"]),
+                        Nombretipodehabitacion = Convert.ToString(dr["Nombretipodehabitacion"]),
+                        Costoadicional = Convert.ToInt32(dr["Costoadicional"]),
+                        Numerodecamas = Convert.ToInt32(dr["Numerodecamas"]),
+                        Precio = Convert.ToDouble(dr["Numerodecamas"]),
+                        TipodehabitacionID = Convert.ToInt32(dr["TipodehabitacionID"]),
+                    };
+
+                    EntHabitacion habitacion = new EntHabitacion
+                    {
+                        NumeroHabitacion = Convert.ToString(dr["NumeroHabitacion"]),
+                        Tipodehabitacion = tipoDeHabitacion
+                    };
+                    EntHuesped huesped = new EntHuesped
+                    {
+                        Dni = Convert.ToString(dr["Dni"])
+                    };
+                    EntReserva reserva = new EntReserva
+                    {
+                        ReservaID = Convert.ToInt32(dr["ReservaID"]),
+                        FechadeIngreso = Convert.ToString(dr["FechaIngreso"]),
+                        FechadeSalida = Convert.ToString(dr["FechaSalida"]),
+                        CantidaAdultos = Convert.ToInt32(dr["CantidadAdultos"]),
+                        CantidadKids = Convert.ToInt32(dr["CantidadKids"]),
+                        Fechadereserva = Convert.ToString(dr["Fechadereserva"]),
+                        Activa = Convert.ToBoolean(dr["Activa"]),
+                        Habitacion = habitacion,
+                        Huesped = huesped
+
                     };
 
                     lista.Add(reserva);
@@ -220,6 +290,7 @@ namespace CapaAccesoDatos
                         CantidaAdultos = Convert.ToInt32(dr["CantidadAdultos"]),
                         CantidadKids = Convert.ToInt32(dr["CantidadKids"]),
                         Fechadereserva = Convert.ToString(dr["Fechadereserva"]),
+                        Activa = Convert.ToBoolean(dr["Activa"]),
                         Habitacion = habitacion,
                         Huesped = huesped
 
@@ -238,6 +309,66 @@ namespace CapaAccesoDatos
             }
             return reserva;
 
+        }
+
+        public bool EliminarReserva(int ReservaID)
+        {
+            SqlCommand cmd = null;
+            bool elimina;
+
+            try
+            {
+                SqlConnection cn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("SP_EliminarReserva", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                };
+
+                cmd.Parameters.AddWithValue("@prmintReservaID", ReservaID);
+
+                cn.Open();
+                int result = cmd.ExecuteNonQuery();
+                elimina = result > 0 ? true : false;
+            }
+            catch (SqlException err)
+            {
+                throw err;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+            return elimina;
+        }
+
+        public bool AnularReserva(int ReservaID)
+        {
+            SqlCommand cmd = null;
+            bool anula;
+
+            try
+            {
+                SqlConnection cn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("SP_AnularReserva", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                };
+
+                cmd.Parameters.AddWithValue("@prmintReservaID", ReservaID);
+
+                cn.Open();
+                int result = cmd.ExecuteNonQuery();
+                anula = result > 0 ? true : false;
+            }
+            catch (SqlException err)
+            {
+                throw err;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+            return anula;
         }
 
         #endregion metodos

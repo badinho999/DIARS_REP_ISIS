@@ -15,6 +15,7 @@ namespace CapaEntidades
         public string FechadeIngreso { get; set; }
         public string FechadeSalida { get; set; }
         public int ReservaID { get; set; }
+        public bool Activa { get; set; }
         public EntHuesped Huesped { get; set; }
         public EntHabitacion Habitacion { get; set; }
 

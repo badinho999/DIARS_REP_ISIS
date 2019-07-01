@@ -10,15 +10,12 @@
     <script>
         $("#limpiar").empty()
 
-        $("a#adminName").html("@cuenta.NombreUsuario");
+        $("a#adminName").html("@cuenta.Recep.UserName");
         //$("a#adminName").attr("href", "/Login/CerrarSesion")
     </script>
 }
 
 <section class="container" id="listarTiposH">
-    <div class="pb-4 form-header no-color">
-        <a class="btn btn-myBtn" href="/MantenedorTipoHabitacion/insertarTipoHabitacion">Nuevo tipo de habitación</a>
-    </div>
     <table class="table m-auto col-15 table-striped table-dark">
         <tr>
             <th>
@@ -83,7 +80,6 @@
                     @Html.ActionLink("Edit", "editarTipoH", new { TipodehabitacionID = item.TipodehabitacionID }, new { @class = "d-block mb-2 col-9 link-master btn btn-myBtn" })
                     @Html.ActionLink("Add services", "agregarServicios", new { TipodehabitacionID = item.TipodehabitacionID }, new { @class = "d-block mb-2 col-9 link-master btn btn-myBtn" })
                     @Html.ActionLink("Delete services", "eliminarServicios", new { TipodehabitacionID = item.TipodehabitacionID }, new { @class = "d-block mb-2 col-9 link-master btn btn-MyDanger" })
-                    @Html.ActionLink("Delete", "eliminarTipoH", new { TipodehabitacionID = item.TipodehabitacionID }, new { @class = "d-block mb-2 col-9 link-master btn btn-MyDanger" })
                 </td>
             </tr>
         }

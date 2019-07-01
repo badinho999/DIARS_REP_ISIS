@@ -11,45 +11,33 @@ namespace CapaPresentacion.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        [HttpGet]
-        public ActionResult VerificarAcceso()
+        public ActionResult VerificarAcceso(EntUserViewModel userViewModel)
         {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult VerificarAcceso(FormCollection frm)
-        {
-            try
-            {
-                string txtNombreUsuario = frm["txtNombreUsuario"];
-                string txtPassword = frm["txtPassword"];
-                EntCuenta cuenta = LogCuenta.Instancia.VerificarAcceso(txtNombreUsuario, txtPassword);
-                Session["cuenta"] = cuenta;
 
-                if(cuenta.Admin!=null)
+            string hashcode = LogHashing.Instance.Encrypt(userViewModel.Key);
+            var redirectUrl = "";
+
+
+            EntCuenta account = LogCuenta.Instancia.VerificarAcceso(userViewModel.UserName, hashcode);
+            if (account != null)
+            {
+                Session["cuenta"] = account;
+
+                if (account.Recep != null)
                 {
-                    return RedirectToAction("Index", "Home");
-                }
-                else if(cuenta.Huesped!=null)
-                {
-                    return RedirectToAction("Inicio", "Menu");
+                    redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "Home");
+                    return Json(new { Usr = redirectUrl }, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
-                    return RedirectToAction("VerificarAcceso");
+                    return Json(new { Usr = account.Huesped.UserName }, JsonRequestBehavior.AllowGet);
                 }
+
             }
-            catch (ApplicationException e)
-            {
-                ViewBag.mensaje = e.Message;
-                return View();
-            }
-            catch (Exception e)
-            {
-                ViewBag.mensaje = e.Message;
-                return View();
-            }
+            return Json(null, JsonRequestBehavior.AllowGet);
         }
+
+       
 
         public ActionResult CerrarSesion()
         {

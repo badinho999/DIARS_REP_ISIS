@@ -15,8 +15,16 @@
     {
         <script>
 
-            $("a#idLogin").html("Cerrar Sesión");
-            $("a#idLogin").attr("href", "/Login/CerrarSesion")
+            $("a#idLogin").attr("href", "#");
+            $("a#idLogin").removeAttr("data-toggle");
+            $("a#idLogin").removeAttr("data-target");
+            $("a#idLogin").html("@cuenta.Huesped.UserName");
+
+            $("a#idsignUp").removeAttr("data-toggle");
+            $("a#idsignUp").removeAttr("data-target");
+            $("a#idsignUp").attr("href", "/Login/CerrarSesion");
+            $("a#idsignUp").html("Cerrar Sesión");
+            $("#misReservas").removeAttr("hidden");
             $("#limpiar").empty()
         </script>
     }
@@ -87,95 +95,99 @@
             </div>
             <div class="card-footer text-muted text-center">
                 <div class="form-group text-center">
-                        <input type="submit" value="Pagar con PayPal" class="btn btn-myBtn" />
-                        <a class="ml-1 btn btn-danger" href="/Menu/Inicio">Cancelar</a>
+                    <input type="submit" value="Pagar con PayPal" class="btn btn-myBtn" />
+                    <a class="ml-1 btn btn-danger" href="/Menu/Inicio">Cancelar</a>
                 </div>
             </div>
         </div>
 
         @*<section class="container mt-4" id="realizarReserva">
-            <div class="form-content form-horizontal col-5 m-lg-auto">
-                <h4>Realizar Reserva</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    <label class="control-label col-md-8">Fecha de Reserva</label>
-                    <div class="col-md-10">
-                        <input type="text" name="txtFechaReserva" class="form-control" value="@Model.Fechadereserva" readonly="readonly">
+                <div class="form-content form-horizontal col-5 m-lg-auto">
+                    <h4>Realizar Reserva</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label class="control-label col-md-8">Fecha de Reserva</label>
+                        <div class="col-md-10">
+                            <input type="text" name="txtFechaReserva" class="form-control" value="@Model.Fechadereserva" readonly="readonly">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-8">Fecha de Ingreso</label>
-                    <div class="col-md-10">
-                        <input type="text" name="txtFechaIngreso" class="form-control" value="@Model.FechadeIngreso" readonly="readonly">
+                    <div class="form-group">
+                        <label class="control-label col-md-8">Fecha de Ingreso</label>
+                        <div class="col-md-10">
+                            <input type="text" name="txtFechaIngreso" class="form-control" value="@Model.FechadeIngreso" readonly="readonly">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-8">Fecha de Salida</label>
-                    <div class="col-md-10">
-                        <input type="text" name="txtFechaSalida" class="form-control" value="@Model.FechadeSalida" readonly="readonly">
+                    <div class="form-group">
+                        <label class="control-label col-md-8">Fecha de Salida</label>
+                        <div class="col-md-10">
+                            <input type="text" name="txtFechaSalida" class="form-control" value="@Model.FechadeSalida" readonly="readonly">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-8">Cantidad de Adultos</label>
-                    <div class="col-md-10">
-                        <input type="text" name="txtCantidadAdultos" class="form-control" value="@Model.CantidaAdultos" readonly="readonly">
+                    <div class="form-group">
+                        <label class="control-label col-md-8">Cantidad de Adultos</label>
+                        <div class="col-md-10">
+                            <input type="text" name="txtCantidadAdultos" class="form-control" value="@Model.CantidaAdultos" readonly="readonly">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-8">Cantidad de Niños</label>
-                    <div class="col-md-10">
-                        <input type="text" name="txtCantidadKids" class="form-control" value="@Model.CantidadKids" readonly="readonly">
+                    <div class="form-group">
+                        <label class="control-label col-md-8">Cantidad de Niños</label>
+                        <div class="col-md-10">
+                            <input type="text" name="txtCantidadKids" class="form-control" value="@Model.CantidadKids" readonly="readonly">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => habitacion.NumeroHabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => habitacion.NumeroHabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    <div class="form-group">
+                        @Html.LabelFor(model => habitacion.NumeroHabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => habitacion.NumeroHabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    <div class="form-group">
+                        @Html.LabelFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => habitacion.Tipodehabitacion.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <input class="form-control" readonly="readonly" name="precio" placeholder="S/. @precio" value="@precio" />
+                    <div class="form-group">
+                        @Html.LabelFor(model => habitacion.Tipodehabitacion.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input class="form-control" readonly="readonly" name="precio" placeholder="S/. @precio" value="@precio" />
+                        </div>
                     </div>
-                </div>
-                <div class="form-group mb-4">
-                    <label class="control-label col-md-10">Una vez en el hotel se cobrará</label>
-                    <div class="col-md-10">
-                        @{
-                            <p>
-                                Precio de habitación: S/. @precioHabitacion
-                            </p>
-                        }
+                    <div class="form-group mb-4">
+                        <label class="control-label col-md-10">Una vez en el hotel se cobrará</label>
+                        <div class="col-md-10">
+                            @{
+                                <p>
+                                    Precio de habitación: S/. @precioHabitacion
+                                </p>
+                            }
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Pagar con PayPal" class="btn btn-myBtn" />
+                            <a class="ml-1 btn btn-danger" href="/Menu/Inicio">Cancelar</a>
+                        </div>
                     </div>
                 </div>
 
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Pagar con PayPal" class="btn btn-myBtn" />
-                        <a class="ml-1 btn btn-danger" href="/Menu/Inicio">Cancelar</a>
-                    </div>
-                </div>
-            </div>
-
-        </section>*@
+            </section>*@
 
 
     }
 }
 else
 {
-    <script>
-        window.location.href = "@Url.Action("VerificarAcceso","Login")";
-    </script>
+    @section Scripts
+    {
+        <script>
+            $("#mlogin").modal("show");
+        </script>
+    }
+    
 }
 
 

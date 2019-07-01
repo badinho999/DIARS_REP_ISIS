@@ -1,6 +1,7 @@
 /*HuespedProcedures*/
 use [Proyecto_DIARS_ISIS]
 
+/*
 CREATE procedure [dbo].[Sp_ListarHuesped]
 as
 begin
@@ -8,45 +9,22 @@ Select Dni, Nombre, Apellidos, CONVERT(VARCHAR(10), Fechadenacimiento, 111) as [
 from Huesped h inner join Cuenta c on(h.NombreUsuario = c.NombreUsuario)
 end
 go
+*/
 
-CREATE procedure Sp_RegistrarHuesped
+CREATE procedure [dbo].[Sp_RegistrarHuesped]
 (
-	@prmstrApellidos varchar(50),
-	@prmstrFechadenacimiento date,
-	@prmstrNombre varchar(50),
 	@prmstrDni char(8),
-	@prmstrNombreUsuario varchar(50)
+	@prmstrUserName nvarchar(50)
 )
 as
 begin
-Insert into Huesped(Apellidos,Fechadenacimiento,Nombre,Dni,NombreUsuario)
+Insert into Huesped(Dni,UserName)
 values
 (
-	@prmstrApellidos,
-	@prmstrFechadenacimiento,
-	@prmstrNombre,
 	@prmstrDni,
-	@prmstrNombreUsuario
+	@prmstrUserName
 )
 end
-go
-
-CREATE procedure Sp_EditarHuesped
-(
-	@prmstrApellidos varchar(50),
-	@prmstrFechadenacimiento date,
-	@prmstrNombre varchar(50),
-	@prmstrDni char(8)
-)
-as
-begin
-update Huesped set 
-Apellidos = @prmstrApellidos,
-Fechadenacimiento = @prmstrFechadenacimiento,
-Nombre = @prmstrNombre
-where Dni = @prmstrDni
-end
-go
 
 CREATE procedure Sp_EliminarHuesped
 (
@@ -59,14 +37,68 @@ begin
 end
 go
 
-CREATE procedure Sp_BuscarHuesped
+CREATE procedure [dbo].[Sp_BuscarHuesped]
 (
 	@prmstrDni char(8)
 )
 as
 begin
-Select Dni, Nombre, Apellidos, CONVERT(VARCHAR(10), Fechadenacimiento, 111) as [Fechadenacimiento], c.NombreUsuario,c.Email
-from Huesped h inner join Cuenta c on(h.NombreUsuario = c.NombreUsuario)
-where Dni = @prmstrDni
+Select h.Dni, acc.Nombre, acc.Apellidos, acc.FechaNacimiento,
+c.Email
+from Huesped h inner join UserAccount acc on(h.UserName = acc.UserName)
+inner join Cuenta c on(h.UserName=c.UserName)
+where h.Dni = @prmstrDni
+end
+
+CREATE Proc [dbo].[SP_BuscarDni]
+(
+	@prmstrDni char(8)
+)
+as
+begin
+	Select Dni
+	From Huesped
+	Where Dni = @prmstrDni
+end
+
+CREATE Proc [dbo].[SP_BuscarUsername]
+(
+	@prmstrUserName nvarchar(50)
+)
+as
+begin
+	Select UserName 
+	From UserAccount
+	Where UserName = @prmstrUserName
+end
+
+CREATE PROC	SP_CrearUser
+(
+	@prmstrUserName nvarchar(50),
+	@prmstrFechaNacimiento datetime,
+	@prmstrNombre nvarchar(50),
+	@prmstrApellidos nvarchar(50)
+)
+as
+begin
+	Insert Into UserAccount(UserName,FechaNacimiento,Nombre,Apellidos)
+	Values
+	(
+		@prmstrUserName,
+		@prmstrFechaNacimiento,
+		@prmstrNombre,
+		@prmstrApellidos
+	)
+end
+go
+
+CREATE PROC SP_EliminarUser
+(
+	@prmstrUserName nvarchar(50)
+)
+as
+begin
+	Delete from UserAccount
+	Where UserName = @prmstrUserName
 end
 go

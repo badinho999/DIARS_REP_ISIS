@@ -1,0 +1,108 @@
+﻿@model  CapaEntidades.EntReservaViewModel
+@using CapaEntidades
+@{
+    ViewBag.Title = "MisReservas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+}
+
+@if (cuenta != null)
+{
+    @section Scripts
+    {
+        <script>
+
+            $("a#idLogin").attr("href", "#");
+            $("a#idLogin").removeAttr("data-toggle");
+            $("a#idLogin").removeAttr("data-target");
+            $("a#idLogin").html("@cuenta.Huesped.UserName");
+
+            $("a#idsignUp").removeAttr("data-toggle");
+            $("a#idsignUp").removeAttr("data-target");
+            $("a#idsignUp").attr("href", "/Login/CerrarSesion");
+            $("a#idsignUp").html("Cerrar Sesión");
+            $("li#misReservas").removeAttr("hidden");
+        </script>
+    }
+
+    if (Model.ErrorID == 0)
+    {
+        <div class="alert alert-danger text-center mt-4">
+            Aún no tiene reservas
+        </div>
+    }
+
+    if (Model.Reservas != null && Model.ErrorID < 0 && Model.Reservas.Count != 0)
+    {
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    Fecha de reserva
+                </th>
+                <th>
+                    Cantidad de adultos
+                </th>
+                <th>
+                    Cantidad de niños
+                </th>
+                <th>
+                    Fecha de ingreso
+                </th>
+                <th>
+                    Fecha de salida
+                </th>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Estado
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Reservas)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fechadereserva)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CantidaAdultos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CantidadKids)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechadeIngreso)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechadeSalida)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReservaID)
+                    </td>
+                    <td>
+                        @if (item.Activa)
+                        {
+                            <span class="badge badge-pill badge-success">
+
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-pill badge-danger">
+
+                            </span>
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink("Anular", "AnularReserva", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+}
+
+

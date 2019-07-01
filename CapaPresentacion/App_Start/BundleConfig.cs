@@ -6,6 +6,11 @@ namespace CapaPresentacion
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/main").Include(
+                "~/Scripts/signUp.js",
+                "~/Scripts/logIn.js",
+                "~/Bootstrap-datetime/js/bootstrap-datepicker.js"));
+
             bundles.Add(new StyleBundle("~/bundles/css")
                 .Include(
                 "~/Bootstrap/styles/bootstrap-4.1.2/bootstrap.min.css",
@@ -16,7 +21,8 @@ namespace CapaPresentacion
                 "~/Bootstrap/plugins/jquery-datepicker/jquery-ui.css",
                 "~/Bootstrap/styles/main_styles.css",
                 "~/Bootstrap/styles/parallax.css",
-                "~/Bootstrap/styles/responsive.css"));
+                "~/Bootstrap/styles/responsive.css",
+                "~/Bootstrap-datetime/css/bootstrap-datepicker.css"));
 
             bundles.Add(new StyleBundle("~/bundles/logincss")
                 .Include(

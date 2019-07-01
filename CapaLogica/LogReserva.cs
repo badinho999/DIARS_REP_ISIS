@@ -105,11 +105,50 @@ namespace CapaLogica
             }
         }
 
+        public List<EntReserva> MisReservas(string dni)
+        {
+            try
+            {
+                return DatReserva.Instancia.MisReservas(dni);
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+        }
+
         public EntReserva BuscarReserva(int ReservaID)
         {
             try
             {
                 return DatReserva.Instancia.BuscarReserva(ReservaID);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+
+        public bool EliminarReserva(int ReservaID)
+        {
+            try
+            {
+                return DatReserva.Instancia.EliminarReserva(ReservaID);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+
+        public bool AnularReserva(int ReservaID)
+        {
+            try
+            {
+                return DatReserva.Instancia.AnularReserva(ReservaID);
             }
             catch (Exception e)
             {
