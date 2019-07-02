@@ -29,6 +29,8 @@ namespace CapaEntidades
             return (Tipodehabitacion.Precio / (1 - 0.20));
         }
 
+        public int Alojamientos { get; set; }
+
         #endregion methods
 
     }

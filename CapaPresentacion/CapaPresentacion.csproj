@@ -471,6 +471,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\logIn.js" />
+    <Content Include="Scripts\menuUsuario.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
@@ -503,6 +504,12 @@
     <Content Include="Views\Shared\_LogIn.cshtml" />
     <Content Include="Views\Shared\_SignUp.cshtml" />
     <Content Include="Views\AnularReserva\MisReservas.cshtml" />
+    <Content Include="Views\Reports\Reportes.cshtml" />
+    <Content Include="Views\Reports\ReportesHabitaciones.cshtml" />
+    <Content Include="Views\Reports\ReportesIngresosAlquiler.cshtml" />
+    <Content Include="Views\Reports\ReportesIngresosReserva.cshtml" />
+    <Content Include="Views\MantenedorReserva\BuscarReserva.cshtml" />
+    <Content Include="Views\MantenedorReserva\EditarReserva.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -519,12 +526,14 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MantenedorHabitacionesController.cs" />
     <Compile Include="Controllers\MantenedorHuespedController.cs" />
+    <Compile Include="Controllers\MantenedorReservaController.cs" />
     <Compile Include="Controllers\MantenedorServiciosController.cs" />
     <Compile Include="Controllers\MantenedorTipoHabitacionController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PayPalController.cs" />
     <Compile Include="Controllers\RealizarAlquilerController.cs" />
     <Compile Include="Controllers\RealizarReservaController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

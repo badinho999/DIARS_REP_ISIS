@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="LogAccountHashTable.cs" />
     <Compile Include="LogAlquiler.cs" />
+    <Compile Include="LogComprobantePagoAlquiler.cs" />
     <Compile Include="LogComprobanteReserva.cs" />
     <Compile Include="LogCuenta.cs" />
     <Compile Include="LogHabitacion.cs" />

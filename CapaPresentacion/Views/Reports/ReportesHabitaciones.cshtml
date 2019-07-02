@@ -1,0 +1,97 @@
+﻿@using CapaEntidades;
+
+    @{
+        ViewBag.Title = "ReportesHabitaciones";
+        Layout = "~/Views/Shared/_LayoutMantenedores.cshtml";
+        EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
+    }
+
+    @section Header
+{
+        <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+    }
+
+    @section Scripts
+{
+        <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script>
+        $("#limpiar").empty()
+
+       $("#userInfo").append(`
+                <!-- Cuando la sesion esta iniciada-->
+                        <ul>
+                            <li class="">
+                                <div class="header_login">
+                                    <a href="#" data-toggle="dropdown" aria-expanded="false">
+                                        <img src="https://png.pngtree.com/element_origin_min_pic/16/11/25/f2db5b1fae65676bfd1ecae1dbfdc3a2.jpg" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
+                                        <span class=" fa fa-angle-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color: rgba(14,9,35,0.88);">
+                                        <li><a href="#" style="padding-left: 17px; padding-bottom: 0;"><i class="fa fa-user"> Perfil </i></a></li>
+                                        <li><a href="@Url.Action("MisReservas", "AnularReserva")" style="padding-left: 17px; padding-bottom: 0;"><i class="fa fa-list"> Mis Reservas </i></a></li>
+                                        <li><a href="@Url.Action("CerrarSesion", "Login")" style="padding-left: 17px; padding-bottom: 0;"><i class="fa fa-sign-out"> Cerrar Sesión </i></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+            `)
+
+            $(document).ready(() => {
+
+                HabOcupadas();
+            });
+
+        function HabOcupadas() {
+            $("#reporte").DataTable(
+                {
+                    "ajax": {
+                        "url": "/Reports/HabitacionesMasOcupadas",
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "NumeroHabitacion" },
+                        { "data": "Tipodehabitacion.Nombretipodehabitacion" },
+                        { "data": "Alojamientos" }
+                    ]
+                })
+        };
+
+        </script>
+    }
+
+    <div class="card text-center">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    @Html.ActionLink("Clientes frecuentes", "Reportes", "Reports", null, new { @class = "nav-link text-black-50" })
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" id="habOcupadas">Habitaciones más ocupadas</a>
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Ingresos por reserva", "ReportesIngresosReserva", "Reports", null, new { @class = "nav-link text-black-50" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Ingresos por alquiler", "ReportesIngresosAlquiler", "Reports", null, new { @class = "nav-link text-black-50" })
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-row">
+
+                </div>
+            </form>
+            <table id="reporte">
+                <thead>
+                    <tr>
+                        <th>Número de habitación</th>
+                        <th>Tipo de habitación</th>
+                        <th>Cantidad de alojamientos</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+

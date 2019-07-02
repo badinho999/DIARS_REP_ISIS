@@ -1,4 +1,8 @@
 ﻿
+$("#signIpTrgg").click(() => {
+    $("#mlogin").modal('hide');
+});
+
 function Encrypt(passw) {
     var crypt = [];
 

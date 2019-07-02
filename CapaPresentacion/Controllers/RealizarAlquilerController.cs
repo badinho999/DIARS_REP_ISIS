@@ -146,6 +146,8 @@ namespace CapaPresentacion.Controllers
             verificarSesion();
             EntReserva reserva = LogReserva.Instancia.BuscarReserva(reservaID);
 
+            ((EntCuenta)Session["cuenta"]).ReservaID = reserva.ReservaID;
+                
             EntAlquiler alquiler = new EntAlquiler
             {
                 FechadeIngreso = reserva.FechadeIngreso,
@@ -165,6 +167,7 @@ namespace CapaPresentacion.Controllers
             verificarSesion();
             string dni = frm["txtDni"];
             string numeroHabitacion = frm["txtNumeroHabitacion"];
+            double precio = double.Parse(frm["txtprecio"]);
 
             EntHuesped huesped = LogHuesped.Instancia.BuscarHuesped(dni);
 
@@ -173,8 +176,11 @@ namespace CapaPresentacion.Controllers
                 NumeroHabitacion = numeroHabitacion
             };
 
+            Random rdn = new Random();
+
             EntAlquiler alquiler = new EntAlquiler
             {
+                AlquilerID = rdn.Next(20,int.MaxValue),
                 FechadeIngreso = frm["txtFechaIngreso"],
                 FechadeSalida = frm["txtFechaSalida"],
 
@@ -191,6 +197,24 @@ namespace CapaPresentacion.Controllers
                 Boolean alquila = LogAlquiler.Instancia.RealizarAlquiler(alquiler);
                 if (alquila)
                 {
+                    EntComprobantedepagoalquiler ca = new EntComprobantedepagoalquiler
+                    {
+                        Alquiler = alquiler,
+                        Monto = precio,
+                        NumeroSerie = rdn.Next(10001, int.MaxValue)
+                    };
+
+                    Boolean generarCPAlquiler = LogComprobantePagoAlquiler.Instancia.GenerarComprobanteAlquiler(ca);
+
+                    int reservaID = ((EntCuenta)Session["cuenta"]).ReservaID;
+
+                    bool cambiaEstado = LogReserva.Instancia.AnularReserva(reservaID);
+
+                    if(cambiaEstado)
+                    {
+                        ((EntCuenta)Session["cuenta"]).ReservaID = 0;
+                    }
+
                     return RedirectToAction("AlquilerMenu", "RealizarAlquiler", new { dni = huesped.Dni });
                 }
                 else
@@ -237,6 +261,8 @@ namespace CapaPresentacion.Controllers
 
             string numeroHabitacion = frm["txtNumeroHabitacion"];
 
+            double precio = double.Parse(frm["txtprecio"]);
+
             EntHuesped huesped = LogHuesped.Instancia.BuscarHuesped(dni);
 
             habitacion = new EntHabitacion
@@ -244,8 +270,11 @@ namespace CapaPresentacion.Controllers
                 NumeroHabitacion = numeroHabitacion
             };
 
+            Random rdn = new Random();
+
             EntAlquiler alquiler = new EntAlquiler
             {
+                AlquilerID = rdn.Next(20, int.MaxValue),
                 FechadeIngreso = frm["txtFechaIngreso"],
                 FechadeSalida = frm["txtFechaSalida"],
 
@@ -262,6 +291,15 @@ namespace CapaPresentacion.Controllers
                 Boolean alquila = LogAlquiler.Instancia.RealizarAlquiler(alquiler);
                 if (alquila)
                 {
+                    EntComprobantedepagoalquiler ca = new EntComprobantedepagoalquiler
+                    {
+                        Alquiler = alquiler,
+                        Monto = precio,
+                        NumeroSerie = rdn.Next(10001, int.MaxValue)
+                    };
+
+                    Boolean generarCPAlquiler = LogComprobantePagoAlquiler.Instancia.GenerarComprobanteAlquiler(ca);
+
                     return RedirectToAction("AlquilerMenu", "RealizarAlquiler", new { dni = huesped.Dni });
                 }
                 else

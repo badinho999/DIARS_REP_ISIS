@@ -45,6 +45,7 @@
     <Compile Include="DatAccountHashTable.cs" />
     <Compile Include="DatAlquiler.cs" />
     <Compile Include="DatComprobanteDePagoReserva.cs" />
+    <Compile Include="DatComprobantePagoAlquiler.cs" />
     <Compile Include="DatCuenta.cs" />
     <Compile Include="DatHabitacion.cs" />
     <Compile Include="DatHashtable.cs" />

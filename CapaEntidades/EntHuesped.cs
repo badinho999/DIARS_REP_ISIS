@@ -10,6 +10,7 @@ namespace CapaEntidades
 {
     public class EntHuesped : EntUserAccount
     {
-        public string Dni { get; set; }     
+        public string Dni { get; set; }
+        public int CantidadVisitas { get; set; }
     }
 }

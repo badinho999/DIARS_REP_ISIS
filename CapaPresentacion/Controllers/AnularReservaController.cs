@@ -48,5 +48,22 @@ namespace CapaPresentacion.Controllers
             return View(ViewModel);
 
         }
+
+        
+        public ActionResult AnularReserva(int ReservaID)
+        {
+            EntReserva reserva = LogReserva.Instancia.BuscarReserva(ReservaID);
+
+            bool anula = LogReserva.Instancia.AnularReserva(reserva.ReservaID);
+
+            if(anula)
+            {
+                return RedirectToAction("Contact","Menu");
+            }
+            else
+            {
+                return View(reserva);
+            }
+        }
     }
 }

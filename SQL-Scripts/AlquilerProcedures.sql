@@ -14,8 +14,9 @@ begin
 end
 go
 
-Create proc Sp_RealizarAlquiler
+CREATE proc Sp_RealizarAlquiler
 (
+	@prmintAlquilerID int,
 	@prmintCantidadAdultos int,
 	@prmintCantidadKids int,
 	@prmstrFechadeingreso varchar(50),
@@ -25,9 +26,10 @@ Create proc Sp_RealizarAlquiler
 )
 as
 begin
-	Insert into Alquiler(CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
+	Insert into Alquiler(AlquilerID,CantidadAdultos,CantidadKids,Fechadeingreso,Fechadesalida,Dni,NumeroHabitacion)
 	Values
 	(
+		@prmintAlquilerID,
 		@prmintCantidadAdultos,
 		@prmintCantidadKids,
 		@prmstrFechadeingreso,

@@ -192,7 +192,7 @@ namespace CapaAccesoDatos
                         Dni = Convert.ToString(dr["Dni"]),
                         Nombre = Convert.ToString(dr["Nombre"]),
                         Apellidos = Convert.ToString(dr["Apellidos"]),
-                        FechaNacimiento = Convert.ToString(dr["Fechadenacimiento"]),
+                        FechaNacimiento = Convert.ToString(dr["FechaNacimiento"]),
                         Cuenta = cuenta
                     };
                 }
@@ -279,6 +279,46 @@ namespace CapaAccesoDatos
                 cmd.Connection.Close();
             }
             return huesped;
+        }
+
+
+        public List<EntHuesped> ClientesFrecuentes()
+        {
+            SqlCommand cmd = null;
+            List<EntHuesped> lista = new List<EntHuesped>();
+            try
+            {
+                SqlConnection cn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("SP_ClientesFrecuentes", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
+
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    EntHuesped huesped = new EntHuesped
+                    {
+                        Dni = Convert.ToString(dr["Dni"]),
+                        Nombre = Convert.ToString(dr["Nombre"]),
+                        Apellidos = Convert.ToString(dr["Apellidos"]),
+                        CantidadVisitas = Convert.ToInt32(dr["Cantidad"]),
+                    };
+
+                    lista.Add(huesped);
+                }
+            }
+            catch (SqlException e)
+            {
+
+                throw e;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+            return lista;
         }
 
         /************************No se usa aún******************************/

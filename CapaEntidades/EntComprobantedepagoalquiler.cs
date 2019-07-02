@@ -11,6 +11,7 @@ namespace CapaEntidades
         public string Fechadeemision { get; set; }
         public string Ruc { get; set; }
         public int NumeroSerie { get; set; }
-        internal EntAlquiler Alquiler { get; set; }
+        public double Monto { get; set; }
+        public EntAlquiler Alquiler { get; set; }
     }
 }

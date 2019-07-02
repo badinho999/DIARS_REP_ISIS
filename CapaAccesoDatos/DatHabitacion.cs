@@ -205,6 +205,50 @@ namespace CapaAccesoDatos
             return edit;
         }
 
+        public List<EntHabitacion> MasOcupadas()
+        {
+            SqlCommand cmd = null;
+            List<EntHabitacion> lista = new List<EntHabitacion>();
+            try
+            {
+                SqlConnection cn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("SP_HabitacionesMasOcupadas", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+
+                    EntTipoDeHabitacion tipoDeHabitacion = new EntTipoDeHabitacion
+                    {
+                        Nombretipodehabitacion = Convert.ToString(dr["Nombretipodehabitacion"]),
+                    };
+
+                    EntHabitacion habitacion = new EntHabitacion
+                    {
+                        NumeroHabitacion = Convert.ToString(dr["NumeroHabitacion"]),
+                        Tipodehabitacion = tipoDeHabitacion,
+                        Alojamientos = Convert.ToInt32(dr["Cantidad"])
+                    };
+
+
+                    lista.Add(habitacion);
+                }
+            }
+            catch (SqlException e)
+            {
+
+                throw e;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+            return lista;
+        }
+
         #endregion metodos
 
     }

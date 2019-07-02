@@ -6,26 +6,28 @@ using System.Threading.Tasks;
 using CapaAccesoDatos;
 using CapaEntidades;
 
+
 namespace CapaLogica
 {
-    public class LogComprobanteReserva
+    public class LogComprobantePagoAlquiler
     {
         #region singleton
-        private static readonly LogComprobanteReserva instancia = new LogComprobanteReserva();
-        public static LogComprobanteReserva Instancia
+        private static readonly LogComprobantePagoAlquiler instancia = new LogComprobantePagoAlquiler();
+        public static LogComprobantePagoAlquiler Instancia
         {
             get
             {
-                return LogComprobanteReserva.instancia;
+                return LogComprobantePagoAlquiler.instancia;
             }
         }
         #endregion singleton
 
-        public Boolean GenerarComprobanteReserva(EntComprobantepagoreserva fact)
+
+        public Boolean GenerarComprobanteAlquiler(EntComprobantedepagoalquiler fact)
         {
             try
             {
-                return DatComprobanteDePagoReserva.Instancia.GenerarComprobanteReserva(fact);
+                return DatComprobantePagoAlquiler.Instancia.GenerarComprobanteAlquiler(fact);
             }
             catch (Exception e)
             {
@@ -34,11 +36,11 @@ namespace CapaLogica
             }
         }
 
-        public List<EntComprobantepagoreserva> IngresosReserva()
+        public List<EntComprobantedepagoalquiler> IngresosAlquiler()
         {
             try
             {
-                return DatComprobanteDePagoReserva.Instancia.IngresosReserva();
+                return DatComprobantePagoAlquiler.Instancia.IngresosAlquiler();
             }
             catch (Exception e)
             {
@@ -46,5 +48,6 @@ namespace CapaLogica
                 throw e;
             }
         }
+
     }
 }

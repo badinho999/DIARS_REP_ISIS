@@ -371,6 +371,38 @@ namespace CapaAccesoDatos
             return anula;
         }
 
+        public bool ActivarReserva(int ReservaID,string fechaIngreso,string fechaSalida)
+        {
+            SqlCommand cmd = null;
+            bool activa;
+
+            try
+            {
+                SqlConnection cn = Conexion.Instancia.Conectar();
+                cmd = new SqlCommand("SP_ActivarReserva", cn)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure,
+                };
+
+                cmd.Parameters.AddWithValue("@prmintReservaID", ReservaID);
+                cmd.Parameters.AddWithValue("@prmstrFechaIngreso", fechaIngreso);
+                cmd.Parameters.AddWithValue("@prmstrFechaSalida", fechaSalida);
+
+                cn.Open();
+                int result = cmd.ExecuteNonQuery();
+                activa = result > 0 ? true : false;
+            }
+            catch (SqlException err)
+            {
+                throw err;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+            return activa;
+        }
+
         #endregion metodos
 
     }

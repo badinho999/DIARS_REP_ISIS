@@ -25,6 +25,8 @@
                     <li>@Html.ActionLink("Habitación", "listarHabitaciones", "MantenedorHabitaciones", null, new { @class = "page-scroll" })</li>
                     <li>@Html.ActionLink("Servicios Adicionales", "listarServicios", "MantenedorServicios", null, new { @class = "page-scroll" })</li>
                     <li>@Html.ActionLink("Tipo de Habitación", "listarTiposH", "MantenedorTipoHabitacion", null, new { @class = "page-scroll" })</li>
+                    <li>@Html.ActionLink("Editar reserva", "BuscarReserva", "MantenedorReserva", null, new { @class = "page-scroll" })</li>
+                    <li>@Html.ActionLink("Reportes", "Reportes", "Reports", null, new { @class = "page-scroll" })</li>
 
                 </ul>
             </nav>
@@ -44,9 +46,9 @@
             <div class="header_right d-flex flex-row align-items-center justify-content-start">
 
                 <!--Login Status-->
+                <div id="userInfo">
 
-                <div class="header_link"><a class="nav-link" id="adminName" href="#">Admin</a></div>
-                <div class="header_link"><a class="nav-link" href="/Login/CerrarSesion">Cerrar Sesión</a></div>
+                </div>
                 <!-- Hamburger Button -->
                 <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
             </div>

@@ -128,7 +128,19 @@ namespace CapaLogica
                 throw e;
             }
         }
+        
+        public List<EntHuesped> ClientesFrecuentes()
+        {
+            try
+            {
+                return DatHuesped.Instance.ClientesFrecuentes();
+            }
+            catch (Exception e)
+            {
 
+                throw e;
+            }
+        }
         #endregion metodos
     }
 }

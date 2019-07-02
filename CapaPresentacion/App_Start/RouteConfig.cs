@@ -14,6 +14,12 @@ namespace CapaPresentacion
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "ReporteClientes",
+                "{controller}/{action}/{Day}/{Month}/{Year}",
+                new { controller = "Reports", action = "ClientesFrecuentes" }
+                );
+
+            routes.MapRoute(
                 "GenerarCPReserva",
                 "{controller}/{action}/{id}/{monto}/{tax}/{shipping}",
                 new { controller = "CreatePayment", action = "PayPal" }

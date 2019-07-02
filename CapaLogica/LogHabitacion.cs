@@ -85,6 +85,19 @@ namespace CapaLogica
             }
         }
 
+        public List<EntHabitacion> MasOcupadas()
+        {
+            try
+            {
+                return DatHabitacion.Instancia.MasOcupadas();
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+
         #endregion metodos
 
     }

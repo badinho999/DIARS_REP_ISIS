@@ -44,7 +44,7 @@ begin
 end
 go
 
-CREATE Proc SP_BuscarReservaDeHuesped
+ALTER Proc SP_BuscarReservaDeHuesped
 (
 	@prmstrDni	char(8)
 )
@@ -54,7 +54,7 @@ begin
 	from Reserva rev inner join Huesped hu on(rev.Dni=hu.Dni)
 	inner join Habitacion h on(rev.NumeroHabitacion=h.NumeroHabitacion)
 	inner join Tipodehabitacion th on(h.TipodehabitacionID=th.TipodehabitacionID)
-	where rev.Dni = @prmstrDni and rev.FechaIngreso = convert(varchar, getdate(), 111) 
+	where rev.Dni = @prmstrDni and rev.FechaIngreso = convert(varchar, getdate(), 111)  and Activa = 1
 end
 go
 
@@ -111,4 +111,33 @@ begin
 end
 go
 
+ALTER Proc SP_ActivarReserva
+(
+	@prmstrFechaIngreso date,
+	@prmstrFechaSalida date,
+	@prmintReservaID int
+)
+as
+begin
+	Update Reserva
+	Set FechaIngreso = @prmstrFechaIngreso, FechaSalida = @prmstrFechaSalida,
+	Activa = 1
+	Where ReservaID = @prmintReservaID
+end
+go
+
 Select * from Reserva
+
+Select * from Reserva
+inner join Huesped on(Reserva.Dni=Huesped.Dni)
+GO
+
+Select * from 
+Huesped inner join UserAccount on(Huesped.UserName = UserAccount.UserName)
+GO
+
+Select * from AccountHashTable aht inner join HashTable ht on(aht.HashCode = ht.HashCode)
+inner join Passwordaccount pa on(ht.HashCode = pa.HashCode) 
+GO
+
+Select * from Habitacion

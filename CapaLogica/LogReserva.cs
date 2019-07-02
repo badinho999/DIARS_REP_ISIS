@@ -114,7 +114,7 @@ namespace CapaLogica
             catch (Exception e)
             {
 
-                throw;
+                throw e;
             }
         }
 
@@ -149,6 +149,19 @@ namespace CapaLogica
             try
             {
                 return DatReserva.Instancia.AnularReserva(ReservaID);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+
+        public bool ActivarReserva(int ReservaID, string fechaIngreso, string fechaSalida)
+        {
+            try
+            {
+                return DatReserva.Instancia.ActivarReserva(ReservaID,fechaIngreso,fechaSalida);
             }
             catch (Exception e)
             {

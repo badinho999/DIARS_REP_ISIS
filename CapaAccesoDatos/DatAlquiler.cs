@@ -74,6 +74,8 @@ namespace CapaAccesoDatos
                 {
                     CommandType = System.Data.CommandType.StoredProcedure
                 };
+
+                cmd.Parameters.AddWithValue("@prmintAlquilerID",alquiler.AlquilerID);
                 cmd.Parameters.AddWithValue("@prmintCantidadAdultos", alquiler.CantidaAdultos);
                 cmd.Parameters.AddWithValue("@prmintCantidadKids", alquiler.CantidadKids);
                 cmd.Parameters.AddWithValue("@prmstrFechadeingreso", alquiler.FechadeIngreso);
