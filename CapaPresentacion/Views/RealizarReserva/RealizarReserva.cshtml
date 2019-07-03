@@ -6,8 +6,8 @@
     EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
     EntHabitacion habitacion = Model.Habitacion;
     double precio = habitacion.Tipodehabitacion.Precio;
-    double precioHabitacion = habitacion.CalcularPrecioOriginal() - precio;
-
+    double precioDesc = habitacion.AplicarDescuentoPorReserva();
+    double precioCheckIn = precio - precioDesc;
 }
 @if (cuenta != null)
 {
@@ -90,16 +90,16 @@
                 <div class="form-group">
                     <label>Precio de la Habitación</label>
                     <br />
-                        <input readonly="readonly" name="precio" placeholder="S/.@habitacion.Tipodehabitacion.Precio" value="@precio" />
+                        <input readonly="readonly" placeholder="S/.@habitacion.Tipodehabitacion.Precio" value="@precio" />
                 </div>
                 <div class="form-group">
                     <label>Costo de la Reserva</label>
                     <br />
-                        <input readonly="readonly" name="precio" placeholder="S/.@habitacion.Tipodehabitacion.Precio" value="@precio" />
+                        <input readonly="readonly" name="precio" placeholder="S/.@precioDesc" value="@precioDesc" />
                 </div>
                 <br />
                 <div class="form-group">
-                    <label>Durante el Check in de su hospedaje se le cobrará lo restante: S/. @precioHabitacion</label>
+                    <label>Durante el Check in de su hospedaje se le cobrará lo restante: S/. @precioCheckIn</label>
                 </div>
                 <div class="form-group">
                     <br />
@@ -107,7 +107,7 @@
                     <hr />
                 </div>
                 <button class="btn-success btn-lg" type="submit">Pagar con Paypal</button>
-                <button class="btn-danger btn-lg" type="button"><a href="/Menu/Inicio"></a> Cancelar</button>
+                <a class="btn btn-danger btn-lg ml-2" href="/Menu/Inicio">Cancelar</a> 
             </div>
         </div>
 

@@ -94,6 +94,7 @@ namespace CapaPresentacion.Controllers
                     List<EntServicioadicional> servs = LogServiciosAdicionales.Instancia.ObtenerServicios(ID);
                     habitacion.Tipodehabitacion.ServiciosAdicionales = servs;
                     lista.Add(habitacion);
+                    
                 }
 
                 EntReserva reserva = new EntReserva
@@ -130,7 +131,6 @@ namespace CapaPresentacion.Controllers
 
             EntHabitacion habitacion = new EntHabitacion();
             habitacion = LogHabitacion.Instancia.BuscarHabitacion(numeroHabitacion);
-            habitacion.AplicarDescuentoPorReserva();
 
             EntReserva reserva = new EntReserva
             {

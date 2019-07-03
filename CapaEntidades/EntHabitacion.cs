@@ -19,15 +19,11 @@ namespace CapaEntidades
 
         #region methods
 
-        public void AplicarDescuentoPorReserva()
+        public double AplicarDescuentoPorReserva()
         {
-            Tipodehabitacion.Precio *= (1-0.2);
+            return Tipodehabitacion.Precio *= 0.2;
         }
 
-        public double CalcularPrecioOriginal()
-        {
-            return (Tipodehabitacion.Precio / (1 - 0.20));
-        }
 
         public int Alojamientos { get; set; }
 

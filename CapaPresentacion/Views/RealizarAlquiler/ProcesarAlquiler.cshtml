@@ -12,7 +12,7 @@
     var culture = new CultureInfo(cultureName);
     string fechaIngreso = Convert.ToDateTime(Model.FechadeIngreso).ToString("d", culture);
     string fechaSalida = Convert.ToDateTime(Model.FechadeSalida).ToString("d", culture);
-    double precio = habitacion.Tipodehabitacion.Precio * 0.2;
+    double precio = habitacion.Tipodehabitacion.Precio - habitacion.AplicarDescuentoPorReserva();
 }
 
 @section Scripts
