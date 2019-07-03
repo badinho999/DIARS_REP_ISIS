@@ -7,7 +7,8 @@
 @if (cuenta != null)
 {
     @section Scripts
-    <script>
+    { 
+        <script>
         $("#limpiar").empty()
                 $("a#idLogin").remove();
                 $("#userInfo").append(`
@@ -16,7 +17,7 @@
                             <li class="">
                                 <div class="header_login">
                                     <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://png.pngtree.com/element_origin_min_pic/16/11/25/f2db5b1fae65676bfd1ecae1dbfdc3a2.jpg" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Huesped.UserName
+                                        <img src="https://images.vexels.com/media/users/3/141066/isolated/preview/2f9f642a85dc4a93ad4400b18c9f0e7e-empresario-cuadrado-avatar-rojo-by-vexels.png" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Huesped.UserName
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color: rgba(14,9,35,0.88);">
@@ -28,13 +29,13 @@
                             </li>
                         </ul>
             `)
-    </script>
-}
+        </script>
+    }
 }
 
 <!-- Home -->
 
-<div class="home" style="background-image: url(../../Bootstrap/images/rooms.jpg)">
+<div class="home" style="background-image: url(../../Bootstrap/images/rooms.jpg); height:750px">
     <!-- Para cambiar la imagen, ir a rooms.css, a la funcion .home y cambiar la ruta-->
     <div class="home_container d-flex flex-column align-items-center justify-content-center">
         <div class="home_title"><h1>Habitaciones</h1></div>
@@ -75,7 +76,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <button type="submit" class="booking_form_button ml-lg-auto">Reservar</button>
+                            <button type="submit" class="booking_form_button ml-lg-auto btn-success">Ver Disponibilidad</button>
                         </div>
                     </form>
                 </div>
@@ -144,7 +145,7 @@
                                 </ul>
                             </div>
                             <div class="rooms_price">S/. 50.00 <span>Noche</span></div>
-                            <div class="button rooms_button">@Html.ActionLink("Reserva Aquí", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
+                            <div class="button rooms_button">@Html.ActionLink("reservar", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
                         </div>
                     </div>
 
@@ -173,7 +174,7 @@
                                 </ul>
                             </div>
                             <div class="rooms_price">S/.70.00 <span>Noche</span></div>
-                            <div class="button rooms_button">@Html.ActionLink("Reserva Aquí", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
+                            <div class="button rooms_button">@Html.ActionLink("reservar", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
                         </div>
                     </div>
 
@@ -202,7 +203,7 @@
                                     </li>
                                 </ul>
                                 <div class="rooms_price">S/.50.00/<span>Noche</span></div>
-                                <div class="button rooms_button">@Html.ActionLink("Reserva Aquí", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
+                                <div class="button rooms_button">@Html.ActionLink("reservar", "Reservar", "Menu", null, new { @class = "page-scroll" })</div>
                             </div>
                         </div>
                     </div>
@@ -237,7 +238,7 @@
                                 </ul>
                             </div>
                             <div class="rooms_price">S/.80.00 <span>Noche</span></div>
-                            <div class="button rooms_button">@Html.ActionLink("Reserva Aquí", "Reservar", "Menu", null, new { @class = "page-scroll" })></div>
+                            <div class="button rooms_button">@Html.ActionLink("reservar", "Reservar", "Menu", null, new { @class = "page-scroll" })></div>
                         </div>
                     </div>
 

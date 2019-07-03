@@ -3,7 +3,7 @@
 @using CapaEntidades;
 @{
     ViewBag.Title = "Success";
-    Layout = "~/Views/Shared/_LayoutReservar.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
 }
 
@@ -20,7 +20,7 @@
                             <li class="">
                                 <div class="header_login">
                                     <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://png.pngtree.com/element_origin_min_pic/16/11/25/f2db5b1fae65676bfd1ecae1dbfdc3a2.jpg" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Huesped.UserName
+                                        <img src="https://images.vexels.com/media/users/3/141066/isolated/preview/2f9f642a85dc4a93ad4400b18c9f0e7e-empresario-cuadrado-avatar-rojo-by-vexels.png" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Huesped.UserName
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color: rgba(14,9,35,0.88);">
@@ -34,21 +34,33 @@
             `)
         </script>
     }
-    <div class="container card mt-4 mb-4">
-        <div class="card-header text-center">
-            <h2>Pago realizado con éxito</h2>
-            <hr />
-        </div>
-        <div class="card-body text-center">
-            <h5 class="card-title">Serie: @Model.Serie</h5>
-            <p class="card-text">RUC: RUC00000001</p>
-            <p class="card-text">Total a pagar: S/.@Model.Monto</p>
-            <p class="card-text">ReservaID: @Model.ReservaID</p>
-            <p class="card-text text-muted">Tome captura de esta información</p>
-        </div>
-        <div class="card-footer text-center">
-            <p><a href="/" class="btn btn-primary">Volver al sitio</a></p>
-        </div>
 
+    <!-- Home -->
+
+    <div class="home" style="background-image: url(../../Bootstrap/images/elements.jpg)">
+        <div class="home_container d-flex flex-column align-items-center justify-content-center">
+            <div class="home_title"><h1>Reserva Confirmada</h1></div>
+        </div>
+    </div>
+
+    <div class="form-style">
+        <div class="container mt-4 mb-4">
+            <div>
+                <h3>Pago realizado con éxito</h3>
+                <hr />
+            </div>
+            <div >
+                <h5>Serie: @Model.Serie</h5>
+                <p>RUC: RUC00000001</p>
+                <p>Total a pagar: S/.@Model.Monto</p>
+                <p>ReservaID: @Model.ReservaID</p>
+                <p class="text-muted">Tome captura de esta información</p>
+            </div>
+                <hr />
+            <div>
+                <p><a href="/" class="btn btn-primary btn-lg">Volver al sitio</a></p>
+            </div>
+
+        </div>
     </div>
 }

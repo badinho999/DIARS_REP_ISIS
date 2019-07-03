@@ -16,7 +16,7 @@
                             <li class="">
                                 <div class="header_login">
                                     <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://png.pngtree.com/element_origin_min_pic/16/11/25/f2db5b1fae65676bfd1ecae1dbfdc3a2.jpg" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
+                                        <img src="https://images.vexels.com/media/users/3/141066/isolated/preview/2f9f642a85dc4a93ad4400b18c9f0e7e-empresario-cuadrado-avatar-rojo-by-vexels.png" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color: rgba(14,9,35,0.88);">
@@ -31,40 +31,45 @@
         //$("a#adminName").attr("href", "/Login/CerrarSesion")
     </script>
 }
-<section class="container" id="listarServicios">
-    <div class="form-content-delete form-horizontal col-5 m-auto">
-        <h3 class="red-title">¿Seguro de eliminar servicio @Html.DisplayFor(model => model.NombreDeServicio)?</h3>
-        <div>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    Servicio
-                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.NombreDeServicio)
-                </dd>
-
-                <dt>
-                    ID
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ServicioID)
-                </dd>
-
-            </dl>
-
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
-
-                <div class="form-actions no-color">
-                    <input type="submit" value="Delete" class="btn btn-myBtn" /> |
-                    <a class="ml-1 btn btn-MyDanger" href="/MantenedorServicios/listarServicios">Cancelar</a>
-                </div>
-            }
-        </div>
+<div class="home" style="background-image: url(../../Bootstrap/images/elements.jpg)">
+    <!-- Para cambiar la imagen, ir a main_styles.css, a la funcion .home y cambiar la ruta-->
+    <div class="home_container d-flex flex-column align-items-center justify-content-center">
+        <div class="home_title"><h1>Eliminar Servicio</h1></div>
     </div>
+</div>
 
-</section>
+<div class="form-style">
+    <section class="container col-3" id="listarServicios">
+            <h3>¿Seguro de eliminar servicio @Html.DisplayFor(model => model.NombreDeServicio)?</h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        Servicio
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NombreDeServicio)
+                    </dd>
+
+                    <dt>
+                        ID
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ServicioID)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <hr />
+                    <button type="submit" class="btn-danger btn-lg"><i class="fa fa-minus-circle" aria-hidden="true"></i> Delete</button>
+                    <button type="button" class="btn-secondary btn-lg">@Html.ActionLink(" Cancelar", "listarServicios")</button>
+                }
+            </div>
+    </section>
+</div>

@@ -25,7 +25,7 @@
                             <li class="">
                                 <div class="header_login">
                                     <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://png.pngtree.com/element_origin_min_pic/16/11/25/f2db5b1fae65676bfd1ecae1dbfdc3a2.jpg" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
+                                        <img src="https://images.vexels.com/media/users/3/141066/isolated/preview/2f9f642a85dc4a93ad4400b18c9f0e7e-empresario-cuadrado-avatar-rojo-by-vexels.png" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color: rgba(14,9,35,0.88);">
@@ -41,76 +41,66 @@
     </script>
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <section class="container" id="realizarAlquiler">
-        <div class="form-content form-horizontal col-5 m-auto">
-            <h4>Realizar Alquiler</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                <label class="control-label col-md-2">Dni</label>
-                <div class="col-md-10">
-                    <input type="hidden" value="@habitacion.NumeroHabitacion" name="txtNumeroHabitacion" />
-                    <input type="hidden" value="@precio" name="txtprecio" />
-                    <input type="text" name="txtDni" class="form-control" value="@Model.Huesped.Dni" readonly="readonly">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-8">Fecha de Ingreso</label>
-                <div class="col-md-10">
-                    <input type="text" name="txtFechaIngreso" class="form-control" value="@fechaIngreso" readonly="readonly">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-8">Fecha de Salida</label>
-                <div class="col-md-10">
-                    <input type="text" name="txtFechaSalida" class="form-control" value="@fechaSalida" readonly="readonly">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-8">Cantidad de Adultos</label>
-                <div class="col-md-10">
-                    <input type="text" name="txtCantidadAdultos" class="form-control" value="@Model.CantidaAdultos" readonly="readonly">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-8">Cantidad de Niños</label>
-                <div class="col-md-10">
-                    <input type="text" name="txtCantidadKids" class="form-control" value="@Model.CantidadKids" readonly="readonly">
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => habitacion.NumeroHabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => habitacion.NumeroHabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => habitacion.Tipodehabitacion.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => (precio), new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Alquilar" class="btn btn-myBtn" />
-                    <a class="ml-1 btn btn-MyDanger" href="/RealizarAlquiler/AlquilerMenu">Cancelar</a>
-                </div>
-            </div>
+<div class="home" style="background-image: url(../../Bootstrap/images/elements.jpg);">
+    <!-- Para cambiar la imagen, ir a main_styles.css, a la funcion .home y cambiar la ruta-->
+    <div class="home_container d-flex flex-column align-items-center justify-content-center">
+        <div class="home_title"><h1>Procesar Alquiler</h1></div>
+    </div>
+</div>
+<div class="form-style" style="color:white">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+    <div class="container" id="realizarAlquiler">
+        <h4>Realizar Alquiler</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label>Dni</label>
+        <br />
+        <input type="hidden" value="@habitacion.NumeroHabitacion" name="txtNumeroHabitacion" />
+        <input type="hidden" value="@precio" name="txtprecio" />
+        <input type="text" name="txtDni" value="@Model.Huesped.Dni" readonly="readonly">
         </div>
-
-    </section>
-
-
-}
+        <div class="form-group">
+            <label>Fecha de Ingreso</label>
+            <br />
+            <input type="text" name="txtFechaIngreso" value="@fechaIngreso" readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label>Fecha de Salida</label>
+            <br />
+            <input type="text" name="txtFechaSalida" value="@fechaSalida" readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label>Cantidad de Adultos</label>
+            <br />
+            <input type="text" name="txtCantidadAdultos" value="@Model.CantidaAdultos" readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label>Cantidad de Niños</label>
+            <br />
+            <input type="text" name="txtCantidadKids" value="@Model.CantidadKids" readonly="readonly">
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => habitacion.NumeroHabitacion)
+            <br />
+            @Html.EditorFor(model => habitacion.NumeroHabitacion, new { htmlAttributes = new { @disabled = "disabled" } })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion)
+            <br />
+                @Html.EditorFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion, new { htmlAttributes = new { @disabled = "disabled" } })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => habitacion.Tipodehabitacion.Precio)
+            <br />
+                @Html.EditorFor(model => (precio), new { htmlAttributes = new { @disabled = "disabled" } })
+        </div>
+        <hr />
+        <button class="btn-success btn-lg" type="submit">Alquilar</button>
+        <button type="button" href="/RealizarAlquiler/AlquilerMenu" class="btn-danger btn-lg">Cancelar</button>
+    </div>
+    }
+</div>
 

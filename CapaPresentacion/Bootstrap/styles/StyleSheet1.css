@@ -12,7 +12,7 @@
 5. Home
 6. Booking
 7. Intro
-8. Roomsf
+8. Rooms
 9. Discover
 10. Testimonials
 11. Offering
@@ -628,7 +628,7 @@ section {
 *********************************/
 
 .home {
-    height: 750px;
+    height: 90vh;
     width: 100%;
     background-size: cover;
     background-position: center;
@@ -770,10 +770,10 @@ section {
 
 .custom-select {
     position: relative;
-    height: 100%;
-    background: none;
+    height: 65px;
     padding: 0px;
-    border: 0;
+    background: none;
+    border: none;
     border-radius: 0px;
 }
 
@@ -1604,7 +1604,7 @@ section {
     width: 1200px;
     margin: auto;
     /*margin-top: 20%;
-    margin-left: 8%*/
+	margin-left: 8%*/
 }
 
 .contenedorMap {
@@ -1658,7 +1658,11 @@ section {
 /*********************************
 14.  Login
 *********************************/
-
+.main-section {
+    margin: 0 auto;
+    margin-top: 75%;
+    padding: 0;
+}
 
 .modal-content {
     background-color: rgba(14,9,35,0.88);
@@ -1725,6 +1729,12 @@ hr {
     background-color: white;
 }
 
+login-btn {
+    width: 50%;
+    margin: 5px 0 25px;
+    border-radius: 10px;
+}
+
 .forgot {
     padding: 5px 0;
 }
@@ -1751,64 +1761,6 @@ hr {
     }
 
 
-/*********************************
-M. Styles
-*********************************/
-
-.form-style {
-    background-color: rgba(14,9,35,0.98);
-    padding: 50px 0 50px 0;
-    text-align:center;
-    color:white;
-}
-
-    .form-style input{
-        height: auto;
-        width: 200px;
-        text-align: justify;
-        color: darkred;
-        background: white;
-        opacity: .90;
-        border-radius: 20px;
-        border: none;
-        font-size:20px;
-    }
-
-    .form-style label {
-        color: white;
-        font-size: 20px;
-    }
-
-    .form-style button{
-        border-radius: 20px;
-        border:none;
-    }
-
-    .form-style img{
-        height: 5%;
-        width: 5%;
-    }
-
-    .form-style table{
-        font-size: 24px;
-    }
-
-        .form-style table tr {
-            
-            border: 3px solid;
-            border-color: darkorange;
-            border-left: none;
-            border-right: none;
-        }
-
-    .form-style h5 {
-        color:white; 
-        font-size:25px;
-    }
-
-    .form-style table thead {
-        color: darkorange;
-    }
 /*********************************
 N. Footer
 *********************************/
@@ -1855,3 +1807,4 @@ s {
     color: rgba(255,255,255,0.15);
 }
 
+¨

@@ -2,7 +2,7 @@
 @using CapaEntidades;
 @{
     ViewBag.Title = "RealizarReserva";
-    Layout = "~/Views/Shared/_LayoutReservar.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
     EntHabitacion habitacion = Model.Habitacion;
     double precio = habitacion.Tipodehabitacion.Precio;
@@ -22,7 +22,7 @@
                             <li class="">
                                 <div class="header_login">
                                     <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://png.pngtree.com/element_origin_min_pic/16/11/25/f2db5b1fae65676bfd1ecae1dbfdc3a2.jpg" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Huesped.UserName
+                                        <img src="https://images.vexels.com/media/users/3/141066/isolated/preview/2f9f642a85dc4a93ad4400b18c9f0e7e-empresario-cuadrado-avatar-rojo-by-vexels.png" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Huesped.UserName
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color: rgba(14,9,35,0.88);">
@@ -36,154 +36,80 @@
             `)
         </script>
     }
+
+    <!-- Home -->
+
+    <div class="home" style="background-image: url(../../Bootstrap/images/elements.jpg)">
+        <!-- Para cambiar la imagen, ir a main_styles.css, a la funcion .home y cambiar la ruta-->
+        <div class="home_container d-flex flex-column align-items-center justify-content-center">
+            <div class="home_title"><h1>Realizar Reserva</h1></div>
+        </div>
+    </div>
+
     using (Html.BeginForm())
     {
-        <div class="container card text-center mt-4 mb-4">
-            <div class="card-header">
-                Realizar reserva
-            </div>
-            <div class="card-body text-center">
-                <h5 class="card-title">Información de su reserva</h5>
-                <p class="card-text text-danger mb-3">Se le está cobrando solo el 20% del precio de la habitación como garantía.</p>
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    <label class="control-label col-md-8">Fecha de Reserva</label>
-                    <div class="m-auto col-md-10">
-                        <input type="text" name="txtFechaReserva" class="m-lg-auto form-control text-center col-md-4" value="@Model.Fechadereserva" readonly="readonly">
-                    </div>
+        <div class="form-style">
+            <h5 style="color:white; font-size:25px">Información de su reserva</h5><hr />
+            <p>Se le está cobrando solo el 20% del precio de la habitación como garantía.</p><br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label>Fecha de Reserva</label>
+                <div>
+                    <input type="text" name="txtFechaReserva" value="@Model.Fechadereserva" readonly="readonly">
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-8">Fecha de Ingreso</label>
-                    <div class="m-auto col-md-10">
-                        <input type="text" name="txtFechaIngreso" class="m-lg-auto form-control text-center col-md-4" value="@Model.FechadeIngreso" readonly="readonly">
-                    </div>
+                    <label>Fecha de Ingreso</label>
+                    <br />
+                    <input type="text" name="txtFechaIngreso" value="@Model.FechadeIngreso" readonly="readonly">
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-8">Fecha de Salida</label>
-                    <div class="m-auto col-md-10">
-                        <input type="text" name="txtFechaSalida" class="m-lg-auto form-control text-center col-md-4" value="@Model.FechadeSalida" readonly="readonly">
-                    </div>
+                    <label>Fecha de Salida</label>
+                    <br />
+                    <input type="text" name="txtFechaSalida" value="@Model.FechadeSalida" readonly="readonly">
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-8">Cantidad de Adultos</label>
-                    <div class="m-auto col-md-10">
-                        <input type="text" name="txtCantidadAdultos" class="m-lg-auto form-control text-center col-md-4" value="@Model.CantidaAdultos" readonly="readonly">
-                    </div>
+                    <label>Cantidad de Adultos</label>
+                    <br />
+                    <input type="text" name="txtCantidadAdultos" value="@Model.CantidaAdultos" readonly="readonly">
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-8">Cantidad de Niños</label>
-                    <div class="m-auto col-md-10">
-                        <input type="text" name="txtCantidadKids" class="m-lg-auto form-control text-center col-md-4" value="@Model.CantidadKids" readonly="readonly">
-                    </div>
+                    <label>Cantidad de Niños</label>
+                    <br />
+                    <input type="text" name="txtCantidadKids" value="@Model.CantidadKids" readonly="readonly">
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-4">Número de habitación</label>
-                    <div class="m-auto col-md-10">
-                        @Html.EditorFor(model => habitacion.NumeroHabitacion, new { htmlAttributes = new { @class = "m-lg-auto form-control text-center col-md-4", @disabled = "disabled" } })
-                    </div>
+                    <label>Número de habitación</label>
+                    <br />
+                    @Html.EditorFor(model => habitacion.NumeroHabitacion)
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-4">Tipo de habitación</label>
-                    <div class="m-auto col-md-10">
-                        @Html.EditorFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion, new { htmlAttributes = new { @class = "m-lg-auto form-control text-center col-md-4", @disabled = "disabled" } })
-                    </div>
+                    <label>Tipo de habitación</label>
+                    <br />
+                    @Html.EditorFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion)
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => habitacion.Tipodehabitacion.Precio, htmlAttributes: new { @class = "m-lg-auto control-label col-md-2" })
-                    <div class="m-auto col-md-10">
-                        <input class="m-lg-auto form-control text-center col-md-4" readonly="readonly" name="precio" placeholder="S/. @precio" value="@precio" />
-                    </div>
+                    <label>Precio de la Habitación</label>
+                    <br />
+                        <input readonly="readonly" name="precio" placeholder="S/.@habitacion.Tipodehabitacion.Precio" value="@precio" />
                 </div>
-                <div class="form-group mb-4">
-                    <label class="control-label col-md-10">Una vez en el hotel se cobrará S/. @precioHabitacion</label>
+                <div class="form-group">
+                    <label>Costo de la Reserva</label>
+                    <br />
+                        <input readonly="readonly" name="precio" placeholder="S/.@habitacion.Tipodehabitacion.Precio" value="@precio" />
                 </div>
-                <div class="mb-0">
-                    <i class="fa fa-cc-paypal fa-5x" aria-hidden="true"></i>
+                <br />
+                <div class="form-group">
+                    <label>Durante el Check in de su hospedaje se le cobrará lo restante: S/. @precioHabitacion</label>
                 </div>
-            </div>
-            <div class="card-footer text-muted text-center">
-                <div class="form-group text-center">
-                    <input type="submit" value="Pagar con PayPal" class="btn btn-myBtn" />
-                    <a class="ml-1 btn btn-danger" href="/Menu/Inicio">Cancelar</a>
+                <div class="form-group">
+                    <br />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png" />
+                    <hr />
                 </div>
+                <button class="btn-success btn-lg" type="submit">Pagar con Paypal</button>
+                <button class="btn-danger btn-lg" type="button"><a href="/Menu/Inicio"></a> Cancelar</button>
             </div>
         </div>
-
-        @*<section class="container mt-4" id="realizarReserva">
-                <div class="form-content form-horizontal col-5 m-lg-auto">
-                    <h4>Realizar Reserva</h4>
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        <label class="control-label col-md-8">Fecha de Reserva</label>
-                        <div class="col-md-10">
-                            <input type="text" name="txtFechaReserva" class="form-control" value="@Model.Fechadereserva" readonly="readonly">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-8">Fecha de Ingreso</label>
-                        <div class="col-md-10">
-                            <input type="text" name="txtFechaIngreso" class="form-control" value="@Model.FechadeIngreso" readonly="readonly">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-8">Fecha de Salida</label>
-                        <div class="col-md-10">
-                            <input type="text" name="txtFechaSalida" class="form-control" value="@Model.FechadeSalida" readonly="readonly">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-8">Cantidad de Adultos</label>
-                        <div class="col-md-10">
-                            <input type="text" name="txtCantidadAdultos" class="form-control" value="@Model.CantidaAdultos" readonly="readonly">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-8">Cantidad de Niños</label>
-                        <div class="col-md-10">
-                            <input type="text" name="txtCantidadKids" class="form-control" value="@Model.CantidadKids" readonly="readonly">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => habitacion.NumeroHabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => habitacion.NumeroHabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => habitacion.Tipodehabitacion.Nombretipodehabitacion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => habitacion.Tipodehabitacion.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <input class="form-control" readonly="readonly" name="precio" placeholder="S/. @precio" value="@precio" />
-                        </div>
-                    </div>
-                    <div class="form-group mb-4">
-                        <label class="control-label col-md-10">Una vez en el hotel se cobrará</label>
-                        <div class="col-md-10">
-                            @{
-                                <p>
-                                    Precio de habitación: S/. @precioHabitacion
-                                </p>
-                            }
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Pagar con PayPal" class="btn btn-myBtn" />
-                            <a class="ml-1 btn btn-danger" href="/Menu/Inicio">Cancelar</a>
-                        </div>
-                    </div>
-                </div>
-
-            </section>*@
-
 
     }
 }

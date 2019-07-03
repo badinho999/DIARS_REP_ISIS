@@ -388,11 +388,12 @@ section
 {
 	font-family: 'Playfair Display', serif;
 	font-style: italic;
-	font-size: 136px;
+	font-size: 56px;
 	font-weight: 700;
-	color: #f4f5fa;
+	color: black;
 	line-height: 0.75;
 	z-index: 0;
+    padding-bottom: 55px;
 }
 
 .container_wrapper > .container
@@ -435,25 +436,38 @@ section
 	height: 289px;
 }
 
-.header_login
-{
-	height: 55px;
-	background: transparent;
+.header_login {
+    height: 55px;
+    background: transparent;
+    color: white;
 }
 
-	.header_login a
-	{
-		display: block;
-		height: 100%;
-		font-size: 16px;
-		font-weight: 500;
-		color: #ffffff;
-		padding-bottom: 50px;
-		padding-left: 17px;
-		padding-right: 36px;
-		line-height: 55px;
-	}
+    .header_login a {
+        display: block;
+        height: 100%;
+        font-size: 16px;
+        font-weight: 500;
+        color: white;
+        padding-bottom: 50px;
+        padding-left: 17px;
+        padding-right: 36px;
+        line-height: 55px;
+    }
 
+.header_link {
+    height: 55px;
+    background: #ff9000;
+}
+
+    .header_link a {
+        display: block;
+        height: 100%;
+        font-size: 16px;
+        font-weight: 500;
+        color: #ffffff;
+        padding: 0 36px 37px 0;
+        line-height: 55px;
+    }
 .logo
 {
 	margin-bottom: 29px;
@@ -841,8 +855,8 @@ section
 
 .home
 {
-	height: 100vh;
-	width: 220vh;
+	height: 90vh;
+	width: 100%;
 	background: url(../images/elements.jpg);
 	background-size: cover;
 	background-position: center;
@@ -1805,7 +1819,7 @@ section
 
 .footer
 {
-	width: 220vh;
+	width: 100%;
 	background: url(../images/footer.jpg);
 	background-size: cover;
 	background-position: center;

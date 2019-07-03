@@ -3,7 +3,7 @@
 @using System.Globalization;
 @{
     ViewBag.Title = "MisReservas";
-    Layout = "~/Views/Shared/_LayoutReservar.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     EntCuenta cuenta = (EntCuenta)ViewBag.Cuenta;
     string cultureName = "en-US";
     var culture = new CultureInfo(cultureName);
@@ -13,7 +13,7 @@
 {
     @section Scripts
     {
-    <script>
+        <script>
         $("#limpiar").empty()
                 $("a#idLogin").remove();
                 $("#userInfo").append(`
@@ -22,7 +22,7 @@
                             <li class="">
                                 <div class="header_login">
                                     <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://png.pngtree.com/element_origin_min_pic/16/11/25/f2db5b1fae65676bfd1ecae1dbfdc3a2.jpg" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Huesped.UserName
+                                        <img src="https://images.vexels.com/media/users/3/141066/isolated/preview/2f9f642a85dc4a93ad4400b18c9f0e7e-empresario-cuadrado-avatar-rojo-by-vexels.png" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Huesped.UserName
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color: rgba(14,9,35,0.88);">
@@ -34,94 +34,105 @@
                             </li>
                         </ul>
             `)
-    </script>
+        </script>
     }
+
+    <!-- Home -->
+
+<div class="home" style="background-image: url(../../Bootstrap/images/contact.jpg); height: 750px">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="~/Bootstrap/images/contact.jpg" data-speed="0.8"></div>
+    <div class="home_container d-flex flex-column align-items-center justify-content-center">
+        <div class="home_title"><h1>Mis Reservas</h1></div>
+    </div>
+</div>
 
     if (Model.ErrorID == 0)
     {
-        <div class="alert alert-danger text-center mt-4">
-            Aún no tiene reservas
-        </div>
+    <div class="alert alert-danger text-center mt-4">
+        Aún no tiene reservas
+    </div>
     }
 
     if (Model.Reservas != null && Model.ErrorID < 0 && Model.Reservas.Count != 0)
     {
-        <table class="table table-striped">
+<div class="form-style" style="color:white">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Fecha de reserva
+            </th>
+            <th>
+                Cantidad de adultos
+            </th>
+            <th>
+                Cantidad de niños
+            </th>
+            <th>
+                Fecha de ingreso
+            </th>
+            <th>
+                Fecha de salida
+            </th>
+            <th>
+                ID
+            </th>
+            <th>
+                Estado
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Reservas)
+        {
+            string fechaIngreso = Convert.ToDateTime(item.FechadeIngreso).ToString("d", culture);
+            string fechaSalida = Convert.ToDateTime(item.FechadeSalida).ToString("d", culture);
+            string fechaReserva = Convert.ToDateTime(item.Fechadereserva).ToString("d", culture);
+
             <tr>
-                <th>
-                    Fecha de reserva
-                </th>
-                <th>
-                    Cantidad de adultos
-                </th>
-                <th>
-                    Cantidad de niños
-                </th>
-                <th>
-                    Fecha de ingreso
-                </th>
-                <th>
-                    Fecha de salida
-                </th>
-                <th>
-                    ID
-                </th>
-                <th>
-                    Estado
-                </th>
-                <th></th>
+                <td>
+                    @Html.DisplayFor(modelItem => fechaReserva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantidaAdultos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantidadKids)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => fechaIngreso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => fechaSalida)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReservaID)
+                </td>
+                <td>
+                    @if (item.Activa)
+                    {
+                        <span class="badge badge-pill badge-success">
+
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-pill badge-danger">
+
+                        </span>
+                    }
+                </td>
+                <td>
+                    @if (item.Activa)
+                    {
+                        @Html.ActionLink("Anular", "AnularReserva", new { ReservaID = item.ReservaID })
+                    }
+
+                </td>
             </tr>
+        }
+    </table>
+</div>
 
-            @foreach (var item in Model.Reservas)
-            {
-                string fechaIngreso = Convert.ToDateTime(item.FechadeIngreso).ToString("d", culture);
-                string fechaSalida = Convert.ToDateTime(item.FechadeSalida).ToString("d", culture);
-                string fechaReserva = Convert.ToDateTime(item.Fechadereserva).ToString("d", culture);
-
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => fechaReserva)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CantidaAdultos)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CantidadKids)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => fechaIngreso)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => fechaSalida)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ReservaID)
-                    </td>
-                    <td>
-                        @if (item.Activa)
-                        {
-                            <span class="badge badge-pill badge-success">
-
-                            </span>
-                        }
-                        else
-                        {
-                            <span class="badge badge-pill badge-danger">
-
-                            </span>
-                        }
-                    </td>
-                    <td>
-                        @if (item.Activa)
-                        {
-                            @Html.ActionLink("Anular", "AnularReserva", new { ReservaID = item.ReservaID })
-                        }
-
-                    </td>
-                </tr>
-            }
-
-        </table>
     }
 }
 

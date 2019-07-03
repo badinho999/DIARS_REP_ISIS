@@ -22,7 +22,7 @@
                             <li class="">
                                 <div class="header_login">
                                     <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://png.pngtree.com/element_origin_min_pic/16/11/25/f2db5b1fae65676bfd1ecae1dbfdc3a2.jpg" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
+                                        <img src="https://images.vexels.com/media/users/3/141066/isolated/preview/2f9f642a85dc4a93ad4400b18c9f0e7e-empresario-cuadrado-avatar-rojo-by-vexels.png" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color: rgba(14,9,35,0.88);">
@@ -37,50 +37,56 @@
     </script>
 }
 
-@using (Html.BeginForm("CambiarFechas", "MantenedorReserva", FormMethod.Post, new { @class = "form-group", id = "formID" }))
-{
-    @Html.AntiForgeryToken()
+<!-- Home -->
 
-    <div class="form-content form-horizontal col-5 m-auto">
-        <h4>Editar reserva</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <div class="col-md-10">
-                <label>Fecha de ingreso</label>
-                <input type="text" class="form-control text-black-50 datepicker" name="txtFechaIngreso" placeholder="@fechaIngreso" />
-            </div>
-        </div>
+<div class="home" style="background-image: url(../../Bootstrap/images/home.jpg);">
 
-        <div class="form-group">
-            <div class="col-md-10">
-                <label>Fecha de salida</label>
-                <input type="text" class="form-control text-black-50 datepicker" name="txtFechaSalida" placeholder="@fechaSalida" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ReservaID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ReservaID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.ReservaID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Habitacion.NumeroHabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Habitacion.NumeroHabitacion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.Habitacion.NumeroHabitacion, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <a class="ml-1 btn btn-dark" href="/Home/Index">Cancelar</a>
-            </div>
-        </div>
+    <div class="home_container d-flex flex-column align-items-center justify-content-center">
+        <div class="home_title"><h1>Editar Reserva</h1></div>
     </div>
-}
+</div>
 
+<div class="form-style">
+    @using (Html.BeginForm("CambiarFechas", "MantenedorReserva", FormMethod.Post, new { @class = "form-group", id = "formID" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-content form-horizontal col-5 m-auto">
+            <h4>Editar reserva</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+
+            <label>Fecha de ingreso</label>
+            <br />
+            <input type="text" class="datepicker" name="txtFechaIngreso" placeholder="@fechaIngreso" />
+
+        </div>
+        <div class="form-group">
+
+            <label>Fecha de salida</label>
+            <br />
+            <input type="text" class="datepicker" name="txtFechaSalida" placeholder="@fechaSalida" />
+
+        </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ReservaID)
+                <br />
+                    @Html.EditorFor(model => model.ReservaID, new { htmlAttributes = new { @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.ReservaID, "", new { @class = "text-danger" })
+   
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Habitacion.NumeroHabitacion)
+                <br />
+                    @Html.EditorFor(model => model.Habitacion.NumeroHabitacion, new { htmlAttributes = new { @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.Habitacion.NumeroHabitacion, "", new { @class = "text-danger" })
+           
+            </div>
+            <div>
+                <hr />
+                <button type="submit" class="btn-success btn-lg"> Guardar</button>
+                <button type="button" class="btn-danger btn-lg">@Html.ActionLink("Cancelar", "Index", "Home" , null, new { @class = "page-scroll" })</button>
+            </div>
+        </div>
+    }
+</div>

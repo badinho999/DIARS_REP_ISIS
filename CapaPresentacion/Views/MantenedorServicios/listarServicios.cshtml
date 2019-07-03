@@ -17,7 +17,7 @@
                             <li class="">
                                 <div class="header_login">
                                     <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://png.pngtree.com/element_origin_min_pic/16/11/25/f2db5b1fae65676bfd1ecae1dbfdc3a2.jpg" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
+                                        <img src="https://images.vexels.com/media/users/3/141066/isolated/preview/2f9f642a85dc4a93ad4400b18c9f0e7e-empresario-cuadrado-avatar-rojo-by-vexels.png" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color: rgba(14,9,35,0.88);">
@@ -33,39 +33,47 @@
     </script>
 }
 
-<section class="container" id="listarServicios">
-    <div class="pb-4 form-header no-color">
-        <a class="btn btn-myBtn" href="/MantenedorServicios/insertarServicio">Nuevo servicio</a>
+<div class="home" style="background-image: url(../../Bootstrap/images/elements.jpg)">
+    <!-- Para cambiar la imagen, ir a main_styles.css, a la funcion .home y cambiar la ruta-->
+    <div class="home_container d-flex flex-column align-items-center justify-content-center">
+        <div class="home_title"><h1>Servicios</h1></div>
     </div>
-    <table class="table m-auto col-8 table-striped table-dark">
-        <tr>
-            <th>
-                Servicio
-            </th>
-            <th>
-                ID
-            </th>
-            <th>
-                Actions
-            </th>
-        </tr>
+</div>
 
-        @foreach (var item in Model)
-        {
+<div class="form-style" id="listarServicios">
+    <section class="container" >
+        <div class="pb-4 form-header no-color">
+            <button type="button" class="btn-success btn-lg" style="background-color:darkorange"><i class="fa fa-plus" aria-hidden="true"></i>@Html.ActionLink(" Nuevo Servicio", "insertarServicio")</button>
+        </div>
+        <table class="table table-striped">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NombreDeServicio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ServicioID)
-                </td>
-                <td class="options">
-                    @Html.ActionLink("Edit", "editarServicio", new { ServicioID = item.ServicioID }, new { @class = "d-block col-6 mb-2 link-master btn btn-myBtn" })
-                    @Html.ActionLink("Delete", "eliminarServicio", new { ServicioID = item.ServicioID }, new { @class = "d-block col-6 mb-2 link-master btn btn-MyDanger" })
-                </td>
+                <th>
+                    Servicio
+                </th>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Actions
+                </th>
             </tr>
-        }
 
-    </table>
-</section>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreDeServicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServicioID)
+                    </td>
+                    <td class="options">
+                        <button type="button" class="btn-primary btn-lg"><i class="fa fa-pencil" aria-hidden="true"></i>@Html.ActionLink(" Edit", "editarServicio", new { ServicioID = item.ServicioID })</button>
+                        <button type="button" class="btn-danger btn-lg"><i class="fa fa-minus-circle" aria-hidden="true"></i>@Html.ActionLink(" Delete", "eliminarServicio", new { ServicioID = item.ServicioID })</button>
+                    </td>
+                </tr>
+            }
 
+        </table>
+    </section>
+</div>

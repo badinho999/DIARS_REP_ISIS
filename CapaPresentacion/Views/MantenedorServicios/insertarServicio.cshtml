@@ -17,7 +17,7 @@
                             <li class="">
                                 <div class="header_login">
                                     <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://png.pngtree.com/element_origin_min_pic/16/11/25/f2db5b1fae65676bfd1ecae1dbfdc3a2.jpg" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
+                                        <img src="https://images.vexels.com/media/users/3/141066/isolated/preview/2f9f642a85dc4a93ad4400b18c9f0e7e-empresario-cuadrado-avatar-rojo-by-vexels.png" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color: rgba(14,9,35,0.88);">
@@ -33,30 +33,34 @@
     </script>
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<div class="home" style="background-image: url(../../Bootstrap/images/elements.jpg)">
+    <!-- Para cambiar la imagen, ir a main_styles.css, a la funcion .home y cambiar la ruta-->
+    <div class="home_container d-flex flex-column align-items-center justify-content-center">
+        <div class="home_title"><h1>Agregar Servicios</h1></div>
+    </div>
+</div>
 
-    <section class="container" id="listarServicios">
-        <div class="form-content m-auto form-horizontal col-5">
-            <h4>Agregar Servicio Adicional</h4>
+<div class="form-style">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <section class="container col-5" id="listarServicios">
+            <h3>Agregar Servicio Adicional</h3>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
-                <label class="control-label col-md-10">Nombre de servicio: </label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NombreDeServicio, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.NombreDeServicio, "", new { @class = "text-danger" })
-                </div>
+                <label>Nombre de servicio: </label>
+                <br />
+                @Html.EditorFor(model => model.NombreDeServicio, new { htmlAttributes = new { @style = "width: 50%" } })
+                @Html.ValidationMessageFor(model => model.NombreDeServicio, "", new { @class = "text-danger" })
             </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-myBtn" />
-                    <a class="ml-3 btn btn-MyDanger" href="/MantenedorServicios/listarServicios">Cancelar</a>
-                </div>
+            <div>
+                <hr />
+                <button type="submit" class="btn-success btn-lg"><i class="fa fa-plus" aria-hidden="true"></i> Añadir</button>
+                <button type="button" class="btn-danger btn-lg">@Html.ActionLink(" Cancelar", "listarServicios")</button>
             </div>
-        </div>
-    </section>
+        </section>
 
-}
+    }
+</div>

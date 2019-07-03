@@ -17,7 +17,7 @@
                             <li class="">
                                 <div class="header_login">
                                     <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://png.pngtree.com/element_origin_min_pic/16/11/25/f2db5b1fae65676bfd1ecae1dbfdc3a2.jpg" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Huesped.UserName
+                                        <img src="https://images.vexels.com/media/users/3/141066/isolated/preview/2f9f642a85dc4a93ad4400b18c9f0e7e-empresario-cuadrado-avatar-rojo-by-vexels.png" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Huesped.UserName
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color: rgba(14,9,35,0.88);">
@@ -33,17 +33,21 @@
     }
 
 }
+
 <!-- Home -->
 
-<div class="home" style="background-image: url(../../Bootstrap/images/elements.jpg)">
+<div class="home" style="background-image: url(../../Bootstrap/images/elements.jpg);">
+    <!-- Para cambiar la imagen, ir a main_styles.css, a la funcion .home y cambiar la ruta-->
     <div class="home_container d-flex flex-column align-items-center justify-content-center">
         <div class="home_title"><h1>Reservar</h1></div>
+        <div class="home_text text-center">Elige cuando hospedarte con nosotros</div>
     </div>
 </div>
 
-<!-- Booking -->
-<div class="booking">
 
+<!-- Booking -->
+
+<div class="booking">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -74,7 +78,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <button type="submit" class="booking_form_button ml-lg-auto">Reservar</button>
+                            <button type="submit" class="booking_form_button ml-lg-auto btn-success">Ver Disponibilidad</button>
                         </div>
                     </form>
                 </div>
@@ -83,161 +87,159 @@
     </div>
 </div>
 
-<!-- Rooms -->
+<div class="rooms">
+    <div class="section_title text-center" style="color: black; font-size:30px">
+        <div>Elige cuando hospedarte</div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card-columns">
 
-<div id="limpiar">
-    <h2 class="text-center mt-4">Dinos cuándo deseas hospedarte</h2>
-    <div class="rooms">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="card-columns">
-
-                        <!-- Room -->
-                        <div class="card">
-                            <img class="card-img-top" src="~/Bootstrap/images/room_2.jpg" alt="Room image description">
-                            <div class="card-body">
-                                <div class="rooms_title"><h2>Habitacion Simple</h2></div>
-                                <div class="rooms_list">
-                                    <ul>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>Cama de plaza y media</span>
-                                        </li>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>Agua Caliente</span>
-                                        </li>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>Cable con 50 canales</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="rooms_price">S/.30.00/<span>Noche</span></div>
+                    <!-- Room -->
+                    <div class="card">
+                        <img class="card-img-top" src="~/Bootstrap/images/room_2.jpg" alt="Room image description">
+                        <div class="card-body">
+                            <div class="rooms_title"><h2>Habitacion Simple</h2></div>
+                            <div class="rooms_list">
+                                <ul>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>Cama de plaza y media</span>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>Agua Caliente</span>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>Cable con 50 canales</span>
+                                    </li>
+                                </ul>
                             </div>
+                            <div class="rooms_price">S/.30.00/<span>Noche</span></div>
                         </div>
-
-
-                        <!-- Room -->
-                        <div class="card">
-                            <img class="card-img-top" src="~/Bootstrap/images/room_3.jpg" alt="Room image description">
-                            <div class="card-body">
-                                <div class="rooms_title"><h2>Habitación Doble</h2></div>
-                                <div class="rooms_text">
-                                    <p>Habitación con excelente vista para 2 o más personas, se pagará un adicional de S/.10.00 por persona extra</p>
-                                </div>
-                                <div class="rooms_list">
-                                    <ul>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>2 Camas 1 1/2 Plazas</span>
-                                        </li>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>Mesa de Juegos</span>
-                                        </li>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>Agua Caliente & Cable con más de 200 canales</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="rooms_price">S/. 50.00 <span>Noche</span></div>
-                            </div>
-                        </div>
-
-                        <!-- Room -->
-                        <div class="card">
-                            <img class="card-img-top" src="~/Bootstrap/images/room_3.jpg" alt="Room image description">
-                            <div class="card-body">
-                                <div class="rooms_title"><h2>Habitación Triple</h2></div>
-                                <div class="rooms_text">
-                                    <p>Habitación con excelente vista para 3 o más personas, se pagará un adicional de S/.10.00 por persona extra</p>
-                                </div>
-                                <div class="rooms_list">
-                                    <ul>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>3 Camas 1 1/2 Plazas</span>
-                                        </li>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>Mesa de Juegos & Poker</span>
-                                        </li>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>Agua Caliente & Cable con más de 200 canales</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="rooms_price">S/.70.00 <span>Noche</span></div>
-                            </div>
-                        </div>
-
-                        <!-- Room -->
-                        <div class="card card-special">
-                            <img class="card-img-top" src="~/Bootstrap/images/room_1.jpg" alt="Room image description">
-                            <div class="card-special-panel">OFerta Especial</div>
-                            <div class="card-body">
-                                <div class="rooms_title"><h2>Matrimonial</h2></div>
-                                <div class="rooms_text">
-                                    <p>Disfruta un momento agradable con tu pareja en esta romántica suit</p>
-                                </div>
-                                <div class="rooms_list">
-                                    <ul>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>Cama 2 Plazas Royal King</span>
-                                        </li>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>Jacuzzi</span>
-                                        </li>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>Agua Caliente & Cable con más de 200 canales</span>
-                                        </li>
-                                    </ul>
-                                    <div class="rooms_price">S/.50.00/<span>Noche</span></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Room -->
-                        <div class="card card-special">
-                            <img class="card-img-top" src="~/Bootstrap/images/room_4.jpg" alt="Room image description">
-                            <div class="card-special-panel">OFerta Especial</div>
-                            <div class="card-body">
-                                <div class="rooms_title"><h2>Habitación Múltiple</h2></div>
-                                <div class="rooms_text">
-                                    <p>Habitación con excelente vista para 4 o más personas, se pagará un adicional de S/.10.00 por persona extra</p>
-                                </div>
-                                <div class="rooms_list">
-                                    <ul>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>4 Camas 2 Plazas Royal Queen</span>
-                                        </li>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>Mesa de Juegos & Poker</span>
-                                        </li>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>Servicio a la Habitación</span>
-                                        </li>
-                                        <li class="d-flex flex-row align-items-center justify-content-start">
-                                            <img src="~/Bootstrap/images/check.png" alt="">
-                                            <span>Agua Caliente & Cable con más de 200 canales</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="rooms_price">S/.80.00 <span>Noche</span></div>
-                            </div>
-                        </div>
-
                     </div>
+
+
+                    <!-- Room -->
+                    <div class="card">
+                        <img class="card-img-top" src="~/Bootstrap/images/room_3.jpg" alt="Room image description">
+                        <div class="card-body">
+                            <div class="rooms_title"><h2>Habitación Doble</h2></div>
+                            <div class="rooms_text">
+                                <p>Habitación con excelente vista para 2 o más personas, se pagará un adicional de S/.10.00 por persona extra</p>
+                            </div>
+                            <div class="rooms_list">
+                                <ul>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>2 Camas 1 1/2 Plazas</span>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>Mesa de Juegos</span>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>Agua Caliente & Cable con más de 200 canales</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="rooms_price">S/. 50.00 <span>Noche</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Room -->
+                    <div class="card">
+                        <img class="card-img-top" src="~/Bootstrap/images/room_3.jpg" alt="Room image description">
+                        <div class="card-body">
+                            <div class="rooms_title"><h2>Habitación Triple</h2></div>
+                            <div class="rooms_text">
+                                <p>Habitación con excelente vista para 3 o más personas, se pagará un adicional de S/.10.00 por persona extra</p>
+                            </div>
+                            <div class="rooms_list">
+                                <ul>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>3 Camas 1 1/2 Plazas</span>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>Mesa de Juegos & Poker</span>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>Agua Caliente & Cable con más de 200 canales</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="rooms_price">S/.70.00 <span>Noche</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Room -->
+                    <div class="card card-special">
+                        <img class="card-img-top" src="~/Bootstrap/images/room_1.jpg" alt="Room image description">
+                        <div class="card-special-panel">OFerta Especial</div>
+                        <div class="card-body">
+                            <div class="rooms_title"><h2>Matrimonial</h2></div>
+                            <div class="rooms_text">
+                                <p>Disfruta un momento agradable con tu pareja en esta romántica suit</p>
+                            </div>
+                            <div class="rooms_list">
+                                <ul>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>Cama 2 Plazas Royal King</span>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>Jacuzzi</span>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>Agua Caliente & Cable con más de 200 canales</span>
+                                    </li>
+                                </ul>
+                                <div class="rooms_price">S/.50.00/<span>Noche</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Room -->
+                    <div class="card card-special">
+                        <img class="card-img-top" src="~/Bootstrap/images/room_4.jpg" alt="Room image description">
+                        <div class="card-special-panel">OFerta Especial</div>
+                        <div class="card-body">
+                            <div class="rooms_title"><h2>Habitación Múltiple</h2></div>
+                            <div class="rooms_text">
+                                <p>Habitación con excelente vista para 4 o más personas, se pagará un adicional de S/.10.00 por persona extra</p>
+                            </div>
+                            <div class="rooms_list">
+                                <ul>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>4 Camas 2 Plazas Royal Queen</span>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>Mesa de Juegos & Poker</span>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>Servicio a la Habitación</span>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <img src="~/Bootstrap/images/check.png" alt="">
+                                        <span>Agua Caliente & Cable con más de 200 canales</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="rooms_price">S/.80.00 <span>Noche</span></div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

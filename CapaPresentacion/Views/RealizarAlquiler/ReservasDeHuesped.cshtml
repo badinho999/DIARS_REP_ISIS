@@ -20,7 +20,7 @@
                             <li class="">
                                 <div class="header_login">
                                     <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://png.pngtree.com/element_origin_min_pic/16/11/25/f2db5b1fae65676bfd1ecae1dbfdc3a2.jpg" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
+                                        <img src="https://images.vexels.com/media/users/3/141066/isolated/preview/2f9f642a85dc4a93ad4400b18c9f0e7e-empresario-cuadrado-avatar-rojo-by-vexels.png" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color: rgba(14,9,35,0.88);">
@@ -35,10 +35,17 @@
     </script>
 }
 
-<h2 class="text-center text-white mb-4">ReservasDeHuesped</h2>
+<div class="home" style="background-image: url(../../Bootstrap/images/elements.jpg);">
+    <!-- Para cambiar la imagen, ir a main_styles.css, a la funcion .home y cambiar la ruta-->
+    <div class="home_container d-flex flex-column align-items-center justify-content-center">
+        <div class="home_title"><h1>Reservas del Huésped</h1></div>
+    </div>
+</div>
+
 
 @if (Model != null)
 {
+<div class="form-style" style="color:white">
     <table class="table m-auto col-15 table-striped table-dark">
         <tr>
             <th>
@@ -64,7 +71,7 @@
 
 
 
-            string fechaIngreso = Convert.ToDateTime(item.FechadeIngreso).ToString("d", culture); 
+            string fechaIngreso = Convert.ToDateTime(item.FechadeIngreso).ToString("d", culture);
             string fechaSalida = Convert.ToDateTime(item.FechadeSalida).ToString("d", culture);
             string fechaReserva = Convert.ToDateTime(item.Fechadereserva).ToString("d", culture);
             <tr>
@@ -89,15 +96,14 @@
         }
 
     </table>
+</div>
+    
 
-}
-else
-{
+    }
+    else
+    {
     <div class="alert alert-danger mt-1">
         No tiene reservas
     </div>
-}
-
-<hr />
-<hr />
+    }
 

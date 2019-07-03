@@ -23,7 +23,7 @@
                             <li class="">
                                 <div class="header_login">
                                     <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://png.pngtree.com/element_origin_min_pic/16/11/25/f2db5b1fae65676bfd1ecae1dbfdc3a2.jpg" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
+                                        <img src="https://images.vexels.com/media/users/3/141066/isolated/preview/2f9f642a85dc4a93ad4400b18c9f0e7e-empresario-cuadrado-avatar-rojo-by-vexels.png" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color: rgba(14,9,35,0.88);">
@@ -59,29 +59,25 @@
     </script>
 }
 
-<div class="card text-center">
-    <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item">
-                @Html.ActionLink("Clientes frecuentes", "Reportes", "Reports", null, new { @class = "nav-link text-black-50" })
-            </li>
-            <li class="nav-item">
-                @Html.ActionLink("Habitaciones más alojadas", "ReportesHabitaciones", "Reports", null, new { @class = "nav-link text-black-50" })
-            </li>
-            <li class="nav-item">
-                @Html.ActionLink("Ingresos por reserva", "ReportesIngresosReserva", "Reports", null, new { @class = "nav-link text-black-50" })
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" id="alqIngresos">Ingresos por alquiler</a>
-            </li>
-        </ul>
-    </div>
-    <div class="card-body">
-        <form>
-            <div class="form-row">
+<!-- Home -->
 
-            </div>
-        </form>
+<div class="home" style="background-image: url(../../Bootstrap/images/elements.jpg)">
+    <div class="home_container d-flex flex-column align-items-center justify-content-center">
+        <div class="home_title"><h1>Reportes: Ingresos por Alquiler</h1></div>
+    </div>
+</div>
+
+<div class="form-style">
+    <nav class="main_nav" style="padding-left:20px;">
+        <ul class="d-flex flex-row align-items-center justify-content-start">
+            <li>@Html.ActionLink("Clientes Frecuentes", "Reportes", "Reports", null, new { @class = "page-scroll" })</li>
+            <li>@Html.ActionLink("Habitaciones más alojadas", "ReportesHabitaciones", "Reports", null, new { @class = "page-scroll" })</li>
+            <li>@Html.ActionLink("Ingresos por reserva", "ReportesIngresosReserva", "Reports", null, new { @class = "page-scroll" })</li>
+            <li class="active">@Html.ActionLink("Ingresos por alquiler", "ReportesIngresosAlquiler", "Reports", null, new { @class = "page-scroll" })</li>
+        </ul>
+    </nav>
+
+    <div style="color: black;">
         <table id="reporte">
             <thead>
                 <tr>
@@ -92,4 +88,5 @@
         </table>
     </div>
 </div>
+
 

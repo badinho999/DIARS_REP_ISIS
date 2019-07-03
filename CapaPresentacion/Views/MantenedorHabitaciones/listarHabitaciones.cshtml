@@ -17,7 +17,7 @@
                             <li class="">
                                 <div class="header_login">
                                     <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://png.pngtree.com/element_origin_min_pic/16/11/25/f2db5b1fae65676bfd1ecae1dbfdc3a2.jpg" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
+                                        <img src="https://images.vexels.com/media/users/3/141066/isolated/preview/2f9f642a85dc4a93ad4400b18c9f0e7e-empresario-cuadrado-avatar-rojo-by-vexels.png" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color: rgba(14,9,35,0.88);">
@@ -33,77 +33,86 @@
     </script>
 }
 
-<section class="container" id="listarHabitaciones">
-    <div class="pb-4 form-header no-color">
-        <a class="btn btn-myBtn" href="/MantenedorHabitaciones/insertarHabitacion">Nueva habitación</a>
+<!-- Home -->
+
+<div class="home" style="background-image: url(../../Bootstrap/images/rooms.jpg)">
+    <!-- Para cambiar la imagen, ir a main_styles.css, a la funcion .home y cambiar la ruta-->
+    <div class="home_container d-flex flex-column align-items-center justify-content-center">
+        <div class="home_title"><h1>Lista de Habitaciones</h1></div>
     </div>
+</div>
 
-    <table class="table m-auto col-15 table-striped table-dark">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NumeroHabitacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipodehabitacion.Nombretipodehabitacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipodehabitacion.Numerodecamas)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipodehabitacion.Capacidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipodehabitacion.Precio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipodehabitacion.Costoadicional)
-            </th>
-            <th>
-                Servicios
-            </th>
-            <th>
-                Actions
-            </th>
-        </tr>
+<div class="form-style" id="listarHabitaciones">
+        <div class="pb-4 form-header no-color">
+            <button type ="button" class="btn-success btn-lg" style="background-color:darkorange"><i class="fa fa-plus" aria-hidden="true"></i>@Html.ActionLink(" Nueva Habitación", "insertarHabitacion")</button>
+        </div>
 
-        @foreach (var item in Model)
-        {
+        <table class="table m-auto col-15 table-striped" style="font-size:20px">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NumeroHabitacion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Nombretipodehabitacion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Numerodecamas)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Capacidad)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Precio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tipodehabitacion.Costoadicional)
-                </td>
-
-                <td>
-                    @{
-                        string servicios = string.Join
-                        (
-                            ", ",
-                            (from row in item.Tipodehabitacion.ServiciosAdicionales
-                             select row.NombreDeServicio).ToArray()
-                        );
-                        @servicios.ToString()
-                    }
-                </td>
-                <td class="options">
-                    @Html.ActionLink("Edit", "editarHabitacion", new { NumeroHabitacion = item.NumeroHabitacion }, new { @class = "d-block mb-2 link-master btn btn-myBtn" })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumeroHabitacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipodehabitacion.Nombretipodehabitacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipodehabitacion.Numerodecamas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipodehabitacion.Capacidad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipodehabitacion.Precio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipodehabitacion.Costoadicional)
+                </th>
+                <th>
+                    Servicios
+                </th>
+                <th>
+                    Actions
+                </th>
             </tr>
-        }
 
-    </table>
-</section>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumeroHabitacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipodehabitacion.Nombretipodehabitacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipodehabitacion.Numerodecamas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipodehabitacion.Capacidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipodehabitacion.Precio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipodehabitacion.Costoadicional)
+                    </td>
+
+                    <td>
+                        @{
+                            string servicios = string.Join
+                            (
+                                ", ",
+                                (from row in item.Tipodehabitacion.ServiciosAdicionales
+                                 select row.NombreDeServicio).ToArray()
+                            );
+                            @servicios.ToString()
+                        }
+                    </td>
+                    <td class="options">
+                        <button class="btn-primary btn-lg"><i class="fa fa-pencil" aria-hidden="true"></i>@Html.ActionLink(" Edit", "editarHabitacion", new { NumeroHabitacion = item.NumeroHabitacion })</button>
+                    </td>
+                </tr>
+            }
+
+        </table>
+</div>

@@ -17,7 +17,7 @@
                             <li class="">
                                 <div class="header_login">
                                     <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://png.pngtree.com/element_origin_min_pic/16/11/25/f2db5b1fae65676bfd1ecae1dbfdc3a2.jpg" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
+                                        <img src="https://images.vexels.com/media/users/3/141066/isolated/preview/2f9f642a85dc4a93ad4400b18c9f0e7e-empresario-cuadrado-avatar-rojo-by-vexels.png" alt="" style="border-radius: 50%; height: 45px; width: 45px"> @cuenta.Recep.UserName
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color: rgba(14,9,35,0.88);">
@@ -32,22 +32,31 @@
     </script>
 }
 
-<div class="container m-auto">
-    <div class="card mb-4">
-        <div class="card-header text-center">
-            Buscar reserva
-        </div>
-        <div class="card-body text-center">
-            <h5 class="card-title">Ingrese ID de la reserva</h5>
+<!-- Home -->
+
+<div class="home" style="background-image: url(../../Bootstrap/images/home.jpg);">
+
+    <div class="home_container d-flex flex-column align-items-center justify-content-center">
+        <div class="home_title"><h1>Buscar Reserva</h1></div>
+    </div>
+</div>
+
+<div class="form-style">
+    <div class="container m-auto col-4">
+        <h3>Buscar reserva</h3>
+        <hr />
+        <div>
+            <h4>Ingrese ID de la reserva</h4>
+            <br />
             @using (Html.BeginForm("EditarReserva", "MantenedorReserva", FormMethod.Post, new { @class = "form-group", id = "formID" }))
             {
                 @Html.EditorFor(model => model.ReservaID, new { @class = "form-control" })
 
             }
         </div>
-        <div class="card-footer text-center">
-            <input type="submit" class="btn btn-primary" form="formID" name="Buscar" />
+        <div>
+            <hr />
+            <button type="submit" class="btn-primary btn-lg" form="formID" name="Buscar"><i class="fa fa-search" aria-hidden="true"> Buscar</i></button>
         </div>
-
     </div>
 </div>
